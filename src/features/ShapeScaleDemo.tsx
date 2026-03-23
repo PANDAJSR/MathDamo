@@ -48,6 +48,10 @@ function toPolygonPoints(points: Vec2[]): string {
   return points.map((point) => `${point[0]},${point[1]}`).join(' ')
 }
 
+function snapToHalfGrid(point: Vec2): Vec2 {
+  return [Math.round(point[0] * 2) / 2, Math.round(point[1] * 2) / 2]
+}
+
 function distance(a: Vec2, b: Vec2): number {
   const dx = a[0] - b[0]
   const dy = a[1] - b[1]
@@ -157,6 +161,7 @@ interface DraggablePolygonProps {
   fillOpacity: number
   anchor: Vec2
   onMove: (point: Vec2) => void
+  constrain: (point: Vec2) => Vec2
 }
 
 function DraggablePolygon({
@@ -165,13 +170,14 @@ function DraggablePolygon({
   fillOpacity,
   anchor,
   onMove,
+  constrain,
 }: DraggablePolygonProps) {
   const gestureRef = useRef<SVGPolygonElement>(null)
   const { dragging } = useMovable({
     gestureTarget: gestureRef as unknown as RefObject<Element>,
     point: anchor,
     onMove: (nextPoint) => onMove(toVec2(nextPoint)),
-    constrain: (point) => point,
+    constrain,
   })
 
   return (
@@ -196,6 +202,7 @@ export function ShapeScaleDemo() {
   const [vertexCount, setVertexCount] = useState(4)
   const [scale, setScale] = useState(1)
   const [rotation, setRotation] = useState(0)
+  const [snapMode, setSnapMode] = useState(false)
   const [showSideLengths, setShowSideLengths] = useState(false)
   const [showAngles, setShowAngles] = useState(false)
   const [leftCenter, setLeftCenter] = useState<Vec2>(initialLeftCenter)
@@ -204,6 +211,7 @@ export function ShapeScaleDemo() {
     createRegularPolygon(4),
   )
   const rotationRad = (rotation * Math.PI) / 180
+  const constrainPoint = snapMode ? snapToHalfGrid : (point: Vec2) => point
 
   const leftPolygon = useMemo(
     () =>
@@ -259,6 +267,7 @@ export function ShapeScaleDemo() {
             fillOpacity={0.2}
             anchor={leftCenter}
             onMove={setLeftCenter}
+            constrain={constrainPoint}
           />
           <DraggablePolygon
             points={rightPolygon}
@@ -266,6 +275,7 @@ export function ShapeScaleDemo() {
             fillOpacity={0.25}
             anchor={rightCenter}
             onMove={setRightCenter}
+            constrain={constrainPoint}
           />
           <PolygonAnnotations
             points={leftPolygon}
@@ -284,6 +294,7 @@ export function ShapeScaleDemo() {
               key={`left-${index}`}
               point={point}
               color="#1677ff"
+              constrain={constrainPoint}
               onMove={(nextPoint) => handleMoveLeftPoint(index, toVec2(nextPoint))}
             />
           ))}
@@ -292,6 +303,7 @@ export function ShapeScaleDemo() {
               key={`right-${index}`}
               point={point}
               color="#fa8c16"
+              constrain={constrainPoint}
               onMove={(nextPoint) => handleMoveRightPoint(index, toVec2(nextPoint))}
             />
           ))}
@@ -299,6 +311,11 @@ export function ShapeScaleDemo() {
       </div>
 
       <div className="scale-panel">
+        <div className="switch-row">
+          <Typography.Text strong>吸附模式（半格）</Typography.Text>
+          <Switch checked={snapMode} onChange={setSnapMode} />
+        </div>
+
         <div className="switch-row">
           <Typography.Text strong>显示边长</Typography.Text>
           <Switch checked={showSideLengths} onChange={setShowSideLengths} />
