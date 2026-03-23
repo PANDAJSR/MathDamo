@@ -19,5 +19,5 @@
 }
 
 .drag-overlay {
-  pointer-events: all;
+  pointer-events: visibleFill;
 }

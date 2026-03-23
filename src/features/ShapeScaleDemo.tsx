@@ -79,8 +79,7 @@ function DraggablePolygon({
         className="drag-overlay"
         points={toPolygonPoints(points)}
         fill="rgba(0, 0, 0, 0.001)"
-        stroke="transparent"
-        strokeWidth={24}
+        stroke="none"
         style={{
           transform: 'var(--mafs-view-transform)',
           cursor: dragging ? 'grabbing' : 'grab',
@@ -143,7 +142,7 @@ export function ShapeScaleDemo() {
     <section className="shape-scale-demo">
       <Typography.Title level={3}>图形的放大和缩小</Typography.Title>
       <Typography.Paragraph>
-        支持调整多边形顶点数、统一旋转角度与缩放。可拖拽任意顶点，左右图形同步变形；拖拽两侧中心点可整体移动。
+        支持调整多边形顶点数、统一旋转角度与缩放。可拖拽任意顶点，左右图形同步变形；左右图形可各自整体拖动。
       </Typography.Paragraph>
 
       <div className="canvas-wrap">
