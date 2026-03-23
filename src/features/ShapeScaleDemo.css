@@ -31,11 +31,11 @@
 
 .annotation-text {
   pointer-events: none;
-  font-size: 12px;
+  font-size: 0.28px;
   font-weight: 600;
   paint-order: stroke;
   stroke: #ffffff;
-  stroke-width: 2px;
+  stroke-width: 0.06px;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
