@@ -1,11 +1,9 @@
-import { Layout, Menu, Typography } from 'antd'
+import { Layout, Menu } from 'antd'
 import './App.css'
+import { ShapeScaleDemo } from './features/ShapeScaleDemo'
 
 const menuItems = [
-  { key: 'home', label: '首页' },
-  { key: 'bank', label: '题库' },
-  { key: 'history', label: '练习记录' },
-  { key: 'settings', label: '设置' },
+  { key: 'shape-scale', label: '图形的放大和缩小' },
 ]
 
 function App() {
@@ -16,16 +14,13 @@ function App() {
         <Menu
           mode="inline"
           theme="light"
-          defaultSelectedKeys={['home']}
+          defaultSelectedKeys={['shape-scale']}
           items={menuItems}
         />
       </Layout.Sider>
 
       <Layout.Content className="main-content">
-        <Typography.Title level={1}>欢迎使用 MathDamo</Typography.Title>
-        <Typography.Paragraph>
-          已改为 Ant Design 6 左侧导航布局。这里可以开始放你的业务内容。
-        </Typography.Paragraph>
+        <ShapeScaleDemo />
       </Layout.Content>
     </Layout>
   )

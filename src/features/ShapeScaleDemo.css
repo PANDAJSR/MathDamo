@@ -1,0 +1,15 @@
+.shape-scale-demo {
+  width: 100%;
+}
+
+.canvas-wrap {
+  height: 420px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.scale-panel {
+  margin-top: 16px;
+}
