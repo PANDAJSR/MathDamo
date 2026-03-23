@@ -11,11 +11,11 @@ const menuItems = [
 function App() {
   return (
     <Layout className="app-layout">
-      <Layout.Sider width={240} className="app-sider" theme="dark">
+      <Layout.Sider width={240} className="app-sider" theme="light">
         <div className="brand">MathDamo</div>
         <Menu
           mode="inline"
-          theme="dark"
+          theme="light"
           defaultSelectedKeys={['home']}
           items={menuItems}
         />
