@@ -90,6 +90,48 @@ function angleAt(prev: Vec2, curr: Vec2, next: Vec2): number {
   return (Math.acos(cos) * 180) / Math.PI
 }
 
+function formatRatio(a: number, b: number): string {
+  return `${a.toFixed(2)}:${b.toFixed(2)}`
+}
+
+function normalizeRatio(a: number, b: number): string {
+  if (a === 0 && b === 0) return '0:0'
+  if (a === 0) return `0:1`
+  const second = b / a
+  return `1:${second.toFixed(2)}`
+}
+
+interface PointLabelsProps {
+  points: Vec2[]
+  labels: string[]
+  color: string
+}
+
+function PointLabels({ points, labels, color }: PointLabelsProps) {
+  return (
+    <>
+      {labels.map((label, index) => {
+        const point = points[index]
+        if (!point) return null
+        return (
+          <Text
+            key={`${label}-${index}`}
+            x={point[0]}
+            y={point[1]}
+            size={13}
+            color={color}
+            attach="ne"
+            attachDistance={10}
+            svgTextProps={{ fontWeight: 700 }}
+          >
+            {label}
+          </Text>
+        )
+      })}
+    </>
+  )
+}
+
 interface PolygonAnnotationsProps {
   points: Vec2[]
   color: string
@@ -251,6 +293,11 @@ export function ShapeScaleDemo() {
     })
   }
 
+  const leftAB = distance(leftPolygon[0], leftPolygon[1])
+  const leftBC = distance(leftPolygon[1], leftPolygon[2])
+  const rightAB = distance(rightPolygon[0], rightPolygon[1])
+  const rightBC = distance(rightPolygon[1], rightPolygon[2])
+
   return (
     <section className="shape-scale-demo">
       <Typography.Title level={3}>图形的放大和缩小</Typography.Title>
@@ -288,6 +335,16 @@ export function ShapeScaleDemo() {
             color="#d46b08"
             showSideLengths={showSideLengths}
             showAngles={showAngles}
+          />
+          <PointLabels
+            points={leftPolygon}
+            labels={['A', 'B', 'C']}
+            color="#003eb3"
+          />
+          <PointLabels
+            points={rightPolygon}
+            labels={["A'", "B'", "C'"]}
+            color="#ad4e00"
           />
           {leftPolygon.map((point, index) => (
             <MovablePoint
@@ -356,6 +413,19 @@ export function ShapeScaleDemo() {
           value={scale}
           onChange={setScale}
         />
+      </div>
+
+      <div className="info-panel">
+        <Typography.Title level={4}>信息展示</Typography.Title>
+        <Typography.Paragraph className="info-line">
+          AB:BC = {formatRatio(leftAB, leftBC)}（实际长度） ={' '}
+          {normalizeRatio(leftAB, leftBC)}（前后至少有一项为1的比）
+        </Typography.Paragraph>
+        <Typography.Paragraph className="info-line">
+          A&apos;B&apos;:B&apos;C&apos; = {formatRatio(rightAB, rightBC)}
+          （实际长度） = {normalizeRatio(rightAB, rightBC)}
+          （前后至少有一项为1的比）
+        </Typography.Paragraph>
       </div>
     </section>
   )

@@ -28,3 +28,15 @@
 .drag-overlay {
   pointer-events: visibleFill;
 }
+
+.info-panel {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fafcff;
+}
+
+.info-line {
+  margin-bottom: 6px !important;
+}
