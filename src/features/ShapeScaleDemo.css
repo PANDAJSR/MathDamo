@@ -14,10 +14,28 @@
   margin-top: 16px;
 }
 
+.switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
 .control-row {
   margin-bottom: 12px;
 }
 
 .drag-overlay {
   pointer-events: visibleFill;
+}
+
+.annotation-text {
+  pointer-events: none;
+  font-size: 12px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: #ffffff;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }

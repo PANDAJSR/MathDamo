@@ -1,4 +1,4 @@
-import { Slider, Typography } from 'antd'
+import { Slider, Switch, Typography } from 'antd'
 import { Coordinates, Mafs, MovablePoint, Polygon, useMovable } from 'mafs'
 import { useMemo, useRef, useState, type RefObject } from 'react'
 import 'mafs/core.css'
@@ -48,6 +48,84 @@ function toPolygonPoints(points: Vec2[]): string {
   return points.map((point) => `${point[0]},${point[1]}`).join(' ')
 }
 
+function distance(a: Vec2, b: Vec2): number {
+  const dx = a[0] - b[0]
+  const dy = a[1] - b[1]
+  return Math.hypot(dx, dy)
+}
+
+function midpoint(a: Vec2, b: Vec2): Vec2 {
+  return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]
+}
+
+function angleAt(prev: Vec2, curr: Vec2, next: Vec2): number {
+  const v1: Vec2 = [prev[0] - curr[0], prev[1] - curr[1]]
+  const v2: Vec2 = [next[0] - curr[0], next[1] - curr[1]]
+  const dot = v1[0] * v2[0] + v1[1] * v2[1]
+  const mag = Math.hypot(v1[0], v1[1]) * Math.hypot(v2[0], v2[1])
+  if (mag === 0) return 0
+  const cos = Math.max(-1, Math.min(1, dot / mag))
+  return (Math.acos(cos) * 180) / Math.PI
+}
+
+interface PolygonAnnotationsProps {
+  points: Vec2[]
+  color: string
+  showSideLengths: boolean
+  showAngles: boolean
+}
+
+function PolygonAnnotations({
+  points,
+  color,
+  showSideLengths,
+  showAngles,
+}: PolygonAnnotationsProps) {
+  const count = points.length
+  return (
+    <>
+      {showSideLengths &&
+        points.map((point, index) => {
+          const next = points[(index + 1) % count]
+          const center = midpoint(point, next)
+          const len = distance(point, next)
+          return (
+            <text
+              key={`len-${index}`}
+              x={center[0]}
+              y={center[1]}
+              className="annotation-text"
+              fill={color}
+              style={{ transform: 'var(--mafs-view-transform)' }}
+            >
+              {len.toFixed(2)}
+            </text>
+          )
+        })}
+      {showAngles &&
+        points.map((curr, index) => {
+          const prev = points[(index - 1 + count) % count]
+          const next = points[(index + 1) % count]
+          const a = angleAt(prev, curr, next)
+          return (
+            <text
+              key={`ang-${index}`}
+              x={curr[0]}
+              y={curr[1]}
+              dx={8}
+              dy={-8}
+              className="annotation-text"
+              fill={color}
+              style={{ transform: 'var(--mafs-view-transform)' }}
+            >
+              {a.toFixed(1)}°
+            </text>
+          )
+        })}
+    </>
+  )
+}
+
 interface DraggablePolygonProps {
   points: Vec2[]
   color: string
@@ -93,6 +171,8 @@ export function ShapeScaleDemo() {
   const [vertexCount, setVertexCount] = useState(4)
   const [scale, setScale] = useState(1)
   const [rotation, setRotation] = useState(0)
+  const [showSideLengths, setShowSideLengths] = useState(false)
+  const [showAngles, setShowAngles] = useState(false)
   const [leftCenter, setLeftCenter] = useState<Vec2>(initialLeftCenter)
   const [rightCenter, setRightCenter] = useState<Vec2>(initialRightCenter)
   const [basePolygon, setBasePolygon] = useState<Vec2[]>(() =>
@@ -162,6 +242,18 @@ export function ShapeScaleDemo() {
             anchor={rightCenter}
             onMove={setRightCenter}
           />
+          <PolygonAnnotations
+            points={leftPolygon}
+            color="#0958d9"
+            showSideLengths={showSideLengths}
+            showAngles={showAngles}
+          />
+          <PolygonAnnotations
+            points={rightPolygon}
+            color="#d46b08"
+            showSideLengths={showSideLengths}
+            showAngles={showAngles}
+          />
           {leftPolygon.map((point, index) => (
             <MovablePoint
               key={`left-${index}`}
@@ -182,6 +274,16 @@ export function ShapeScaleDemo() {
       </div>
 
       <div className="scale-panel">
+        <div className="switch-row">
+          <Typography.Text strong>显示边长</Typography.Text>
+          <Switch checked={showSideLengths} onChange={setShowSideLengths} />
+        </div>
+
+        <div className="switch-row">
+          <Typography.Text strong>显示角度</Typography.Text>
+          <Switch checked={showAngles} onChange={setShowAngles} />
+        </div>
+
         <div className="control-row">
           <Typography.Text strong>顶点数：{vertexCount}</Typography.Text>
           <Slider
