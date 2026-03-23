@@ -368,51 +368,57 @@ export function ShapeScaleDemo() {
       </div>
 
       <div className="scale-panel">
-        <div className="switch-row">
-          <Typography.Text strong>吸附模式（半格）</Typography.Text>
-          <Switch checked={snapMode} onChange={setSnapMode} />
+        <div className="switch-grid">
+          <div className="switch-row">
+            <Typography.Text strong>吸附模式（半格）</Typography.Text>
+            <Switch checked={snapMode} onChange={setSnapMode} />
+          </div>
+
+          <div className="switch-row">
+            <Typography.Text strong>显示边长</Typography.Text>
+            <Switch checked={showSideLengths} onChange={setShowSideLengths} />
+          </div>
+
+          <div className="switch-row">
+            <Typography.Text strong>显示角度</Typography.Text>
+            <Switch checked={showAngles} onChange={setShowAngles} />
+          </div>
         </div>
 
-        <div className="switch-row">
-          <Typography.Text strong>显示边长</Typography.Text>
-          <Switch checked={showSideLengths} onChange={setShowSideLengths} />
-        </div>
+        <div className="control-grid">
+          <div className="control-row">
+            <Typography.Text strong>顶点数：{vertexCount}</Typography.Text>
+            <Slider
+              min={3}
+              max={10}
+              step={1}
+              value={vertexCount}
+              onChange={handleVertexCountChange}
+            />
+          </div>
 
-        <div className="switch-row">
-          <Typography.Text strong>显示角度</Typography.Text>
-          <Switch checked={showAngles} onChange={setShowAngles} />
-        </div>
+          <div className="control-row">
+            <Typography.Text strong>旋转角度：{rotation}°</Typography.Text>
+            <Slider
+              min={-180}
+              max={180}
+              step={1}
+              value={rotation}
+              onChange={setRotation}
+            />
+          </div>
 
-        <div className="control-row">
-          <Typography.Text strong>顶点数：{vertexCount}</Typography.Text>
-          <Slider
-            min={3}
-            max={10}
-            step={1}
-            value={vertexCount}
-            onChange={handleVertexCountChange}
-          />
+          <div className="control-row">
+            <Typography.Text strong>缩放倍数：{scale.toFixed(1)}x</Typography.Text>
+            <Slider
+              min={0.5}
+              max={3}
+              step={0.1}
+              value={scale}
+              onChange={setScale}
+            />
+          </div>
         </div>
-
-        <div className="control-row">
-          <Typography.Text strong>旋转角度：{rotation}°</Typography.Text>
-          <Slider
-            min={-180}
-            max={180}
-            step={1}
-            value={rotation}
-            onChange={setRotation}
-          />
-        </div>
-
-        <Typography.Text strong>缩放倍数：{scale.toFixed(1)}x</Typography.Text>
-        <Slider
-          min={0.5}
-          max={3}
-          step={0.1}
-          value={scale}
-          onChange={setScale}
-        />
       </div>
 
       <div className="info-panel">

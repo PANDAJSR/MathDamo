@@ -14,15 +14,37 @@
   margin-top: 16px;
 }
 
+.switch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
 .switch-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+}
+
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
 }
 
 .control-row {
-  margin-bottom: 12px;
+  min-width: 0;
+}
+
+.control-row :where(.ant-slider) {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .switch-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .drag-overlay {
