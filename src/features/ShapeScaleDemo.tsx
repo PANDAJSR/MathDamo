@@ -6,66 +6,98 @@ import './ShapeScaleDemo.css'
 
 type Vec2 = [number, number]
 
-const leftCenter: Vec2 = [-5, 0]
-const rightCenter: Vec2 = [5, 0]
+const initialLeftCenter: Vec2 = [-5, 0]
+const initialRightCenter: Vec2 = [5, 0]
 
 function createRegularPolygon(vertexCount: number): Vec2[] {
-  const [cx, cy] = leftCenter
   const radius = 2
 
   return Array.from({ length: vertexCount }, (_, i) => {
     const angle = (Math.PI * 2 * i) / vertexCount - Math.PI / 2
-    return [cx + radius * Math.cos(angle), cy + radius * Math.sin(angle)]
+    return [radius * Math.cos(angle), radius * Math.sin(angle)]
   })
 }
 
-function mapToRight(point: Vec2, scale: number): Vec2 {
-  const [lx, ly] = leftCenter
-  const [rx, ry] = rightCenter
-  return [rx + (point[0] - lx) * scale, ry + (point[1] - ly) * scale]
+function addVec2(a: Vec2, b: Vec2): Vec2 {
+  return [a[0] + b[0], a[1] + b[1]]
 }
 
-function mapToLeft(point: Vec2, scale: number): Vec2 {
-  const [lx, ly] = leftCenter
-  const [rx, ry] = rightCenter
-  return [lx + (point[0] - rx) / scale, ly + (point[1] - ry) / scale]
+function subVec2(a: Vec2, b: Vec2): Vec2 {
+  return [a[0] - b[0], a[1] - b[1]]
+}
+
+function scaleVec2(point: Vec2, factor: number): Vec2 {
+  return [point[0] * factor, point[1] * factor]
+}
+
+function rotateVec2(point: Vec2, angleRad: number): Vec2 {
+  const cos = Math.cos(angleRad)
+  const sin = Math.sin(angleRad)
+  return [point[0] * cos - point[1] * sin, point[0] * sin + point[1] * cos]
+}
+
+function inverseRotateVec2(point: Vec2, angleRad: number): Vec2 {
+  return rotateVec2(point, -angleRad)
+}
+
+function toVec2(point: Vec2): Vec2 {
+  return [point[0], point[1]]
 }
 
 export function ShapeScaleDemo() {
   const [vertexCount, setVertexCount] = useState(4)
   const [scale, setScale] = useState(1)
-  const [leftPolygon, setLeftPolygon] = useState<Vec2[]>(() =>
+  const [rotation, setRotation] = useState(0)
+  const [leftCenter, setLeftCenter] = useState<Vec2>(initialLeftCenter)
+  const [rightCenter, setRightCenter] = useState<Vec2>(initialRightCenter)
+  const [basePolygon, setBasePolygon] = useState<Vec2[]>(() =>
     createRegularPolygon(4),
   )
+  const rotationRad = (rotation * Math.PI) / 180
 
+  const leftPolygon = useMemo(
+    () =>
+      basePolygon.map((point) => addVec2(leftCenter, rotateVec2(point, rotationRad))),
+    [basePolygon, leftCenter, rotationRad],
+  )
   const rightPolygon = useMemo(
-    () => leftPolygon.map((point) => mapToRight(point, scale)),
-    [leftPolygon, scale],
+    () =>
+      basePolygon.map((point) =>
+        addVec2(rightCenter, scaleVec2(rotateVec2(point, rotationRad), scale)),
+      ),
+    [basePolygon, rightCenter, rotationRad, scale],
   )
 
   const handleVertexCountChange = (value: number) => {
     setVertexCount(value)
-    setLeftPolygon(createRegularPolygon(value))
+    setBasePolygon(createRegularPolygon(value))
   }
 
   const handleMoveLeftPoint = (index: number, point: Vec2) => {
-    setLeftPolygon((prev) => {
+    const localPoint = inverseRotateVec2(subVec2(point, leftCenter), rotationRad)
+    setBasePolygon((prev) => {
       const next = [...prev]
-      next[index] = point
+      next[index] = localPoint
       return next
     })
   }
 
   const handleMoveRightPoint = (index: number, point: Vec2) => {
-    const mappedLeft = mapToLeft(point, scale)
-    handleMoveLeftPoint(index, mappedLeft)
+    const moved = subVec2(point, rightCenter)
+    const unscaled = scaleVec2(moved, 1 / scale)
+    const localPoint = inverseRotateVec2(unscaled, rotationRad)
+    setBasePolygon((prev) => {
+      const next = [...prev]
+      next[index] = localPoint
+      return next
+    })
   }
 
   return (
     <section className="shape-scale-demo">
       <Typography.Title level={3}>图形的放大和缩小</Typography.Title>
       <Typography.Paragraph>
-        支持调整多边形顶点数，并拖拽顶点。左右图形实时同步，右侧仅按倍数缩放。
+        支持调整多边形顶点数、统一旋转角度与缩放。可拖拽任意顶点，左右图形同步变形；拖拽两侧中心点可整体移动。
       </Typography.Paragraph>
 
       <div className="canvas-wrap">
@@ -78,7 +110,7 @@ export function ShapeScaleDemo() {
               key={`left-${index}`}
               point={point}
               color="#1677ff"
-              onMove={(nextPoint) => handleMoveLeftPoint(index, nextPoint)}
+              onMove={(nextPoint) => handleMoveLeftPoint(index, toVec2(nextPoint))}
             />
           ))}
           {rightPolygon.map((point, index) => (
@@ -86,9 +118,19 @@ export function ShapeScaleDemo() {
               key={`right-${index}`}
               point={point}
               color="#fa8c16"
-              onMove={(nextPoint) => handleMoveRightPoint(index, nextPoint)}
+              onMove={(nextPoint) => handleMoveRightPoint(index, toVec2(nextPoint))}
             />
           ))}
+          <MovablePoint
+            point={leftCenter}
+            color="#0958d9"
+            onMove={(nextCenter) => setLeftCenter(toVec2(nextCenter))}
+          />
+          <MovablePoint
+            point={rightCenter}
+            color="#d46b08"
+            onMove={(nextCenter) => setRightCenter(toVec2(nextCenter))}
+          />
         </Mafs>
       </div>
 
@@ -101,6 +143,17 @@ export function ShapeScaleDemo() {
             step={1}
             value={vertexCount}
             onChange={handleVertexCountChange}
+          />
+        </div>
+
+        <div className="control-row">
+          <Typography.Text strong>旋转角度：{rotation}°</Typography.Text>
+          <Slider
+            min={-180}
+            max={180}
+            step={1}
+            value={rotation}
+            onChange={setRotation}
           />
         </div>
 
