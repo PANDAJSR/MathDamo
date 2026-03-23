@@ -204,7 +204,7 @@ export function PolygonAnnotations({
                 color={color}
                 svgTextProps={LABEL_TEXT_STYLE}
               >
-                ∠{angleDeg.toFixed(1)}°
+                {angleDeg.toFixed(1)}°
               </Text>
             </g>
           )
