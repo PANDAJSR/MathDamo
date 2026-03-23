@@ -1,5 +1,5 @@
 import { Slider, Switch, Typography } from 'antd'
-import { Coordinates, Mafs, MovablePoint, Polygon, useMovable } from 'mafs'
+import { Coordinates, Mafs, MovablePoint, Polygon, Text, useMovable } from 'mafs'
 import { useMemo, useRef, useState, type RefObject } from 'react'
 import 'mafs/core.css'
 import './ShapeScaleDemo.css'
@@ -58,6 +58,24 @@ function midpoint(a: Vec2, b: Vec2): Vec2 {
   return [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]
 }
 
+function magnitude(v: Vec2): number {
+  return Math.hypot(v[0], v[1])
+}
+
+function normalize(v: Vec2): Vec2 {
+  const mag = magnitude(v)
+  if (mag === 0) return [0, 0]
+  return [v[0] / mag, v[1] / mag]
+}
+
+function centroid(points: Vec2[]): Vec2 {
+  const sum = points.reduce<Vec2>(
+    (acc, p) => [acc[0] + p[0], acc[1] + p[1]],
+    [0, 0],
+  )
+  return [sum[0] / points.length, sum[1] / points.length]
+}
+
 function angleAt(prev: Vec2, curr: Vec2, next: Vec2): number {
   const v1: Vec2 = [prev[0] - curr[0], prev[1] - curr[1]]
   const v2: Vec2 = [next[0] - curr[0], next[1] - curr[1]]
@@ -82,24 +100,31 @@ function PolygonAnnotations({
   showAngles,
 }: PolygonAnnotationsProps) {
   const count = points.length
+  const center = centroid(points)
   return (
     <>
       {showSideLengths &&
         points.map((point, index) => {
           const next = points[(index + 1) % count]
-          const center = midpoint(point, next)
+          const edgeCenter = midpoint(point, next)
           const len = distance(point, next)
+          const edge = subVec2(next, point)
+          const normal: Vec2 = normalize([-edge[1], edge[0]])
+          const toCenter = subVec2(center, edgeCenter)
+          const outward = normal[0] * toCenter[0] + normal[1] * toCenter[1] > 0
+          const direction = outward ? scaleVec2(normal, -1) : normal
+          const labelPos = addVec2(edgeCenter, scaleVec2(direction, 0.28))
           return (
-            <text
+            <Text
               key={`len-${index}`}
-              x={center[0]}
-              y={center[1]}
-              className="annotation-text"
-              fill={color}
-              style={{ transform: 'var(--mafs-view-transform)' }}
+              x={labelPos[0]}
+              y={labelPos[1]}
+              size={12}
+              color={color}
+              svgTextProps={{ fontWeight: 500 }}
             >
               {len.toFixed(2)}
-            </text>
+            </Text>
           )
         })}
       {showAngles &&
@@ -107,19 +132,19 @@ function PolygonAnnotations({
           const prev = points[(index - 1 + count) % count]
           const next = points[(index + 1) % count]
           const a = angleAt(prev, curr, next)
+          const outward = normalize(subVec2(curr, center))
+          const labelPos = addVec2(curr, scaleVec2(outward, 0.35))
           return (
-            <text
+            <Text
               key={`ang-${index}`}
-              x={curr[0]}
-              y={curr[1]}
-              dx={8}
-              dy={-8}
-              className="annotation-text"
-              fill={color}
-              style={{ transform: 'var(--mafs-view-transform)' }}
+              x={labelPos[0]}
+              y={labelPos[1]}
+              size={12}
+              color={color}
+              svgTextProps={{ fontWeight: 500 }}
             >
               {a.toFixed(1)}°
-            </text>
+            </Text>
           )
         })}
     </>
