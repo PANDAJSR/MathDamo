@@ -124,8 +124,17 @@ export function ShapeScaleDemo() {
 
   const leftAB = distance(leftPolygon[0], leftPolygon[1])
   const leftBC = distance(leftPolygon[1], leftPolygon[2])
+  const leftCD =
+    leftPolygon.length > 3 ? distance(leftPolygon[2], leftPolygon[3]) : null
   const rightAB = distance(rightPolygon[0], rightPolygon[1])
   const rightBC = distance(rightPolygon[1], rightPolygon[2])
+  const rightCD =
+    rightPolygon.length > 3 ? distance(rightPolygon[2], rightPolygon[3]) : null
+
+  const formatCrossRatio = (left: number | null, right: number | null) => {
+    if (left === null || right === null) return '-'
+    return `${formatRatio(left, right)}（实际长度） = ${normalizeRatio(left, right)}（前后至少有一项为1的比）`
+  }
 
   return (
     <section className="shape-scale-demo">
@@ -264,6 +273,12 @@ export function ShapeScaleDemo() {
           A&apos;B&apos;:B&apos;C&apos; = {formatRatio(rightAB, rightBC)}
           （实际长度） = {normalizeRatio(rightAB, rightBC)}
           （前后至少有一项为1的比）
+        </Typography.Paragraph>
+        <Typography.Paragraph className="info-line">
+          AB:A&apos;B&apos; = {formatCrossRatio(leftAB, rightAB)}
+        </Typography.Paragraph>
+        <Typography.Paragraph className="info-line">
+          CD:C&apos;D&apos; = {formatCrossRatio(leftCD, rightCD)}
         </Typography.Paragraph>
       </div>
     </section>
