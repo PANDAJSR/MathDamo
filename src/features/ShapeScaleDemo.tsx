@@ -1,6 +1,6 @@
 import { Slider, Typography } from 'antd'
-import { Coordinates, Mafs, MovablePoint, Polygon } from 'mafs'
-import { useMemo, useState } from 'react'
+import { Coordinates, Mafs, MovablePoint, Polygon, useMovable } from 'mafs'
+import { useMemo, useRef, useState, type RefObject } from 'react'
 import 'mafs/core.css'
 import './ShapeScaleDemo.css'
 
@@ -42,6 +42,52 @@ function inverseRotateVec2(point: Vec2, angleRad: number): Vec2 {
 
 function toVec2(point: Vec2): Vec2 {
   return [point[0], point[1]]
+}
+
+function toPolygonPoints(points: Vec2[]): string {
+  return points.map((point) => `${point[0]},${point[1]}`).join(' ')
+}
+
+interface DraggablePolygonProps {
+  points: Vec2[]
+  color: string
+  fillOpacity: number
+  anchor: Vec2
+  onMove: (point: Vec2) => void
+}
+
+function DraggablePolygon({
+  points,
+  color,
+  fillOpacity,
+  anchor,
+  onMove,
+}: DraggablePolygonProps) {
+  const gestureRef = useRef<SVGPolygonElement>(null)
+  const { dragging } = useMovable({
+    gestureTarget: gestureRef as unknown as RefObject<Element>,
+    point: anchor,
+    onMove: (nextPoint) => onMove(toVec2(nextPoint)),
+    constrain: (point) => point,
+  })
+
+  return (
+    <>
+      <Polygon points={points} color={color} fillOpacity={fillOpacity} />
+      <polygon
+        ref={gestureRef}
+        className="drag-overlay"
+        points={toPolygonPoints(points)}
+        fill="rgba(0, 0, 0, 0.001)"
+        stroke="transparent"
+        strokeWidth={24}
+        style={{
+          transform: 'var(--mafs-view-transform)',
+          cursor: dragging ? 'grabbing' : 'grab',
+        }}
+      />
+    </>
+  )
 }
 
 export function ShapeScaleDemo() {
@@ -103,8 +149,20 @@ export function ShapeScaleDemo() {
       <div className="canvas-wrap">
         <Mafs viewBox={{ x: [-8, 8], y: [-5, 5] }}>
           <Coordinates.Cartesian />
-          <Polygon points={leftPolygon} color="#1677ff" fillOpacity={0.2} />
-          <Polygon points={rightPolygon} color="#fa8c16" fillOpacity={0.25} />
+          <DraggablePolygon
+            points={leftPolygon}
+            color="#1677ff"
+            fillOpacity={0.2}
+            anchor={leftCenter}
+            onMove={setLeftCenter}
+          />
+          <DraggablePolygon
+            points={rightPolygon}
+            color="#fa8c16"
+            fillOpacity={0.25}
+            anchor={rightCenter}
+            onMove={setRightCenter}
+          />
           {leftPolygon.map((point, index) => (
             <MovablePoint
               key={`left-${index}`}
@@ -121,16 +179,6 @@ export function ShapeScaleDemo() {
               onMove={(nextPoint) => handleMoveRightPoint(index, toVec2(nextPoint))}
             />
           ))}
-          <MovablePoint
-            point={leftCenter}
-            color="#0958d9"
-            onMove={(nextCenter) => setLeftCenter(toVec2(nextCenter))}
-          />
-          <MovablePoint
-            point={rightCenter}
-            color="#d46b08"
-            onMove={(nextCenter) => setRightCenter(toVec2(nextCenter))}
-          />
         </Mafs>
       </div>
 

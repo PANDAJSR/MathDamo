@@ -17,3 +17,7 @@
 .control-row {
   margin-bottom: 12px;
 }
+
+.drag-overlay {
+  pointer-events: all;
+}
