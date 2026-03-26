@@ -159,6 +159,12 @@
   word-break: keep-all;
 }
 
+.wheel-item-weight .ant-input-number-addon {
+  white-space: nowrap;
+  word-break: keep-all;
+  min-width: 2.5em;
+}
+
 .wheel-history-empty {
   margin-top: 24px;
   padding: 28px 0;
