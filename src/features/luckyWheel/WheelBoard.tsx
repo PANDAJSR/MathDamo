@@ -37,6 +37,17 @@ export function WheelBoard({
 }: WheelBoardProps) {
   return (
     <div className="wheel-layout">
+      <div className={`wheel-result ${selectedItem ? 'wheel-result--selected' : ''}`}>
+        <Typography.Text className="wheel-result-title">抽取结果</Typography.Text>
+        {selectedItem ? (
+          <Tag className="wheel-result-tag" color={selectedItem.color}>
+            {selectedItem.label}
+          </Tag>
+        ) : (
+          <Tag className="wheel-result-tag">尚未抽取</Tag>
+        )}
+      </div>
+
       <div className="wheel-board" ref={wheelBoardRef}>
         <div className="wheel-pointer" />
         <div
@@ -78,11 +89,6 @@ export function WheelBoard({
         >
           {spinButtonLabel}
         </Button>
-      </div>
-
-      <div className="wheel-result">
-        <Typography.Text strong>抽取结果：</Typography.Text>
-        {selectedItem ? <Tag color={selectedItem.color}>{selectedItem.label}</Tag> : <Tag>尚未抽取</Tag>}
       </div>
     </div>
   )
