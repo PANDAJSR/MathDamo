@@ -29,6 +29,16 @@ const SPIN_DURATION_MS = 4200
 const MIN_WEIGHT = 0.1
 const DEFAULT_LABEL_RADIUS_PERCENT = 32
 const LABEL_INSET_PERCENT = 2
+const MIN_LABEL_RADIUS_PERCENT = 18
+const MAX_LABEL_RADIUS_PERCENT = 46
+const MAX_RADIUS_BOOST_PERCENT = 10
+const LABEL_DYNAMIC_SPAN_CAP = 120
+
+type LabelLayout = {
+  x: number
+  y: number
+  width: number
+}
 
 function clampWeight(value: number | null | undefined) {
   if (typeof value !== 'number' || Number.isNaN(value)) return MIN_WEIGHT
@@ -76,6 +86,24 @@ function buildWheelSegments(items: WheelItem[]): WheelSegment[] {
 
 function normalizeDegree(value: number) {
   return ((value % 360) + 360) % 360
+}
+
+function getLabelLayout(segment: WheelSegment, baseRadiusPercent: number): LabelLayout {
+  const spanForBoost = Math.min(segment.span, LABEL_DYNAMIC_SPAN_CAP)
+  const radiusBoost =
+    ((LABEL_DYNAMIC_SPAN_CAP - spanForBoost) / LABEL_DYNAMIC_SPAN_CAP) * MAX_RADIUS_BOOST_PERCENT
+  const radius = Math.max(
+    MIN_LABEL_RADIUS_PERCENT,
+    Math.min(MAX_LABEL_RADIUS_PERCENT, baseRadiusPercent + radiusBoost),
+  )
+  const angleRad = ((segment.center - 90) * Math.PI) / 180
+  const x = 50 + Math.cos(angleRad) * radius
+  const y = 50 + Math.sin(angleRad) * radius
+
+  const arcLengthPercent = (2 * Math.PI * radius * segment.span) / 360
+  const width = Math.max(7, Math.min(30, arcLengthPercent * 0.86))
+
+  return { x, y, width }
 }
 
 export function LuckyWheel() {
@@ -205,19 +233,15 @@ export function LuckyWheel() {
             {items.map((item, index) => {
               const segment = segments[index]
               if (!segment) return null
-              const angle = segment.center
-              const angleRad = ((angle - 90) * Math.PI) / 180
-              const labelX = 50 + Math.cos(angleRad) * labelRadiusPercent
-              const labelY = 50 + Math.sin(angleRad) * labelRadiusPercent
-              const labelWidthPercent = Math.max(10, Math.min(30, segment.span * 0.55))
+              const layout = getLabelLayout(segment, labelRadiusPercent)
               return (
                 <div
                   key={item.id}
                   className="wheel-label"
                   style={{
-                    left: `${labelX}%`,
-                    top: `${labelY}%`,
-                    width: `${labelWidthPercent}%`,
+                    left: `${layout.x}%`,
+                    top: `${layout.y}%`,
+                    width: `${layout.width}%`,
                   }}
                 >
                   <span>{item.label || '未命名'}</span>
