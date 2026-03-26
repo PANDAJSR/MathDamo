@@ -4,6 +4,7 @@ import {
   Input,
   InputNumber,
   Popconfirm,
+  Segmented,
   Space,
   Tabs,
   Typography,
@@ -14,15 +15,9 @@ import './LuckyWheel.css'
 import { addWheelHistory, loadWheelHistory, removeWheelHistory, type WheelHistoryRecord } from './luckyWheel/history'
 import { formatHistoryTime, INITIAL_ITEMS, toWheelItems } from './luckyWheel/presets'
 import { createSharedWheelSearch, sanitizeSharedWheelItems, type SharedWheelItem } from './luckyWheel/share'
+import { type SpinMode, useWheelSpin } from './luckyWheel/useWheelSpin'
 import { WheelBoard } from './luckyWheel/WheelBoard'
-import {
-  buildWheelSegments,
-  clampWeight,
-  normalizeDegree,
-  pickAngleInsideSegment,
-  pickWeightedIndex,
-  type WheelItem
-} from './luckyWheel/wheelMath'
+import { buildWheelSegments, clampWeight, type WheelItem } from './luckyWheel/wheelMath'
 
 const DEFAULT_SPIN_DURATION_SECONDS = 4.2
 const MIN_SPIN_DURATION_SECONDS = 1
@@ -30,8 +25,6 @@ const MAX_SPIN_DURATION_SECONDS = 20
 const MIN_WEIGHT = 0.1
 const DEFAULT_LABEL_RADIUS_PERCENT = 32
 const LABEL_INSET_PERCENT = 2
-const SEGMENT_EDGE_PADDING_RATIO = 0.12
-const SEGMENT_EDGE_PADDING_MAX_DEG = 8
 
 type LuckyWheelProps = {
   initialItems?: SharedWheelItem[]
@@ -50,9 +43,6 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
   )
 
   const [items, setItems] = useState<WheelItem[]>(() => toWheelItems(resolvedInitialItems))
-  const [rotation, setRotation] = useState(0)
-  const [spinning, setSpinning] = useState(false)
-  const [selectedId, setSelectedId] = useState<number | null>(null)
   const [spinDurationSeconds, setSpinDurationSeconds] = useState(DEFAULT_SPIN_DURATION_SECONDS)
   const [labelRadiusPercent, setLabelRadiusPercent] = useState(DEFAULT_LABEL_RADIUS_PERCENT)
   const [activeTab, setActiveTab] = useState<EditorTabKey>('create')
@@ -100,22 +90,37 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
       .join(', ')
   }, [items, segments])
 
-  const selectedItem = useMemo(
-    () => items.find((item) => item.id === selectedId) ?? null,
-    [items, selectedId],
-  )
-
   const totalWeight = useMemo(
     () => items.reduce((sum, item) => sum + clampWeight(item.weight), 0),
     [items],
   )
   const spinDurationMs = Math.round(spinDurationSeconds * 1000)
 
-  const resetWheelBoardState = () => {
-    setRotation(0)
-    setSpinning(false)
-    setSelectedId(null)
-  }
+  const {
+    rotation,
+    selectedId,
+    spinMode,
+    spinButtonLabel,
+    spinButtonDisabled,
+    shouldAnimateRotation,
+    setSpinMode,
+    onSpinButtonClick,
+    resetWheelBoardState,
+  } = useWheelSpin({
+    items,
+    segments,
+    spinDurationMs,
+  })
+
+  const selectedItem = useMemo(
+    () => items.find((item) => item.id === selectedId) ?? null,
+    [items, selectedId],
+  )
+
+  const spinModeOptions: Array<{ label: string; value: SpinMode }> = [
+    { label: '自动停止', value: 'auto' },
+    { label: '手动点击停止', value: 'manual' },
+  ]
 
   const handleAddItem = () => {
     const nextId = items.length === 0 ? 1 : Math.max(...items.map((item) => item.id)) + 1
@@ -128,7 +133,6 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
   const handleDeleteItem = (id: number) => {
     if (items.length <= 2) return
     setItems((prev) => prev.filter((item) => item.id !== id))
-    setSelectedId((prev) => (prev === id ? null : prev))
   }
 
   const handleUpdateItem = (id: number, patch: Partial<WheelItem>) => {
@@ -150,32 +154,6 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
     } catch {
       window.prompt('复制失败，请手动复制链接：', nextUrl)
     }
-  }
-
-  const handleSpin = () => {
-    if (spinning || items.length === 0) return
-
-    const winnerIndex = pickWeightedIndex(items)
-    const winnerSegment = segments[winnerIndex]
-    if (!winnerSegment) return
-    const winner = items[winnerIndex]
-    const targetAngle = pickAngleInsideSegment(
-      winnerSegment,
-      SEGMENT_EDGE_PADDING_RATIO,
-      SEGMENT_EDGE_PADDING_MAX_DEG,
-    )
-    const current = normalizeDegree(rotation)
-    const targetOffset = normalizeDegree(-targetAngle - current)
-    const nextRotation = rotation + 7 * 360 + targetOffset
-
-    setSpinning(true)
-    setSelectedId(null)
-    setRotation(nextRotation)
-
-    window.setTimeout(() => {
-      setSelectedId(winner.id)
-      setSpinning(false)
-    }, spinDurationMs)
   }
 
   const handleCreateNewWheel = () => {
@@ -218,13 +196,15 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
           segments={segments}
           conicColors={conicColors}
           rotation={rotation}
-          spinning={spinning}
+          shouldAnimateRotation={shouldAnimateRotation}
           selectedItem={selectedItem}
           labelRadiusPercent={labelRadiusPercent}
           spinDurationMs={spinDurationMs}
+          spinButtonLabel={spinButtonLabel}
+          spinButtonDisabled={spinButtonDisabled}
           wheelBoardRef={wheelBoardRef}
           spinButtonRef={spinButtonRef}
-          onSpin={handleSpin}
+          onSpinButtonClick={onSpinButtonClick}
         />
       </section>
     )
@@ -252,13 +232,15 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                   segments={segments}
                   conicColors={conicColors}
                   rotation={rotation}
-                  spinning={spinning}
+                  shouldAnimateRotation={shouldAnimateRotation}
                   selectedItem={selectedItem}
                   labelRadiusPercent={labelRadiusPercent}
                   spinDurationMs={spinDurationMs}
+                  spinButtonLabel={spinButtonLabel}
+                  spinButtonDisabled={spinButtonDisabled}
                   wheelBoardRef={wheelBoardRef}
                   spinButtonRef={spinButtonRef}
-                  onSpin={handleSpin}
+                  onSpinButtonClick={onSpinButtonClick}
                 />
 
                 <div className="wheel-editor">
@@ -299,6 +281,16 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                           ),
                         )
                       }
+                    />
+                  </div>
+
+                  <div className="wheel-name-row">
+                    <Typography.Text type="secondary">停止方式</Typography.Text>
+                    <Segmented
+                      block
+                      options={spinModeOptions}
+                      value={spinMode}
+                      onChange={(value) => setSpinMode(value as SpinMode)}
                     />
                   </div>
 

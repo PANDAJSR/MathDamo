@@ -7,13 +7,15 @@ type WheelBoardProps = {
   segments: WheelSegment[]
   conicColors: string
   rotation: number
-  spinning: boolean
+  shouldAnimateRotation: boolean
   selectedItem: WheelItem | null
   labelRadiusPercent: number
   spinDurationMs: number
+  spinButtonLabel: string
+  spinButtonDisabled: boolean
   wheelBoardRef: RefObject<HTMLDivElement | null>
   spinButtonRef: RefObject<HTMLButtonElement | null>
-  onSpin: () => void
+  onSpinButtonClick: () => void
 }
 
 export function WheelBoard({
@@ -21,13 +23,15 @@ export function WheelBoard({
   segments,
   conicColors,
   rotation,
-  spinning,
+  shouldAnimateRotation,
   selectedItem,
   labelRadiusPercent,
   spinDurationMs,
+  spinButtonLabel,
+  spinButtonDisabled,
   wheelBoardRef,
   spinButtonRef,
-  onSpin,
+  onSpinButtonClick,
 }: WheelBoardProps) {
   return (
     <div className="wheel-layout">
@@ -38,7 +42,7 @@ export function WheelBoard({
           style={{
             background: `conic-gradient(from 0deg, ${conicColors})`,
             transform: `rotate(${rotation}deg)`,
-            transition: spinning
+            transition: shouldAnimateRotation
               ? `transform ${spinDurationMs}ms cubic-bezier(0.18, 0.82, 0.18, 1)`
               : 'none',
           }}
@@ -67,10 +71,10 @@ export function WheelBoard({
           ref={spinButtonRef}
           type="primary"
           className="wheel-spin-btn"
-          onClick={onSpin}
-          disabled={items.length === 0 || spinning}
+          onClick={onSpinButtonClick}
+          disabled={spinButtonDisabled}
         >
-          {spinning ? '抽取中...' : '开始抽取'}
+          {spinButtonLabel}
         </Button>
       </div>
 
