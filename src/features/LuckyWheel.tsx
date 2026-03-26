@@ -20,7 +20,7 @@ const INITIAL_ITEMS: WheelItem[] = [
 
 const SPIN_DURATION_MS = 4200
 const MIN_WEIGHT = 0.1
-const LABEL_RADIUS_PERCENT = 33
+const LABEL_RADIUS_PERCENT = 31
 
 function clampWeight(value: number | null | undefined) {
   if (typeof value !== 'number' || Number.isNaN(value)) return MIN_WEIGHT
@@ -53,6 +53,7 @@ export function LuckyWheel() {
   const [selectedId, setSelectedId] = useState<number | null>(null)
 
   const segmentAngle = 360 / Math.max(items.length, 1)
+  const labelWidthPercent = Math.max(14, Math.min(36, segmentAngle * 0.58))
 
   const conicColors = useMemo(() => {
     if (items.length === 0) return 'transparent'
@@ -143,7 +144,11 @@ export function LuckyWheel() {
                 <div
                   key={item.id}
                   className="wheel-label"
-                  style={{ left: `${labelX}%`, top: `${labelY}%` }}
+                  style={{
+                    left: `${labelX}%`,
+                    top: `${labelY}%`,
+                    width: `${labelWidthPercent}%`,
+                  }}
                 >
                   <span>{item.label || '未命名'}</span>
                 </div>
