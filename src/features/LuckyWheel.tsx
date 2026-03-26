@@ -20,6 +20,7 @@ const INITIAL_ITEMS: WheelItem[] = [
 
 const SPIN_DURATION_MS = 4200
 const MIN_WEIGHT = 0.1
+const LABEL_RADIUS_PERCENT = 33
 
 function clampWeight(value: number | null | undefined) {
   if (typeof value !== 'number' || Number.isNaN(value)) return MIN_WEIGHT
@@ -135,14 +136,13 @@ export function LuckyWheel() {
           >
             {items.map((item, index) => {
               const angle = (index + 0.5) * segmentAngle
-              const angleRad = ((angle - 90) * Math.PI) / 180
-              const labelX = 50 + Math.cos(angleRad) * 34
-              const labelY = 50 + Math.sin(angleRad) * 34
               return (
                 <div
                   key={item.id}
                   className="wheel-label"
-                  style={{ left: `${labelX}%`, top: `${labelY}%` }}
+                  style={{
+                    transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(-${LABEL_RADIUS_PERCENT}%) rotate(-${angle}deg)`,
+                  }}
                 >
                   <span>{item.label || '未命名'}</span>
                 </div>
