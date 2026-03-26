@@ -58,18 +58,23 @@ export function ModelViewer3D() {
     const renderer = new THREE.WebGLRenderer({ antialias: true })
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     renderer.outputColorSpace = THREE.SRGBColorSpace
+    renderer.toneMapping = THREE.ACESFilmicToneMapping
+    renderer.toneMappingExposure = 1.2
     renderer.setSize(container.clientWidth, container.clientHeight)
     container.appendChild(renderer.domElement)
 
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true
 
-    const ambient = new THREE.AmbientLight('#ffffff', 0.7)
-    const directional = new THREE.DirectionalLight('#ffffff', 1.1)
+    const ambient = new THREE.AmbientLight('#ffffff', 1.0)
+    const hemisphere = new THREE.HemisphereLight('#f8fbff', '#d7deea', 0.9)
+    const directional = new THREE.DirectionalLight('#ffffff', 1.6)
     directional.position.set(6, 10, 8)
+    const fill = new THREE.DirectionalLight('#f5f8ff', 0.8)
+    fill.position.set(-6, 4, -3)
 
     const grid = new THREE.GridHelper(20, 20, '#94a3b8', '#e2e8f0')
-    scene.add(ambient, directional, grid)
+    scene.add(ambient, hemisphere, directional, fill, grid)
 
     const root = new THREE.Group()
     scene.add(root)
