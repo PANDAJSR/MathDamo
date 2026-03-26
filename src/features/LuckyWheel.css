@@ -98,12 +98,22 @@
   font-size: 16px;
 }
 
+.wheel-tabs {
+  margin-top: 12px;
+}
+
 .wheel-editor {
   margin-top: 24px;
   padding: 18px;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   background: #f8fafc;
+}
+
+.wheel-name-row {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
 }
 
 .wheel-editor-header {
@@ -143,6 +153,42 @@
   width: 100%;
 }
 
+.wheel-history-empty {
+  margin-top: 24px;
+  padding: 28px 0;
+  border: 1px dashed #dbe7f5;
+  border-radius: 12px;
+}
+
+.wheel-history-list {
+  margin-top: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.wheel-history-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.wheel-history-info {
+  min-width: 0;
+}
+
+.wheel-history-info h5 {
+  margin: 0 0 4px;
+}
+
+.wheel-history-info p {
+  margin: 6px 0 0;
+}
+
 @media (max-width: 900px) {
   .wheel-spin-btn {
     width: 112px;
@@ -172,5 +218,10 @@
 
   .wheel-item-row {
     grid-template-columns: 1fr;
+  }
+
+  .wheel-history-card {
+    flex-direction: column;
+    align-items: stretch;
   }
 }

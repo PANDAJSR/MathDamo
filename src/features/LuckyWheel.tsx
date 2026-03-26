@@ -1,21 +1,27 @@
-import { Button, Input, InputNumber, Space, Tag, Typography, message } from 'antd'
+import {
+  Button,
+  Empty,
+  Input,
+  InputNumber,
+  Popconfirm,
+  Space,
+  Tabs,
+  Typography,
+  message,
+} from 'antd'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import './LuckyWheel.css'
+import { addWheelHistory, loadWheelHistory, removeWheelHistory, type WheelHistoryRecord } from './luckyWheel/history'
 import { createSharedWheelSearch, sanitizeSharedWheelItems, type SharedWheelItem } from './luckyWheel/share'
-
-type WheelItem = {
-  id: number
-  label: string
-  color: string
-  weight: number
-}
-
-type WheelSegment = {
-  start: number
-  end: number
-  center: number
-  span: number
-}
+import { WheelBoard } from './luckyWheel/WheelBoard'
+import {
+  buildWheelSegments,
+  clampWeight,
+  normalizeDegree,
+  pickAngleInsideSegment,
+  pickWeightedIndex,
+  type WheelItem,
+} from './luckyWheel/wheelMath'
 
 const INITIAL_ITEMS: WheelItem[] = [
   { id: 1, label: '特等奖', color: '#f38aa8', weight: 1 },
@@ -30,10 +36,6 @@ const SPIN_DURATION_MS = 4200
 const MIN_WEIGHT = 0.1
 const DEFAULT_LABEL_RADIUS_PERCENT = 32
 const LABEL_INSET_PERCENT = 2
-const MIN_LABEL_RADIUS_PERCENT = 18
-const MAX_LABEL_RADIUS_PERCENT = 46
-const MAX_RADIUS_BOOST_PERCENT = 10
-const LABEL_DYNAMIC_SPAN_CAP = 120
 const SEGMENT_EDGE_PADDING_RATIO = 0.12
 const SEGMENT_EDGE_PADDING_MAX_DEG = 8
 
@@ -42,102 +44,41 @@ type LuckyWheelProps = {
   lockedByShare?: boolean
 }
 
-type LabelLayout = {
-  x: number
-  y: number
-  width: number
+type EditorTabKey = 'create' | 'history'
+
+function toWheelItems(rawItems: SharedWheelItem[]) {
+  return rawItems.map((item, index) => ({
+    id: index + 1,
+    label: item.label,
+    color: item.color,
+    weight: clampWeight(item.weight),
+  }))
 }
 
-function clampWeight(value: number | null | undefined) {
-  if (typeof value !== 'number' || Number.isNaN(value)) return MIN_WEIGHT
-  return Math.max(MIN_WEIGHT, value)
-}
-
-function pickWeightedIndex(items: WheelItem[]) {
-  const totalWeight = items.reduce((sum, item) => sum + clampWeight(item.weight), 0)
-  if (totalWeight <= 0) return 0
-
-  const randomPoint = Math.random() * totalWeight
-  let cumulative = 0
-
-  for (let index = 0; index < items.length; index += 1) {
-    cumulative += clampWeight(items[index].weight)
-    if (randomPoint <= cumulative) return index
-  }
-
-  return items.length - 1
-}
-
-function buildWheelSegments(items: WheelItem[]): WheelSegment[] {
-  if (items.length === 0) return []
-
-  const totalWeight = items.reduce((sum, item) => sum + clampWeight(item.weight), 0)
-  if (totalWeight <= 0) {
-    const evenSpan = 360 / items.length
-    return items.map((_, index) => {
-      const start = index * evenSpan
-      const end = (index + 1) * evenSpan
-      return { start, end, center: start + evenSpan / 2, span: evenSpan }
-    })
-  }
-
-  let cursor = 0
-  return items.map((item, index) => {
-    const isLast = index === items.length - 1
-    const start = cursor
-    const span = isLast ? 360 - cursor : (clampWeight(item.weight) / totalWeight) * 360
-    const end = start + span
-    cursor = end
-    return { start, end, center: start + span / 2, span }
-  })
-}
-
-function normalizeDegree(value: number) {
-  return ((value % 360) + 360) % 360
-}
-
-function getLabelLayout(segment: WheelSegment, baseRadiusPercent: number): LabelLayout {
-  const spanForBoost = Math.min(segment.span, LABEL_DYNAMIC_SPAN_CAP)
-  const radiusBoost =
-    ((LABEL_DYNAMIC_SPAN_CAP - spanForBoost) / LABEL_DYNAMIC_SPAN_CAP) * MAX_RADIUS_BOOST_PERCENT
-  const radius = Math.max(
-    MIN_LABEL_RADIUS_PERCENT,
-    Math.min(MAX_LABEL_RADIUS_PERCENT, baseRadiusPercent + radiusBoost),
-  )
-  const angleRad = ((segment.center - 90) * Math.PI) / 180
-  const x = 50 + Math.cos(angleRad) * radius
-  const y = 50 + Math.sin(angleRad) * radius
-
-  const arcLengthPercent = (2 * Math.PI * radius * segment.span) / 360
-  const width = Math.max(7, Math.min(30, arcLengthPercent * 0.86))
-
-  return { x, y, width }
-}
-
-function pickAngleInsideSegment(segment: WheelSegment) {
-  const maxPaddingBySpan = segment.span * 0.35
-  const edgePadding = Math.min(
-    SEGMENT_EDGE_PADDING_MAX_DEG,
-    maxPaddingBySpan,
-    segment.span * SEGMENT_EDGE_PADDING_RATIO,
-  )
-  const minAngle = segment.start + edgePadding
-  const maxAngle = segment.end - edgePadding
-  if (maxAngle <= minAngle) return segment.center
-  return minAngle + Math.random() * (maxAngle - minAngle)
+function formatHistoryTime(isoText: string) {
+  const date = new Date(isoText)
+  if (Number.isNaN(date.getTime())) return isoText
+  return date.toLocaleString('zh-CN', { hour12: false })
 }
 
 export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelProps) {
   const wheelBoardRef = useRef<HTMLDivElement | null>(null)
   const spinButtonRef = useRef<HTMLButtonElement | null>(null)
-  const [items, setItems] = useState<WheelItem[]>(
+
+  const resolvedInitialItems = useMemo(
     () => sanitizeSharedWheelItems(initialItems) ?? INITIAL_ITEMS,
+    [initialItems],
   )
+
+  const [items, setItems] = useState<WheelItem[]>(() => toWheelItems(resolvedInitialItems))
   const [rotation, setRotation] = useState(0)
   const [spinning, setSpinning] = useState(false)
   const [selectedId, setSelectedId] = useState<number | null>(null)
-  const [labelRadiusPercent, setLabelRadiusPercent] = useState(
-    DEFAULT_LABEL_RADIUS_PERCENT,
+  const [labelRadiusPercent, setLabelRadiusPercent] = useState(DEFAULT_LABEL_RADIUS_PERCENT)
+  const [activeTab, setActiveTab] = useState<EditorTabKey>('create')
+  const [wheelName, setWheelName] = useState('我的转盘')
+  const [historyRecords, setHistoryRecords] = useState<WheelHistoryRecord[]>(() =>
+    lockedByShare ? [] : loadWheelHistory(),
   )
 
   const segments = useMemo(() => buildWheelSegments(items), [items])
@@ -155,10 +96,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
 
       const innerRadiusPercent = (buttonRect.width / boardSize) * 50
       const annulusMiddlePercent = (innerRadiusPercent + 50) / 2
-      const nextRadius = Math.max(
-        14,
-        Math.min(44, annulusMiddlePercent - LABEL_INSET_PERCENT),
-      )
+      const nextRadius = Math.max(14, Math.min(44, annulusMiddlePercent - LABEL_INSET_PERCENT))
       setLabelRadiusPercent(nextRadius)
     }
 
@@ -177,8 +115,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
       .map((item, index) => {
         const segment = segments[index]
         if (!segment) return `${item.color} 0deg 0deg`
-        const { start, end } = segment
-        return `${item.color} ${start}deg ${end}deg`
+        return `${item.color} ${segment.start}deg ${segment.end}deg`
       })
       .join(', ')
   }, [items, segments])
@@ -192,6 +129,12 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
     () => items.reduce((sum, item) => sum + clampWeight(item.weight), 0),
     [items],
   )
+
+  const resetWheelBoardState = () => {
+    setRotation(0)
+    setSpinning(false)
+    setSelectedId(null)
+  }
 
   const handleAddItem = () => {
     const nextId = items.length === 0 ? 1 : Math.max(...items.map((item) => item.id)) + 1
@@ -235,7 +178,11 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
     const winnerSegment = segments[winnerIndex]
     if (!winnerSegment) return
     const winner = items[winnerIndex]
-    const targetAngle = pickAngleInsideSegment(winnerSegment)
+    const targetAngle = pickAngleInsideSegment(
+      winnerSegment,
+      SEGMENT_EDGE_PADDING_RATIO,
+      SEGMENT_EDGE_PADDING_MAX_DEG,
+    )
     const current = normalizeDegree(rotation)
     const targetOffset = normalizeDegree(-targetAngle - current)
     const nextRotation = rotation + 7 * 360 + targetOffset
@@ -250,112 +197,189 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
     }, SPIN_DURATION_MS)
   }
 
+  const handleCreateNewWheel = () => {
+    setItems(toWheelItems(INITIAL_ITEMS))
+    setWheelName('我的新转盘')
+    resetWheelBoardState()
+    setActiveTab('create')
+  }
+
+  const handleSaveToHistory = () => {
+    if (items.length < 2) {
+      message.warning('至少需要 2 个选项才能保存')
+      return
+    }
+
+    const nextRecords = addWheelHistory(wheelName, items)
+    setHistoryRecords(nextRecords)
+    message.success('已保存到本地历史')
+  }
+
+  const handleLoadFromHistory = (record: WheelHistoryRecord) => {
+    setItems(toWheelItems(record.items))
+    setWheelName(record.name)
+    resetWheelBoardState()
+    setActiveTab('create')
+    message.success('已加载历史转盘')
+  }
+
+  const handleDeleteHistory = (recordId: string) => {
+    const nextRecords = removeWheelHistory(recordId)
+    setHistoryRecords(nextRecords)
+    message.success('已删除历史转盘')
+  }
+
+  if (lockedByShare) {
+    return (
+      <section className="lucky-wheel lucky-wheel--locked">
+        <WheelBoard
+          items={items}
+          segments={segments}
+          conicColors={conicColors}
+          rotation={rotation}
+          spinning={spinning}
+          selectedItem={selectedItem}
+          labelRadiusPercent={labelRadiusPercent}
+          spinDurationMs={SPIN_DURATION_MS}
+          wheelBoardRef={wheelBoardRef}
+          spinButtonRef={spinButtonRef}
+          onSpin={handleSpin}
+        />
+      </section>
+    )
+  }
+
   return (
-    <section className={`lucky-wheel ${lockedByShare ? 'lucky-wheel--locked' : ''}`}>
-      {!lockedByShare && (
-        <>
-          <Typography.Title level={3}>转盘</Typography.Title>
-          <Typography.Paragraph>
-            可添加/删除格子，自定义文字、颜色和权重。权重越高，扇区越大且被抽中的概率越高。
-          </Typography.Paragraph>
-        </>
-      )}
+    <section className="lucky-wheel">
+      <Typography.Title level={3}>转盘</Typography.Title>
+      <Typography.Paragraph>
+        可添加/删除格子，自定义文字、颜色和权重。权重越高，扇区越大且被抽中的概率越高。
+      </Typography.Paragraph>
 
-      <div className="wheel-layout">
-        <div className="wheel-board" ref={wheelBoardRef}>
-          <div className="wheel-pointer" />
-          <div
-            className="wheel-disk"
-            style={{
-              background: `conic-gradient(from 0deg, ${conicColors})`,
-              transform: `rotate(${rotation}deg)`,
-              transition: spinning
-                ? `transform ${SPIN_DURATION_MS}ms cubic-bezier(0.18, 0.82, 0.18, 1)`
-                : 'none',
-            }}
-          >
-            {items.map((item, index) => {
-              const segment = segments[index]
-              if (!segment) return null
-              const layout = getLabelLayout(segment, labelRadiusPercent)
-              return (
-                <div
-                  key={item.id}
-                  className="wheel-label"
-                  style={{
-                    left: `${layout.x}%`,
-                    top: `${layout.y}%`,
-                    width: `${layout.width}%`,
-                  }}
-                >
-                  <span>{item.label || '未命名'}</span>
+      <Tabs
+        className="wheel-tabs"
+        activeKey={activeTab}
+        onChange={(key) => setActiveTab(key as EditorTabKey)}
+        items={[
+          {
+            key: 'create',
+            label: '新建转盘',
+            children: (
+              <>
+                <WheelBoard
+                  items={items}
+                  segments={segments}
+                  conicColors={conicColors}
+                  rotation={rotation}
+                  spinning={spinning}
+                  selectedItem={selectedItem}
+                  labelRadiusPercent={labelRadiusPercent}
+                  spinDurationMs={SPIN_DURATION_MS}
+                  wheelBoardRef={wheelBoardRef}
+                  spinButtonRef={spinButtonRef}
+                  onSpin={handleSpin}
+                />
+
+                <div className="wheel-editor">
+                  <div className="wheel-editor-header">
+                    <Typography.Title level={4}>选项配置</Typography.Title>
+                    <Space wrap>
+                      <Typography.Text type="secondary">权重总和：{totalWeight.toFixed(1)}</Typography.Text>
+                      <Button onClick={handleCopyShareLink}>复制分享链接</Button>
+                      <Button onClick={handleSaveToHistory}>保存到历史</Button>
+                      <Button onClick={handleCreateNewWheel}>创建新的转盘</Button>
+                      <Button onClick={handleAddItem}>添加格子</Button>
+                    </Space>
+                  </div>
+
+                  <div className="wheel-name-row">
+                    <Typography.Text type="secondary">转盘名称</Typography.Text>
+                    <Input
+                      value={wheelName}
+                      maxLength={30}
+                      placeholder="给这个转盘起个名字"
+                      onChange={(event) => setWheelName(event.target.value)}
+                    />
+                  </div>
+
+                  {items.map((item) => (
+                    <div className="wheel-item-row" key={item.id}>
+                      <Input
+                        className="wheel-item-name"
+                        value={item.label}
+                        maxLength={20}
+                        placeholder="输入文字"
+                        onChange={(event) => handleUpdateItem(item.id, { label: event.target.value })}
+                      />
+
+                      <input
+                        className="wheel-color-input"
+                        type="color"
+                        value={item.color}
+                        aria-label="选择颜色"
+                        onChange={(event) => handleUpdateItem(item.id, { color: event.target.value })}
+                      />
+
+                      <InputNumber
+                        className="wheel-item-weight"
+                        min={MIN_WEIGHT}
+                        step={0.1}
+                        value={item.weight}
+                        addonBefore="权重"
+                        onChange={(value) => handleUpdateItem(item.id, { weight: clampWeight(value) })}
+                      />
+
+                      <Button danger disabled={items.length <= 2} onClick={() => handleDeleteItem(item.id)}>
+                        删除
+                      </Button>
+                    </div>
+                  ))}
                 </div>
-              )
-            })}
-          </div>
+              </>
+            ),
+          },
+          {
+            key: 'history',
+            label: `历史转盘 (${historyRecords.length})`,
+            children:
+              historyRecords.length === 0 ? (
+                <div className="wheel-history-empty">
+                  <Empty description="暂无历史转盘，先在“新建转盘”里保存一个吧" />
+                </div>
+              ) : (
+                <div className="wheel-history-list">
+                  {historyRecords.map((record) => (
+                    <div className="wheel-history-card" key={record.id}>
+                      <div className="wheel-history-info">
+                        <Typography.Title level={5}>{record.name}</Typography.Title>
+                        <Typography.Text type="secondary">
+                          创建时间：{formatHistoryTime(record.createdAt)}
+                        </Typography.Text>
+                        <Typography.Paragraph ellipsis={{ rows: 2 }}>
+                          选项：{record.items.map((item) => item.label).join('、')}
+                        </Typography.Paragraph>
+                      </div>
 
-          <Button
-            ref={spinButtonRef}
-            type="primary"
-            className="wheel-spin-btn"
-            onClick={handleSpin}
-            disabled={items.length === 0 || spinning}
-          >
-            {spinning ? '抽取中...' : '开始抽取'}
-          </Button>
-        </div>
-
-        <div className="wheel-result">
-          <Typography.Text strong>抽取结果：</Typography.Text>
-          {selectedItem ? <Tag color={selectedItem.color}>{selectedItem.label}</Tag> : <Tag>尚未抽取</Tag>}
-        </div>
-      </div>
-
-      {!lockedByShare && (
-        <div className="wheel-editor">
-          <div className="wheel-editor-header">
-            <Typography.Title level={4}>选项配置</Typography.Title>
-            <Space>
-              <Typography.Text type="secondary">权重总和：{totalWeight.toFixed(1)}</Typography.Text>
-              <Button onClick={handleCopyShareLink}>复制分享链接</Button>
-              <Button onClick={handleAddItem}>添加格子</Button>
-            </Space>
-          </div>
-
-          {items.map((item) => (
-            <div className="wheel-item-row" key={item.id}>
-              <Input
-                className="wheel-item-name"
-                value={item.label}
-                maxLength={20}
-                placeholder="输入文字"
-                onChange={(event) => handleUpdateItem(item.id, { label: event.target.value })}
-              />
-
-              <input
-                className="wheel-color-input"
-                type="color"
-                value={item.color}
-                aria-label="选择颜色"
-                onChange={(event) => handleUpdateItem(item.id, { color: event.target.value })}
-              />
-
-              <InputNumber
-                className="wheel-item-weight"
-                min={MIN_WEIGHT}
-                step={0.1}
-                value={item.weight}
-                addonBefore="权重"
-                onChange={(value) => handleUpdateItem(item.id, { weight: clampWeight(value) })}
-              />
-
-              <Button danger disabled={items.length <= 2} onClick={() => handleDeleteItem(item.id)}>
-                删除
-              </Button>
-            </div>
-          ))}
-        </div>
-      )}
+                      <Space>
+                        <Button type="primary" onClick={() => handleLoadFromHistory(record)}>
+                          使用这个转盘
+                        </Button>
+                        <Popconfirm
+                          title="删除这个历史转盘？"
+                          okText="删除"
+                          cancelText="取消"
+                          onConfirm={() => handleDeleteHistory(record.id)}
+                        >
+                          <Button danger>删除</Button>
+                        </Popconfirm>
+                      </Space>
+                    </div>
+                  ))}
+                </div>
+              ),
+          },
+        ]}
+      />
     </section>
   )
 }
