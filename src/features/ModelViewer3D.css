@@ -15,9 +15,15 @@
   display: none;
 }
 
+.model-viewer3d-canvas-frame {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+}
+
 .model-viewer3d-canvas {
   width: 100%;
-  height: 560px;
+  height: 100%;
   border-radius: 12px;
   border: 1px solid #dbe1ec;
   background: #f8fafc;
@@ -29,8 +35,42 @@
   touch-action: none;
 }
 
+.model-viewer3d-resizer {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  cursor: ns-resize;
+  touch-action: none;
+}
+
+.model-viewer3d-resizer::before,
+.model-viewer3d-resizer::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 12px;
+  height: 2px;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.model-viewer3d-resizer::before {
+  top: 10px;
+}
+
+.model-viewer3d-resizer::after {
+  top: 16px;
+}
+
 @media (max-width: 640px) {
-  .model-viewer3d-canvas {
-    height: 420px;
+  .model-viewer3d-resizer {
+    width: 32px;
+    height: 32px;
   }
 }

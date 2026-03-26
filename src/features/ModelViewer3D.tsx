@@ -1,5 +1,5 @@
 import { Alert, Button, Switch, Typography } from 'antd'
-import { useEffect, useRef, useState, type ChangeEvent } from 'react'
+import { useEffect, useRef, useState, type ChangeEvent, type PointerEvent as ReactPointerEvent } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
@@ -11,6 +11,9 @@ type LoadedContext = {
   scene: THREE.Scene
   camera: THREE.PerspectiveCamera
 }
+
+const MIN_CANVAS_HEIGHT = 280
+const MAX_CANVAS_HEIGHT = 960
 
 function normalizePath(path: string) {
   return path.replace(/\\/g, '/').replace(/^\.\//, '').toLowerCase()
@@ -53,11 +56,15 @@ export function ModelViewer3D() {
   const contextRef = useRef<LoadedContext | null>(null)
   const requestRef = useRef<number | null>(null)
   const cleanupUrlsRef = useRef<Array<() => void>>([])
+  const resizeStateRef = useRef<{ startY: number; startHeight: number } | null>(null)
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [modelName, setModelName] = useState('')
   const [forceDoubleSided, setForceDoubleSided] = useState(false)
+  const [canvasHeight, setCanvasHeight] = useState(() =>
+    window.matchMedia('(max-width: 640px)').matches ? 420 : 560,
+  )
 
   useEffect(() => {
     const container = containerRef.current
@@ -257,12 +264,32 @@ export function ModelViewer3D() {
     event.target.value = ''
   }
 
+  const handleResizePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    resizeStateRef.current = { startY: event.clientY, startHeight: canvasHeight }
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+
+  const handleResizePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    const state = resizeStateRef.current
+    if (!state) return
+
+    const nextHeight = state.startHeight + (event.clientY - state.startY)
+    setCanvasHeight(Math.max(MIN_CANVAS_HEIGHT, Math.min(MAX_CANVAS_HEIGHT, nextHeight)))
+  }
+
+  const handleResizePointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
+    resizeStateRef.current = null
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId)
+    }
+  }
+
   return (
     <section className="model-viewer3d">
       <Typography.Title level={3}>3d模型查看器</Typography.Title>
       <Typography.Paragraph>
         使用 Three.js 加载 glTF 模型。支持旋转、缩放、平移视角；触屏支持单指旋转、双指捏合缩放与双指平移；如是
-        .gltf 文件，请连同相关 .bin 与贴图一起选择。
+        .gltf 文件，请连同相关 .bin 与贴图一起选择。可在右下角拖拽手柄上下调整视图高度。
       </Typography.Paragraph>
 
       <div className="model-viewer3d-toolbar">
@@ -286,7 +313,21 @@ export function ModelViewer3D() {
 
       {error ? <Alert type="error" showIcon message={error} /> : null}
 
-      <div ref={containerRef} className="model-viewer3d-canvas" />
+      <div className="model-viewer3d-canvas-frame" style={{ height: `${canvasHeight}px` }}>
+        <div ref={containerRef} className="model-viewer3d-canvas" />
+        <div
+          className="model-viewer3d-resizer"
+          role="slider"
+          aria-label="调整3d视图高度"
+          aria-valuemin={MIN_CANVAS_HEIGHT}
+          aria-valuemax={MAX_CANVAS_HEIGHT}
+          aria-valuenow={Math.round(canvasHeight)}
+          onPointerDown={handleResizePointerDown}
+          onPointerMove={handleResizePointerMove}
+          onPointerUp={handleResizePointerUp}
+          onPointerCancel={handleResizePointerUp}
+        />
+      </div>
     </section>
   )
 }
