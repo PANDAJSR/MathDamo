@@ -6,6 +6,7 @@ import {
   Popconfirm,
   Segmented,
   Space,
+  Switch,
   Tabs,
   Typography,
   message,
@@ -47,9 +48,8 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
   const [labelRadiusPercent, setLabelRadiusPercent] = useState(DEFAULT_LABEL_RADIUS_PERCENT)
   const [activeTab, setActiveTab] = useState<EditorTabKey>('create')
   const [wheelName, setWheelName] = useState('我的转盘')
-  const [historyRecords, setHistoryRecords] = useState<WheelHistoryRecord[]>(() =>
-    lockedByShare ? [] : loadWheelHistory(),
-  )
+  const [showPointerAngle, setShowPointerAngle] = useState(false)
+  const [historyRecords, setHistoryRecords] = useState<WheelHistoryRecord[]>(() => (lockedByShare ? [] : loadWheelHistory()))
 
   const segments = useMemo(() => buildWheelSegments(items), [items])
 
@@ -116,19 +116,10 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
     spinDurationMs,
   })
 
-  const selectedItem = useMemo(
-    () => items.find((item) => item.id === selectedId) ?? null,
-    [items, selectedId],
-  )
-
-  const spinModeOptions: Array<{ label: string; value: SpinMode }> = [
-    { label: '自动停止', value: 'auto' },
-    { label: '手动点击停止', value: 'manual' },
-  ]
-  const rotationModeOptions: Array<{ label: string; value: RotationMode }> = [
-    { label: '指针固定，转盘旋转', value: 'wheel' },
-    { label: '转盘固定，指针旋转', value: 'pointer' },
-  ]
+  const selectedItem = useMemo(() => items.find((item) => item.id === selectedId) ?? null, [items, selectedId])
+  const displayPointerAngle = ((pointerRotation % 360) + 360) % 360
+  const spinModeOptions: Array<{ label: string; value: SpinMode }> = [{ label: '自动停止', value: 'auto' }, { label: '手动点击停止', value: 'manual' }]
+  const rotationModeOptions: Array<{ label: string; value: RotationMode }> = [{ label: '指针固定，转盘旋转', value: 'wheel' }, { label: '转盘固定，指针旋转', value: 'pointer' }]
 
   const handleAddItem = () => {
     const nextId = items.length === 0 ? 1 : Math.max(...items.map((item) => item.id)) + 1
@@ -173,6 +164,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
 
   const handleRotationModeChange = (nextMode: RotationMode) => {
     setRotationMode(nextMode)
+    if (nextMode !== 'pointer') setShowPointerAngle(false)
     resetWheelBoardState()
   }
 
@@ -218,6 +210,8 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
           spinTimingFunction={transitionTimingFunction}
           spinButtonLabel={spinButtonLabel}
           spinButtonDisabled={spinButtonDisabled}
+          showPointerAngle={rotationMode === 'pointer' && showPointerAngle}
+          pointerAngle={displayPointerAngle}
           wheelBoardRef={wheelBoardRef}
           spinButtonRef={spinButtonRef}
           onSpinButtonClick={onSpinButtonClick}
@@ -257,6 +251,8 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                   spinTimingFunction={transitionTimingFunction}
                   spinButtonLabel={spinButtonLabel}
                   spinButtonDisabled={spinButtonDisabled}
+                  showPointerAngle={rotationMode === 'pointer' && showPointerAngle}
+                  pointerAngle={displayPointerAngle}
                   wheelBoardRef={wheelBoardRef}
                   spinButtonRef={spinButtonRef}
                   onSpinButtonClick={onSpinButtonClick}
@@ -308,6 +304,12 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                       onChange={(value) => handleRotationModeChange(value as RotationMode)}
                     />
                   </div>
+                  {rotationMode === 'pointer' ? (
+                    <div className="wheel-name-row">
+                      <Typography.Text type="secondary">显示指针角度</Typography.Text>
+                      <Switch checked={showPointerAngle} onChange={setShowPointerAngle} checkedChildren="开" unCheckedChildren="关" />
+                    </div>
+                  ) : null}
                   <div className="wheel-name-row">
                     <Typography.Text type="secondary">停止方式</Typography.Text>
                     <Segmented

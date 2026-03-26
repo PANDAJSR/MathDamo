@@ -17,6 +17,8 @@ type WheelBoardProps = {
   spinTimingFunction: string
   spinButtonLabel: string
   spinButtonDisabled: boolean
+  showPointerAngle: boolean
+  pointerAngle: number
   wheelBoardRef: RefObject<HTMLDivElement | null>
   spinButtonRef: RefObject<HTMLButtonElement | null>
   onSpinButtonClick: () => void
@@ -36,6 +38,8 @@ export function WheelBoard({
   spinTimingFunction,
   spinButtonLabel,
   spinButtonDisabled,
+  showPointerAngle,
+  pointerAngle,
   wheelBoardRef,
   spinButtonRef,
   onSpinButtonClick,
@@ -111,6 +115,9 @@ export function WheelBoard({
         >
           {spinButtonLabel}
         </Button>
+        {pointerInCenter && showPointerAngle ? (
+          <Typography.Text className="wheel-pointer-angle">{pointerAngle.toFixed(1)}°</Typography.Text>
+        ) : null}
       </div>
     </div>
   )
