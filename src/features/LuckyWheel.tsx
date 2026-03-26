@@ -9,6 +9,13 @@ type WheelItem = {
   weight: number
 }
 
+type WheelSegment = {
+  start: number
+  end: number
+  center: number
+  span: number
+}
+
 const INITIAL_ITEMS: WheelItem[] = [
   { id: 1, label: '汉堡', color: '#f38aa8', weight: 1 },
   { id: 2, label: '意大利面', color: '#f08b8d', weight: 1 },
@@ -43,6 +50,30 @@ function pickWeightedIndex(items: WheelItem[]) {
   return items.length - 1
 }
 
+function buildWheelSegments(items: WheelItem[]): WheelSegment[] {
+  if (items.length === 0) return []
+
+  const totalWeight = items.reduce((sum, item) => sum + clampWeight(item.weight), 0)
+  if (totalWeight <= 0) {
+    const evenSpan = 360 / items.length
+    return items.map((_, index) => {
+      const start = index * evenSpan
+      const end = (index + 1) * evenSpan
+      return { start, end, center: start + evenSpan / 2, span: evenSpan }
+    })
+  }
+
+  let cursor = 0
+  return items.map((item, index) => {
+    const isLast = index === items.length - 1
+    const start = cursor
+    const span = isLast ? 360 - cursor : (clampWeight(item.weight) / totalWeight) * 360
+    const end = start + span
+    cursor = end
+    return { start, end, center: start + span / 2, span }
+  })
+}
+
 function normalizeDegree(value: number) {
   return ((value % 360) + 360) % 360
 }
@@ -58,8 +89,7 @@ export function LuckyWheel() {
     DEFAULT_LABEL_RADIUS_PERCENT,
   )
 
-  const segmentAngle = 360 / Math.max(items.length, 1)
-  const labelWidthPercent = Math.max(12, Math.min(28, segmentAngle * 0.5))
+  const segments = useMemo(() => buildWheelSegments(items), [items])
 
   useEffect(() => {
     const board = wheelBoardRef.current
@@ -94,12 +124,13 @@ export function LuckyWheel() {
 
     return items
       .map((item, index) => {
-        const start = index * segmentAngle
-        const end = (index + 1) * segmentAngle
+        const segment = segments[index]
+        if (!segment) return `${item.color} 0deg 0deg`
+        const { start, end } = segment
         return `${item.color} ${start}deg ${end}deg`
       })
       .join(', ')
-  }, [items, segmentAngle])
+  }, [items, segments])
 
   const selectedItem = useMemo(
     () => items.find((item) => item.id === selectedId) ?? null,
@@ -133,8 +164,10 @@ export function LuckyWheel() {
     if (spinning || items.length === 0) return
 
     const winnerIndex = pickWeightedIndex(items)
+    const winnerSegment = segments[winnerIndex]
+    if (!winnerSegment) return
     const winner = items[winnerIndex]
-    const centerAngle = (winnerIndex + 0.5) * segmentAngle
+    const centerAngle = winnerSegment.center
     const current = normalizeDegree(rotation)
     const targetOffset = normalizeDegree(-centerAngle - current)
     const nextRotation = rotation + 7 * 360 + targetOffset
@@ -153,7 +186,7 @@ export function LuckyWheel() {
     <section className="lucky-wheel">
       <Typography.Title level={3}>转盘</Typography.Title>
       <Typography.Paragraph>
-        可添加/删除格子，自定义文字、颜色和权重。点击“开始抽取”后，系统会按权重进行随机抽取。
+        可添加/删除格子，自定义文字、颜色和权重。权重越高，扇区越大且被抽中的概率越高。
       </Typography.Paragraph>
 
       <div className="wheel-layout">
@@ -170,10 +203,13 @@ export function LuckyWheel() {
             }}
           >
             {items.map((item, index) => {
-              const angle = index * segmentAngle
+              const segment = segments[index]
+              if (!segment) return null
+              const angle = segment.center
               const angleRad = ((angle - 90) * Math.PI) / 180
               const labelX = 50 + Math.cos(angleRad) * labelRadiusPercent
               const labelY = 50 + Math.sin(angleRad) * labelRadiusPercent
+              const labelWidthPercent = Math.max(10, Math.min(30, segment.span * 0.55))
               return (
                 <div
                   key={item.id}
