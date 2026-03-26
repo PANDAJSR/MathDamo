@@ -153,6 +153,12 @@
   width: 100%;
 }
 
+.wheel-item-weight .ant-input-number-group-addon,
+.wheel-item-weight .ant-input-group-addon {
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
 .wheel-history-empty {
   margin-top: 24px;
   padding: 28px 0;
