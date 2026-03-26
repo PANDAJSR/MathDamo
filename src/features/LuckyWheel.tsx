@@ -136,13 +136,14 @@ export function LuckyWheel() {
           >
             {items.map((item, index) => {
               const angle = (index + 0.5) * segmentAngle
+              const angleRad = ((angle - 90) * Math.PI) / 180
+              const labelX = 50 + Math.cos(angleRad) * LABEL_RADIUS_PERCENT
+              const labelY = 50 + Math.sin(angleRad) * LABEL_RADIUS_PERCENT
               return (
                 <div
                   key={item.id}
                   className="wheel-label"
-                  style={{
-                    transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(-${LABEL_RADIUS_PERCENT}%) rotate(-${angle}deg)`,
-                  }}
+                  style={{ left: `${labelX}%`, top: `${labelY}%` }}
                 >
                   <span>{item.label || '未命名'}</span>
                 </div>
