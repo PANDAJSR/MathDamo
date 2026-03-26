@@ -1,4 +1,4 @@
-import { Alert, Button, Typography } from 'antd'
+import { Alert, Button, Switch, Typography } from 'antd'
 import { useEffect, useRef, useState, type ChangeEvent } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
@@ -34,6 +34,19 @@ function disposeObject(object: THREE.Object3D) {
   })
 }
 
+function applyMaterialRenderMode(root: THREE.Object3D, forceDoubleSided: boolean) {
+  root.traverse((node) => {
+    const mesh = node as THREE.Mesh
+    if (!mesh.isMesh) return
+
+    const materials = Array.isArray(mesh.material) ? mesh.material : [mesh.material]
+    for (const material of materials) {
+      material.side = forceDoubleSided ? THREE.DoubleSide : THREE.FrontSide
+      material.needsUpdate = true
+    }
+  })
+}
+
 export function ModelViewer3D() {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null)
@@ -44,6 +57,7 @@ export function ModelViewer3D() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [modelName, setModelName] = useState('')
+  const [forceDoubleSided, setForceDoubleSided] = useState(false)
 
   useEffect(() => {
     const container = containerRef.current
@@ -140,6 +154,15 @@ export function ModelViewer3D() {
     [],
   )
 
+  useEffect(() => {
+    const context = contextRef.current
+    if (!context) return
+
+    for (const child of context.root.children) {
+      applyMaterialRenderMode(child, forceDoubleSided)
+    }
+  }, [forceDoubleSided])
+
   const handleOpenFileDialog = () => {
     inputRef.current?.click()
   }
@@ -202,6 +225,7 @@ export function ModelViewer3D() {
     loader.load(
       entryUrl,
       (gltf) => {
+        applyMaterialRenderMode(gltf.scene, forceDoubleSided)
         context.root.add(gltf.scene)
 
         const box = new THREE.Box3().setFromObject(gltf.scene)
@@ -240,6 +264,8 @@ export function ModelViewer3D() {
         <Button type="primary" onClick={handleOpenFileDialog} loading={loading}>
           选择模型文件
         </Button>
+        <Typography.Text>强制双面渲染</Typography.Text>
+        <Switch checked={forceDoubleSided} onChange={setForceDoubleSided} />
         <input
           ref={inputRef}
           className="model-viewer3d-input"
