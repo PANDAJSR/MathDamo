@@ -223,7 +223,7 @@ export function LuckyWheel() {
           <div
             className="wheel-disk"
             style={{
-              background: `conic-gradient(from -90deg, ${conicColors})`,
+              background: `conic-gradient(from 0deg, ${conicColors})`,
               transform: `rotate(${rotation}deg)`,
               transition: spinning
                 ? `transform ${SPIN_DURATION_MS}ms cubic-bezier(0.18, 0.82, 0.18, 1)`
