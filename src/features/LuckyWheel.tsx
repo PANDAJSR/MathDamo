@@ -252,15 +252,13 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
 
   return (
     <section className={`lucky-wheel ${lockedByShare ? 'lucky-wheel--locked' : ''}`}>
-      <Typography.Title level={3}>{lockedByShare ? '分享转盘' : '转盘'}</Typography.Title>
-      {lockedByShare ? (
-        <Typography.Paragraph>
-          当前为分享链接全屏模式。若要退出，请手动移除地址栏中的 `wheel` 参数。
-        </Typography.Paragraph>
-      ) : (
-        <Typography.Paragraph>
-          可添加/删除格子，自定义文字、颜色和权重。权重越高，扇区越大且被抽中的概率越高。
-        </Typography.Paragraph>
+      {!lockedByShare && (
+        <>
+          <Typography.Title level={3}>转盘</Typography.Title>
+          <Typography.Paragraph>
+            可添加/删除格子，自定义文字、颜色和权重。权重越高，扇区越大且被抽中的概率越高。
+          </Typography.Paragraph>
+        </>
       )}
 
       <div className="wheel-layout">
