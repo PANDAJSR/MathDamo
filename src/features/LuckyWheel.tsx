@@ -119,7 +119,6 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
 
   const selectedItem = useMemo(() => items.find((item) => item.id === selectedId) ?? null, [items, selectedId])
   const displayPointerAngle = ((pointerRotation % 360) + 360) % 360
-  const displayBoardAngle = (((rotationMode === 'pointer' ? pointerRotation : wheelRotation) % 360) + 360) % 360
   const spinModeOptions: Array<{ label: string; value: SpinMode }> = [{ label: '自动停止', value: 'auto' }, { label: '手动点击停止', value: 'manual' }]
   const rotationModeOptions: Array<{ label: string; value: RotationMode }> = [{ label: '指针固定，转盘旋转', value: 'wheel' }, { label: '转盘固定，指针旋转', value: 'pointer' }]
   const wheelBoardProps = {
@@ -139,7 +138,6 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
     showPointerAngle: rotationMode === 'pointer' && showPointerAngle,
     pointerAngle: displayPointerAngle,
     showBoardAngle,
-    boardAngle: displayBoardAngle,
     wheelBoardRef,
     spinButtonRef,
     onSpinButtonClick,
@@ -291,7 +289,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                     />
                   </div>
                   <div className="wheel-name-row">
-                    <Typography.Text type="secondary">显示区块角度</Typography.Text>
+                    <Typography.Text type="secondary">显示格子内角</Typography.Text>
                     <Switch checked={showBoardAngle} onChange={setShowBoardAngle} checkedChildren="开" unCheckedChildren="关" />
                   </div>
                   {rotationMode === 'pointer' ? (

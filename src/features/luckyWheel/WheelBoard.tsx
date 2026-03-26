@@ -21,7 +21,6 @@ type WheelBoardProps = {
   showPointerAngle: boolean
   pointerAngle: number
   showBoardAngle: boolean
-  boardAngle: number
   wheelBoardRef: RefObject<HTMLDivElement | null>
   spinButtonRef: RefObject<HTMLButtonElement | null>
   onSpinButtonClick: () => void
@@ -44,7 +43,6 @@ export function WheelBoard({
   showPointerAngle,
   pointerAngle,
   showBoardAngle,
-  boardAngle,
   wheelBoardRef,
   spinButtonRef,
   onSpinButtonClick,
@@ -105,7 +103,10 @@ export function WheelBoard({
                   width: `${layout.width}%`,
                 }}
               >
-                <span>{item.label || '未命名'}</span>
+                <span className="wheel-label-title">{item.label || '未命名'}</span>
+                {showBoardAngle ? (
+                  <span className="wheel-label-angle">{segment.span.toFixed(1)}°</span>
+                ) : null}
               </div>
             )
           })}
@@ -122,9 +123,6 @@ export function WheelBoard({
         </Button>
         {pointerInCenter && showPointerAngle ? (
           <Typography.Text className="wheel-pointer-angle">{pointerAngle.toFixed(1)}°</Typography.Text>
-        ) : null}
-        {showBoardAngle ? (
-          <Typography.Text className="wheel-corner-angle">角度 {boardAngle.toFixed(1)}°</Typography.Text>
         ) : null}
       </div>
     </div>
