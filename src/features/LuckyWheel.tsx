@@ -1,5 +1,5 @@
 import { Button, Input, InputNumber, Space, Tag, Typography } from 'antd'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import './LuckyWheel.css'
 
 type WheelItem = {
@@ -20,7 +20,8 @@ const INITIAL_ITEMS: WheelItem[] = [
 
 const SPIN_DURATION_MS = 4200
 const MIN_WEIGHT = 0.1
-const LABEL_RADIUS_PERCENT = 24
+const DEFAULT_LABEL_RADIUS_PERCENT = 32
+const LABEL_INSET_PERCENT = 2
 
 function clampWeight(value: number | null | undefined) {
   if (typeof value !== 'number' || Number.isNaN(value)) return MIN_WEIGHT
@@ -47,13 +48,46 @@ function normalizeDegree(value: number) {
 }
 
 export function LuckyWheel() {
+  const wheelBoardRef = useRef<HTMLDivElement | null>(null)
+  const spinButtonRef = useRef<HTMLButtonElement | null>(null)
   const [items, setItems] = useState<WheelItem[]>(INITIAL_ITEMS)
   const [rotation, setRotation] = useState(0)
   const [spinning, setSpinning] = useState(false)
   const [selectedId, setSelectedId] = useState<number | null>(null)
+  const [labelRadiusPercent, setLabelRadiusPercent] = useState(
+    DEFAULT_LABEL_RADIUS_PERCENT,
+  )
 
   const segmentAngle = 360 / Math.max(items.length, 1)
   const labelWidthPercent = Math.max(12, Math.min(28, segmentAngle * 0.5))
+
+  useEffect(() => {
+    const board = wheelBoardRef.current
+    const button = spinButtonRef.current
+    if (!board || !button) return
+
+    const updateLabelRadius = () => {
+      const boardRect = board.getBoundingClientRect()
+      const buttonRect = button.getBoundingClientRect()
+      const boardSize = Math.min(boardRect.width, boardRect.height)
+      if (boardSize <= 0) return
+
+      const innerRadiusPercent = (buttonRect.width / boardSize) * 50
+      const annulusMiddlePercent = (innerRadiusPercent + 50) / 2
+      const nextRadius = Math.max(
+        14,
+        Math.min(44, annulusMiddlePercent - LABEL_INSET_PERCENT),
+      )
+      setLabelRadiusPercent(nextRadius)
+    }
+
+    const observer = new ResizeObserver(updateLabelRadius)
+    observer.observe(board)
+    observer.observe(button)
+    updateLabelRadius()
+
+    return () => observer.disconnect()
+  }, [])
 
   const conicColors = useMemo(() => {
     if (items.length === 0) return 'transparent'
@@ -123,7 +157,7 @@ export function LuckyWheel() {
       </Typography.Paragraph>
 
       <div className="wheel-layout">
-        <div className="wheel-board">
+        <div className="wheel-board" ref={wheelBoardRef}>
           <div className="wheel-pointer" />
           <div
             className="wheel-disk"
@@ -138,8 +172,8 @@ export function LuckyWheel() {
             {items.map((item, index) => {
               const angle = (index + 0.5) * segmentAngle
               const angleRad = ((angle - 90) * Math.PI) / 180
-              const labelX = 50 + Math.cos(angleRad) * LABEL_RADIUS_PERCENT
-              const labelY = 50 + Math.sin(angleRad) * LABEL_RADIUS_PERCENT
+              const labelX = 50 + Math.cos(angleRad) * labelRadiusPercent
+              const labelY = 50 + Math.sin(angleRad) * labelRadiusPercent
               return (
                 <div
                   key={item.id}
@@ -156,7 +190,13 @@ export function LuckyWheel() {
             })}
           </div>
 
-          <Button type="primary" className="wheel-spin-btn" onClick={handleSpin} disabled={items.length === 0 || spinning}>
+          <Button
+            ref={spinButtonRef}
+            type="primary"
+            className="wheel-spin-btn"
+            onClick={handleSpin}
+            disabled={items.length === 0 || spinning}
+          >
             {spinning ? '抽取中...' : '开始抽取'}
           </Button>
         </div>
