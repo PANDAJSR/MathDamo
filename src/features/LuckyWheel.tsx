@@ -170,7 +170,7 @@ export function LuckyWheel() {
             }}
           >
             {items.map((item, index) => {
-              const angle = (index + 0.5) * segmentAngle
+              const angle = index * segmentAngle
               const angleRad = ((angle - 90) * Math.PI) / 180
               const labelX = 50 + Math.cos(angleRad) * labelRadiusPercent
               const labelY = 50 + Math.sin(angleRad) * labelRadiusPercent
