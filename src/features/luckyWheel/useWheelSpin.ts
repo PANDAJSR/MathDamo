@@ -4,10 +4,10 @@ import { normalizeDegree, pickAngleInsideSegment, pickWeightedIndex, type WheelI
 const SEGMENT_EDGE_PADDING_RATIO = 0.12
 const SEGMENT_EDGE_PADDING_MAX_DEG = 8
 const AUTO_SETTLE_TURNS = 7
-const MANUAL_SETTLE_TURNS = 5
+const MANUAL_SETTLE_TURNS = 2
 const MANUAL_ROLL_SPEED_DPS = 720
 const AUTO_SPIN_EASING = 'cubic-bezier(0.18, 0.82, 0.18, 1)'
-const MANUAL_STOP_EASING = 'cubic-bezier(0.25, 0.1, 0.25, 1)'
+const MANUAL_STOP_EASING = 'cubic-bezier(0, 0, 0.2, 1)'
 
 export type SpinMode = 'auto' | 'manual'
 
