@@ -279,33 +279,33 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                       }
                     />
                   </div>
-                  <div className="wheel-name-row">
-                    <Typography.Text type="secondary">旋转模式</Typography.Text>
-                    <Segmented
-                      block
-                      options={rotationModeOptions}
-                      value={rotationMode}
-                      onChange={(value) => handleRotationModeChange(value as RotationMode)}
-                    />
-                  </div>
-                  <div className="wheel-name-row">
-                    <Typography.Text type="secondary">显示格子内角</Typography.Text>
-                    <Switch checked={showBoardAngle} onChange={setShowBoardAngle} checkedChildren="开" unCheckedChildren="关" />
-                  </div>
-                  {rotationMode === 'pointer' ? (
-                    <div className="wheel-name-row">
-                      <Typography.Text type="secondary">显示指针角度</Typography.Text>
-                      <Switch checked={showPointerAngle} onChange={setShowPointerAngle} checkedChildren="开" unCheckedChildren="关" />
+                  <div className="wheel-inline-settings">
+                    <div className="wheel-setting-cell">
+                      <Typography.Text type="secondary">旋转模式</Typography.Text>
+                      <Segmented
+                        options={rotationModeOptions}
+                        value={rotationMode}
+                        onChange={(value) => handleRotationModeChange(value as RotationMode)}
+                      />
                     </div>
-                  ) : null}
-                  <div className="wheel-name-row">
-                    <Typography.Text type="secondary">停止方式</Typography.Text>
-                    <Segmented
-                      block
-                      options={spinModeOptions}
-                      value={spinMode}
-                      onChange={(value) => setSpinMode(value as SpinMode)}
-                    />
+                    <div className="wheel-setting-cell">
+                      <Typography.Text type="secondary">显示区块角度</Typography.Text>
+                      <Switch checked={showBoardAngle} onChange={setShowBoardAngle} checkedChildren="开" unCheckedChildren="关" />
+                    </div>
+                    <div className="wheel-setting-cell">
+                      <Typography.Text type="secondary">显示指针角度</Typography.Text>
+                      <Switch
+                        checked={showPointerAngle}
+                        disabled={rotationMode !== 'pointer'}
+                        onChange={setShowPointerAngle}
+                        checkedChildren="开"
+                        unCheckedChildren="关"
+                      />
+                    </div>
+                    <div className="wheel-setting-cell">
+                      <Typography.Text type="secondary">停止方式</Typography.Text>
+                      <Segmented options={spinModeOptions} value={spinMode} onChange={(value) => setSpinMode(value as SpinMode)} />
+                    </div>
                   </div>
                   {items.map((item) => (
                     <div className="wheel-item-row" key={item.id}>

@@ -212,6 +212,20 @@
   margin-bottom: 14px;
 }
 
+.wheel-inline-settings {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+  overflow-x: auto;
+}
+
+.wheel-setting-cell {
+  display: grid;
+  gap: 8px;
+  min-width: 180px;
+}
+
 .wheel-editor-header {
   display: flex;
   justify-content: space-between;
@@ -350,6 +364,15 @@
 
   .wheel-item-row {
     grid-template-columns: 1fr;
+  }
+
+  .wheel-inline-settings {
+    grid-template-columns: repeat(4, minmax(160px, 1fr));
+    padding-bottom: 4px;
+  }
+
+  .wheel-setting-cell {
+    min-width: 160px;
   }
 
   .wheel-history-card {
