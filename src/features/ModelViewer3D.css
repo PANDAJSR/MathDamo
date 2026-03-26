@@ -22,6 +22,11 @@
   border: 1px solid #dbe1ec;
   background: #f8fafc;
   overflow: hidden;
+  touch-action: none;
+}
+
+.model-viewer3d-canvas canvas {
+  touch-action: none;
 }
 
 @media (max-width: 640px) {

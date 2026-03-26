@@ -79,6 +79,10 @@ export function ModelViewer3D() {
 
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true
+    controls.enablePan = true
+    controls.enableZoom = true
+    controls.touches.ONE = THREE.TOUCH.ROTATE
+    controls.touches.TWO = THREE.TOUCH.DOLLY_PAN
 
     const ambient = new THREE.AmbientLight('#ffffff', 1.0)
     const hemisphere = new THREE.HemisphereLight('#f8fbff', '#d7deea', 0.9)
@@ -257,7 +261,8 @@ export function ModelViewer3D() {
     <section className="model-viewer3d">
       <Typography.Title level={3}>3d模型查看器</Typography.Title>
       <Typography.Paragraph>
-        使用 Three.js 加载 glTF 模型。支持旋转、缩放、平移视角；如是 .gltf 文件，请连同相关 .bin 与贴图一起选择。
+        使用 Three.js 加载 glTF 模型。支持旋转、缩放、平移视角；触屏支持单指旋转、双指捏合缩放与双指平移；如是
+        .gltf 文件，请连同相关 .bin 与贴图一起选择。
       </Typography.Paragraph>
 
       <div className="model-viewer3d-toolbar">
