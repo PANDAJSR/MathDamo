@@ -12,6 +12,7 @@ import {
 import { useEffect, useMemo, useRef, useState } from 'react'
 import './LuckyWheel.css'
 import { addWheelHistory, loadWheelHistory, removeWheelHistory, type WheelHistoryRecord } from './luckyWheel/history'
+import { formatHistoryTime, INITIAL_ITEMS, toWheelItems } from './luckyWheel/presets'
 import { createSharedWheelSearch, sanitizeSharedWheelItems, type SharedWheelItem } from './luckyWheel/share'
 import { WheelBoard } from './luckyWheel/WheelBoard'
 import {
@@ -20,19 +21,12 @@ import {
   normalizeDegree,
   pickAngleInsideSegment,
   pickWeightedIndex,
-  type WheelItem,
+  type WheelItem
 } from './luckyWheel/wheelMath'
 
-const INITIAL_ITEMS: WheelItem[] = [
-  { id: 1, label: '特等奖', color: '#f38aa8', weight: 1 },
-  { id: 2, label: '一等奖', color: '#f08b8d', weight: 1 },
-  { id: 3, label: '二等奖', color: '#f4d96d', weight: 1 },
-  { id: 4, label: '三等奖', color: '#9be4b0', weight: 1 },
-  { id: 5, label: '四等奖', color: '#93ddff', weight: 1 },
-  { id: 6, label: '参与奖', color: '#b49cf4', weight: 1 },
-]
-
-const SPIN_DURATION_MS = 4200
+const DEFAULT_SPIN_DURATION_SECONDS = 4.2
+const MIN_SPIN_DURATION_SECONDS = 1
+const MAX_SPIN_DURATION_SECONDS = 20
 const MIN_WEIGHT = 0.1
 const DEFAULT_LABEL_RADIUS_PERCENT = 32
 const LABEL_INSET_PERCENT = 2
@@ -45,21 +39,6 @@ type LuckyWheelProps = {
 }
 
 type EditorTabKey = 'create' | 'history'
-
-function toWheelItems(rawItems: SharedWheelItem[]) {
-  return rawItems.map((item, index) => ({
-    id: index + 1,
-    label: item.label,
-    color: item.color,
-    weight: clampWeight(item.weight),
-  }))
-}
-
-function formatHistoryTime(isoText: string) {
-  const date = new Date(isoText)
-  if (Number.isNaN(date.getTime())) return isoText
-  return date.toLocaleString('zh-CN', { hour12: false })
-}
 
 export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelProps) {
   const wheelBoardRef = useRef<HTMLDivElement | null>(null)
@@ -74,6 +53,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
   const [rotation, setRotation] = useState(0)
   const [spinning, setSpinning] = useState(false)
   const [selectedId, setSelectedId] = useState<number | null>(null)
+  const [spinDurationSeconds, setSpinDurationSeconds] = useState(DEFAULT_SPIN_DURATION_SECONDS)
   const [labelRadiusPercent, setLabelRadiusPercent] = useState(DEFAULT_LABEL_RADIUS_PERCENT)
   const [activeTab, setActiveTab] = useState<EditorTabKey>('create')
   const [wheelName, setWheelName] = useState('我的转盘')
@@ -129,6 +109,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
     () => items.reduce((sum, item) => sum + clampWeight(item.weight), 0),
     [items],
   )
+  const spinDurationMs = Math.round(spinDurationSeconds * 1000)
 
   const resetWheelBoardState = () => {
     setRotation(0)
@@ -194,7 +175,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
     window.setTimeout(() => {
       setSelectedId(winner.id)
       setSpinning(false)
-    }, SPIN_DURATION_MS)
+    }, spinDurationMs)
   }
 
   const handleCreateNewWheel = () => {
@@ -240,7 +221,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
           spinning={spinning}
           selectedItem={selectedItem}
           labelRadiusPercent={labelRadiusPercent}
-          spinDurationMs={SPIN_DURATION_MS}
+          spinDurationMs={spinDurationMs}
           wheelBoardRef={wheelBoardRef}
           spinButtonRef={spinButtonRef}
           onSpin={handleSpin}
@@ -274,7 +255,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                   spinning={spinning}
                   selectedItem={selectedItem}
                   labelRadiusPercent={labelRadiusPercent}
-                  spinDurationMs={SPIN_DURATION_MS}
+                  spinDurationMs={spinDurationMs}
                   wheelBoardRef={wheelBoardRef}
                   spinButtonRef={spinButtonRef}
                   onSpin={handleSpin}
@@ -299,6 +280,25 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                       maxLength={30}
                       placeholder="给这个转盘起个名字"
                       onChange={(event) => setWheelName(event.target.value)}
+                    />
+                  </div>
+
+                  <div className="wheel-name-row">
+                    <Typography.Text type="secondary">旋转时长</Typography.Text>
+                    <InputNumber
+                      min={MIN_SPIN_DURATION_SECONDS}
+                      max={MAX_SPIN_DURATION_SECONDS}
+                      step={0.1}
+                      value={spinDurationSeconds}
+                      addonAfter="秒"
+                      onChange={(value) =>
+                        setSpinDurationSeconds(
+                          Math.max(
+                            MIN_SPIN_DURATION_SECONDS,
+                            Math.min(MAX_SPIN_DURATION_SECONDS, Number(value) || DEFAULT_SPIN_DURATION_SECONDS),
+                          ),
+                        )
+                      }
                     />
                   </div>
 
