@@ -33,6 +33,8 @@ const MIN_LABEL_RADIUS_PERCENT = 18
 const MAX_LABEL_RADIUS_PERCENT = 46
 const MAX_RADIUS_BOOST_PERCENT = 10
 const LABEL_DYNAMIC_SPAN_CAP = 120
+const SEGMENT_EDGE_PADDING_RATIO = 0.12
+const SEGMENT_EDGE_PADDING_MAX_DEG = 8
 
 type LabelLayout = {
   x: number
@@ -104,6 +106,19 @@ function getLabelLayout(segment: WheelSegment, baseRadiusPercent: number): Label
   const width = Math.max(7, Math.min(30, arcLengthPercent * 0.86))
 
   return { x, y, width }
+}
+
+function pickAngleInsideSegment(segment: WheelSegment) {
+  const maxPaddingBySpan = segment.span * 0.35
+  const edgePadding = Math.min(
+    SEGMENT_EDGE_PADDING_MAX_DEG,
+    maxPaddingBySpan,
+    segment.span * SEGMENT_EDGE_PADDING_RATIO,
+  )
+  const minAngle = segment.start + edgePadding
+  const maxAngle = segment.end - edgePadding
+  if (maxAngle <= minAngle) return segment.center
+  return minAngle + Math.random() * (maxAngle - minAngle)
 }
 
 export function LuckyWheel() {
@@ -195,9 +210,9 @@ export function LuckyWheel() {
     const winnerSegment = segments[winnerIndex]
     if (!winnerSegment) return
     const winner = items[winnerIndex]
-    const centerAngle = winnerSegment.center
+    const targetAngle = pickAngleInsideSegment(winnerSegment)
     const current = normalizeDegree(rotation)
-    const targetOffset = normalizeDegree(-centerAngle - current)
+    const targetOffset = normalizeDegree(-targetAngle - current)
     const nextRotation = rotation + 7 * 360 + targetOffset
 
     setSpinning(true)
