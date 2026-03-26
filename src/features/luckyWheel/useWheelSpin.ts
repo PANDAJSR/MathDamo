@@ -10,6 +10,7 @@ const AUTO_SPIN_EASING = 'cubic-bezier(0.18, 0.82, 0.18, 1)'
 const MANUAL_STOP_EASING = 'cubic-bezier(0, 0, 0.2, 1)'
 
 export type SpinMode = 'auto' | 'manual'
+export type RotationMode = 'wheel' | 'pointer'
 
 type UseWheelSpinParams = {
   items: WheelItem[]
@@ -18,10 +19,12 @@ type UseWheelSpinParams = {
 }
 
 export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinParams) {
-  const [rotation, setRotation] = useState(0)
+  const [wheelRotation, setWheelRotation] = useState(0)
+  const [pointerRotation, setPointerRotation] = useState(0)
   const [spinning, setSpinning] = useState(false)
   const [selectedId, setSelectedId] = useState<number | null>(null)
   const [spinMode, setSpinMode] = useState<SpinMode>('auto')
+  const [rotationMode, setRotationMode] = useState<RotationMode>('wheel')
   const [manualRolling, setManualRolling] = useState(false)
   const [transitionTimingFunction, setTransitionTimingFunction] = useState(AUTO_SPIN_EASING)
   const rotationRef = useRef(0)
@@ -30,9 +33,17 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
   const manualStartTimeRef = useRef<number | null>(null)
   const manualBaseRotationRef = useRef(0)
 
+  const setActiveRotation = (nextRotation: number) => {
+    if (rotationMode === 'wheel') {
+      setWheelRotation(nextRotation)
+      return
+    }
+    setPointerRotation(nextRotation)
+  }
+
   useEffect(() => {
-    rotationRef.current = rotation
-  }, [rotation])
+    rotationRef.current = rotationMode === 'wheel' ? wheelRotation : pointerRotation
+  }, [pointerRotation, rotationMode, wheelRotation])
 
   const clearSpinTimer = () => {
     if (spinTimerRef.current === null) return
@@ -60,7 +71,10 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
     )
     const currentRotation = rotationRef.current
     const current = normalizeDegree(currentRotation)
-    const targetOffset = normalizeDegree(-targetAngle - current)
+    const targetOffset =
+      rotationMode === 'wheel'
+        ? normalizeDegree(-targetAngle - current)
+        : normalizeDegree(targetAngle - current)
     const nextRotation = currentRotation + turns * 360 + targetOffset
 
     clearSpinTimer()
@@ -68,7 +82,7 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
     setSpinning(true)
     setManualRolling(false)
     setTransitionTimingFunction(easing)
-    setRotation(nextRotation)
+    setActiveRotation(nextRotation)
 
     spinTimerRef.current = window.setTimeout(() => {
       setSelectedId(winner.id)
@@ -94,7 +108,7 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
     const tick = (timestamp: number) => {
       if (manualStartTimeRef.current === null) manualStartTimeRef.current = timestamp
       const elapsedSeconds = (timestamp - manualStartTimeRef.current) / 1000
-      setRotation(manualBaseRotationRef.current + elapsedSeconds * MANUAL_ROLL_SPEED_DPS)
+      setActiveRotation(manualBaseRotationRef.current + elapsedSeconds * MANUAL_ROLL_SPEED_DPS)
       manualRafRef.current = window.requestAnimationFrame(tick)
     }
 
@@ -124,7 +138,8 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
   const resetWheelBoardState = () => {
     clearSpinTimer()
     stopManualRaf()
-    setRotation(0)
+    setWheelRotation(0)
+    setPointerRotation(0)
     setSpinning(false)
     setSelectedId(null)
     setManualRolling(false)
@@ -155,15 +170,18 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
   const shouldAnimateRotation = spinning && !manualRolling
 
   return {
-    rotation,
+    wheelRotation,
+    pointerRotation,
     spinning,
     selectedId,
     spinMode,
+    rotationMode,
     spinButtonLabel,
     spinButtonDisabled,
     shouldAnimateRotation,
     transitionTimingFunction,
     setSpinMode,
+    setRotationMode,
     onSpinButtonClick,
     resetWheelBoardState,
   }

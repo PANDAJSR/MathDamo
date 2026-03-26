@@ -15,7 +15,7 @@ import './LuckyWheel.css'
 import { addWheelHistory, loadWheelHistory, removeWheelHistory, type WheelHistoryRecord } from './luckyWheel/history'
 import { formatHistoryTime, INITIAL_ITEMS, toWheelItems } from './luckyWheel/presets'
 import { createSharedWheelSearch, sanitizeSharedWheelItems, type SharedWheelItem } from './luckyWheel/share'
-import { type SpinMode, useWheelSpin } from './luckyWheel/useWheelSpin'
+import { type RotationMode, type SpinMode, useWheelSpin } from './luckyWheel/useWheelSpin'
 import { WheelBoard } from './luckyWheel/WheelBoard'
 import { buildWheelSegments, clampWeight, type WheelItem } from './luckyWheel/wheelMath'
 
@@ -97,14 +97,17 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
   const spinDurationMs = Math.round(spinDurationSeconds * 1000)
 
   const {
-    rotation,
+    wheelRotation,
+    pointerRotation,
     selectedId,
     spinMode,
+    rotationMode,
     spinButtonLabel,
     spinButtonDisabled,
     shouldAnimateRotation,
     transitionTimingFunction,
     setSpinMode,
+    setRotationMode,
     onSpinButtonClick,
     resetWheelBoardState,
   } = useWheelSpin({
@@ -121,6 +124,10 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
   const spinModeOptions: Array<{ label: string; value: SpinMode }> = [
     { label: '自动停止', value: 'auto' },
     { label: '手动点击停止', value: 'manual' },
+  ]
+  const rotationModeOptions: Array<{ label: string; value: RotationMode }> = [
+    { label: '指针固定，转盘旋转', value: 'wheel' },
+    { label: '转盘固定，指针旋转', value: 'pointer' },
   ]
 
   const handleAddItem = () => {
@@ -164,6 +171,11 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
     setActiveTab('create')
   }
 
+  const handleRotationModeChange = (nextMode: RotationMode) => {
+    setRotationMode(nextMode)
+    resetWheelBoardState()
+  }
+
   const handleSaveToHistory = () => {
     if (items.length < 2) {
       message.warning('至少需要 2 个选项才能保存')
@@ -196,7 +208,9 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
           items={items}
           segments={segments}
           conicColors={conicColors}
-          rotation={rotation}
+          wheelRotation={wheelRotation}
+          pointerRotation={pointerRotation}
+          rotationMode={rotationMode}
           shouldAnimateRotation={shouldAnimateRotation}
           selectedItem={selectedItem}
           labelRadiusPercent={labelRadiusPercent}
@@ -233,7 +247,9 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                   items={items}
                   segments={segments}
                   conicColors={conicColors}
-                  rotation={rotation}
+                  wheelRotation={wheelRotation}
+                  pointerRotation={pointerRotation}
+                  rotationMode={rotationMode}
                   shouldAnimateRotation={shouldAnimateRotation}
                   selectedItem={selectedItem}
                   labelRadiusPercent={labelRadiusPercent}
@@ -245,7 +261,6 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                   spinButtonRef={spinButtonRef}
                   onSpinButtonClick={onSpinButtonClick}
                 />
-
                 <div className="wheel-editor">
                   <div className="wheel-editor-header">
                     <Typography.Title level={4}>选项配置</Typography.Title>
@@ -257,7 +272,6 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                       <Button onClick={handleAddItem}>添加格子</Button>
                     </Space>
                   </div>
-
                   <div className="wheel-name-row">
                     <Typography.Text type="secondary">转盘名称</Typography.Text>
                     <Input
@@ -267,7 +281,6 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                       onChange={(event) => setWheelName(event.target.value)}
                     />
                   </div>
-
                   <div className="wheel-name-row">
                     <Typography.Text type="secondary">旋转时长</Typography.Text>
                     <InputNumber
@@ -286,7 +299,15 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                       }
                     />
                   </div>
-
+                  <div className="wheel-name-row">
+                    <Typography.Text type="secondary">旋转模式</Typography.Text>
+                    <Segmented
+                      block
+                      options={rotationModeOptions}
+                      value={rotationMode}
+                      onChange={(value) => handleRotationModeChange(value as RotationMode)}
+                    />
+                  </div>
                   <div className="wheel-name-row">
                     <Typography.Text type="secondary">停止方式</Typography.Text>
                     <Segmented
@@ -296,7 +317,6 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                       onChange={(value) => setSpinMode(value as SpinMode)}
                     />
                   </div>
-
                   {items.map((item) => (
                     <div className="wheel-item-row" key={item.id}>
                       <Input
@@ -306,7 +326,6 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                         placeholder="输入文字"
                         onChange={(event) => handleUpdateItem(item.id, { label: event.target.value })}
                       />
-
                       <input
                         className="wheel-color-input"
                         type="color"
@@ -314,7 +333,6 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                         aria-label="选择颜色"
                         onChange={(event) => handleUpdateItem(item.id, { color: event.target.value })}
                       />
-
                       <InputNumber
                         className="wheel-item-weight"
                         min={MIN_WEIGHT}
@@ -323,7 +341,6 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                         addonBefore="权重"
                         onChange={(value) => handleUpdateItem(item.id, { weight: clampWeight(value) })}
                       />
-
                       <Button danger disabled={items.length <= 2} onClick={() => handleDeleteItem(item.id)}>
                         删除
                       </Button>
@@ -354,7 +371,6 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                           选项：{record.items.map((item) => item.label).join('、')}
                         </Typography.Paragraph>
                       </div>
-
                       <Space>
                         <Button type="primary" onClick={() => handleLoadFromHistory(record)}>
                           使用这个转盘

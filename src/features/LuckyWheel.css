@@ -39,6 +39,10 @@
 }
 
 .wheel-pointer {
+  pointer-events: none;
+}
+
+.wheel-pointer--edge {
   position: absolute;
   top: -6px;
   left: 50%;
@@ -53,6 +57,42 @@
   filter: drop-shadow(0 2px 2px rgba(15, 23, 42, 0.25));
 }
 
+.wheel-pointer--center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  width: 42%;
+  height: 42%;
+  transform-origin: center;
+}
+
+.wheel-pointer-needle {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 96px solid #ffffff;
+  filter: drop-shadow(0 2px 3px rgba(15, 23, 42, 0.3));
+}
+
+.wheel-pointer-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(42px, 11vw, 58px);
+  height: clamp(42px, 11vw, 58px);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px solid #f59e0b;
+  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #fff7ed 45%, #fed7aa 100%);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.22);
+}
+
 .wheel-spin-btn {
   position: absolute;
   top: 50%;
@@ -64,6 +104,16 @@
   border-radius: 50%;
   font-size: 24px;
   font-weight: 700;
+}
+
+.wheel-board--pointer .wheel-spin-btn {
+  top: auto;
+  bottom: 6%;
+  transform: translateX(-50%);
+  width: 142px;
+  height: 52px;
+  border-radius: 999px;
+  font-size: 20px;
 }
 
 .wheel-label {
@@ -245,6 +295,18 @@
     font-size: 20px;
   }
 
+  .wheel-pointer-needle {
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 76px;
+  }
+
+  .wheel-board--pointer .wheel-spin-btn {
+    width: 132px;
+    height: 48px;
+    font-size: 18px;
+  }
+
   .wheel-item-row {
     grid-template-columns: 1fr 70px;
   }
@@ -262,6 +324,18 @@
   .wheel-spin-btn {
     width: 92px;
     height: 92px;
+    font-size: 16px;
+  }
+
+  .wheel-pointer-needle {
+    border-left-width: 8px;
+    border-right-width: 8px;
+    border-bottom-width: 58px;
+  }
+
+  .wheel-board--pointer .wheel-spin-btn {
+    width: 120px;
+    height: 44px;
     font-size: 16px;
   }
 

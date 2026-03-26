@@ -1,12 +1,15 @@
 import { Button, Tag, Typography } from 'antd'
 import type { RefObject } from 'react'
+import type { RotationMode } from './useWheelSpin'
 import { getLabelLayout, type WheelItem, type WheelSegment } from './wheelMath'
 
 type WheelBoardProps = {
   items: WheelItem[]
   segments: WheelSegment[]
   conicColors: string
-  rotation: number
+  wheelRotation: number
+  pointerRotation: number
+  rotationMode: RotationMode
   shouldAnimateRotation: boolean
   selectedItem: WheelItem | null
   labelRadiusPercent: number
@@ -23,7 +26,9 @@ export function WheelBoard({
   items,
   segments,
   conicColors,
-  rotation,
+  wheelRotation,
+  pointerRotation,
+  rotationMode,
   shouldAnimateRotation,
   selectedItem,
   labelRadiusPercent,
@@ -35,6 +40,8 @@ export function WheelBoard({
   spinButtonRef,
   onSpinButtonClick,
 }: WheelBoardProps) {
+  const pointerInCenter = rotationMode === 'pointer'
+
   return (
     <div className="wheel-layout">
       <div className={`wheel-result ${selectedItem ? 'wheel-result--selected' : ''}`}>
@@ -48,13 +55,28 @@ export function WheelBoard({
         )}
       </div>
 
-      <div className="wheel-board" ref={wheelBoardRef}>
-        <div className="wheel-pointer" />
+      <div className={`wheel-board ${pointerInCenter ? 'wheel-board--pointer' : ''}`} ref={wheelBoardRef}>
+        {pointerInCenter ? (
+          <div
+            className="wheel-pointer wheel-pointer--center"
+            style={{
+              transform: `translate(-50%, -50%) rotate(${pointerRotation}deg)`,
+              transition: shouldAnimateRotation
+                ? `transform ${spinDurationMs}ms ${spinTimingFunction}`
+                : 'none',
+            }}
+          >
+            <div className="wheel-pointer-needle" />
+            <div className="wheel-pointer-core" />
+          </div>
+        ) : (
+          <div className="wheel-pointer wheel-pointer--edge" />
+        )}
         <div
           className="wheel-disk"
           style={{
             background: `conic-gradient(from 0deg, ${conicColors})`,
-            transform: `rotate(${rotation}deg)`,
+            transform: `rotate(${wheelRotation}deg)`,
             transition: shouldAnimateRotation
               ? `transform ${spinDurationMs}ms ${spinTimingFunction}`
               : 'none',
