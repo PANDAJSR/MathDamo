@@ -116,20 +116,6 @@
   font-size: 20px;
 }
 
-.wheel-pointer-angle {
-  position: absolute;
-  left: 50%;
-  bottom: 20%;
-  z-index: 6;
-  transform: translateX(-50%);
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid #fbbf24;
-  color: #92400e;
-  font-weight: 700;
-}
-
 .wheel-label {
   position: absolute;
   top: 50%;
@@ -321,10 +307,6 @@
     font-size: 18px;
   }
 
-  .wheel-pointer-angle {
-    bottom: 18%;
-  }
-
   .wheel-item-row {
     grid-template-columns: 1fr 70px;
   }
@@ -355,12 +337,6 @@
     width: 120px;
     height: 44px;
     font-size: 16px;
-  }
-
-  .wheel-pointer-angle {
-    bottom: 16%;
-    font-size: 12px;
-    padding: 2px 8px;
   }
 
   .wheel-item-row {

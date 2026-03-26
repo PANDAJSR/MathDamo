@@ -2,6 +2,7 @@ import { Button, Tag, Typography } from 'antd'
 import type { RefObject } from 'react'
 import type { RotationMode } from './useWheelSpin'
 import { getLabelLayout, type WheelItem, type WheelSegment } from './wheelMath'
+import './WheelBoard.css'
 
 type WheelBoardProps = {
   items: WheelItem[]
@@ -19,6 +20,8 @@ type WheelBoardProps = {
   spinButtonDisabled: boolean
   showPointerAngle: boolean
   pointerAngle: number
+  showBoardAngle: boolean
+  boardAngle: number
   wheelBoardRef: RefObject<HTMLDivElement | null>
   spinButtonRef: RefObject<HTMLButtonElement | null>
   onSpinButtonClick: () => void
@@ -40,6 +43,8 @@ export function WheelBoard({
   spinButtonDisabled,
   showPointerAngle,
   pointerAngle,
+  showBoardAngle,
+  boardAngle,
   wheelBoardRef,
   spinButtonRef,
   onSpinButtonClick,
@@ -117,6 +122,9 @@ export function WheelBoard({
         </Button>
         {pointerInCenter && showPointerAngle ? (
           <Typography.Text className="wheel-pointer-angle">{pointerAngle.toFixed(1)}°</Typography.Text>
+        ) : null}
+        {showBoardAngle ? (
+          <Typography.Text className="wheel-corner-angle">角度 {boardAngle.toFixed(1)}°</Typography.Text>
         ) : null}
       </div>
     </div>

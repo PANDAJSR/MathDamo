@@ -49,6 +49,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
   const [activeTab, setActiveTab] = useState<EditorTabKey>('create')
   const [wheelName, setWheelName] = useState('我的转盘')
   const [showPointerAngle, setShowPointerAngle] = useState(false)
+  const [showBoardAngle, setShowBoardAngle] = useState(false)
   const [historyRecords, setHistoryRecords] = useState<WheelHistoryRecord[]>(() => (lockedByShare ? [] : loadWheelHistory()))
 
   const segments = useMemo(() => buildWheelSegments(items), [items])
@@ -118,8 +119,31 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
 
   const selectedItem = useMemo(() => items.find((item) => item.id === selectedId) ?? null, [items, selectedId])
   const displayPointerAngle = ((pointerRotation % 360) + 360) % 360
+  const displayBoardAngle = (((rotationMode === 'pointer' ? pointerRotation : wheelRotation) % 360) + 360) % 360
   const spinModeOptions: Array<{ label: string; value: SpinMode }> = [{ label: '自动停止', value: 'auto' }, { label: '手动点击停止', value: 'manual' }]
   const rotationModeOptions: Array<{ label: string; value: RotationMode }> = [{ label: '指针固定，转盘旋转', value: 'wheel' }, { label: '转盘固定，指针旋转', value: 'pointer' }]
+  const wheelBoardProps = {
+    items,
+    segments,
+    conicColors,
+    wheelRotation,
+    pointerRotation,
+    rotationMode,
+    shouldAnimateRotation,
+    selectedItem,
+    labelRadiusPercent,
+    spinDurationMs,
+    spinTimingFunction: transitionTimingFunction,
+    spinButtonLabel,
+    spinButtonDisabled,
+    showPointerAngle: rotationMode === 'pointer' && showPointerAngle,
+    pointerAngle: displayPointerAngle,
+    showBoardAngle,
+    boardAngle: displayBoardAngle,
+    wheelBoardRef,
+    spinButtonRef,
+    onSpinButtonClick,
+  }
 
   const handleAddItem = () => {
     const nextId = items.length === 0 ? 1 : Math.max(...items.map((item) => item.id)) + 1
@@ -196,26 +220,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
   if (lockedByShare) {
     return (
       <section className="lucky-wheel lucky-wheel--locked">
-        <WheelBoard
-          items={items}
-          segments={segments}
-          conicColors={conicColors}
-          wheelRotation={wheelRotation}
-          pointerRotation={pointerRotation}
-          rotationMode={rotationMode}
-          shouldAnimateRotation={shouldAnimateRotation}
-          selectedItem={selectedItem}
-          labelRadiusPercent={labelRadiusPercent}
-          spinDurationMs={spinDurationMs}
-          spinTimingFunction={transitionTimingFunction}
-          spinButtonLabel={spinButtonLabel}
-          spinButtonDisabled={spinButtonDisabled}
-          showPointerAngle={rotationMode === 'pointer' && showPointerAngle}
-          pointerAngle={displayPointerAngle}
-          wheelBoardRef={wheelBoardRef}
-          spinButtonRef={spinButtonRef}
-          onSpinButtonClick={onSpinButtonClick}
-        />
+        <WheelBoard {...wheelBoardProps} />
       </section>
     )
   }
@@ -237,26 +242,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
             label: '新建转盘',
             children: (
               <>
-                <WheelBoard
-                  items={items}
-                  segments={segments}
-                  conicColors={conicColors}
-                  wheelRotation={wheelRotation}
-                  pointerRotation={pointerRotation}
-                  rotationMode={rotationMode}
-                  shouldAnimateRotation={shouldAnimateRotation}
-                  selectedItem={selectedItem}
-                  labelRadiusPercent={labelRadiusPercent}
-                  spinDurationMs={spinDurationMs}
-                  spinTimingFunction={transitionTimingFunction}
-                  spinButtonLabel={spinButtonLabel}
-                  spinButtonDisabled={spinButtonDisabled}
-                  showPointerAngle={rotationMode === 'pointer' && showPointerAngle}
-                  pointerAngle={displayPointerAngle}
-                  wheelBoardRef={wheelBoardRef}
-                  spinButtonRef={spinButtonRef}
-                  onSpinButtonClick={onSpinButtonClick}
-                />
+                <WheelBoard {...wheelBoardProps} />
                 <div className="wheel-editor">
                   <div className="wheel-editor-header">
                     <Typography.Title level={4}>选项配置</Typography.Title>
@@ -303,6 +289,10 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                       value={rotationMode}
                       onChange={(value) => handleRotationModeChange(value as RotationMode)}
                     />
+                  </div>
+                  <div className="wheel-name-row">
+                    <Typography.Text type="secondary">显示区块角度</Typography.Text>
+                    <Switch checked={showBoardAngle} onChange={setShowBoardAngle} checkedChildren="开" unCheckedChildren="关" />
                   </div>
                   {rotationMode === 'pointer' ? (
                     <div className="wheel-name-row">
