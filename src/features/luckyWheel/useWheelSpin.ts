@@ -135,6 +135,16 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
     startAutoSpin()
   }
 
+  const handleSpinModeChange = (nextSpinMode: SpinMode) => {
+    if (nextSpinMode === spinMode) return
+
+    setSpinMode(nextSpinMode)
+    if (nextSpinMode === 'manual' || !manualRolling) return
+
+    stopManualRaf()
+    settleToWinner(MANUAL_SETTLE_TURNS, MANUAL_STOP_EASING)
+  }
+
   const resetWheelBoardState = () => {
     clearSpinTimer()
     stopManualRaf()
@@ -151,12 +161,6 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
       stopManualRaf()
     }
   }, [])
-
-  useEffect(() => {
-    if (spinMode === 'manual' || !manualRolling) return
-    stopManualRaf()
-    settleToWinner(MANUAL_SETTLE_TURNS, MANUAL_STOP_EASING)
-  }, [manualRolling, spinMode])
 
   const spinButtonLabel = useMemo(() => {
     if (spinMode === 'manual') {
@@ -180,7 +184,7 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
     spinButtonDisabled,
     shouldAnimateRotation,
     transitionTimingFunction,
-    setSpinMode,
+    setSpinMode: handleSpinModeChange,
     setRotationMode,
     onSpinButtonClick,
     resetWheelBoardState,
