@@ -1,7 +1,8 @@
 import { Layout, Menu } from 'antd'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import { LuckyWheel } from './features/LuckyWheel'
+import { parseSharedWheelConfigFromSearch } from './features/luckyWheel/share'
 import { ModelViewer3D } from './features/ModelViewer3D'
 import { ShapeScaleDemo } from './features/ShapeScaleDemo'
 
@@ -20,9 +21,15 @@ const getMenuKeyFromHash = () => {
 }
 
 function App() {
+  const sharedWheelConfig = useMemo(
+    () => parseSharedWheelConfigFromSearch(window.location.search),
+    [],
+  )
   const [activeKey, setActiveKey] = useState(getMenuKeyFromHash)
 
   useEffect(() => {
+    if (sharedWheelConfig) return
+
     const syncByHash = () => {
       const key = getMenuKeyFromHash()
       setActiveKey(key)
@@ -35,12 +42,22 @@ function App() {
     syncByHash()
     window.addEventListener('hashchange', syncByHash)
     return () => window.removeEventListener('hashchange', syncByHash)
-  }, [])
+  }, [sharedWheelConfig])
 
   const renderContent = () => {
     if (activeKey === 'shape-scale') return <ShapeScaleDemo />
     if (activeKey === 'model-viewer') return <ModelViewer3D />
     return <LuckyWheel />
+  }
+
+  if (sharedWheelConfig) {
+    return (
+      <Layout className="app-layout app-layout--wheel-locked">
+        <Layout.Content className="main-content main-content--wheel-locked">
+          <LuckyWheel initialItems={sharedWheelConfig.items} lockedByShare />
+        </Layout.Content>
+      </Layout>
+    )
   }
 
   return (

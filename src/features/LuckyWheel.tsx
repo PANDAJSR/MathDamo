@@ -1,6 +1,7 @@
-import { Button, Input, InputNumber, Space, Tag, Typography } from 'antd'
+import { Button, Input, InputNumber, Space, Tag, Typography, message } from 'antd'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import './LuckyWheel.css'
+import { createSharedWheelSearch, sanitizeSharedWheelItems, type SharedWheelItem } from './luckyWheel/share'
 
 type WheelItem = {
   id: number
@@ -35,6 +36,11 @@ const MAX_RADIUS_BOOST_PERCENT = 10
 const LABEL_DYNAMIC_SPAN_CAP = 120
 const SEGMENT_EDGE_PADDING_RATIO = 0.12
 const SEGMENT_EDGE_PADDING_MAX_DEG = 8
+
+type LuckyWheelProps = {
+  initialItems?: SharedWheelItem[]
+  lockedByShare?: boolean
+}
 
 type LabelLayout = {
   x: number
@@ -121,10 +127,12 @@ function pickAngleInsideSegment(segment: WheelSegment) {
   return minAngle + Math.random() * (maxAngle - minAngle)
 }
 
-export function LuckyWheel() {
+export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelProps) {
   const wheelBoardRef = useRef<HTMLDivElement | null>(null)
   const spinButtonRef = useRef<HTMLButtonElement | null>(null)
-  const [items, setItems] = useState<WheelItem[]>(INITIAL_ITEMS)
+  const [items, setItems] = useState<WheelItem[]>(
+    () => sanitizeSharedWheelItems(initialItems) ?? INITIAL_ITEMS,
+  )
   const [rotation, setRotation] = useState(0)
   const [spinning, setSpinning] = useState(false)
   const [selectedId, setSelectedId] = useState<number | null>(null)
@@ -203,6 +211,23 @@ export function LuckyWheel() {
     setItems((prev) => prev.map((item) => (item.id === id ? { ...item, ...patch } : item)))
   }
 
+  const handleCopyShareLink = async () => {
+    const search = createSharedWheelSearch(items)
+    const nextUrl = `${window.location.origin}${window.location.pathname}?${search}`
+
+    if (!navigator.clipboard?.writeText) {
+      window.prompt('请手动复制链接：', nextUrl)
+      return
+    }
+
+    try {
+      await navigator.clipboard.writeText(nextUrl)
+      message.success('已复制分享链接，打开后会锁定为全屏转盘模式')
+    } catch {
+      window.prompt('复制失败，请手动复制链接：', nextUrl)
+    }
+  }
+
   const handleSpin = () => {
     if (spinning || items.length === 0) return
 
@@ -226,11 +251,17 @@ export function LuckyWheel() {
   }
 
   return (
-    <section className="lucky-wheel">
-      <Typography.Title level={3}>转盘</Typography.Title>
-      <Typography.Paragraph>
-        可添加/删除格子，自定义文字、颜色和权重。权重越高，扇区越大且被抽中的概率越高。
-      </Typography.Paragraph>
+    <section className={`lucky-wheel ${lockedByShare ? 'lucky-wheel--locked' : ''}`}>
+      <Typography.Title level={3}>{lockedByShare ? '分享转盘' : '转盘'}</Typography.Title>
+      {lockedByShare ? (
+        <Typography.Paragraph>
+          当前为分享链接全屏模式。若要退出，请手动移除地址栏中的 `wheel` 参数。
+        </Typography.Paragraph>
+      ) : (
+        <Typography.Paragraph>
+          可添加/删除格子，自定义文字、颜色和权重。权重越高，扇区越大且被抽中的概率越高。
+        </Typography.Paragraph>
+      )}
 
       <div className="wheel-layout">
         <div className="wheel-board" ref={wheelBoardRef}>
@@ -282,48 +313,51 @@ export function LuckyWheel() {
         </div>
       </div>
 
-      <div className="wheel-editor">
-        <div className="wheel-editor-header">
-          <Typography.Title level={4}>选项配置</Typography.Title>
-          <Space>
-            <Typography.Text type="secondary">权重总和：{totalWeight.toFixed(1)}</Typography.Text>
-            <Button onClick={handleAddItem}>添加格子</Button>
-          </Space>
-        </div>
-
-        {items.map((item) => (
-          <div className="wheel-item-row" key={item.id}>
-            <Input
-              className="wheel-item-name"
-              value={item.label}
-              maxLength={20}
-              placeholder="输入文字"
-              onChange={(event) => handleUpdateItem(item.id, { label: event.target.value })}
-            />
-
-            <input
-              className="wheel-color-input"
-              type="color"
-              value={item.color}
-              aria-label="选择颜色"
-              onChange={(event) => handleUpdateItem(item.id, { color: event.target.value })}
-            />
-
-            <InputNumber
-              className="wheel-item-weight"
-              min={MIN_WEIGHT}
-              step={0.1}
-              value={item.weight}
-              addonBefore="权重"
-              onChange={(value) => handleUpdateItem(item.id, { weight: clampWeight(value) })}
-            />
-
-            <Button danger disabled={items.length <= 2} onClick={() => handleDeleteItem(item.id)}>
-              删除
-            </Button>
+      {!lockedByShare && (
+        <div className="wheel-editor">
+          <div className="wheel-editor-header">
+            <Typography.Title level={4}>选项配置</Typography.Title>
+            <Space>
+              <Typography.Text type="secondary">权重总和：{totalWeight.toFixed(1)}</Typography.Text>
+              <Button onClick={handleCopyShareLink}>复制分享链接</Button>
+              <Button onClick={handleAddItem}>添加格子</Button>
+            </Space>
           </div>
-        ))}
-      </div>
+
+          {items.map((item) => (
+            <div className="wheel-item-row" key={item.id}>
+              <Input
+                className="wheel-item-name"
+                value={item.label}
+                maxLength={20}
+                placeholder="输入文字"
+                onChange={(event) => handleUpdateItem(item.id, { label: event.target.value })}
+              />
+
+              <input
+                className="wheel-color-input"
+                type="color"
+                value={item.color}
+                aria-label="选择颜色"
+                onChange={(event) => handleUpdateItem(item.id, { color: event.target.value })}
+              />
+
+              <InputNumber
+                className="wheel-item-weight"
+                min={MIN_WEIGHT}
+                step={0.1}
+                value={item.weight}
+                addonBefore="权重"
+                onChange={(value) => handleUpdateItem(item.id, { weight: clampWeight(value) })}
+              />
+
+              <Button danger disabled={items.length <= 2} onClick={() => handleDeleteItem(item.id)}>
+                删除
+              </Button>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   )
 }

@@ -19,8 +19,25 @@
   padding: 32px;
 }
 
+.app-layout--wheel-locked {
+  background: radial-gradient(circle at top, #fff7ed 0%, #ffffff 48%, #f8fafc 100%);
+}
+
+.main-content--wheel-locked {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: transparent;
+}
+
 @media (max-width: 640px) {
   .main-content {
     padding: 24px;
+  }
+
+  .main-content--wheel-locked {
+    padding: 12px;
   }
 }

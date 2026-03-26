@@ -3,10 +3,19 @@
   margin: 0 auto;
 }
 
+.lucky-wheel--locked {
+  width: min(96vw, 1180px);
+  max-width: none;
+}
+
 .wheel-layout {
   display: grid;
   gap: 20px;
   margin-top: 20px;
+}
+
+.lucky-wheel--locked .wheel-layout {
+  gap: 28px;
 }
 
 .wheel-board {
@@ -14,6 +23,10 @@
   margin: 0 auto;
   width: min(70vw, 520px);
   aspect-ratio: 1;
+}
+
+.lucky-wheel--locked .wheel-board {
+  width: min(85vmin, 760px);
 }
 
 .wheel-disk {
@@ -145,6 +158,10 @@
 @media (max-width: 640px) {
   .wheel-board {
     width: min(88vw, 440px);
+  }
+
+  .lucky-wheel--locked .wheel-board {
+    width: min(96vw, 560px);
   }
 
   .wheel-spin-btn {
