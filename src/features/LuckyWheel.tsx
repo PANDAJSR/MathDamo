@@ -103,6 +103,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
     spinButtonLabel,
     spinButtonDisabled,
     shouldAnimateRotation,
+    transitionTimingFunction,
     setSpinMode,
     onSpinButtonClick,
     resetWheelBoardState,
@@ -200,6 +201,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
           selectedItem={selectedItem}
           labelRadiusPercent={labelRadiusPercent}
           spinDurationMs={spinDurationMs}
+          spinTimingFunction={transitionTimingFunction}
           spinButtonLabel={spinButtonLabel}
           spinButtonDisabled={spinButtonDisabled}
           wheelBoardRef={wheelBoardRef}
@@ -236,6 +238,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                   selectedItem={selectedItem}
                   labelRadiusPercent={labelRadiusPercent}
                   spinDurationMs={spinDurationMs}
+                  spinTimingFunction={transitionTimingFunction}
                   spinButtonLabel={spinButtonLabel}
                   spinButtonDisabled={spinButtonDisabled}
                   wheelBoardRef={wheelBoardRef}

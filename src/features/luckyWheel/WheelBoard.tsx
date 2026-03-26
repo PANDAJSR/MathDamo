@@ -11,6 +11,7 @@ type WheelBoardProps = {
   selectedItem: WheelItem | null
   labelRadiusPercent: number
   spinDurationMs: number
+  spinTimingFunction: string
   spinButtonLabel: string
   spinButtonDisabled: boolean
   wheelBoardRef: RefObject<HTMLDivElement | null>
@@ -27,6 +28,7 @@ export function WheelBoard({
   selectedItem,
   labelRadiusPercent,
   spinDurationMs,
+  spinTimingFunction,
   spinButtonLabel,
   spinButtonDisabled,
   wheelBoardRef,
@@ -43,7 +45,7 @@ export function WheelBoard({
             background: `conic-gradient(from 0deg, ${conicColors})`,
             transform: `rotate(${rotation}deg)`,
             transition: shouldAnimateRotation
-              ? `transform ${spinDurationMs}ms cubic-bezier(0.18, 0.82, 0.18, 1)`
+              ? `transform ${spinDurationMs}ms ${spinTimingFunction}`
               : 'none',
           }}
         >
