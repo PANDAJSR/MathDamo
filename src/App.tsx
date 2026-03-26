@@ -1,5 +1,5 @@
 import { Layout, Menu } from 'antd'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { LuckyWheel } from './features/LuckyWheel'
 import { ModelViewer3D } from './features/ModelViewer3D'
@@ -11,8 +11,31 @@ const menuItems = [
   { key: 'lucky-wheel', label: '转盘' },
 ]
 
+const defaultMenuKey = 'shape-scale'
+const menuKeySet = new Set(menuItems.map((item) => item.key))
+
+const getMenuKeyFromHash = () => {
+  const hashKey = window.location.hash.replace(/^#/, '')
+  return menuKeySet.has(hashKey) ? hashKey : defaultMenuKey
+}
+
 function App() {
-  const [activeKey, setActiveKey] = useState('shape-scale')
+  const [activeKey, setActiveKey] = useState(getMenuKeyFromHash)
+
+  useEffect(() => {
+    const syncByHash = () => {
+      const key = getMenuKeyFromHash()
+      setActiveKey(key)
+
+      if (window.location.hash !== `#${key}`) {
+        window.history.replaceState(null, '', `#${key}`)
+      }
+    }
+
+    syncByHash()
+    window.addEventListener('hashchange', syncByHash)
+    return () => window.removeEventListener('hashchange', syncByHash)
+  }, [])
 
   const renderContent = () => {
     if (activeKey === 'shape-scale') return <ShapeScaleDemo />
@@ -29,7 +52,14 @@ function App() {
           theme="light"
           selectedKeys={[activeKey]}
           items={menuItems}
-          onClick={({ key }) => setActiveKey(key)}
+          onClick={({ key }) => {
+            const menuKey = String(key)
+            if (window.location.hash === `#${menuKey}`) {
+              setActiveKey(menuKey)
+              return
+            }
+            window.location.hash = menuKey
+          }}
         />
       </Layout.Sider>
 
