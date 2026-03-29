@@ -1,22 +1,10 @@
-import {
-  Button,
-  Empty,
-  Input,
-  InputNumber,
-  Popconfirm,
-  Segmented,
-  Space,
-  Switch,
-  Tabs,
-  Typography,
-  message,
-} from 'antd'
+import { Button, Empty, Input, InputNumber, Popconfirm, Segmented, Space, Switch, Tabs, Typography, message } from 'antd'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import './LuckyWheel.css'
 import { addWheelHistory, loadWheelHistory, removeWheelHistory, type WheelHistoryRecord } from './luckyWheel/history'
 import { formatHistoryTime, INITIAL_ITEMS, toWheelItems } from './luckyWheel/presets'
 import { createSharedWheelSearch, sanitizeSharedWheelItems, type SharedWheelItem } from './luckyWheel/share'
-import { type RotationMode, type SpinMode, useWheelSpin } from './luckyWheel/useWheelSpin'
+import { type AngleDirection, type RotationMode, type SpinMode, useWheelSpin } from './luckyWheel/useWheelSpin'
 import { WheelBoard } from './luckyWheel/WheelBoard'
 import { buildWheelSegments, clampWeight, type WheelItem } from './luckyWheel/wheelMath'
 
@@ -50,6 +38,9 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
   const [wheelName, setWheelName] = useState('我的转盘')
   const [showPointerAngle, setShowPointerAngle] = useState(false)
   const [showBoardAngle, setShowBoardAngle] = useState(false)
+  const [showAngleControl, setShowAngleControl] = useState(false)
+  const [angleDirection, setAngleDirection] = useState<AngleDirection>('clockwise')
+  const [angleValue, setAngleValue] = useState(45)
   const [historyRecords, setHistoryRecords] = useState<WheelHistoryRecord[]>(() => (lockedByShare ? [] : loadWheelHistory()))
 
   const segments = useMemo(() => buildWheelSegments(items), [items])
@@ -101,15 +92,18 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
     wheelRotation,
     pointerRotation,
     selectedId,
+    spinning,
     spinMode,
     rotationMode,
     spinButtonLabel,
     spinButtonDisabled,
     shouldAnimateRotation,
+    activeDurationMs,
     transitionTimingFunction,
     setSpinMode,
     setRotationMode,
     onSpinButtonClick,
+    rotateByAngle,
     resetWheelBoardState,
   } = useWheelSpin({
     items,
@@ -120,7 +114,11 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
   const selectedItem = useMemo(() => items.find((item) => item.id === selectedId) ?? null, [items, selectedId])
   const displayPointerAngle = ((pointerRotation % 360) + 360) % 360
   const spinModeOptions: Array<{ label: string; value: SpinMode }> = [{ label: '自动停止', value: 'auto' }, { label: '手动点击停止', value: 'manual' }]
-  const rotationModeOptions: Array<{ label: string; value: RotationMode }> = [{ label: '指针固定，转盘旋转', value: 'wheel' }, { label: '转盘固定，指针旋转', value: 'pointer' }]
+  const rotationModeOptions: Array<{ label: string; value: RotationMode }> = [{ label: '转盘旋转', value: 'wheel' }, { label: '指针旋转', value: 'pointer' }]
+  const angleDirectionOptions: Array<{ label: string; value: AngleDirection }> = [
+    { label: '顺时针', value: 'clockwise' },
+    { label: '逆时针', value: 'counterclockwise' },
+  ]
   const wheelBoardProps = {
     items,
     segments,
@@ -131,16 +129,24 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
     shouldAnimateRotation,
     selectedItem,
     labelRadiusPercent,
-    spinDurationMs,
+    spinDurationMs: activeDurationMs,
     spinTimingFunction: transitionTimingFunction,
     spinButtonLabel,
     spinButtonDisabled,
     showPointerAngle: rotationMode === 'pointer' && showPointerAngle,
     pointerAngle: displayPointerAngle,
     showBoardAngle,
+    showAngleControl,
+    angleControlDirection: angleDirection,
+    angleControlDirectionOptions: angleDirectionOptions,
+    angleControlValue: angleValue,
+    angleControlDisabled: spinning,
     wheelBoardRef,
     spinButtonRef,
     onSpinButtonClick,
+    onAngleDirectionChange: (value: AngleDirection) => setAngleDirection(value),
+    onAngleValueChange: (value: number | null) => setAngleValue(Math.max(0, Number(value) || 0)),
+    onAngleRotate: () => rotateByAngle(angleDirection, angleValue),
   }
 
   const handleAddItem = () => {
@@ -305,6 +311,10 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                     <div className="wheel-setting-cell">
                       <Typography.Text type="secondary">停止方式</Typography.Text>
                       <Segmented options={spinModeOptions} value={spinMode} onChange={(value) => setSpinMode(value as SpinMode)} />
+                    </div>
+                    <div className="wheel-setting-cell">
+                      <Typography.Text type="secondary">显示角度控制</Typography.Text>
+                      <Switch checked={showAngleControl} onChange={setShowAngleControl} checkedChildren="开" unCheckedChildren="关" />
                     </div>
                   </div>
                   {items.map((item) => (
