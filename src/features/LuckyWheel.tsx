@@ -296,17 +296,11 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                     </div>
                     <div className="wheel-setting-cell">
                       <Typography.Text type="secondary">显示区块角度</Typography.Text>
-                      <Switch checked={showBoardAngle} onChange={setShowBoardAngle} checkedChildren="开" unCheckedChildren="关" />
+                      <Switch className="wheel-setting-switch" checked={showBoardAngle} onChange={setShowBoardAngle} checkedChildren="开" unCheckedChildren="关" />
                     </div>
                     <div className="wheel-setting-cell">
                       <Typography.Text type="secondary">显示指针角度</Typography.Text>
-                      <Switch
-                        checked={showPointerAngle}
-                        disabled={rotationMode !== 'pointer'}
-                        onChange={setShowPointerAngle}
-                        checkedChildren="开"
-                        unCheckedChildren="关"
-                      />
+                      <Switch className="wheel-setting-switch" checked={showPointerAngle} disabled={rotationMode !== 'pointer'} onChange={setShowPointerAngle} checkedChildren="开" unCheckedChildren="关" />
                     </div>
                     <div className="wheel-setting-cell">
                       <Typography.Text type="secondary">停止方式</Typography.Text>
@@ -314,7 +308,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
                     </div>
                     <div className="wheel-setting-cell">
                       <Typography.Text type="secondary">显示角度控制</Typography.Text>
-                      <Switch checked={showAngleControl} onChange={setShowAngleControl} checkedChildren="开" unCheckedChildren="关" />
+                      <Switch className="wheel-setting-switch" checked={showAngleControl} onChange={setShowAngleControl} checkedChildren="开" unCheckedChildren="关" />
                     </div>
                   </div>
                   {items.map((item) => (

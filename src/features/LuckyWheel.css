@@ -226,6 +226,11 @@
   min-width: 180px;
 }
 
+.wheel-setting-switch {
+  justify-self: start;
+  min-width: 78px;
+}
+
 .wheel-editor-header {
   display: flex;
   justify-content: space-between;
