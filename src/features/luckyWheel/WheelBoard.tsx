@@ -1,6 +1,6 @@
-import { Button, Tag, Typography } from 'antd'
+import { Button, InputNumber, Segmented, Tag, Typography } from 'antd'
 import type { RefObject } from 'react'
-import type { RotationMode } from './useWheelSpin'
+import type { AngleDirection, RotationMode } from './useWheelSpin'
 import { getLabelLayout, type WheelItem, type WheelSegment } from './wheelMath'
 import './WheelBoard.css'
 
@@ -21,9 +21,17 @@ type WheelBoardProps = {
   showPointerAngle: boolean
   pointerAngle: number
   showBoardAngle: boolean
+  showAngleControl: boolean
+  angleControlDirection: AngleDirection
+  angleControlDirectionOptions: Array<{ label: string; value: AngleDirection }>
+  angleControlValue: number
+  angleControlDisabled: boolean
   wheelBoardRef: RefObject<HTMLDivElement | null>
   spinButtonRef: RefObject<HTMLButtonElement | null>
   onSpinButtonClick: () => void
+  onAngleDirectionChange: (value: AngleDirection) => void
+  onAngleValueChange: (value: number | null) => void
+  onAngleRotate: () => void
 }
 
 export function WheelBoard({
@@ -43,9 +51,17 @@ export function WheelBoard({
   showPointerAngle,
   pointerAngle,
   showBoardAngle,
+  showAngleControl,
+  angleControlDirection,
+  angleControlDirectionOptions,
+  angleControlValue,
+  angleControlDisabled,
   wheelBoardRef,
   spinButtonRef,
   onSpinButtonClick,
+  onAngleDirectionChange,
+  onAngleValueChange,
+  onAngleRotate,
 }: WheelBoardProps) {
   const pointerInCenter = rotationMode === 'pointer'
 
@@ -62,7 +78,10 @@ export function WheelBoard({
         )}
       </div>
 
-      <div className={`wheel-board ${pointerInCenter ? 'wheel-board--pointer' : ''}`} ref={wheelBoardRef}>
+      <div
+        className={`wheel-board ${pointerInCenter ? 'wheel-board--pointer' : ''} ${showAngleControl ? 'wheel-board--angle-control' : ''}`}
+        ref={wheelBoardRef}
+      >
         {pointerInCenter ? (
           <div
             className="wheel-pointer wheel-pointer--center"
@@ -123,6 +142,30 @@ export function WheelBoard({
         </Button>
         {pointerInCenter && showPointerAngle ? (
           <Typography.Text className="wheel-pointer-angle">{pointerAngle.toFixed(1)}°</Typography.Text>
+        ) : null}
+        {showAngleControl ? (
+          <div className="wheel-angle-control">
+            <Typography.Text className="wheel-angle-control__title">角度控制</Typography.Text>
+            <Segmented
+              block
+              options={angleControlDirectionOptions}
+              value={angleControlDirection}
+              onChange={(value) => onAngleDirectionChange(value as AngleDirection)}
+              disabled={angleControlDisabled}
+            />
+            <InputNumber
+              className="wheel-angle-control__input"
+              min={0}
+              step={1}
+              value={angleControlValue}
+              addonAfter="°"
+              onChange={onAngleValueChange}
+              disabled={angleControlDisabled}
+            />
+            <Button type="primary" block onClick={onAngleRotate} disabled={angleControlDisabled || angleControlValue <= 0}>
+              旋转
+            </Button>
+          </div>
         ) : null}
       </div>
     </div>

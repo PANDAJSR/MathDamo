@@ -214,7 +214,7 @@
 
 .wheel-inline-settings {
   display: grid;
-  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
   margin-bottom: 14px;
   overflow-x: auto;
@@ -360,6 +360,10 @@
     width: 120px;
     height: 44px;
     font-size: 16px;
+  }
+
+  .wheel-board--angle-control {
+    margin-bottom: 176px;
   }
 
   .wheel-item-row {

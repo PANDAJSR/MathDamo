@@ -12,9 +12,40 @@
   font-weight: 700;
 }
 
+.wheel-angle-control {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 16px);
+  z-index: 7;
+  display: grid;
+  gap: 10px;
+  width: min(42vw, 220px);
+  padding: 12px;
+  border-radius: 12px;
+  transform: translateY(-50%);
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+.wheel-angle-control__title {
+  font-size: 13px;
+  color: #475569;
+}
+
+.wheel-angle-control__input {
+  width: 100%;
+}
+
 @media (max-width: 900px) {
   .wheel-pointer-angle {
     bottom: 18%;
+  }
+
+  .wheel-angle-control {
+    left: calc(100% + 10px);
+    width: min(44vw, 200px);
+    padding: 10px;
   }
 }
 
@@ -23,5 +54,12 @@
     bottom: 16%;
     font-size: 12px;
     padding: 2px 8px;
+  }
+
+  .wheel-angle-control {
+    top: calc(100% + 12px);
+    left: 50%;
+    width: min(88vw, 360px);
+    transform: translateX(-50%);
   }
 }

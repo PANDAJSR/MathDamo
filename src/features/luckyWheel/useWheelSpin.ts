@@ -8,9 +8,12 @@ const MANUAL_SETTLE_TURNS = 2
 const MANUAL_ROLL_SPEED_DPS = 720
 const AUTO_SPIN_EASING = 'cubic-bezier(0.18, 0.82, 0.18, 1)'
 const MANUAL_STOP_EASING = 'cubic-bezier(0, 0, 0.2, 1)'
+const ANGLE_CONTROL_EASING = 'cubic-bezier(0.2, 0.8, 0.2, 1)'
+const ANGLE_CONTROL_DURATION_MS = 420
 
 export type SpinMode = 'auto' | 'manual'
 export type RotationMode = 'wheel' | 'pointer'
+export type AngleDirection = 'clockwise' | 'counterclockwise'
 
 type UseWheelSpinParams = {
   items: WheelItem[]
@@ -27,8 +30,10 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
   const [rotationMode, setRotationMode] = useState<RotationMode>('wheel')
   const [manualRolling, setManualRolling] = useState(false)
   const [transitionTimingFunction, setTransitionTimingFunction] = useState(AUTO_SPIN_EASING)
+  const [activeDurationMs, setActiveDurationMs] = useState(spinDurationMs)
   const rotationRef = useRef(0)
   const spinTimerRef = useRef<number | null>(null)
+  const angleControlTimerRef = useRef<number | null>(null)
   const manualRafRef = useRef<number | null>(null)
   const manualStartTimeRef = useRef<number | null>(null)
   const manualBaseRotationRef = useRef(0)
@@ -49,6 +54,12 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
     if (spinTimerRef.current === null) return
     window.clearTimeout(spinTimerRef.current)
     spinTimerRef.current = null
+  }
+
+  const clearAngleControlTimer = () => {
+    if (angleControlTimerRef.current === null) return
+    window.clearTimeout(angleControlTimerRef.current)
+    angleControlTimerRef.current = null
   }
 
   const stopManualRaf = () => {
@@ -82,6 +93,7 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
     setSpinning(true)
     setManualRolling(false)
     setTransitionTimingFunction(easing)
+    setActiveDurationMs(spinDurationMs)
     setActiveRotation(nextRotation)
 
     spinTimerRef.current = window.setTimeout(() => {
@@ -147,17 +159,42 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
 
   const resetWheelBoardState = () => {
     clearSpinTimer()
+    clearAngleControlTimer()
     stopManualRaf()
     setWheelRotation(0)
     setPointerRotation(0)
     setSpinning(false)
     setSelectedId(null)
     setManualRolling(false)
+    setActiveDurationMs(spinDurationMs)
+  }
+
+  const rotateByAngle = (direction: AngleDirection, angle: number) => {
+    if (spinning || manualRolling) return
+    const sanitizedAngle = Number.isFinite(angle) ? Math.max(0, angle) : 0
+    if (sanitizedAngle <= 0) return
+
+    const signedAngle =
+      (rotationMode === 'wheel' && direction === 'clockwise') ||
+      (rotationMode === 'pointer' && direction === 'counterclockwise')
+        ? sanitizedAngle
+        : -sanitizedAngle
+
+    setSelectedId(null)
+    setTransitionTimingFunction(ANGLE_CONTROL_EASING)
+    setActiveDurationMs(ANGLE_CONTROL_DURATION_MS)
+    setActiveRotation(rotationRef.current + signedAngle)
+    clearAngleControlTimer()
+    angleControlTimerRef.current = window.setTimeout(() => {
+      setActiveDurationMs(spinDurationMs)
+      angleControlTimerRef.current = null
+    }, ANGLE_CONTROL_DURATION_MS)
   }
 
   useEffect(() => {
     return () => {
       clearSpinTimer()
+      clearAngleControlTimer()
       stopManualRaf()
     }
   }, [])
@@ -171,7 +208,7 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
   }, [manualRolling, spinMode, spinning])
 
   const spinButtonDisabled = items.length === 0 || (spinning && !manualRolling)
-  const shouldAnimateRotation = spinning && !manualRolling
+  const shouldAnimateRotation = (spinning && !manualRolling) || activeDurationMs !== spinDurationMs
 
   return {
     wheelRotation,
@@ -183,10 +220,12 @@ export function useWheelSpin({ items, segments, spinDurationMs }: UseWheelSpinPa
     spinButtonLabel,
     spinButtonDisabled,
     shouldAnimateRotation,
+    activeDurationMs,
     transitionTimingFunction,
     setSpinMode: handleSpinModeChange,
     setRotationMode,
     onSpinButtonClick,
+    rotateByAngle,
     resetWheelBoardState,
   }
 }
