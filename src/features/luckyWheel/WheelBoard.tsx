@@ -26,6 +26,7 @@ type WheelBoardProps = {
   angleControlDirectionOptions: Array<{ label: string; value: AngleDirection }>
   angleControlValue: number
   angleControlDisabled: boolean
+  pointerElementRef: RefObject<HTMLDivElement | null>
   wheelBoardRef: RefObject<HTMLDivElement | null>
   spinButtonRef: RefObject<HTMLButtonElement | null>
   onSpinButtonClick: () => void
@@ -56,6 +57,7 @@ export function WheelBoard({
   angleControlDirectionOptions,
   angleControlValue,
   angleControlDisabled,
+  pointerElementRef,
   wheelBoardRef,
   spinButtonRef,
   onSpinButtonClick,
@@ -84,6 +86,7 @@ export function WheelBoard({
       >
         {pointerInCenter ? (
           <div
+            ref={pointerElementRef}
             className="wheel-pointer wheel-pointer--center"
             style={{
               transform: `translate(-50%, -50%) rotate(${pointerRotation}deg)`,

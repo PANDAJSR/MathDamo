@@ -5,6 +5,7 @@ import { addWheelHistory, loadWheelHistory, removeWheelHistory, type WheelHistor
 import { formatHistoryTime, INITIAL_ITEMS, toWheelItems } from './luckyWheel/presets'
 import { createSharedWheelSearch, sanitizeSharedWheelItems, type SharedWheelItem } from './luckyWheel/share'
 import { type AngleDirection, type RotationMode, type SpinMode, useWheelSpin } from './luckyWheel/useWheelSpin'
+import { useVisualPointerAngle } from './luckyWheel/useVisualPointerAngle'
 import { WheelBoard } from './luckyWheel/WheelBoard'
 import { buildWheelSegments, clampWeight, type WheelItem } from './luckyWheel/wheelMath'
 
@@ -24,6 +25,7 @@ type EditorTabKey = 'create' | 'history'
 
 export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelProps) {
   const wheelBoardRef = useRef<HTMLDivElement | null>(null)
+  const pointerElementRef = useRef<HTMLDivElement | null>(null)
   const spinButtonRef = useRef<HTMLButtonElement | null>(null)
 
   const resolvedInitialItems = useMemo(
@@ -112,7 +114,12 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
   })
 
   const selectedItem = useMemo(() => items.find((item) => item.id === selectedId) ?? null, [items, selectedId])
-  const displayPointerAngle = ((pointerRotation % 360) + 360) % 360
+  const displayPointerAngle = useVisualPointerAngle({
+    pointerElementRef,
+    pointerRotation,
+    rotationMode,
+    showPointerAngle,
+  })
   const spinModeOptions: Array<{ label: string; value: SpinMode }> = [{ label: '自动停止', value: 'auto' }, { label: '手动点击停止', value: 'manual' }]
   const rotationModeOptions: Array<{ label: string; value: RotationMode }> = [{ label: '转盘旋转', value: 'wheel' }, { label: '指针旋转', value: 'pointer' }]
   const angleDirectionOptions: Array<{ label: string; value: AngleDirection }> = [
@@ -141,6 +148,7 @@ export function LuckyWheel({ initialItems, lockedByShare = false }: LuckyWheelPr
     angleControlDirectionOptions: angleDirectionOptions,
     angleControlValue: angleValue,
     angleControlDisabled: spinning,
+    pointerElementRef,
     wheelBoardRef,
     spinButtonRef,
     onSpinButtonClick,
