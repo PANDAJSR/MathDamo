@@ -1,0 +1,47 @@
+.simple-recorder-page {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.simple-recorder-card {
+  border-radius: 16px;
+}
+
+.simple-recorder-stack {
+  width: 100%;
+}
+
+.simple-recorder-help {
+  margin-bottom: 0;
+}
+
+.simple-recorder-device-select {
+  width: 280px;
+}
+
+.simple-recorder-waveform {
+  width: 100%;
+  height: 220px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.simple-recorder-download-link {
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.simple-recorder-download-link:hover {
+  color: #1e40af;
+}
+
+@media (max-width: 640px) {
+  .simple-recorder-device-select {
+    width: 100%;
+  }
+
+  .simple-recorder-waveform {
+    height: 180px;
+  }
+}

@@ -5,11 +5,13 @@ import { LuckyWheel } from './features/LuckyWheel'
 import { parseSharedWheelConfigFromSearch } from './features/luckyWheel/share'
 import { ModelViewer3D } from './features/ModelViewer3D'
 import { ShapeScaleDemo } from './features/ShapeScaleDemo'
+import { SimpleRecorder } from './features/SimpleRecorder'
 
 const menuItems = [
   { key: 'shape-scale', label: '图形的放大和缩小' },
   { key: 'model-viewer', label: '3d模型查看器' },
   { key: 'lucky-wheel', label: '转盘' },
+  { key: 'simple-recorder', label: '简单录音机' },
 ]
 
 const defaultMenuKey = 'shape-scale'
@@ -47,7 +49,8 @@ function App() {
   const renderContent = () => {
     if (activeKey === 'shape-scale') return <ShapeScaleDemo />
     if (activeKey === 'model-viewer') return <ModelViewer3D />
-    return <LuckyWheel />
+    if (activeKey === 'lucky-wheel') return <LuckyWheel />
+    return <SimpleRecorder />
   }
 
   if (sharedWheelConfig) {
