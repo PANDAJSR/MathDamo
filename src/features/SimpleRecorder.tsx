@@ -3,6 +3,9 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import './SimpleRecorder.css'
 
 const DEFAULT_AUDIO_TYPE = 'audio/webm;codecs=opus'
+const WAVEFORM_POINTS = 180
+const WAVEFORM_TARGET_FPS = 24
+const WAVEFORM_SMOOTHING_FACTOR = 0.18
 
 interface AudioDeviceOption {
   value: string
@@ -24,6 +27,7 @@ const drawWaveform = (
   canvas: HTMLCanvasElement,
   analyser: AnalyserNode,
   dataArray: Uint8Array<ArrayBuffer>,
+  smoothedDataArray: Uint8Array<ArrayBuffer>,
 ) => {
   const context = canvas.getContext('2d')
   if (!context) return
@@ -39,14 +43,20 @@ const drawWaveform = (
   context.strokeStyle = '#1d4ed8'
   context.beginPath()
 
-  const sliceWidth = width / dataArray.length
+  const pointStep = Math.max(1, Math.floor(dataArray.length / WAVEFORM_POINTS))
+  const pointsCount = Math.ceil(dataArray.length / pointStep)
+  const sliceWidth = width / Math.max(1, pointsCount - 1)
   let x = 0
 
-  for (let i = 0; i < dataArray.length; i += 1) {
-    const normalizedValue = dataArray[i] / 128.0
+  for (let i = 0; i < dataArray.length; i += pointStep) {
+    const smoothedValue = Math.round(
+      smoothedDataArray[i] * (1 - WAVEFORM_SMOOTHING_FACTOR) + dataArray[i] * WAVEFORM_SMOOTHING_FACTOR,
+    )
+    smoothedDataArray[i] = smoothedValue
+    const normalizedValue = smoothedValue / 128.0
     const y = (normalizedValue * height) / 2
 
-    if (i === 0) {
+    if (x === 0) {
       context.moveTo(x, y)
     } else {
       context.lineTo(x, y)
@@ -74,7 +84,9 @@ export function SimpleRecorder() {
   const audioContextRef = useRef<AudioContext | null>(null)
   const analyserRef = useRef<AnalyserNode | null>(null)
   const animationFrameRef = useRef<number | null>(null)
+  const lastDrawTimestampRef = useRef(0)
   const waveformDataRef = useRef<Uint8Array<ArrayBuffer> | null>(null)
+  const smoothedWaveformDataRef = useRef<Uint8Array<ArrayBuffer> | null>(null)
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   const clearWaveform = useCallback(() => {
@@ -105,6 +117,8 @@ export function SimpleRecorder() {
 
     analyserRef.current = null
     waveformDataRef.current = null
+    smoothedWaveformDataRef.current = null
+    lastDrawTimestampRef.current = 0
     clearWaveform()
   }, [clearWaveform])
 
@@ -153,18 +167,24 @@ export function SimpleRecorder() {
     audioContextRef.current = audioContext
     analyserRef.current = analyser
     waveformDataRef.current = new Uint8Array(new ArrayBuffer(analyser.frequencyBinCount))
+    smoothedWaveformDataRef.current = new Uint8Array(new ArrayBuffer(analyser.frequencyBinCount))
 
-    const animate = () => {
+    const animate = (timestamp: number) => {
       const canvas = canvasRef.current
       const activeAnalyser = analyserRef.current
       const dataArray = waveformDataRef.current
-      if (!canvas || !activeAnalyser || !dataArray) return
+      const smoothedDataArray = smoothedWaveformDataRef.current
+      if (!canvas || !activeAnalyser || !dataArray || !smoothedDataArray) return
 
-      drawWaveform(canvas, activeAnalyser, dataArray)
+      if (timestamp - lastDrawTimestampRef.current >= 1000 / WAVEFORM_TARGET_FPS) {
+        drawWaveform(canvas, activeAnalyser, dataArray, smoothedDataArray)
+        lastDrawTimestampRef.current = timestamp
+      }
+
       animationFrameRef.current = requestAnimationFrame(animate)
     }
 
-    animate()
+    animationFrameRef.current = requestAnimationFrame(animate)
   }, [])
 
   const requestPermission = useCallback(async () => {
