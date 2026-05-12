@@ -65,10 +65,10 @@ export const createMonster = (id: number, score: number): Monster => {
   const edge = Math.floor(Math.random() * 4)
   const offset = Math.random()
   const startPoints = [
-    { x: -60, y: 70 + offset * (HEIGHT - 140) },
-    { x: WIDTH + 60, y: 70 + offset * (HEIGHT - 140) },
-    { x: 90 + offset * (WIDTH - 180), y: -60 },
-    { x: 90 + offset * (WIDTH - 180), y: HEIGHT + 60 },
+    { x: 70, y: 80 + offset * (HEIGHT - 160) },
+    { x: WIDTH - 70, y: 80 + offset * (HEIGHT - 160) },
+    { x: 100 + offset * (WIDTH - 200), y: 70 },
+    { x: 100 + offset * (WIDTH - 200), y: HEIGHT - 70 },
   ]
   const start = startPoints[edge]
 
@@ -81,6 +81,10 @@ export const createMonster = (id: number, score: number): Monster => {
     size: 34 + Math.random() * 10,
   }
 }
+
+export const createOpeningWave = (startId: number, count: number) => (
+  Array.from({ length: count }, (_, index) => createMonster(startId + index, 0))
+)
 
 export const axisLine = (axis: Axis) => {
   const angle = (axis.angle * Math.PI) / 180

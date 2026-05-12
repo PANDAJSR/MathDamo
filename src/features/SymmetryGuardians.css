@@ -192,6 +192,12 @@
   box-shadow: 0 0 18px rgba(131, 247, 209, 0.36);
 }
 
+.symmetry-guardians .ant-btn:disabled {
+  color: rgba(238, 253, 249, 0.36);
+  background: rgba(5, 27, 27, 0.55);
+  border-color: rgba(68, 215, 197, 0.24);
+}
+
 @keyframes guardian-spin {
   to {
     transform: rotate(360deg);

@@ -11,6 +11,7 @@ import {
   WIDTH,
   axisLine,
   createMonster,
+  createOpeningWave,
   getCompletionPoint,
   getDistance,
   monsterRotation,
@@ -120,18 +121,19 @@ export function SymmetryGuardians() {
 
   const restart = useCallback(() => {
     if (ultimateTimerRef.current) window.clearTimeout(ultimateTimerRef.current)
+    const openingWave = createOpeningWave(1, 4)
     scoreRef.current = 0
     livesRef.current = START_LIVES
-    monsterIdRef.current = 1
+    monsterIdRef.current = openingWave.length + 1
     spawnElapsedRef.current = 0
     setScore(0)
     setLives(START_LIVES)
-    setMonsters([])
+    setMonsters(openingWave)
     setAxis(normalAxes[0])
     setUltimateAxis(null)
     setCharge(0)
     setStrokes([])
-    setMessage('点击镜像点或 180° 旋转点，补全怪兽')
+    setMessage('点击怪兽另一侧的虚线圆，补全镜像或 180° 旋转点')
     setMode('running')
   }, [])
 
