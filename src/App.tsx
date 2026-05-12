@@ -1,6 +1,7 @@
 import { Layout, Menu } from 'antd'
 import { useEffect, useMemo, useState } from 'react'
 import './App.css'
+import { FlavorChallenge } from './features/FlavorChallenge'
 import { LuckyWheel } from './features/LuckyWheel'
 import { parseSharedWheelConfigFromSearch } from './features/luckyWheel/share'
 import { ModelViewer3D } from './features/ModelViewer3D'
@@ -14,6 +15,7 @@ const menuItems = [
   { key: 'lucky-wheel', label: '转盘' },
   { key: 'simple-recorder', label: '简单录音机' },
   { key: 'pi-racer', label: '极速圆周率' },
+  { key: 'flavor-challenge', label: '调味师大挑战' },
 ]
 
 const defaultMenuKey = 'shape-scale'
@@ -53,6 +55,7 @@ function App() {
     if (activeKey === 'model-viewer') return <ModelViewer3D />
     if (activeKey === 'lucky-wheel') return <LuckyWheel />
     if (activeKey === 'pi-racer') return <PiRacer />
+    if (activeKey === 'flavor-challenge') return <FlavorChallenge />
     return <SimpleRecorder />
   }
 
