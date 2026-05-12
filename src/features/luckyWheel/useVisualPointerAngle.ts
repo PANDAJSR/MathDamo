@@ -1,4 +1,4 @@
-import { useEffect, useState, type RefObject } from 'react'
+import { useEffect, useMemo, useState, type RefObject } from 'react'
 import type { RotationMode } from './useWheelSpin'
 
 const ANGLE_UPDATE_EPSILON = 0.05
@@ -28,12 +28,12 @@ export function useVisualPointerAngle({
   rotationMode,
   showPointerAngle,
 }: UseVisualPointerAngleParams) {
+  const staticPointerAngle = useMemo(() => normalizeDegree(pointerRotation), [pointerRotation])
   const [visualPointerAngle, setVisualPointerAngle] = useState(() => normalizeDegree(pointerRotation))
 
   useEffect(() => {
     if (rotationMode !== 'pointer' || !showPointerAngle) {
-      setVisualPointerAngle(normalizeDegree(pointerRotation))
-      return
+      return undefined
     }
 
     let rafId = 0
@@ -48,10 +48,10 @@ export function useVisualPointerAngle({
       rafId = window.requestAnimationFrame(tick)
     }
 
-    tick()
+    rafId = window.requestAnimationFrame(tick)
 
     return () => window.cancelAnimationFrame(rafId)
   }, [pointerElementRef, pointerRotation, rotationMode, showPointerAngle])
 
-  return visualPointerAngle
+  return rotationMode === 'pointer' && showPointerAngle ? visualPointerAngle : staticPointerAngle
 }
