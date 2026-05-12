@@ -10,6 +10,7 @@ export type Clue = {
 }
 
 export type Ring = {
+  clue: Clue
   circumference: number
 }
 
@@ -34,8 +35,12 @@ const shuffle = <T,>(items: T[]) => {
 }
 
 const createClue = (levelBias: number): Clue => {
-  const kind = shuffle<ClueKind>(['diameter', 'radius', 'area'])[0]
   const radius = roundOne(6 + Math.random() * 11 + levelBias * 0.35)
+  return createClueFromRadius(radius)
+}
+
+const createClueFromRadius = (radius: number): Clue => {
+  const kind = shuffle<ClueKind>(['diameter', 'radius', 'area'])[0]
 
   if (kind === 'diameter') {
     return {
@@ -58,7 +63,7 @@ const createClue = (levelBias: number): Clue => {
   return {
     kind,
     name: '面积',
-    symbol: 'A',
+    symbol: 'S',
     value: roundOne(PI_VALUE * radius * radius),
   }
 }
@@ -81,6 +86,16 @@ export const getFormulaText = (clue: Clue) => {
   return `2 x √(${clue.value.toFixed(1)} x 3.14)`
 }
 
+const createRing = (circumference: number): Ring => {
+  const radius = circumference / (2 * PI_VALUE)
+  const clue = createClueFromRadius(radius)
+
+  return {
+    clue,
+    circumference: getCircumferenceFromClue(clue),
+  }
+}
+
 export const createWave = (score: number): Wave => {
   const levelBias = Math.min(8, Math.floor(score / 80))
   const clue = createClue(levelBias)
@@ -88,10 +103,8 @@ export const createWave = (score: number): Wave => {
   const targetCircumference = getCircumferenceFromClue(clue)
   const offsets = shuffle([-0.24, -0.15, 0.16, 0.26]).slice(0, 2)
   const rings = shuffle([
-    { circumference: targetCircumference },
-    ...offsets.map((offset) => ({
-      circumference: roundOne(targetCircumference * (1 + offset)),
-    })),
+    createRing(targetCircumference),
+    ...offsets.map((offset) => createRing(roundOne(targetCircumference * (1 + offset)))),
   ])
 
   return { clue, diameter, targetCircumference, rings }

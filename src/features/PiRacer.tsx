@@ -287,10 +287,10 @@ export function PiRacer() {
         {wave.rings.map((ring, index) => (
           <div
             className="pi-racer__ring"
-            key={`${ring.circumference}-${index}`}
+            key={`${ring.clue.symbol}-${ring.clue.value}-${index}`}
             style={{ left: `${ringX}%`, top: `${LANE_TOPS[index]}%` }}
           >
-            <span>C = {ring.circumference.toFixed(1)}</span>
+            <span>{ring.clue.symbol} = {ring.clue.value.toFixed(1)}</span>
           </div>
         ))}
 
