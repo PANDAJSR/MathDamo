@@ -8,6 +8,7 @@ import { ModelViewer3D } from './features/ModelViewer3D'
 import { PiRacer } from './features/PiRacer'
 import { ShapeScaleDemo } from './features/ShapeScaleDemo'
 import { SimpleRecorder } from './features/SimpleRecorder'
+import { SymmetryGuardians } from './features/SymmetryGuardians'
 
 const menuItems = [
   { key: 'shape-scale', label: '图形的放大和缩小' },
@@ -16,6 +17,7 @@ const menuItems = [
   { key: 'simple-recorder', label: '简单录音机' },
   { key: 'pi-racer', label: '极速圆周率' },
   { key: 'flavor-challenge', label: '调味师大挑战' },
+  { key: 'symmetry-guardians', label: '对称守卫者' },
 ]
 
 const defaultMenuKey = 'shape-scale'
@@ -56,6 +58,7 @@ function App() {
     if (activeKey === 'lucky-wheel') return <LuckyWheel />
     if (activeKey === 'pi-racer') return <PiRacer />
     if (activeKey === 'flavor-challenge') return <FlavorChallenge />
+    if (activeKey === 'symmetry-guardians') return <SymmetryGuardians />
     return <SimpleRecorder />
   }
 

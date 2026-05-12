@@ -1,0 +1,228 @@
+.symmetry-guardians {
+  position: relative;
+  min-height: calc(100vh - 64px);
+  padding: 22px;
+  overflow: hidden;
+  color: #eefdf9;
+  background:
+    linear-gradient(90deg, rgba(74, 222, 128, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 78% 16%, rgba(245, 158, 11, 0.22), transparent 24%),
+    #06110f;
+  background-size: 38px 38px, 38px 38px, auto, auto;
+  border: 1px solid rgba(68, 215, 197, 0.34);
+  box-shadow: inset 0 0 42px rgba(68, 215, 197, 0.14);
+}
+
+.symmetry-guardians--ultimate {
+  border-color: rgba(255, 180, 84, 0.75);
+  box-shadow:
+    inset 0 0 48px rgba(255, 180, 84, 0.18),
+    0 0 24px rgba(255, 180, 84, 0.22);
+}
+
+.symmetry-guardians__hud {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.symmetry-guardians__hud h1 {
+  margin: 0 0 6px;
+  color: #bdf7e7;
+  font-size: 28px;
+  line-height: 1.16;
+}
+
+.symmetry-guardians__hud p {
+  color: #9ee9e0;
+  font-size: 15px;
+}
+
+.symmetry-guardians__stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 9px;
+  max-width: 520px;
+  color: #dffdf7;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.symmetry-guardians__stats span {
+  padding: 8px 11px;
+  background: rgba(5, 27, 27, 0.82);
+  border: 1px solid rgba(68, 215, 197, 0.38);
+  box-shadow: 0 0 14px rgba(68, 215, 197, 0.11);
+}
+
+.symmetry-guardians__arena {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: min(640px, calc(100vh - 190px));
+  min-height: 430px;
+  overflow: hidden;
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+  border: 1px solid rgba(68, 215, 197, 0.42);
+  background: rgba(2, 10, 12, 0.82);
+  box-shadow: inset 0 0 36px rgba(68, 215, 197, 0.12);
+}
+
+.symmetry-guardians__arena rect {
+  fill:
+    color-mix(in srgb, #06110f 88%, #1c6b67);
+}
+
+.symmetry-guardians__axis {
+  stroke: #e6ff70;
+  stroke-width: 3;
+  stroke-dasharray: 12 12;
+  filter: drop-shadow(0 0 8px rgba(230, 255, 112, 0.6));
+}
+
+.symmetry-guardians--ultimate .symmetry-guardians__axis {
+  stroke: #ffb454;
+  stroke-width: 5;
+  filter: drop-shadow(0 0 12px rgba(255, 180, 84, 0.82));
+}
+
+.symmetry-guardians__core-ring {
+  fill: none;
+  stroke: rgba(131, 247, 209, 0.35);
+  stroke-width: 2;
+  stroke-dasharray: 8 10;
+  animation: guardian-spin 9s linear infinite;
+  transform-origin: 500px 310px;
+}
+
+.symmetry-guardians__core {
+  fill: url('#guardian-core');
+  stroke: rgba(255, 255, 255, 0.86);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 18px rgba(131, 247, 209, 0.65));
+}
+
+.symmetry-guardians__core-label {
+  fill: #06201f;
+  font-size: 22px;
+  font-weight: 900;
+  pointer-events: none;
+}
+
+.symmetry-guardians__target {
+  fill: rgba(255, 255, 255, 0.02);
+  stroke: rgba(255, 255, 255, 0.13);
+  stroke-width: 2;
+}
+
+.symmetry-guardians--ultimate .symmetry-guardians__target {
+  fill: rgba(255, 180, 84, 0.09);
+  stroke: rgba(255, 180, 84, 0.42);
+}
+
+.symmetry-guardians__arena text {
+  fill: #f4fffb;
+  font-size: 18px;
+  font-weight: 900;
+  pointer-events: none;
+  paint-order: stroke;
+  stroke: rgba(2, 10, 12, 0.8);
+  stroke-width: 4px;
+}
+
+.symmetry-guardians__stroke {
+  fill: none;
+  stroke: #ffdd7a;
+  stroke-width: 9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 10px rgba(255, 180, 84, 0.8));
+  opacity: 0.86;
+}
+
+.symmetry-guardians__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  padding: 24px;
+  color: #eafff8;
+  text-align: center;
+  background: rgba(2, 8, 10, 0.72);
+}
+
+.symmetry-guardians__overlay h2 {
+  margin: 0 0 8px;
+  color: #bdf7e7;
+  font-size: 44px;
+  line-height: 1.05;
+}
+
+.symmetry-guardians__overlay p {
+  margin-bottom: 20px;
+  color: #9ee9e0;
+  font-size: 16px;
+}
+
+.symmetry-guardians__controls {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.symmetry-guardians .ant-btn-primary {
+  color: #05201a;
+  background: #83f7d1;
+  border-color: #83f7d1;
+  box-shadow: 0 0 18px rgba(131, 247, 209, 0.36);
+}
+
+@keyframes guardian-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .symmetry-guardians {
+    min-height: calc(100vh - 48px);
+    padding: 14px;
+  }
+
+  .symmetry-guardians__hud {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .symmetry-guardians__hud h1 {
+    font-size: 23px;
+  }
+
+  .symmetry-guardians__stats {
+    justify-content: flex-start;
+  }
+
+  .symmetry-guardians__arena {
+    height: 520px;
+    min-height: 410px;
+  }
+
+  .symmetry-guardians__overlay h2 {
+    font-size: 34px;
+  }
+}
