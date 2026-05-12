@@ -1,5 +1,5 @@
 import { Button } from 'antd'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent, type WheelEvent } from 'react'
 import './PiRacer.css'
 
 const PI_VALUE = 3.14
@@ -10,6 +10,8 @@ const START_X = 106
 const COLLISION_X = 16
 const FLASH_DURATION_MS = 220
 const NEXT_WAVE_DELAY_MS = 420
+const SWIPE_THRESHOLD_PX = 36
+const WHEEL_THRESHOLD_PX = 28
 
 type Ring = {
   circumference: number
@@ -73,6 +75,8 @@ export function PiRacer() {
   const waveRef = useRef(wave)
   const ringXRef = useRef(ringX)
   const advancingRef = useRef(false)
+  const pointerStartYRef = useRef<number | null>(null)
+  const wheelDeltaRef = useRef(0)
   const nextWaveTimerRef = useRef<number | null>(null)
   const flashTimerRef = useRef<number | null>(null)
 
@@ -118,6 +122,10 @@ export function PiRacer() {
     flashTimerRef.current = window.setTimeout(() => {
       setFlashTone(null)
     }, FLASH_DURATION_MS)
+  }, [])
+
+  const moveLane = useCallback((direction: -1 | 1, steps = 1) => {
+    setPlayerLane((lane) => Math.max(0, Math.min(LANE_COUNT - 1, lane + direction * steps)))
   }, [])
 
   const launchWave = useCallback((nextScore: number) => {
@@ -192,12 +200,12 @@ export function PiRacer() {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowUp' || event.key.toLowerCase() === 'w') {
         event.preventDefault()
-        setPlayerLane((lane) => Math.max(0, lane - 1))
+        moveLane(-1)
       }
 
       if (event.key === 'ArrowDown' || event.key.toLowerCase() === 's') {
         event.preventDefault()
-        setPlayerLane((lane) => Math.min(LANE_COUNT - 1, lane + 1))
+        moveLane(1)
       }
 
       if (event.key === ' ' && mode !== 'game-over') {
@@ -208,7 +216,7 @@ export function PiRacer() {
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [mode])
+  }, [mode, moveLane])
 
   useEffect(() => {
     if (mode !== 'running') return undefined
@@ -239,8 +247,37 @@ export function PiRacer() {
     return () => window.cancelAnimationFrame(frameId)
   }, [mode, resolveCollision])
 
-  const handleMove = (direction: -1 | 1) => {
-    setPlayerLane((lane) => Math.max(0, Math.min(LANE_COUNT - 1, lane + direction)))
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    pointerStartYRef.current = event.clientY
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (pointerStartYRef.current === null) return
+
+    const deltaY = event.clientY - pointerStartYRef.current
+    const steps = Math.trunc(Math.abs(deltaY) / SWIPE_THRESHOLD_PX)
+    if (steps === 0) return
+
+    const direction = deltaY > 0 ? 1 : -1
+    moveLane(direction, steps)
+    pointerStartYRef.current += direction * SWIPE_THRESHOLD_PX * steps
+  }
+
+  const handlePointerEnd = () => {
+    pointerStartYRef.current = null
+  }
+
+  const handleWheel = (event: WheelEvent<HTMLDivElement>) => {
+    event.preventDefault()
+    wheelDeltaRef.current += event.deltaY
+
+    const steps = Math.trunc(Math.abs(wheelDeltaRef.current) / WHEEL_THRESHOLD_PX)
+    if (steps === 0) return
+
+    const direction = wheelDeltaRef.current > 0 ? 1 : -1
+    moveLane(direction, steps)
+    wheelDeltaRef.current -= direction * WHEEL_THRESHOLD_PX * steps
   }
 
   return (
@@ -254,7 +291,15 @@ export function PiRacer() {
         </div>
       </div>
 
-      <div className="pi-racer__arena" aria-label="极速圆周率游戏区域">
+      <div
+        className="pi-racer__arena"
+        aria-label="极速圆周率游戏区域"
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerEnd}
+        onPointerCancel={handlePointerEnd}
+        onWheel={handleWheel}
+      >
         <div className="pi-racer__grid" />
         {LANE_TOPS.map((top, index) => (
           <div
@@ -287,7 +332,7 @@ export function PiRacer() {
 
         <div className="pi-racer__status">
           <strong>{mode === 'game-over' ? '游戏结束' : message}</strong>
-          <span>W/S 或 ↑/↓ 移动，空格暂停</span>
+          <span>W/S、↑/↓、滑动或滚轮移动，空格暂停</span>
         </div>
 
         {mode !== 'running' && (
@@ -304,11 +349,11 @@ export function PiRacer() {
       </div>
 
       <div className="pi-racer__controls" aria-label="移动控制">
-        <Button onClick={() => handleMove(-1)}>上移</Button>
+        <Button onClick={() => moveLane(-1)}>上移</Button>
         <Button onClick={() => setMode((currentMode) => (currentMode === 'running' ? 'paused' : 'running'))}>
           {mode === 'running' ? '暂停' : '继续'}
         </Button>
-        <Button onClick={() => handleMove(1)}>下移</Button>
+        <Button onClick={() => moveLane(1)}>下移</Button>
         <Button onClick={restart}>重开</Button>
       </div>
     </section>

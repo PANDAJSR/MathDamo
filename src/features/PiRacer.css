@@ -79,11 +79,18 @@
   height: min(620px, calc(100vh - 196px));
   min-height: 430px;
   overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
   border: 1px solid rgba(53, 216, 255, 0.42);
   background:
     linear-gradient(90deg, rgba(77, 255, 136, 0.16), transparent 18%, transparent 82%, rgba(53, 216, 255, 0.16)),
     rgba(0, 8, 10, 0.82);
   box-shadow: inset 0 0 38px rgba(53, 216, 255, 0.16);
+}
+
+.pi-racer__arena:active {
+  cursor: grabbing;
 }
 
 .pi-racer__grid {
