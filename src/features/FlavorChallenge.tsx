@@ -51,6 +51,8 @@ export function FlavorChallenge() {
   const total = getMixTotal(mix)
   const remaining = order.totalMl - total
   const accuracy = getAccuracy(expected, mix)
+  const canGoPrev = orderIndex > 0
+  const canGoNext = orderIndex < orders.length - 1
   const selectedOptions = activeIngredients.map((key) => ({
     label: ingredientMeta[key].label,
     value: key,
@@ -64,6 +66,8 @@ export function FlavorChallenge() {
 
   const goToOrder = (nextIndex: number) => {
     const nextOrder = orders[nextIndex]
+    if (!nextOrder) return
+
     setOrderIndex(nextIndex)
     setSelectedIngredient(nextOrder.primary)
     setMix(emptyMix)
@@ -150,17 +154,17 @@ export function FlavorChallenge() {
             status={total > order.totalMl ? 'exception' : 'active'}
           />
 
-          <Space wrap>
-            {orders.map((item, index) => (
-              <Button
-                key={item.id}
-                type={index === orderIndex ? 'primary' : 'default'}
-                onClick={() => goToOrder(index)}
-              >
-                第 {index + 1} 单
-              </Button>
-            ))}
-          </Space>
+          <div className="order-board__nav">
+            <Button disabled={!canGoPrev} onClick={() => goToOrder(orderIndex - 1)}>
+              上一单
+            </Button>
+            <span>
+              第 {orderIndex + 1} / {orders.length} 单
+            </span>
+            <Button type="primary" disabled={!canGoNext} onClick={() => goToOrder(orderIndex + 1)}>
+              下一单
+            </Button>
+          </div>
         </div>
 
         <div className="mixing-stage">
@@ -210,13 +214,21 @@ export function FlavorChallenge() {
             ))}
           </div>
 
-          <Space wrap>
-            <Button onClick={undoIngredient}>倒回 25ml</Button>
-            <Button onClick={resetCup}>清空</Button>
-            <Button type="primary" onClick={submitMix} disabled={total === 0}>
-              混合交付
+          <div className="action-row">
+            <Space wrap>
+              <Button onClick={undoIngredient}>倒回 25ml</Button>
+              <Button onClick={resetCup}>清空</Button>
+            </Space>
+            <Button
+              className="delivery-button"
+              type="primary"
+              onClick={submitMix}
+              disabled={total === 0}
+            >
+              混合
+              <span>交付</span>
             </Button>
-          </Space>
+          </div>
 
           <div className="feedback-panel">
             <strong>{feedback}</strong>
