@@ -12,6 +12,7 @@ const FLASH_DURATION_MS = 220
 const NEXT_WAVE_DELAY_MS = 420
 const SWIPE_THRESHOLD_PX = 36
 const WHEEL_THRESHOLD_PX = 28
+const INTERACTIVE_SELECTOR = 'button, input, select, textarea, a, [role="button"], .ant-btn'
 
 type GameMode = 'ready' | 'running' | 'paused' | 'game-over'
 type FlashTone = 'success' | 'danger' | null
@@ -206,6 +207,11 @@ export function PiRacer() {
   }, [mode, resolveCollision])
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if ((event.target as HTMLElement).closest(INTERACTIVE_SELECTOR)) {
+      pointerStartYRef.current = null
+      return
+    }
+
     pointerStartYRef.current = event.clientY
     event.currentTarget.setPointerCapture(event.pointerId)
   }
@@ -237,6 +243,11 @@ export function PiRacer() {
     moveLane(direction, steps)
     wheelDeltaRef.current -= direction * WHEEL_THRESHOLD_PX * steps
   }
+
+  const overlayTitle = mode === 'game-over' ? '游戏结束' : '极速圆周率'
+  const overlayDescription = mode === 'game-over'
+    ? `最终得分 ${score}，到达第 ${level} 关`
+    : '根据直径、半径或面积推算周长 C'
 
   return (
     <section className={`pi-racer ${flashTone ? `pi-racer--${flashTone}` : ''}`}>
@@ -300,10 +311,10 @@ export function PiRacer() {
         </div>
 
         {mode !== 'running' && (
-          <div className="pi-racer__overlay">
+          <div className={`pi-racer__overlay ${mode === 'game-over' ? 'pi-racer__overlay--game-over' : ''}`}>
             <div>
-              <h1>极速圆周率</h1>
-              <p>根据直径、半径或面积推算周长 C</p>
+              <h1>{overlayTitle}</h1>
+              <p>{overlayDescription}</p>
               <Button type="primary" size="large" onClick={mode === 'game-over' ? restart : () => setMode('running')}>
                 {mode === 'game-over' ? '重新开始' : '开始游戏'}
               </Button>

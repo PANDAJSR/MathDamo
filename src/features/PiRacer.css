@@ -264,9 +264,18 @@
   font-size: 42px;
 }
 
+.pi-racer__overlay--game-over h1 {
+  color: #ff8aa1;
+  text-shadow: 0 0 18px rgba(255, 61, 103, 0.72);
+}
+
 .pi-racer__overlay p {
   margin-bottom: 18px;
   color: #9ceeff;
+}
+
+.pi-racer__overlay--game-over p {
+  color: #ffd5df;
 }
 
 .pi-racer__controls {
