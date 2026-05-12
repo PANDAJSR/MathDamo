@@ -84,8 +84,9 @@ export function PiRacer() {
   }, [])
 
   const moveLane = useCallback((direction: -1 | 1, steps = 1) => {
+    if (mode !== 'running') return
     setPlayerLane((lane) => Math.max(0, Math.min(LANE_COUNT - 1, lane + direction * steps)))
-  }, [])
+  }, [mode])
 
   const launchWave = useCallback((nextScore: number) => {
     const nextWave = createWave(nextScore)
@@ -207,6 +208,8 @@ export function PiRacer() {
   }, [mode, resolveCollision])
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (mode !== 'running') return
+
     if ((event.target as HTMLElement).closest(INTERACTIVE_SELECTOR)) {
       pointerStartYRef.current = null
       return
@@ -217,6 +220,7 @@ export function PiRacer() {
   }
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (mode !== 'running') return
     if (pointerStartYRef.current === null) return
 
     const deltaY = event.clientY - pointerStartYRef.current
@@ -233,6 +237,8 @@ export function PiRacer() {
   }
 
   const handleWheel = (event: WheelEvent<HTMLDivElement>) => {
+    if (mode !== 'running') return
+
     event.preventDefault()
     wheelDeltaRef.current += event.deltaY
 
