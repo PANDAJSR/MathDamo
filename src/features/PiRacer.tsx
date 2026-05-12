@@ -1,8 +1,8 @@
 import { Button } from 'antd'
 import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent, type WheelEvent } from 'react'
 import './PiRacer.css'
+import { createWave, getFormulaText, getLevel, getSpeed, type Wave } from './piRacer/game'
 
-const PI_VALUE = 3.14
 const LANE_COUNT = 3
 const LANE_TOPS = [20, 50, 80]
 const INITIAL_LIVES = 3
@@ -13,50 +13,8 @@ const NEXT_WAVE_DELAY_MS = 420
 const SWIPE_THRESHOLD_PX = 36
 const WHEEL_THRESHOLD_PX = 28
 
-type Ring = {
-  circumference: number
-}
-
-type Wave = {
-  diameter: number
-  targetCircumference: number
-  rings: Ring[]
-}
-
 type GameMode = 'ready' | 'running' | 'paused' | 'game-over'
 type FlashTone = 'success' | 'danger' | null
-
-const roundOne = (value: number) => Math.round(value * 10) / 10
-
-const shuffle = <T,>(items: T[]) => {
-  const next = [...items]
-
-  for (let index = next.length - 1; index > 0; index -= 1) {
-    const swapIndex = Math.floor(Math.random() * (index + 1))
-    ;[next[index], next[swapIndex]] = [next[swapIndex], next[index]]
-  }
-
-  return next
-}
-
-const createWave = (score: number): Wave => {
-  const levelBias = Math.min(8, Math.floor(score / 80))
-  const diameter = roundOne(12 + Math.random() * 22 + levelBias * 0.8)
-  const targetCircumference = roundOne(diameter * PI_VALUE)
-  const offsets = shuffle([-0.24, -0.15, 0.16, 0.26]).slice(0, 2)
-  const rings = shuffle([
-    { circumference: targetCircumference },
-    ...offsets.map((offset) => ({
-      circumference: roundOne(targetCircumference * (1 + offset)),
-    })),
-  ])
-
-  return { diameter, targetCircumference, rings }
-}
-
-const getLevel = (score: number) => Math.floor(score / 50) + 1
-
-const getSpeed = (level: number) => Math.min(46, 17 + level * 3.6)
 
 export function PiRacer() {
   const [mode, setMode] = useState<GameMode>('ready')
@@ -66,7 +24,7 @@ export function PiRacer() {
   const [ringX, setRingX] = useState(START_X)
   const [wave, setWave] = useState<Wave>(() => createWave(0))
   const [flashTone, setFlashTone] = useState<FlashTone>(null)
-  const [message, setMessage] = useState('选择正确轨道，穿过匹配圆环')
+  const [message, setMessage] = useState('根据已知量计算周长，穿过匹配圆环')
 
   const scoreRef = useRef(score)
   const livesRef = useRef(lives)
@@ -153,7 +111,7 @@ export function PiRacer() {
     setPlayerLane(1)
     setRingX(START_X)
     setWave(nextWave)
-    setMessage('选择正确轨道，穿过匹配圆环')
+    setMessage('根据已知量计算周长，穿过匹配圆环')
     setFlashTone(null)
     setMode('running')
   }, [])
@@ -164,7 +122,7 @@ export function PiRacer() {
 
     const currentWave = waveRef.current
     const collidedRing = currentWave.rings[playerLaneRef.current]
-    const expectedCircumference = roundOne(currentWave.diameter * PI_VALUE)
+    const expectedCircumference = currentWave.targetCircumference
     const errorRatio = Math.abs(expectedCircumference - collidedRing.circumference) / collidedRing.circumference
     const matched = errorRatio < 0.05
 
@@ -172,7 +130,7 @@ export function PiRacer() {
       const nextScore = scoreRef.current + 10
       scoreRef.current = nextScore
       setScore(nextScore)
-      setMessage(`命中：${currentWave.diameter.toFixed(1)} x 3.14 ≈ ${expectedCircumference.toFixed(1)}`)
+      setMessage(`命中：${getFormulaText(currentWave.clue)} ≈ ${expectedCircumference.toFixed(1)}`)
       setFlash('success')
       nextWaveTimerRef.current = window.setTimeout(() => launchWave(nextScore), NEXT_WAVE_DELAY_MS)
       return
@@ -283,7 +241,10 @@ export function PiRacer() {
   return (
     <section className={`pi-racer ${flashTone ? `pi-racer--${flashTone}` : ''}`}>
       <div className="pi-racer__hud">
-        <div className="pi-racer__target">目标周长 C = {wave.targetCircumference.toFixed(1)}</div>
+        <div className="pi-racer__target">
+          <span>目标周长 C = ?</span>
+          <small>已知{wave.clue.name} {wave.clue.symbol} = {wave.clue.value.toFixed(1)}</small>
+        </div>
         <div className="pi-racer__stats" aria-label="游戏状态">
           <span>得分 {score}</span>
           <span>生命值 {Math.max(0, lives)}</span>
@@ -317,7 +278,10 @@ export function PiRacer() {
             height: visualDiameter,
           }}
         >
-          <span>d = {wave.diameter.toFixed(1)}</span>
+          <span>
+            <b>{wave.clue.symbol}</b>
+            <small>= {wave.clue.value.toFixed(1)}</small>
+          </span>
         </div>
 
         {wave.rings.map((ring, index) => (
@@ -339,7 +303,7 @@ export function PiRacer() {
           <div className="pi-racer__overlay">
             <div>
               <h1>极速圆周率</h1>
-              <p>用 C = d x 3.14 选择正确圆环</p>
+              <p>根据直径、半径或面积推算周长 C</p>
               <Button type="primary" size="large" onClick={mode === 'game-over' ? restart : () => setMode('running')}>
                 {mode === 'game-over' ? '重新开始' : '开始游戏'}
               </Button>
