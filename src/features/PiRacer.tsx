@@ -248,6 +248,11 @@ export function PiRacer() {
   const overlayDescription = mode === 'game-over'
     ? `最终得分 ${score}，到达第 ${level} 关`
     : '根据直径、半径或面积推算周长 C'
+  const overlayButtonLabel = mode === 'game-over'
+    ? '重新开始'
+    : mode === 'paused'
+      ? '继续游戏'
+      : '开始游戏'
 
   return (
     <section className={`pi-racer ${flashTone ? `pi-racer--${flashTone}` : ''}`}>
@@ -316,7 +321,7 @@ export function PiRacer() {
               <h1>{overlayTitle}</h1>
               <p>{overlayDescription}</p>
               <Button type="primary" size="large" onClick={mode === 'game-over' ? restart : () => setMode('running')}>
-                {mode === 'game-over' ? '重新开始' : '开始游戏'}
+                {overlayButtonLabel}
               </Button>
             </div>
           </div>
