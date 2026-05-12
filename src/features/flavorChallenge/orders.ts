@@ -23,140 +23,97 @@ export const ingredientMeta: Record<IngredientKey, { label: string; color: strin
   sugar: { label: '糖浆', color: '#eab308' },
 }
 
-export const orders: Order[] = [
-  {
-    id: 1,
-    customer: '赶时间的篮球队长',
-    title: '橙汁水波',
-    request: '橙汁与水的比是 3:5，总容量 400ml。',
-    kind: 'ratio',
-    totalMl: 400,
-    primary: 'juice',
-    secondary: 'water',
-    ratio: [3, 5],
-  },
-  {
-    id: 2,
-    customer: '爱喝淡味的程序员',
-    title: '苹果轻甜杯',
-    request: '我要一杯含糖量 15% 的苹果汁，总容量 300ml。',
-    kind: 'percent',
-    totalMl: 300,
-    primary: 'sugar',
-    secondary: 'juice',
-    percent: 15,
-  },
-  {
-    id: 3,
-    customer: '挑剔的美食博主',
-    title: '热带黄金比',
-    request: '果汁与水的比是 7:3，总容量 500ml。',
-    kind: 'ratio',
-    totalMl: 500,
-    primary: 'juice',
-    secondary: 'water',
-    ratio: [7, 3],
-  },
-  {
-    id: 4,
-    customer: '数学社新人',
-    title: '清爽蜜桃杯',
-    request: '糖浆占整杯 8%，总容量 250ml。',
-    kind: 'percent',
-    totalMl: 250,
-    primary: 'sugar',
-    secondary: 'juice',
-    percent: 8,
-  },
-  {
-    id: 5,
-    customer: '戴墨镜的滑板少年',
-    title: '蓝莓补水杯',
-    request: '果汁与水的比是 2:3，总容量 350ml。',
-    kind: 'ratio',
-    totalMl: 350,
-    primary: 'juice',
-    secondary: 'water',
-    ratio: [2, 3],
-  },
-  {
-    id: 6,
-    customer: '准备考试的学霸',
-    title: '醒脑柠檬饮',
-    request: '糖浆占整杯 12%，总容量 450ml。',
-    kind: 'percent',
-    totalMl: 450,
-    primary: 'sugar',
-    secondary: 'juice',
-    percent: 12,
-  },
-  {
-    id: 7,
-    customer: '刚下课的小学生',
-    title: '橙色火箭杯',
-    request: '果汁与水的比是 5:7，总容量 360ml。',
-    kind: 'ratio',
-    totalMl: 360,
-    primary: 'juice',
-    secondary: 'water',
-    ratio: [5, 7],
-  },
-  {
-    id: 8,
-    customer: '健身教练',
-    title: '低糖活力杯',
-    request: '我要含糖量 6% 的果汁，总容量 500ml。',
-    kind: 'percent',
-    totalMl: 500,
-    primary: 'sugar',
-    secondary: 'juice',
-    percent: 6,
-  },
-  {
-    id: 9,
-    customer: '夜跑社社长',
-    title: '星光补给杯',
-    request: '果汁与水的比是 4:1，总容量 250ml。',
-    kind: 'ratio',
-    totalMl: 250,
-    primary: 'juice',
-    secondary: 'water',
-    ratio: [4, 1],
-  },
-  {
-    id: 10,
-    customer: '牙医叔叔',
-    title: '微甜苹果杯',
-    request: '糖浆占整杯 5%，总容量 200ml。',
-    kind: 'percent',
-    totalMl: 200,
-    primary: 'sugar',
-    secondary: 'juice',
-    percent: 5,
-  },
-  {
-    id: 11,
-    customer: '急着赶飞机的游客',
-    title: '机场特调杯',
-    request: '果汁与水的比是 9:6，总容量 300ml。',
-    kind: 'ratio',
-    totalMl: 300,
-    primary: 'juice',
-    secondary: 'water',
-    ratio: [9, 6],
-  },
-  {
-    id: 12,
-    customer: '生日派对主持人',
-    title: '派对甜心杯',
-    request: '我要含糖量 18% 的果汁，总容量 400ml。',
-    kind: 'percent',
-    totalMl: 400,
-    primary: 'sugar',
-    secondary: 'juice',
-    percent: 18,
-  },
+const customers = [
+  '赶时间的篮球队长',
+  '爱喝淡味的程序员',
+  '挑剔的美食博主',
+  '数学社新人',
+  '戴墨镜的滑板少年',
+  '准备考试的学霸',
+  '刚下课的小学生',
+  '健身教练',
+  '夜跑社社长',
+  '急着赶飞机的游客',
+  '生日派对主持人',
+  '放学路上的双胞胎',
 ]
+
+const ratioTitles = [
+  '橙汁水波',
+  '热带黄金比',
+  '蓝莓补水杯',
+  '橙色火箭杯',
+  '星光补给杯',
+  '机场特调杯',
+]
+
+const percentTitles = [
+  '苹果轻甜杯',
+  '清爽蜜桃杯',
+  '醒脑柠檬饮',
+  '低糖活力杯',
+  '微甜苹果杯',
+  '派对甜心杯',
+]
+
+const ratioPairs: Array<[number, number]> = [
+  [1, 2],
+  [2, 3],
+  [3, 5],
+  [4, 5],
+  [5, 7],
+  [7, 3],
+  [4, 1],
+  [9, 6],
+]
+
+const percents = [5, 6, 8, 10, 12, 15, 18, 20, 25]
+const ratioUnits = [20, 25, 30, 40, 50]
+const percentTotals = [200, 250, 300, 350, 400, 450, 500, 600]
+
+function pickRandom<T>(items: T[]) {
+  return items[Math.floor(Math.random() * items.length)]
+}
+
+export function createRandomOrder(): Order {
+  const kind: OrderKind = Math.random() > 0.45 ? 'ratio' : 'percent'
+  const customer = pickRandom(customers)
+
+  if (kind === 'ratio') {
+    const ratio = pickRandom(ratioPairs)
+    const unit = pickRandom(ratioUnits)
+    const totalMl = (ratio[0] + ratio[1]) * unit
+    const title = pickRandom(ratioTitles)
+
+    return {
+      id: Date.now() + Math.floor(Math.random() * 10000),
+      customer,
+      title,
+      request: `果汁与水的比是 ${ratio[0]}:${ratio[1]}，总容量 ${totalMl}ml。`,
+      kind,
+      totalMl,
+      primary: 'juice',
+      secondary: 'water',
+      ratio,
+    }
+  }
+
+  const percent = pickRandom(percents)
+  const totalMl = pickRandom(percentTotals)
+  const title = pickRandom(percentTitles)
+
+  return {
+    id: Date.now() + Math.floor(Math.random() * 10000),
+    customer,
+    title,
+    request: `我要一杯含糖量 ${percent}% 的果汁，总容量 ${totalMl}ml。`,
+    kind,
+    totalMl,
+    primary: 'sugar',
+    secondary: 'juice',
+    percent,
+  }
+}
 
 export const emptyMix: MixAmounts = {
   juice: 0,

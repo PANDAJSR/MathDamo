@@ -83,17 +83,9 @@
 
 .order-board__nav {
   display: grid;
-  grid-template-columns: minmax(76px, 1fr) auto minmax(76px, 1fr);
+  grid-template-columns: repeat(2, minmax(76px, 1fr));
   gap: 10px;
   align-items: center;
-}
-
-.order-board__nav span {
-  color: #1e293b;
-  font-size: 14px;
-  font-weight: 800;
-  text-align: center;
-  white-space: nowrap;
 }
 
 .mixing-stage {

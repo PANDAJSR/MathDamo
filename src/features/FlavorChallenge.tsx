@@ -2,12 +2,13 @@ import { Button, Progress, Segmented, Space, Statistic, Typography, message } fr
 import { useMemo, useState } from 'react'
 import './FlavorChallenge.css'
 import {
+  createRandomOrder,
   emptyMix,
   getActiveIngredients,
   getExpectedAmounts,
   getOrderFormula,
   ingredientMeta,
-  orders,
+  type Order,
   type IngredientKey,
   type MixAmounts,
 } from './flavorChallenge/orders'
@@ -37,22 +38,22 @@ function getAccuracy(expected: MixAmounts, actual: MixAmounts) {
 }
 
 export function FlavorChallenge() {
+  const [orderHistory, setOrderHistory] = useState<Order[]>(() => [createRandomOrder()])
   const [orderIndex, setOrderIndex] = useState(0)
-  const [selectedIngredient, setSelectedIngredient] = useState<IngredientKey>('juice')
+  const [selectedIngredient, setSelectedIngredient] = useState<IngredientKey>(() => orderHistory[0].primary)
   const [mix, setMix] = useState<MixAmounts>(emptyMix)
   const [score, setScore] = useState(0)
   const [tips, setTips] = useState(0)
   const [feedback, setFeedback] = useState('选择原料，用量杯注入，接近目标比例后点击混合。')
   const [showAnswer, setShowAnswer] = useState(false)
 
-  const order = orders[orderIndex]
+  const order = orderHistory[orderIndex]
   const expected = useMemo(() => getExpectedAmounts(order), [order])
   const activeIngredients = useMemo(() => getActiveIngredients(order), [order])
   const total = getMixTotal(mix)
   const remaining = order.totalMl - total
   const accuracy = getAccuracy(expected, mix)
   const canGoPrev = orderIndex > 0
-  const canGoNext = orderIndex < orders.length - 1
   const selectedOptions = activeIngredients.map((key) => ({
     label: ingredientMeta[key].label,
     value: key,
@@ -64,15 +65,31 @@ export function FlavorChallenge() {
     setShowAnswer(false)
   }
 
-  const goToOrder = (nextIndex: number) => {
-    const nextOrder = orders[nextIndex]
-    if (!nextOrder) return
-
+  const switchOrder = (nextOrder: Order, nextIndex: number) => {
     setOrderIndex(nextIndex)
     setSelectedIngredient(nextOrder.primary)
     setMix(emptyMix)
     setFeedback('新顾客来了，先读题再注入。')
     setShowAnswer(false)
+  }
+
+  const goToPreviousOrder = () => {
+    const nextIndex = orderIndex - 1
+    const nextOrder = orderHistory[nextIndex]
+    if (!nextOrder) return
+    switchOrder(nextOrder, nextIndex)
+  }
+
+  const goToNextOrder = () => {
+    const savedNextOrder = orderHistory[orderIndex + 1]
+    if (savedNextOrder) {
+      switchOrder(savedNextOrder, orderIndex + 1)
+      return
+    }
+
+    const newOrder = createRandomOrder()
+    setOrderHistory((current) => [...current, newOrder])
+    switchOrder(newOrder, orderIndex + 1)
   }
 
   const pourIngredient = (amount: number) => {
@@ -155,13 +172,10 @@ export function FlavorChallenge() {
           />
 
           <div className="order-board__nav">
-            <Button disabled={!canGoPrev} onClick={() => goToOrder(orderIndex - 1)}>
+            <Button disabled={!canGoPrev} onClick={goToPreviousOrder}>
               上一单
             </Button>
-            <span>
-              第 {orderIndex + 1} / {orders.length} 单
-            </span>
-            <Button type="primary" disabled={!canGoNext} onClick={() => goToOrder(orderIndex + 1)}>
+            <Button type="primary" onClick={goToNextOrder}>
               下一单
             </Button>
           </div>
