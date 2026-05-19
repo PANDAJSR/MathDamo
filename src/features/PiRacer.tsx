@@ -9,10 +9,11 @@ import {
   getSpeed,
   type Wave,
 } from './piRacer/game'
+import { MistakeFeedback } from './piRacer/MistakeFeedback'
 
 const LANE_COUNT = 3
 const LANE_TOPS = [20, 50, 80]
-const INITIAL_LIVES = 3
+const INITIAL_LIVES = 5
 const START_X = 106
 const COLLISION_X = 16
 const FLASH_DURATION_MS = 220
@@ -21,8 +22,12 @@ const SWIPE_THRESHOLD_PX = 36
 const WHEEL_THRESHOLD_PX = 28
 const INTERACTIVE_SELECTOR = 'button, input, select, textarea, a, [role="button"], .ant-btn'
 
-type GameMode = 'ready' | 'running' | 'paused' | 'game-over'
+type GameMode = 'ready' | 'running' | 'paused' | 'mistake' | 'game-over'
 type FlashTone = 'success' | 'danger' | null
+type MistakeState = {
+  selectedIndex: number
+  wave: Wave
+}
 
 export function PiRacer() {
   const [mode, setMode] = useState<GameMode>('ready')
@@ -33,6 +38,7 @@ export function PiRacer() {
   const [wave, setWave] = useState<Wave>(() => createWave(0))
   const [flashTone, setFlashTone] = useState<FlashTone>(null)
   const [message, setMessage] = useState('根据已知量计算周长，穿过匹配圆环')
+  const [mistake, setMistake] = useState<MistakeState | null>(null)
 
   const scoreRef = useRef(score)
   const livesRef = useRef(lives)
@@ -102,6 +108,23 @@ export function PiRacer() {
     advancingRef.current = false
   }, [])
 
+  const continueAfterMistake = useCallback(() => {
+    const nextLives = livesRef.current - 1
+    livesRef.current = nextLives
+    setLives(nextLives)
+    setMistake(null)
+
+    if (nextLives <= 0) {
+      setMode('game-over')
+      advancingRef.current = false
+      return
+    }
+
+    setMessage('根据已知量计算周长，穿过匹配圆环')
+    launchWave(scoreRef.current)
+    setMode('running')
+  }, [launchWave])
+
   const restart = useCallback(() => {
     if (nextWaveTimerRef.current) window.clearTimeout(nextWaveTimerRef.current)
     const nextWave = createWave(0)
@@ -118,6 +141,7 @@ export function PiRacer() {
     setRingX(START_X)
     setWave(nextWave)
     setMessage('根据已知量计算周长，穿过匹配圆环')
+    setMistake(null)
     setFlashTone(null)
     setMode('running')
   }, [])
@@ -142,22 +166,13 @@ export function PiRacer() {
       return
     }
 
-    const nextLives = livesRef.current - 1
-    livesRef.current = nextLives
-    setLives(nextLives)
     setMessage(`选错了，应选择 C = ${formatGameNumber(expectedCircumference)}`)
+    setMistake({
+      selectedIndex: playerLaneRef.current,
+      wave: currentWave,
+    })
     setFlash('danger')
-
-    if (nextLives <= 0) {
-      setMode('game-over')
-      advancingRef.current = false
-      return
-    }
-
-    nextWaveTimerRef.current = window.setTimeout(
-      () => launchWave(scoreRef.current),
-      NEXT_WAVE_DELAY_MS,
-    )
+    setMode('mistake')
   }, [launchWave, setFlash])
 
   useEffect(() => {
@@ -172,7 +187,7 @@ export function PiRacer() {
         moveLane(1)
       }
 
-      if (event.key === ' ' && mode !== 'game-over') {
+      if (event.key === ' ' && mode !== 'game-over' && mode !== 'mistake') {
         event.preventDefault()
         setMode((currentMode) => (currentMode === 'running' ? 'paused' : 'running'))
       }
@@ -325,7 +340,15 @@ export function PiRacer() {
           <span>W/S、↑/↓、滑动或滚轮移动，空格暂停</span>
         </div>
 
-        {mode !== 'running' && (
+        {mode === 'mistake' && mistake && (
+          <MistakeFeedback
+            selectedIndex={mistake.selectedIndex}
+            wave={mistake.wave}
+            onContinue={continueAfterMistake}
+          />
+        )}
+
+        {mode !== 'running' && mode !== 'mistake' && (
           <div className={`pi-racer__overlay ${mode === 'game-over' ? 'pi-racer__overlay--game-over' : ''}`}>
             <div>
               <h1>{overlayTitle}</h1>
@@ -340,7 +363,10 @@ export function PiRacer() {
 
       <div className="pi-racer__controls" aria-label="移动控制">
         <Button onClick={() => moveLane(-1)}>上移</Button>
-        <Button onClick={() => setMode((currentMode) => (currentMode === 'running' ? 'paused' : 'running'))}>
+        <Button
+          disabled={mode === 'mistake' || mode === 'game-over'}
+          onClick={() => setMode((currentMode) => (currentMode === 'running' ? 'paused' : 'running'))}
+        >
           {mode === 'running' ? '暂停' : '继续'}
         </Button>
         <Button onClick={() => moveLane(1)}>下移</Button>

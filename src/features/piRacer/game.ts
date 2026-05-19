@@ -101,6 +101,32 @@ export const getFormulaText = (clue: Clue) => {
   return `2 x √(${formatGameNumber(clue.value)} x 3.14)`
 }
 
+export const getSolutionLines = (clue: Clue, targetCircumference: number) => {
+  const answer = formatGameNumber(targetCircumference)
+
+  if (clue.kind === 'diameter') {
+    return [
+      `周长公式：C = d x 3.14`,
+      `代入：C = ${formatGameNumber(clue.value)} x 3.14`,
+      `结果：C = ${answer}`,
+    ]
+  }
+
+  if (clue.kind === 'radius') {
+    return [
+      `周长公式：C = 2 x r x 3.14`,
+      `代入：C = 2 x ${formatGameNumber(clue.value)} x 3.14`,
+      `结果：C = ${answer}`,
+    ]
+  }
+
+  return [
+    `面积公式：S = 3.14 x r x r`,
+    `先找半径：r = √(${formatGameNumber(clue.value)} ÷ 3.14)`,
+    `再算周长：C = 2 x r x 3.14 = ${answer}`,
+  ]
+}
+
 const createRing = (circumference: number, kind: ClueKind): Ring => {
   const radius = circumference / (2 * PI_VALUE)
   const clue = createClueFromRadius(radius, kind)
