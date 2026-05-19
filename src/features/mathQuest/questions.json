@@ -1,100 +1,4332 @@
 [
   {
-    "id": "single-apple-count",
-    "type": "single",
-    "difficulty": "easy",
-    "title": "水果篮里的加法",
-    "prompt": "篮子里有 8 个苹果，又放进 7 个。现在一共有多少个苹果？",
-    "options": [
-      { "id": "a", "label": "13" },
-      { "id": "b", "label": "14" },
-      { "id": "c", "label": "15" },
-      { "id": "d", "label": "16" }
-    ],
-    "answerOptionIds": ["c"],
-    "timeLimitSeconds": 15,
-    "points": 10
-  },
-  {
-    "id": "multiple-even-numbers",
-    "type": "multiple",
-    "difficulty": "easy",
-    "title": "找出偶数",
-    "prompt": "下面哪些数是偶数？可以选择多个答案。",
-    "options": [
-      { "id": "a", "label": "12" },
-      { "id": "b", "label": "17" },
-      { "id": "c", "label": "24" },
-      { "id": "d", "label": "31" }
-    ],
-    "answerOptionIds": ["a", "c"],
-    "timeLimitSeconds": 18,
-    "points": 12
-  },
-  {
-    "id": "fill-table-seven",
+    "id": "cylinder-side-tea-tin",
     "type": "fill",
-    "difficulty": "medium",
-    "title": "乘法口算",
-    "prompt": "7 x 8 = ?",
-    "answerPattern": "^56$",
-    "answerHint": "输入一个整数",
-    "timeLimitSeconds": 12,
-    "points": 15
-  },
-  {
-    "id": "single-fraction-half",
-    "type": "single",
-    "difficulty": "medium",
-    "title": "分数比较",
-    "prompt": "下面哪个数等于 1/2？",
-    "options": [
-      { "id": "a", "label": "0.2" },
-      { "id": "b", "label": "0.5" },
-      { "id": "c", "label": "1.5" },
-      { "id": "d", "label": "2" }
-    ],
-    "answerOptionIds": ["b"],
-    "timeLimitSeconds": 16,
-    "points": 14
-  },
-  {
-    "id": "fill-decimal-subtract",
-    "type": "fill",
-    "difficulty": "medium",
-    "title": "小数减法",
-    "prompt": "3.5 - 1.2 = ?",
-    "answerPattern": "^2\\.3$",
-    "answerHint": "可以输入小数点",
-    "timeLimitSeconds": 18,
+    "difficulty": "easy",
+    "title": "圆柱侧面积",
+    "prompt": "非遗市集准备制作一个茶叶罐，底面半径 3 cm，高 10 cm。只给侧面贴包装纸，至少需要多少平方厘米？取 π=3.14。",
+    "answerPattern": "^188\\.4$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
     "points": 16
   },
   {
-    "id": "multiple-multiples-three",
-    "type": "multiple",
+    "id": "cylinder-side-scroll-tube",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "圆柱侧面积",
+    "prompt": "非遗市集准备制作一个卷轴收纳筒，底面半径 4 cm，高 12 cm。只给侧面贴包装纸，至少需要多少平方厘米？取 π=3.14。",
+    "answerPattern": "^301\\.44$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-side-chip-can",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "圆柱侧面积",
+    "prompt": "非遗市集准备制作一个薯片筒，底面半径 5 cm，高 8 cm。只给侧面贴包装纸，至少需要多少平方厘米？取 π=3.14。",
+    "answerPattern": "^251\\.2$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-side-paint-bucket",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "圆柱侧面积",
+    "prompt": "非遗市集准备制作一个无盖颜料桶，底面半径 6 cm，高 7 cm。只给侧面贴包装纸，至少需要多少平方厘米？取 π=3.14。",
+    "answerPattern": "^263\\.76$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-side-seedling-guard",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱侧面积",
+    "prompt": "非遗市集准备制作一个护植圆筒，底面半径 2 cm，高 15 cm。只给侧面贴包装纸，至少需要多少平方厘米？取 π=3.14。",
+    "answerPattern": "^188\\.4$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-side-rocket-cabin",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱侧面积",
+    "prompt": "非遗市集准备制作一个飞船舱段模型，底面半径 3 cm，高 14 cm。只给侧面贴包装纸，至少需要多少平方厘米？取 π=3.14。",
+    "answerPattern": "^263\\.76$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-side-drum",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱侧面积",
+    "prompt": "非遗市集准备制作一个圆柱形滚筒，底面半径 4 cm，高 9 cm。只给侧面贴包装纸，至少需要多少平方厘米？取 π=3.14。",
+    "answerPattern": "^226\\.08$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-side-gift-box",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱侧面积",
+    "prompt": "非遗市集准备制作一个圆柱礼盒，底面半径 5 cm，高 6 cm。只给侧面贴包装纸，至少需要多少平方厘米？取 π=3.14。",
+    "answerPattern": "^188\\.4$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-side-water-tank",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱侧面积",
+    "prompt": "非遗市集准备制作一个储水罐，底面半径 2 cm，高 20 cm。只给侧面贴包装纸，至少需要多少平方厘米？取 π=3.14。",
+    "answerPattern": "^251\\.2$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-side-bamboo-cup",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱侧面积",
+    "prompt": "非遗市集准备制作一个竹节杯，底面半径 3 cm，高 9 cm。只给侧面贴包装纸，至少需要多少平方厘米？取 π=3.14。",
+    "answerPattern": "^169\\.56$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-surface-tea-tin",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱表面积",
+    "prompt": "文创社设计一个茶叶罐，底面半径 3 cm，高 10 cm，完整外包装含上下两个底面。至少需要材料多少平方厘米？取 π=3.14。",
+    "answerPattern": "^244\\.92$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-surface-scroll-tube",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱表面积",
+    "prompt": "文创社设计一个卷轴收纳筒，底面半径 4 cm，高 12 cm，做成无盖款，只需要一个底面。至少需要材料多少平方厘米？取 π=3.14。",
+    "answerPattern": "^351\\.68$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-surface-chip-can",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱表面积",
+    "prompt": "文创社设计一个薯片筒，底面半径 5 cm，高 8 cm，完整外包装含上下两个底面。至少需要材料多少平方厘米？取 π=3.14。",
+    "answerPattern": "^408\\.2$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-surface-paint-bucket",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱表面积",
+    "prompt": "文创社设计一个无盖颜料桶，底面半径 6 cm，高 7 cm，做成无盖款，只需要一个底面。至少需要材料多少平方厘米？取 π=3.14。",
+    "answerPattern": "^376\\.8$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-surface-seedling-guard",
+    "type": "fill",
     "difficulty": "hard",
-    "title": "3 的倍数",
-    "prompt": "下面哪些数是 3 的倍数？",
+    "title": "圆柱表面积",
+    "prompt": "文创社设计一个护植圆筒，底面半径 2 cm，高 15 cm，完整外包装含上下两个底面。至少需要材料多少平方厘米？取 π=3.14。",
+    "answerPattern": "^213\\.52$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-surface-rocket-cabin",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "圆柱表面积",
+    "prompt": "文创社设计一个飞船舱段模型，底面半径 3 cm，高 14 cm，做成无盖款，只需要一个底面。至少需要材料多少平方厘米？取 π=3.14。",
+    "answerPattern": "^292\\.02$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-surface-drum",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "圆柱表面积",
+    "prompt": "文创社设计一个圆柱形滚筒，底面半径 4 cm，高 9 cm，完整外包装含上下两个底面。至少需要材料多少平方厘米？取 π=3.14。",
+    "answerPattern": "^326\\.56$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-surface-gift-box",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "圆柱表面积",
+    "prompt": "文创社设计一个圆柱礼盒，底面半径 5 cm，高 6 cm，做成无盖款，只需要一个底面。至少需要材料多少平方厘米？取 π=3.14。",
+    "answerPattern": "^266\\.9$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-surface-water-tank",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "圆柱表面积",
+    "prompt": "文创社设计一个储水罐，底面半径 2 cm，高 20 cm，完整外包装含上下两个底面。至少需要材料多少平方厘米？取 π=3.14。",
+    "answerPattern": "^276\\.32$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-surface-bamboo-cup",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "圆柱表面积",
+    "prompt": "文创社设计一个竹节杯，底面半径 3 cm，高 9 cm，做成无盖款，只需要一个底面。至少需要材料多少平方厘米？取 π=3.14。",
+    "answerPattern": "^197\\.82$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-volume-tea-tin",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "圆柱体积",
+    "prompt": "科技节展台有一个茶叶罐，底面半径 3 cm，高 10 cm。它的容积约是多少立方厘米？取 π=3.14。",
+    "answerPattern": "^282\\.6$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-volume-scroll-tube",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "圆柱体积",
+    "prompt": "科技节展台有一个卷轴收纳筒，底面半径 4 cm，高 12 cm。它的容积约是多少立方厘米？取 π=3.14。",
+    "answerPattern": "^602\\.88$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-volume-chip-can",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "圆柱体积",
+    "prompt": "科技节展台有一个薯片筒，底面半径 5 cm，高 8 cm。它的容积约是多少立方厘米？取 π=3.14。",
+    "answerPattern": "^628$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-volume-paint-bucket",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "圆柱体积",
+    "prompt": "科技节展台有一个无盖颜料桶，底面半径 6 cm，高 7 cm。它的容积约是多少立方厘米？取 π=3.14。",
+    "answerPattern": "^791\\.28$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-volume-seedling-guard",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "圆柱体积",
+    "prompt": "科技节展台有一个护植圆筒，底面半径 2 cm，高 15 cm。它的容积约是多少立方厘米？取 π=3.14。",
+    "answerPattern": "^188\\.4$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-volume-rocket-cabin",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱体积",
+    "prompt": "科技节展台有一个飞船舱段模型，底面半径 3 cm，高 14 cm。它的容积约是多少立方厘米？取 π=3.14。",
+    "answerPattern": "^395\\.64$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-volume-drum",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱体积",
+    "prompt": "科技节展台有一个圆柱形滚筒，底面半径 4 cm，高 9 cm。它的容积约是多少立方厘米？取 π=3.14。",
+    "answerPattern": "^452\\.16$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-volume-gift-box",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱体积",
+    "prompt": "科技节展台有一个圆柱礼盒，底面半径 5 cm，高 6 cm。它的容积约是多少立方厘米？取 π=3.14。",
+    "answerPattern": "^471$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-volume-water-tank",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱体积",
+    "prompt": "科技节展台有一个储水罐，底面半径 2 cm，高 20 cm。它的容积约是多少立方厘米？取 π=3.14。",
+    "answerPattern": "^251\\.2$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cylinder-volume-bamboo-cup",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆柱体积",
+    "prompt": "科技节展台有一个竹节杯，底面半径 3 cm，高 9 cm。它的容积约是多少立方厘米？取 π=3.14。",
+    "answerPattern": "^254\\.34$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cone-volume-sand-1",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "圆锥体积",
+    "prompt": "固沙工程的圆锥形沙堆的底面半径是 2 m，高是 1.5 m。它的体积是多少立方米？取 π=3.14。",
+    "answerPattern": "^6\\.28$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cone-volume-tea-bag",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "圆锥体积",
+    "prompt": "圆锥形茶包展示模具的底面半径是 3 m，高是 6 m。它的体积是多少立方米？取 π=3.14。",
+    "answerPattern": "^56\\.52$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cone-volume-tent",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "圆锥体积",
+    "prompt": "圆锥形帐篷模型的底面半径是 4 m，高是 3 m。它的体积是多少立方米？取 π=3.14。",
+    "answerPattern": "^50\\.24$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cone-volume-woodchip",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "圆锥体积",
+    "prompt": "培育食用菌的木屑堆的底面半径是 2 m，高是 1.8 m。它的体积是多少立方米？取 π=3.14。",
+    "answerPattern": "^7\\.536$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cone-volume-rocket-head",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆锥体积",
+    "prompt": "火箭头部模型的底面半径是 5 m，高是 9 m。它的体积是多少立方米？取 π=3.14。",
+    "answerPattern": "^235\\.5$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cone-volume-salt",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆锥体积",
+    "prompt": "圆锥形盐堆的底面半径是 1.5 m，高是 2.4 m。它的体积是多少立方米？取 π=3.14。",
+    "answerPattern": "^5\\.652$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cone-volume-grain",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆锥体积",
+    "prompt": "粮仓旁的谷堆的底面半径是 3 m，高是 2.5 m。它的体积是多少立方米？取 π=3.14。",
+    "answerPattern": "^23\\.55$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cone-volume-flower-soil",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆锥体积",
+    "prompt": "花坛旁的营养土堆的底面半径是 2.5 m，高是 1.2 m。它的体积是多少立方米？取 π=3.14。",
+    "answerPattern": "^7\\.85$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cone-volume-ice",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆锥体积",
+    "prompt": "圆锥形冰雕底座的底面半径是 4 m，高是 4.5 m。它的体积是多少立方米？取 π=3.14。",
+    "answerPattern": "^75\\.36$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cone-volume-clay",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "圆锥体积",
+    "prompt": "陶艺课泥料堆的底面半径是 1 m，高是 3 m。它的体积是多少立方米？取 π=3.14。",
+    "answerPattern": "^3\\.14$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "cone-cut-largest-sand-1",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "削成最大圆锥",
+    "prompt": "木工把一段与固沙工程的圆锥形沙堆等底等高的圆柱木料削成最大的圆锥，底面半径 2 dm，高 1.5 dm。削去部分体积是多少立方分米？取 π=3.14。",
+    "answerPattern": "^12\\.56$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "cone-cut-largest-tea-bag",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "削成最大圆锥",
+    "prompt": "木工把一段与圆锥形茶包展示模具等底等高的圆柱木料削成最大的圆锥，底面半径 3 dm，高 6 dm。削去部分体积是多少立方分米？取 π=3.14。",
+    "answerPattern": "^113\\.04$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "cone-cut-largest-tent",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "削成最大圆锥",
+    "prompt": "木工把一段与圆锥形帐篷模型等底等高的圆柱木料削成最大的圆锥，底面半径 4 dm，高 3 dm。削去部分体积是多少立方分米？取 π=3.14。",
+    "answerPattern": "^100\\.48$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "cone-cut-largest-woodchip",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "削成最大圆锥",
+    "prompt": "木工把一段与培育食用菌的木屑堆等底等高的圆柱木料削成最大的圆锥，底面半径 2 dm，高 1.8 dm。削去部分体积是多少立方分米？取 π=3.14。",
+    "answerPattern": "^15\\.072$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "cone-cut-largest-rocket-head",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "削成最大圆锥",
+    "prompt": "木工把一段与火箭头部模型等底等高的圆柱木料削成最大的圆锥，底面半径 5 dm，高 9 dm。削去部分体积是多少立方分米？取 π=3.14。",
+    "answerPattern": "^471$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "cone-cut-largest-salt",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "削成最大圆锥",
+    "prompt": "木工把一段与圆锥形盐堆等底等高的圆柱木料削成最大的圆锥，底面半径 1.5 dm，高 2.4 dm。削去部分体积是多少立方分米？取 π=3.14。",
+    "answerPattern": "^11\\.304$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "cone-cut-largest-grain",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "削成最大圆锥",
+    "prompt": "木工把一段与粮仓旁的谷堆等底等高的圆柱木料削成最大的圆锥，底面半径 3 dm，高 2.5 dm。削去部分体积是多少立方分米？取 π=3.14。",
+    "answerPattern": "^47\\.1$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "cone-cut-largest-flower-soil",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "削成最大圆锥",
+    "prompt": "木工把一段与花坛旁的营养土堆等底等高的圆柱木料削成最大的圆锥，底面半径 2.5 dm，高 1.2 dm。削去部分体积是多少立方分米？取 π=3.14。",
+    "answerPattern": "^15\\.7$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "cylinder-cone-ratio-1",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "圆柱圆锥概念",
+    "prompt": "同底等高的圆柱形饮料罐和圆锥形量杯参加容量实验。圆锥量杯装满水倒入圆柱罐，倒几次正好装满？",
     "options": [
-      { "id": "a", "label": "18" },
-      { "id": "b", "label": "25" },
-      { "id": "c", "label": "42" },
-      { "id": "d", "label": "58" },
-      { "id": "e", "label": "63" }
+      {
+        "id": "a",
+        "label": "1 次"
+      },
+      {
+        "id": "b",
+        "label": "2 次"
+      },
+      {
+        "id": "c",
+        "label": "3 次"
+      },
+      {
+        "id": "d",
+        "label": "6 次"
+      }
     ],
-    "answerOptionIds": ["a", "c", "e"],
-    "timeLimitSeconds": 22,
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "cylinder-net-square",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "圆柱圆锥概念",
+    "prompt": "一个圆柱茶叶罐的侧面展开图正好是正方形，说明这个圆柱的高等于什么？",
+    "options": [
+      {
+        "id": "a",
+        "label": "底面半径"
+      },
+      {
+        "id": "b",
+        "label": "底面直径"
+      },
+      {
+        "id": "c",
+        "label": "底面周长"
+      },
+      {
+        "id": "d",
+        "label": "底面积"
+      }
+    ],
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "cylinder-no-lid",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "圆柱圆锥概念",
+    "prompt": "制作一个无盖圆柱形水桶，计算用铁皮面积时应包括哪些面？",
+    "options": [
+      {
+        "id": "a",
+        "label": "侧面和 1 个底面"
+      },
+      {
+        "id": "b",
+        "label": "侧面和 2 个底面"
+      },
+      {
+        "id": "c",
+        "label": "只算 2 个底面"
+      },
+      {
+        "id": "d",
+        "label": "只算侧面"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "roller-area",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "圆柱圆锥概念",
+    "prompt": "压路机前轮滚动一周压过的路面面积，相当于求前轮的什么？",
+    "options": [
+      {
+        "id": "a",
+        "label": "底面积"
+      },
+      {
+        "id": "b",
+        "label": "侧面积"
+      },
+      {
+        "id": "c",
+        "label": "体积"
+      },
+      {
+        "id": "d",
+        "label": "两个底面积"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "solid-rotation-rect",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "圆柱圆锥概念",
+    "prompt": "一张长方形卡片绕其中一条边旋转一周，会形成什么立体图形？",
+    "options": [
+      {
+        "id": "a",
+        "label": "圆柱"
+      },
+      {
+        "id": "b",
+        "label": "圆锥"
+      },
+      {
+        "id": "c",
+        "label": "球"
+      },
+      {
+        "id": "d",
+        "label": "圆台"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "solid-rotation-triangle",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "圆柱圆锥概念",
+    "prompt": "一个直角三角形绕一条直角边旋转一周，会形成什么立体图形？",
+    "options": [
+      {
+        "id": "a",
+        "label": "圆柱"
+      },
+      {
+        "id": "b",
+        "label": "圆锥"
+      },
+      {
+        "id": "c",
+        "label": "长方体"
+      },
+      {
+        "id": "d",
+        "label": "圆环"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "cylinder-square-block",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "圆柱圆锥概念",
+    "prompt": "把棱长 4 dm 的正方体削成最大的圆柱，圆柱底面直径和高分别是多少？",
+    "options": [
+      {
+        "id": "a",
+        "label": "4 dm，4 dm"
+      },
+      {
+        "id": "b",
+        "label": "2 dm，4 dm"
+      },
+      {
+        "id": "c",
+        "label": "4 dm，2 dm"
+      },
+      {
+        "id": "d",
+        "label": "2 dm，2 dm"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "cone-condition",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "圆柱圆锥概念",
+    "prompt": "“圆锥体积是圆柱体积的 1/3”这句话成立必须补充什么条件？",
+    "options": [
+      {
+        "id": "a",
+        "label": "等底等高"
+      },
+      {
+        "id": "b",
+        "label": "底面周长相等"
+      },
+      {
+        "id": "c",
+        "label": "侧面积相等"
+      },
+      {
+        "id": "d",
+        "label": "高相等即可"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "cylinder-side-expand",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "圆柱圆锥概念",
+    "prompt": "圆柱侧面沿高剪开展平，通常得到的长方形的长对应什么？",
+    "options": [
+      {
+        "id": "a",
+        "label": "底面半径"
+      },
+      {
+        "id": "b",
+        "label": "底面直径"
+      },
+      {
+        "id": "c",
+        "label": "底面周长"
+      },
+      {
+        "id": "d",
+        "label": "圆柱体积"
+      }
+    ],
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "pipe-area",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "圆柱圆锥概念",
+    "prompt": "制作一节没有底面的圆柱形通风管，主要计算哪一部分材料面积？",
+    "options": [
+      {
+        "id": "a",
+        "label": "1 个底面积"
+      },
+      {
+        "id": "b",
+        "label": "2 个底面积"
+      },
+      {
+        "id": "c",
+        "label": "侧面积"
+      },
+      {
+        "id": "d",
+        "label": "体积"
+      }
+    ],
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "judge-cylinder-square-net",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断圆柱圆锥",
+    "prompt": "判断：圆柱的侧面展开图一定是长方形，绝对不可能是正方形。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "judge-cylinder-two-bases",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断圆柱圆锥",
+    "prompt": "判断：圆柱有两个大小相同的圆形底面和一个曲面。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "judge-cone-any-cylinder",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断圆柱圆锥",
+    "prompt": "判断：任意一个圆锥的体积都等于任意一个圆柱体积的 1/3。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "judge-roller-side",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断圆柱圆锥",
+    "prompt": "判断：压路机前轮转动一周压过的面积，可以看作求这个圆柱形前轮的侧面积。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "judge-open-bucket",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断圆柱圆锥",
+    "prompt": "判断：求无盖圆柱水桶的用料面积时，要少算一个底面。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "judge-cylinder-volume",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断圆柱圆锥",
+    "prompt": "判断：圆柱体积可以用底面积乘高来计算。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "judge-line-rotate",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断圆柱圆锥",
+    "prompt": "判断：点动成线，线动成面，面动成体。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "judge-cone-two-bases",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断圆柱圆锥",
+    "prompt": "判断：圆锥和圆柱一样都有两个圆形底面。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "judge-side-width",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断圆柱圆锥",
+    "prompt": "判断：圆柱侧面展开成长方形时，长方形的宽通常对应圆柱的高。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "judge-surface-equal-volume",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断圆柱圆锥",
+    "prompt": "判断：两个圆柱的体积相等，它们的表面积一定相等。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "judge-cut-increase",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断圆柱圆锥",
+    "prompt": "判断：把一个圆柱横切成两个小圆柱，表面积会增加两个底面积。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "judge-melt-volume",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断圆柱圆锥",
+    "prompt": "判断：把圆柱形金属熔铸成圆锥形零件，若没有损耗，体积不变。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "cut-wood-3",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "切割后的体积",
+    "prompt": "木工把一根长 2 m 的圆柱形木料截成 3 段小圆柱，表面积比原来增加 12.56 平方分米。这根木料原来的体积是多少立方分米？",
+    "answerPattern": "^62\\.8$",
+    "answerHint": "注意先把米化成分米，只输入数字",
+    "timeLimitSeconds": 45,
     "points": 22
   },
   {
-    "id": "fill-negative-temperature",
+    "id": "cut-wood-4",
     "type": "fill",
     "difficulty": "hard",
-    "title": "温度变化",
-    "prompt": "早晨温度是 -2 度，中午升高 5 度，温度是多少度？",
-    "answerPattern": "^3$",
-    "answerHint": "可以输入负号，但本题答案是整数",
+    "title": "切割后的体积",
+    "prompt": "木工把一根长 3 m 的圆柱形木料截成 4 段小圆柱，表面积比原来增加 28.26 平方分米。这根木料原来的体积是多少立方分米？",
+    "answerPattern": "^141\\.3$",
+    "answerHint": "注意先把米化成分米，只输入数字",
+    "timeLimitSeconds": 45,
+    "points": 22
+  },
+  {
+    "id": "cut-wood-5",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "切割后的体积",
+    "prompt": "木工把一根长 4 m 的圆柱形木料截成 5 段小圆柱，表面积比原来增加 50.24 平方分米。这根木料原来的体积是多少立方分米？",
+    "answerPattern": "^251\\.2$",
+    "answerHint": "注意先把米化成分米，只输入数字",
+    "timeLimitSeconds": 45,
+    "points": 22
+  },
+  {
+    "id": "cut-wood-6",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "切割后的体积",
+    "prompt": "木工把一根长 2.5 m 的圆柱形木料截成 6 段小圆柱，表面积比原来增加 31.4 平方分米。这根木料原来的体积是多少立方分米？",
+    "answerPattern": "^78\\.5$",
+    "answerHint": "注意先把米化成分米，只输入数字",
+    "timeLimitSeconds": 45,
+    "points": 22
+  },
+  {
+    "id": "cut-wood-7",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "切割后的体积",
+    "prompt": "木工把一根长 1.5 m 的圆柱形木料截成 7 段小圆柱，表面积比原来增加 18.84 平方分米。这根木料原来的体积是多少立方分米？",
+    "answerPattern": "^23\\.55$",
+    "answerHint": "注意先把米化成分米，只输入数字",
+    "timeLimitSeconds": 45,
+    "points": 22
+  },
+  {
+    "id": "cut-wood-8",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "切割后的体积",
+    "prompt": "木工把一根长 3.5 m 的圆柱形木料截成 8 段小圆柱，表面积比原来增加 43.96 平方分米。这根木料原来的体积是多少立方分米？",
+    "answerPattern": "^109\\.9$",
+    "answerHint": "注意先把米化成分米，只输入数字",
+    "timeLimitSeconds": 45,
+    "points": 22
+  },
+  {
+    "id": "prop-judge-radius-area",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断比例关系",
+    "prompt": "判断：圆的半径和它的面积成正比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
     "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-book-price",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断比例关系",
+    "prompt": "判断：购买同一种练习本的本数和总价成正比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-speed-time",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断比例关系",
+    "prompt": "判断：路程一定，速度和时间成反比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-read-left",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断比例关系",
+    "prompt": "判断：一本书总页数一定，已读页数和未读页数成反比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-age-weight",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断比例关系",
+    "prompt": "判断：小红的年龄和体重一定成正比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-side-perimeter",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断比例关系",
+    "prompt": "判断：正方形的边长和周长成正比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-side-area",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断比例关系",
+    "prompt": "判断：正方形的边长和面积成正比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-workers-days",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断比例关系",
+    "prompt": "判断：工程总量一定，每天完成量和需要天数成反比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-scale-unit",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断比例关系",
+    "prompt": "判断：比例尺是一个比，不能带单位名称。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-total-fixed",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断比例关系",
+    "prompt": "判断：生产总量一定，每小时生产件数和生产时间成正比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-pi",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断比例关系",
+    "prompt": "判断：圆的周长和直径成正比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-sum-fixed",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断比例关系",
+    "prompt": "判断：两数的和一定，这两个数成反比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-density",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断比例关系",
+    "prompt": "判断：同种材料的质量和体积成正比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-area-height",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断比例关系",
+    "prompt": "判断：平行四边形面积一定，底和高成反比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "prop-judge-map",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断比例关系",
+    "prompt": "判断：同一幅地图上，图上距离和实际距离成正比例。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "rel-drone-packages",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "辨析比例关系",
+    "prompt": "智慧物流中心派送相同数量的包裹，每架无人机每天派送件数和所需无人机架数成什么比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-conveyor-distance",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "辨析比例关系",
+    "prompt": "传送带匀速运行，货物传输距离和时间成什么比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-water-fill",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "辨析比例关系",
+    "prompt": "水龙头出水速度一定，注水量和时间成什么比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-paving-width",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "辨析比例关系",
+    "prompt": "铺路面积一定，路宽和铺路长度成什么比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-print-copies",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "辨析比例关系",
+    "prompt": "打印同一批资料，每台打印机效率相同，打印机台数和完成时间成什么比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-shopping",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "辨析比例关系",
+    "prompt": "同一种茶叶礼盒单价一定，购买盒数和总价成什么比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-density-mass",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "辨析比例关系",
+    "prompt": "同一种树脂材料密度一定，3D 打印耗材体积和质量成什么比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-fuel-distance",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "辨析比例关系",
+    "prompt": "汽车每千米耗油量一定，行驶路程和耗油量成什么比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-meeting-share",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "辨析比例关系",
+    "prompt": "一份文件页数一定，每人装订页数和可装订份数成什么比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-none-age",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "辨析比例关系",
+    "prompt": "人的身高和年龄通常属于什么关系？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-none-read",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "辨析比例关系",
+    "prompt": "总页数一定，已读页数和剩余页数属于什么关系？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-square-area",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "辨析比例关系",
+    "prompt": "正方形边长和面积属于什么关系？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-circle-area-radius",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "辨析比例关系",
+    "prompt": "圆的半径和面积属于什么关系？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-circle-circum",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "辨析比例关系",
+    "prompt": "圆的直径和周长成什么比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rel-gear",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "辨析比例关系",
+    "prompt": "齿轮传动中，总齿数配合一定，大齿轮转数和小齿轮转数成什么比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例"
+      },
+      {
+        "id": "b",
+        "label": "反比例"
+      },
+      {
+        "id": "c",
+        "label": "不成比例"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "solve-prop-1",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "解比例",
+    "prompt": "A:4 = 5:B，则 A 与 B 的乘积是多少？",
+    "answerPattern": "^20$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-2",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "解比例",
+    "prompt": "3:x = 6:14，x 等于多少？",
+    "answerPattern": "^7$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-3",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "解比例",
+    "prompt": "x:9 = 4:6，x 等于多少？",
+    "answerPattern": "^6$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-4",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "解比例",
+    "prompt": "12:5 = x:15，x 等于多少？",
+    "answerPattern": "^36$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-5",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "解比例",
+    "prompt": "8:x = 2:7，x 等于多少？",
+    "answerPattern": "^28$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-6",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "解比例",
+    "prompt": "x:3 = 10:6，x 等于多少？",
+    "answerPattern": "^5$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-7",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "解比例",
+    "prompt": "4.5:1.5 = x:8，x 等于多少？",
+    "answerPattern": "^24$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-8",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "解比例",
+    "prompt": "7:2 = 21:x，x 等于多少？",
+    "answerPattern": "^6$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-9",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "解比例",
+    "prompt": "x:16 = 3:4，x 等于多少？",
+    "answerPattern": "^12$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-10",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "解比例",
+    "prompt": "5:x = 20:12，x 等于多少？",
+    "answerPattern": "^3$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-11",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "解比例",
+    "prompt": "2.4:x = 6:5，x 等于多少？",
+    "answerPattern": "^2$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-12",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "解比例",
+    "prompt": "x:0.8 = 15:4，x 等于多少？",
+    "answerPattern": "^3$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-13",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "解比例",
+    "prompt": "9:12 = x:20，x 等于多少？",
+    "answerPattern": "^15$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-14",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "解比例",
+    "prompt": "18:x = 6:5，x 等于多少？",
+    "answerPattern": "^15$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "solve-prop-15",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "解比例",
+    "prompt": "x:24 = 5:8，x 等于多少？",
+    "answerPattern": "^15$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "direct-1",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "正比例应用",
+    "prompt": "智能分拣线保持匀速，6 分钟传送 18 m。照这样计算，10 分钟可以传送多少米？",
+    "answerPattern": "^30$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "direct-2",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "正比例应用",
+    "prompt": "智能分拣线保持匀速，4 分钟传送 32 m。照这样计算，7 分钟可以传送多少米？",
+    "answerPattern": "^56$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "direct-3",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "正比例应用",
+    "prompt": "智能分拣线保持匀速，9 分钟传送 27 m。照这样计算，15 分钟可以传送多少米？",
+    "answerPattern": "^45$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "direct-4",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "正比例应用",
+    "prompt": "智能分拣线保持匀速，5 分钟传送 12.5 m。照这样计算，8 分钟可以传送多少米？",
+    "answerPattern": "^20$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "direct-5",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "正比例应用",
+    "prompt": "智能分拣线保持匀速，3 分钟传送 21 m。照这样计算，11 分钟可以传送多少米？",
+    "answerPattern": "^77$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "direct-6",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "正比例应用",
+    "prompt": "智能分拣线保持匀速，12 分钟传送 30 m。照这样计算，18 分钟可以传送多少米？",
+    "answerPattern": "^45$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "direct-7",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "正比例应用",
+    "prompt": "智能分拣线保持匀速，8 分钟传送 44 m。照这样计算，14 分钟可以传送多少米？",
+    "answerPattern": "^77$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "direct-8",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "正比例应用",
+    "prompt": "智能分拣线保持匀速，2.5 分钟传送 20 m。照这样计算，6 分钟可以传送多少米？",
+    "answerPattern": "^48$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "direct-9",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "正比例应用",
+    "prompt": "智能分拣线保持匀速，7 分钟传送 63 m。照这样计算，13 分钟可以传送多少米？",
+    "answerPattern": "^117$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "direct-10",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "正比例应用",
+    "prompt": "智能分拣线保持匀速，16 分钟传送 40 m。照这样计算，10 分钟可以传送多少米？",
+    "answerPattern": "^25$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 30,
+    "points": 16
+  },
+  {
+    "id": "inverse-1",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "反比例应用",
+    "prompt": "无人仓储要搬完同一批货物，4 台设备需要 18 天。若改用 6 台同样效率的设备，需要多少天？",
+    "answerPattern": "^12$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "inverse-2",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "反比例应用",
+    "prompt": "无人仓储要搬完同一批货物，3 台设备需要 24 天。若改用 8 台同样效率的设备，需要多少天？",
+    "answerPattern": "^9$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "inverse-3",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "反比例应用",
+    "prompt": "无人仓储要搬完同一批货物，5 台设备需要 12 天。若改用 10 台同样效率的设备，需要多少天？",
+    "answerPattern": "^6$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "inverse-4",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "反比例应用",
+    "prompt": "无人仓储要搬完同一批货物，6 台设备需要 20 天。若改用 8 台同样效率的设备，需要多少天？",
+    "answerPattern": "^15$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "inverse-5",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "反比例应用",
+    "prompt": "无人仓储要搬完同一批货物，9 台设备需要 16 天。若改用 12 台同样效率的设备，需要多少天？",
+    "answerPattern": "^12$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "inverse-6",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "反比例应用",
+    "prompt": "无人仓储要搬完同一批货物，2 台设备需要 45 天。若改用 5 台同样效率的设备，需要多少天？",
+    "answerPattern": "^18$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "inverse-7",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "反比例应用",
+    "prompt": "无人仓储要搬完同一批货物，8 台设备需要 15 天。若改用 10 台同样效率的设备，需要多少天？",
+    "answerPattern": "^12$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "inverse-8",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "反比例应用",
+    "prompt": "无人仓储要搬完同一批货物，7 台设备需要 30 天。若改用 14 台同样效率的设备，需要多少天？",
+    "answerPattern": "^15$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "inverse-9",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "反比例应用",
+    "prompt": "无人仓储要搬完同一批货物，12 台设备需要 9 天。若改用 6 台同样效率的设备，需要多少天？",
+    "answerPattern": "^18$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "inverse-10",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "反比例应用",
+    "prompt": "无人仓储要搬完同一批货物，15 台设备需要 8 天。若改用 10 台同样效率的设备，需要多少天？",
+    "answerPattern": "^12$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "speed-ratio-1",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "速度比应用",
+    "prompt": "甲乙两地相距 360 km，客车和货车同时相对开出，3 小时相遇。已知客车与货车速度比是 5:4，客车每小时行驶多少千米？",
+    "answerPattern": "^66\\.667$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 45,
+    "points": 22
+  },
+  {
+    "id": "speed-ratio-2",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "速度比应用",
+    "prompt": "甲乙两地相距 450 km，客车和货车同时相对开出，5 小时相遇。已知客车与货车速度比是 4:5，客车每小时行驶多少千米？",
+    "answerPattern": "^40$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 45,
+    "points": 22
+  },
+  {
+    "id": "speed-ratio-3",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "速度比应用",
+    "prompt": "甲乙两地相距 280 km，客车和货车同时相对开出，4 小时相遇。已知客车与货车速度比是 3:4，客车每小时行驶多少千米？",
+    "answerPattern": "^30$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 45,
+    "points": 22
+  },
+  {
+    "id": "speed-ratio-4",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "速度比应用",
+    "prompt": "甲乙两地相距 540 km，客车和货车同时相对开出，6 小时相遇。已知客车与货车速度比是 5:7，客车每小时行驶多少千米？",
+    "answerPattern": "^37\\.5$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 45,
+    "points": 22
+  },
+  {
+    "id": "speed-ratio-5",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "速度比应用",
+    "prompt": "甲乙两地相距 330 km，客车和货车同时相对开出，3 小时相遇。已知客车与货车速度比是 6:5，客车每小时行驶多少千米？",
+    "answerPattern": "^60$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 45,
+    "points": 22
+  },
+  {
+    "id": "speed-ratio-6",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "速度比应用",
+    "prompt": "甲乙两地相距 600 km，客车和货车同时相对开出，5 小时相遇。已知客车与货车速度比是 7:5，客车每小时行驶多少千米？",
+    "answerPattern": "^70$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 45,
+    "points": 22
+  },
+  {
+    "id": "speed-ratio-7",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "速度比应用",
+    "prompt": "甲乙两地相距 420 km，客车和货车同时相对开出，4 小时相遇。已知客车与货车速度比是 2:5，客车每小时行驶多少千米？",
+    "answerPattern": "^30$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 45,
+    "points": 22
+  },
+  {
+    "id": "speed-ratio-8",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "速度比应用",
+    "prompt": "甲乙两地相距 720 km，客车和货车同时相对开出，6 小时相遇。已知客车与货车速度比是 4:5，客车每小时行驶多少千米？",
+    "answerPattern": "^53\\.333$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 45,
+    "points": 22
+  },
+  {
+    "id": "multi-prop-1",
+    "type": "multiple",
+    "difficulty": "medium",
+    "title": "比例多选",
+    "prompt": "下面哪些量成正比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "圆周长和直径"
+      },
+      {
+        "id": "b",
+        "label": "同价商品数量和总价"
+      },
+      {
+        "id": "c",
+        "label": "路程一定时速度和时间"
+      },
+      {
+        "id": "d",
+        "label": "正方形边长和面积"
+      }
+    ],
+    "answerOptionIds": [
+      "a",
+      "b"
+    ],
+    "timeLimitSeconds": 35,
     "points": 20
+  },
+  {
+    "id": "multi-prop-2",
+    "type": "multiple",
+    "difficulty": "medium",
+    "title": "比例多选",
+    "prompt": "下面哪些量成反比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "总量一定时每天生产量和天数"
+      },
+      {
+        "id": "b",
+        "label": "长方形面积一定时长和宽"
+      },
+      {
+        "id": "c",
+        "label": "单价一定时数量和总价"
+      },
+      {
+        "id": "d",
+        "label": "圆柱底面积一定时体积和高"
+      }
+    ],
+    "answerOptionIds": [
+      "a",
+      "b"
+    ],
+    "timeLimitSeconds": 35,
+    "points": 20
+  },
+  {
+    "id": "multi-prop-3",
+    "type": "multiple",
+    "difficulty": "medium",
+    "title": "比例多选",
+    "prompt": "下面哪些说法正确？",
+    "options": [
+      {
+        "id": "a",
+        "label": "正比例图象是一条经过原点的射线"
+      },
+      {
+        "id": "b",
+        "label": "反比例关系中两量乘积一定"
+      },
+      {
+        "id": "c",
+        "label": "比例尺可以写单位"
+      },
+      {
+        "id": "d",
+        "label": "两种量同时变大就一定成正比例"
+      }
+    ],
+    "answerOptionIds": [
+      "a",
+      "b"
+    ],
+    "timeLimitSeconds": 35,
+    "points": 20
+  },
+  {
+    "id": "multi-prop-4",
+    "type": "multiple",
+    "difficulty": "medium",
+    "title": "比例多选",
+    "prompt": "比例 6:9 = 10:15 中，哪些乘积相等？",
+    "options": [
+      {
+        "id": "a",
+        "label": "6 x 15"
+      },
+      {
+        "id": "b",
+        "label": "9 x 10"
+      },
+      {
+        "id": "c",
+        "label": "6 x 10"
+      },
+      {
+        "id": "d",
+        "label": "9 x 15"
+      }
+    ],
+    "answerOptionIds": [
+      "a",
+      "b"
+    ],
+    "timeLimitSeconds": 35,
+    "points": 20
+  },
+  {
+    "id": "multi-prop-5",
+    "type": "multiple",
+    "difficulty": "medium",
+    "title": "比例多选",
+    "prompt": "下面哪些情境常用反比例解决？",
+    "options": [
+      {
+        "id": "a",
+        "label": "总路程一定，速度变了求时间"
+      },
+      {
+        "id": "b",
+        "label": "总面积一定，宽变了求长"
+      },
+      {
+        "id": "c",
+        "label": "单价一定，买更多求总价"
+      },
+      {
+        "id": "d",
+        "label": "匀速行驶，时间变了求路程"
+      }
+    ],
+    "answerOptionIds": [
+      "a",
+      "b"
+    ],
+    "timeLimitSeconds": 35,
+    "points": 20
+  },
+  {
+    "id": "multi-prop-6",
+    "type": "multiple",
+    "difficulty": "medium",
+    "title": "比例多选",
+    "prompt": "下面哪些关系不成比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "年龄和体重"
+      },
+      {
+        "id": "b",
+        "label": "已读页数和未读页数"
+      },
+      {
+        "id": "c",
+        "label": "圆周长和直径"
+      },
+      {
+        "id": "d",
+        "label": "同种材料体积和质量"
+      }
+    ],
+    "answerOptionIds": [
+      "a",
+      "b"
+    ],
+    "timeLimitSeconds": 35,
+    "points": 20
+  },
+  {
+    "id": "multi-prop-7",
+    "type": "multiple",
+    "difficulty": "hard",
+    "title": "比例多选",
+    "prompt": "关于比例尺，下面哪些说法正确？",
+    "options": [
+      {
+        "id": "a",
+        "label": "比例尺没有单位"
+      },
+      {
+        "id": "b",
+        "label": "图上距离:实际距离=比例尺"
+      },
+      {
+        "id": "c",
+        "label": "比例尺 1:100 表示图上 1 cm 相当于实际 100 cm"
+      },
+      {
+        "id": "d",
+        "label": "比例尺越大，实际距离越大"
+      }
+    ],
+    "answerOptionIds": [
+      "a",
+      "b",
+      "c"
+    ],
+    "timeLimitSeconds": 35,
+    "points": 20
+  },
+  {
+    "id": "multi-prop-8",
+    "type": "multiple",
+    "difficulty": "hard",
+    "title": "比例多选",
+    "prompt": "下面哪些式子表示 y 和 x 成正比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "y/x=5"
+      },
+      {
+        "id": "b",
+        "label": "y=3x"
+      },
+      {
+        "id": "c",
+        "label": "xy=12"
+      },
+      {
+        "id": "d",
+        "label": "y=x+2"
+      }
+    ],
+    "answerOptionIds": [
+      "a",
+      "b"
+    ],
+    "timeLimitSeconds": 35,
+    "points": 20
+  },
+  {
+    "id": "multi-prop-9",
+    "type": "multiple",
+    "difficulty": "hard",
+    "title": "比例多选",
+    "prompt": "下面哪些式子表示 y 和 x 成反比例？",
+    "options": [
+      {
+        "id": "a",
+        "label": "xy=18"
+      },
+      {
+        "id": "b",
+        "label": "y=24/x"
+      },
+      {
+        "id": "c",
+        "label": "y/x=7"
+      },
+      {
+        "id": "d",
+        "label": "y=2x"
+      }
+    ],
+    "answerOptionIds": [
+      "a",
+      "b"
+    ],
+    "timeLimitSeconds": 35,
+    "points": 20
+  },
+  {
+    "id": "multi-prop-10",
+    "type": "multiple",
+    "difficulty": "hard",
+    "title": "比例多选",
+    "prompt": "下面哪些量的比值一定？",
+    "options": [
+      {
+        "id": "a",
+        "label": "同价矿泉水总价与瓶数"
+      },
+      {
+        "id": "b",
+        "label": "匀速行驶路程与时间"
+      },
+      {
+        "id": "c",
+        "label": "面积一定长方形的长与宽"
+      },
+      {
+        "id": "d",
+        "label": "总页数一定已读与未读"
+      }
+    ],
+    "answerOptionIds": [
+      "a",
+      "b"
+    ],
+    "timeLimitSeconds": 35,
+    "points": 20
+  },
+  {
+    "id": "multi-prop-11",
+    "type": "multiple",
+    "difficulty": "hard",
+    "title": "比例多选",
+    "prompt": "下面哪些量的乘积一定？",
+    "options": [
+      {
+        "id": "a",
+        "label": "路程一定时速度与时间"
+      },
+      {
+        "id": "b",
+        "label": "工作总量一定时效率与时间"
+      },
+      {
+        "id": "c",
+        "label": "单价一定时总价与数量"
+      },
+      {
+        "id": "d",
+        "label": "圆柱底面积一定时体积与高"
+      }
+    ],
+    "answerOptionIds": [
+      "a",
+      "b"
+    ],
+    "timeLimitSeconds": 35,
+    "points": 20
+  },
+  {
+    "id": "multi-prop-12",
+    "type": "multiple",
+    "difficulty": "hard",
+    "title": "比例多选",
+    "prompt": "下列哪些比例成立？",
+    "options": [
+      {
+        "id": "a",
+        "label": "3:4=9:12"
+      },
+      {
+        "id": "b",
+        "label": "5:8=15:24"
+      },
+      {
+        "id": "c",
+        "label": "2:7=6:14"
+      },
+      {
+        "id": "d",
+        "label": "10:6=5:3"
+      }
+    ],
+    "answerOptionIds": [
+      "a",
+      "b",
+      "d"
+    ],
+    "timeLimitSeconds": 35,
+    "points": 20
+  },
+  {
+    "id": "inv-change-1",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "反比例变化",
+    "prompt": "如果 x 和 y 成反比例，当 x 扩大到原来的 5 倍时，y 应怎样变化？",
+    "options": [
+      {
+        "id": "a",
+        "label": "扩大到原来的 5 倍"
+      },
+      {
+        "id": "b",
+        "label": "缩小到原来的 1/5"
+      },
+      {
+        "id": "c",
+        "label": "不变"
+      },
+      {
+        "id": "d",
+        "label": "扩大到原来的 25 倍"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "inv-change-2",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "反比例变化",
+    "prompt": "如果 x 和 y 成反比例，当 x 扩大到原来的 4 倍时，y 应怎样变化？",
+    "options": [
+      {
+        "id": "a",
+        "label": "扩大到原来的 4 倍"
+      },
+      {
+        "id": "b",
+        "label": "缩小到原来的 1/4"
+      },
+      {
+        "id": "c",
+        "label": "不变"
+      },
+      {
+        "id": "d",
+        "label": "扩大到原来的 16 倍"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "inv-change-3",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "反比例变化",
+    "prompt": "如果 x 和 y 成反比例，当 x 扩大到原来的 2 倍时，y 应怎样变化？",
+    "options": [
+      {
+        "id": "a",
+        "label": "扩大到原来的 2 倍"
+      },
+      {
+        "id": "b",
+        "label": "缩小到原来的 1/2"
+      },
+      {
+        "id": "c",
+        "label": "不变"
+      },
+      {
+        "id": "d",
+        "label": "扩大到原来的 4 倍"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "inv-change-4",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "反比例变化",
+    "prompt": "如果 x 和 y 成反比例，当 x 扩大到原来的 10 倍时，y 应怎样变化？",
+    "options": [
+      {
+        "id": "a",
+        "label": "扩大到原来的 10 倍"
+      },
+      {
+        "id": "b",
+        "label": "缩小到原来的 1/10"
+      },
+      {
+        "id": "c",
+        "label": "不变"
+      },
+      {
+        "id": "d",
+        "label": "扩大到原来的 100 倍"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "inv-change-5",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "反比例变化",
+    "prompt": "如果 x 和 y 成反比例，当 x 扩大到原来的 8 倍时，y 应怎样变化？",
+    "options": [
+      {
+        "id": "a",
+        "label": "扩大到原来的 8 倍"
+      },
+      {
+        "id": "b",
+        "label": "缩小到原来的 1/8"
+      },
+      {
+        "id": "c",
+        "label": "不变"
+      },
+      {
+        "id": "d",
+        "label": "扩大到原来的 64 倍"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 28,
+    "points": 16
+  },
+  {
+    "id": "scale-ship-1",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "比例尺计算",
+    "prompt": "飞船模型设计图上，轨道舱圆柱部分底面直径是 15 cm，比例尺是 1:20。实际长度是多少米？",
+    "answerPattern": "^3$",
+    "answerHint": "只输入米数，可用小数点",
+    "timeLimitSeconds": 32,
+    "points": 16
+  },
+  {
+    "id": "scale-station-1",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "比例尺计算",
+    "prompt": "空间站核心舱模型图上，圆柱部分长度是 60 cm，比例尺是 1:25。实际长度是多少米？",
+    "answerPattern": "^15$",
+    "answerHint": "只输入米数，可用小数点",
+    "timeLimitSeconds": 32,
+    "points": 16
+  },
+  {
+    "id": "scale-map-1",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "比例尺计算",
+    "prompt": "生态园平面图上，一条步道长 3 cm，比例尺是 1:5000。实际长度是多少米？",
+    "answerPattern": "^150$",
+    "answerHint": "只输入米数，可用小数点",
+    "timeLimitSeconds": 32,
+    "points": 16
+  },
+  {
+    "id": "scale-mars-1",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "比例尺计算",
+    "prompt": "火星车模型图纸上，车身长 12 cm，比例尺是 1:50。实际长度是多少米？",
+    "answerPattern": "^6$",
+    "answerHint": "只输入米数，可用小数点",
+    "timeLimitSeconds": 32,
+    "points": 16
+  },
+  {
+    "id": "scale-school-1",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "比例尺计算",
+    "prompt": "校园绿化图上，操场宽 4.5 cm，比例尺是 1:2000。实际长度是多少米？",
+    "answerPattern": "^90$",
+    "answerHint": "只输入米数，可用小数点",
+    "timeLimitSeconds": 32,
+    "points": 16
+  },
+  {
+    "id": "scale-bridge-1",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "比例尺计算",
+    "prompt": "桥梁模型图上，一段栏杆长 8 cm，比例尺是 1:100。实际长度是多少米？",
+    "answerPattern": "^8$",
+    "answerHint": "只输入米数，可用小数点",
+    "timeLimitSeconds": 32,
+    "points": 16
+  },
+  {
+    "id": "scale-room-1",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "比例尺计算",
+    "prompt": "科技馆展厅图纸上，一面展墙长 6 cm，比例尺是 1:80。实际长度是多少米？",
+    "answerPattern": "^4\\.8$",
+    "answerHint": "只输入米数，可用小数点",
+    "timeLimitSeconds": 32,
+    "points": 16
+  },
+  {
+    "id": "scale-garden-1",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "比例尺计算",
+    "prompt": "劳动基地平面图上，水渠长 7.5 cm，比例尺是 1:400。实际长度是多少米？",
+    "answerPattern": "^30$",
+    "answerHint": "只输入米数，可用小数点",
+    "timeLimitSeconds": 32,
+    "points": 16
+  },
+  {
+    "id": "scale-city-1",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "比例尺计算",
+    "prompt": "城市地图上，地铁站间距 2.8 cm，比例尺是 1:10000。实际长度是多少米？",
+    "answerPattern": "^280$",
+    "answerHint": "只输入米数，可用小数点",
+    "timeLimitSeconds": 32,
+    "points": 16
+  },
+  {
+    "id": "scale-robot-1",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "比例尺计算",
+    "prompt": "机器人模型图上，机械臂长 18 cm，比例尺是 1:10。实际长度是多少米？",
+    "answerPattern": "^1\\.8$",
+    "answerHint": "只输入米数，可用小数点",
+    "timeLimitSeconds": 32,
+    "points": 16
+  },
+  {
+    "id": "enlarge-area-1",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "放大与缩小",
+    "prompt": "一个长方形按 3:1 放大后，面积变成原来的多少倍？",
+    "options": [
+      {
+        "id": "a",
+        "label": "3"
+      },
+      {
+        "id": "b",
+        "label": "6"
+      },
+      {
+        "id": "c",
+        "label": "9"
+      },
+      {
+        "id": "d",
+        "label": "27"
+      }
+    ],
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "enlarge-area-2",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "放大与缩小",
+    "prompt": "一个正方形按 1:2 缩小后，面积变成原来的多少？",
+    "options": [
+      {
+        "id": "a",
+        "label": "1/2"
+      },
+      {
+        "id": "b",
+        "label": "1/4"
+      },
+      {
+        "id": "c",
+        "label": "1/8"
+      },
+      {
+        "id": "d",
+        "label": "2"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "enlarge-perimeter-1",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "放大与缩小",
+    "prompt": "一个长方形按 1:3 缩小后，周长变成原来的多少？",
+    "options": [
+      {
+        "id": "a",
+        "label": "1/3"
+      },
+      {
+        "id": "b",
+        "label": "1/6"
+      },
+      {
+        "id": "c",
+        "label": "1/9"
+      },
+      {
+        "id": "d",
+        "label": "3"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "enlarge-volume-1",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "放大与缩小",
+    "prompt": "3D 打印零件各条棱长都放大到原来的 2 倍，所需树脂体积变为原来的多少倍？",
+    "options": [
+      {
+        "id": "a",
+        "label": "2"
+      },
+      {
+        "id": "b",
+        "label": "4"
+      },
+      {
+        "id": "c",
+        "label": "6"
+      },
+      {
+        "id": "d",
+        "label": "8"
+      }
+    ],
+    "answerOptionIds": [
+      "d"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "enlarge-volume-2",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "放大与缩小",
+    "prompt": "一个立方体模型棱长按 3:1 放大，体积变成原来的多少倍？",
+    "options": [
+      {
+        "id": "a",
+        "label": "3"
+      },
+      {
+        "id": "b",
+        "label": "9"
+      },
+      {
+        "id": "c",
+        "label": "18"
+      },
+      {
+        "id": "d",
+        "label": "27"
+      }
+    ],
+    "answerOptionIds": [
+      "d"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "enlarge-area-3",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "放大与缩小",
+    "prompt": "一张照片按 4:1 放大，照片面积变成原来的多少倍？",
+    "options": [
+      {
+        "id": "a",
+        "label": "4"
+      },
+      {
+        "id": "b",
+        "label": "8"
+      },
+      {
+        "id": "c",
+        "label": "12"
+      },
+      {
+        "id": "d",
+        "label": "16"
+      }
+    ],
+    "answerOptionIds": [
+      "d"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "enlarge-perimeter-2",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "放大与缩小",
+    "prompt": "一个图形按 5:1 放大，周长变成原来的多少倍？",
+    "options": [
+      {
+        "id": "a",
+        "label": "5"
+      },
+      {
+        "id": "b",
+        "label": "10"
+      },
+      {
+        "id": "c",
+        "label": "25"
+      },
+      {
+        "id": "d",
+        "label": "125"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "enlarge-area-4",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "放大与缩小",
+    "prompt": "一个三角形按 1:4 缩小，面积变成原来的多少？",
+    "options": [
+      {
+        "id": "a",
+        "label": "1/4"
+      },
+      {
+        "id": "b",
+        "label": "1/8"
+      },
+      {
+        "id": "c",
+        "label": "1/16"
+      },
+      {
+        "id": "d",
+        "label": "4"
+      }
+    ],
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "enlarge-volume-3",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "放大与缩小",
+    "prompt": "一个长方体各条棱长缩小到原来的 1/2，体积变成原来的多少？",
+    "options": [
+      {
+        "id": "a",
+        "label": "1/2"
+      },
+      {
+        "id": "b",
+        "label": "1/4"
+      },
+      {
+        "id": "c",
+        "label": "1/8"
+      },
+      {
+        "id": "d",
+        "label": "2"
+      }
+    ],
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "enlarge-shape",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "放大与缩小",
+    "prompt": "图形按比例放大或缩小时，什么保持不变？",
+    "options": [
+      {
+        "id": "a",
+        "label": "形状"
+      },
+      {
+        "id": "b",
+        "label": "面积"
+      },
+      {
+        "id": "c",
+        "label": "周长"
+      },
+      {
+        "id": "d",
+        "label": "所有长度"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rotate-rect-side",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "图形旋转",
+    "prompt": "长方形绕一条边快速旋转一周，形成什么立体图形？",
+    "options": [
+      {
+        "id": "a",
+        "label": "圆柱"
+      },
+      {
+        "id": "b",
+        "label": "圆锥"
+      },
+      {
+        "id": "c",
+        "label": "圆台"
+      },
+      {
+        "id": "d",
+        "label": "球"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rotate-right-triangle",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "图形旋转",
+    "prompt": "直角三角形绕一条直角边快速旋转一周，形成什么立体图形？",
+    "options": [
+      {
+        "id": "a",
+        "label": "圆柱"
+      },
+      {
+        "id": "b",
+        "label": "圆锥"
+      },
+      {
+        "id": "c",
+        "label": "圆台"
+      },
+      {
+        "id": "d",
+        "label": "长方体"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rotate-flag-trapezoid",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "图形旋转",
+    "prompt": "一个直角梯形小旗绕着垂直于底边的腰旋转一周，会形成什么？",
+    "options": [
+      {
+        "id": "a",
+        "label": "圆柱"
+      },
+      {
+        "id": "b",
+        "label": "圆锥"
+      },
+      {
+        "id": "c",
+        "label": "圆台"
+      },
+      {
+        "id": "d",
+        "label": "球"
+      }
+    ],
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rotate-semicircle",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "图形旋转",
+    "prompt": "半圆绕它的直径旋转一周，会形成什么？",
+    "options": [
+      {
+        "id": "a",
+        "label": "圆锥"
+      },
+      {
+        "id": "b",
+        "label": "圆柱"
+      },
+      {
+        "id": "c",
+        "label": "球"
+      },
+      {
+        "id": "d",
+        "label": "圆台"
+      }
+    ],
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rotate-rectangle-center",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "图形旋转",
+    "prompt": "长方形绕穿过中心且平行于一边的对称轴旋转一周，可能形成什么？",
+    "options": [
+      {
+        "id": "a",
+        "label": "圆柱"
+      },
+      {
+        "id": "b",
+        "label": "圆锥"
+      },
+      {
+        "id": "c",
+        "label": "正方体"
+      },
+      {
+        "id": "d",
+        "label": "三棱柱"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rotate-triangle-hypotenuse",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "图形旋转",
+    "prompt": "直角三角形绕斜边旋转一周，形成的立体图形可以看作什么组合？",
+    "options": [
+      {
+        "id": "a",
+        "label": "两个圆锥底面相接"
+      },
+      {
+        "id": "b",
+        "label": "两个圆柱相接"
+      },
+      {
+        "id": "c",
+        "label": "一个圆柱和一个圆锥"
+      },
+      {
+        "id": "d",
+        "label": "一个球"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rotate-line",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "图形旋转",
+    "prompt": "一条线段绕它的一个端点在平面内旋转一周，端点扫过的轨迹是什么？",
+    "options": [
+      {
+        "id": "a",
+        "label": "圆"
+      },
+      {
+        "id": "b",
+        "label": "正方形"
+      },
+      {
+        "id": "c",
+        "label": "长方形"
+      },
+      {
+        "id": "d",
+        "label": "圆柱"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rotate-point",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "图形旋转",
+    "prompt": "点按一定方向运动形成的轨迹通常是什么？",
+    "options": [
+      {
+        "id": "a",
+        "label": "线"
+      },
+      {
+        "id": "b",
+        "label": "面"
+      },
+      {
+        "id": "c",
+        "label": "体"
+      },
+      {
+        "id": "d",
+        "label": "角"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "translate-shape",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "图形旋转",
+    "prompt": "图形平移后，改变的是哪一项？",
+    "options": [
+      {
+        "id": "a",
+        "label": "位置"
+      },
+      {
+        "id": "b",
+        "label": "形状"
+      },
+      {
+        "id": "c",
+        "label": "大小"
+      },
+      {
+        "id": "d",
+        "label": "周长"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "rotate-90",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "图形旋转",
+    "prompt": "方格纸上三角形绕一个顶点旋转 90 度后，三角形的面积会怎样？",
+    "options": [
+      {
+        "id": "a",
+        "label": "不变"
+      },
+      {
+        "id": "b",
+        "label": "扩大 2 倍"
+      },
+      {
+        "id": "c",
+        "label": "缩小一半"
+      },
+      {
+        "id": "d",
+        "label": "无法确定"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 25,
+    "points": 14
+  },
+  {
+    "id": "motion-judge-shape",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断图形运动",
+    "prompt": "判断：图形按比例放大后，形状不变，大小改变。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "motion-judge-area",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断图形运动",
+    "prompt": "判断：长度扩大 3 倍，面积也只扩大 3 倍。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "motion-judge-volume",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断图形运动",
+    "prompt": "判断：棱长扩大 2 倍，长方体体积扩大 8 倍。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "motion-judge-translate",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断图形运动",
+    "prompt": "判断：平移不会改变图形的大小和形状。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "motion-judge-rotate",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断图形运动",
+    "prompt": "判断：旋转 90 度后，图形的每条边长度都不变。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "motion-judge-scale",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "判断图形运动",
+    "prompt": "判断：比例尺 1:100 的图纸上，图上 1 cm 表示实际 1 m。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "motion-judge-unit",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断图形运动",
+    "prompt": "判断：把图形按 2:1 放大，所有角的度数也扩大到原来的 2 倍。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "motion-judge-map",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断图形运动",
+    "prompt": "判断：比例尺越小，表示同一实际物体的图上长度通常越短。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "motion-judge-rotate-body",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断图形运动",
+    "prompt": "判断：长方形绕边旋转形成的圆柱，高可能等于被绕的那条边。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "motion-judge-ratio",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "判断图形运动",
+    "prompt": "判断：按 1:5 缩小后，周长变为原来的 1/5。",
+    "options": [
+      {
+        "id": "a",
+        "label": "对"
+      },
+      {
+        "id": "b",
+        "label": "错"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 20,
+    "points": 12
+  },
+  {
+    "id": "motion-fill-area-1",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "放大后的面积",
+    "prompt": "一块长方形科技展板长 2 dm、宽 6 dm，按 3:1 放大制作。放大后面积是多少平方分米？",
+    "answerPattern": "^108$",
+    "answerHint": "只输入数字",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "motion-fill-area-2",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "放大后的面积",
+    "prompt": "一块长方形科技展板长 3 dm、宽 4 dm，按 2:1 放大制作。放大后面积是多少平方分米？",
+    "answerPattern": "^48$",
+    "answerHint": "只输入数字",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "motion-fill-area-3",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "放大后的面积",
+    "prompt": "一块长方形科技展板长 5 dm、宽 8 dm，按 4:1 放大制作。放大后面积是多少平方分米？",
+    "answerPattern": "^640$",
+    "answerHint": "只输入数字",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "motion-fill-area-4",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "放大后的面积",
+    "prompt": "一块长方形科技展板长 4 dm、宽 7 dm，按 3:1 放大制作。放大后面积是多少平方分米？",
+    "answerPattern": "^252$",
+    "answerHint": "只输入数字",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "motion-fill-area-5",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "放大后的面积",
+    "prompt": "一块长方形科技展板长 6 dm、宽 5 dm，按 2:1 放大制作。放大后面积是多少平方分米？",
+    "answerPattern": "^120$",
+    "answerHint": "只输入数字",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "mixed-1",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "综合易错",
+    "prompt": "圆柱侧面展开图是正方形，若底面直径是 d，高是 h，则 d:h 等于多少？",
+    "options": [
+      {
+        "id": "a",
+        "label": "1:1"
+      },
+      {
+        "id": "b",
+        "label": "1:π"
+      },
+      {
+        "id": "c",
+        "label": "π:1"
+      },
+      {
+        "id": "d",
+        "label": "2:1"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 32,
+    "points": 18
+  },
+  {
+    "id": "mixed-2",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "综合易错",
+    "prompt": "把一个圆柱平均横切成 4 段，需要切几刀？",
+    "options": [
+      {
+        "id": "a",
+        "label": "2"
+      },
+      {
+        "id": "b",
+        "label": "3"
+      },
+      {
+        "id": "c",
+        "label": "4"
+      },
+      {
+        "id": "d",
+        "label": "8"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 32,
+    "points": 18
+  },
+  {
+    "id": "mixed-3",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "综合易错",
+    "prompt": "把一个圆柱横切成 4 段，表面积比原来增加几个底面积？",
+    "options": [
+      {
+        "id": "a",
+        "label": "4 个"
+      },
+      {
+        "id": "b",
+        "label": "6 个"
+      },
+      {
+        "id": "c",
+        "label": "8 个"
+      },
+      {
+        "id": "d",
+        "label": "3 个"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 32,
+    "points": 18
+  },
+  {
+    "id": "mixed-4",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "综合易错",
+    "prompt": "圆锥体积 24 立方厘米，与它等底等高的圆柱体积是多少立方厘米？",
+    "options": [
+      {
+        "id": "a",
+        "label": "8"
+      },
+      {
+        "id": "b",
+        "label": "24"
+      },
+      {
+        "id": "c",
+        "label": "72"
+      },
+      {
+        "id": "d",
+        "label": "96"
+      }
+    ],
+    "answerOptionIds": [
+      "c"
+    ],
+    "timeLimitSeconds": 32,
+    "points": 18
+  },
+  {
+    "id": "mixed-5",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "综合易错",
+    "prompt": "等底等高的圆柱和圆锥体积相差 36 立方厘米，圆锥体积是多少立方厘米？",
+    "options": [
+      {
+        "id": "a",
+        "label": "12"
+      },
+      {
+        "id": "b",
+        "label": "18"
+      },
+      {
+        "id": "c",
+        "label": "24"
+      },
+      {
+        "id": "d",
+        "label": "54"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 32,
+    "points": 18
+  },
+  {
+    "id": "mixed-6",
+    "type": "single",
+    "difficulty": "hard",
+    "title": "综合易错",
+    "prompt": "一幅地图写作“1:5000 千米”的比例尺是否规范？",
+    "options": [
+      {
+        "id": "a",
+        "label": "规范"
+      },
+      {
+        "id": "b",
+        "label": "不规范，比例尺不带单位"
+      },
+      {
+        "id": "c",
+        "label": "规范，表示 5000 千米"
+      },
+      {
+        "id": "d",
+        "label": "无法判断"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 32,
+    "points": 18
+  },
+  {
+    "id": "mixed-7",
+    "type": "single",
+    "difficulty": "hard",
+    "title": "综合易错",
+    "prompt": "x 和 y 成正比例，x 扩大 4 倍，y 会怎样？",
+    "options": [
+      {
+        "id": "a",
+        "label": "扩大 4 倍"
+      },
+      {
+        "id": "b",
+        "label": "缩小到 1/4"
+      },
+      {
+        "id": "c",
+        "label": "不变"
+      },
+      {
+        "id": "d",
+        "label": "扩大 16 倍"
+      }
+    ],
+    "answerOptionIds": [
+      "a"
+    ],
+    "timeLimitSeconds": 32,
+    "points": 18
+  },
+  {
+    "id": "mixed-8",
+    "type": "single",
+    "difficulty": "hard",
+    "title": "综合易错",
+    "prompt": "x 和 y 成反比例，x 缩小到原来的 1/3，y 会怎样？",
+    "options": [
+      {
+        "id": "a",
+        "label": "缩小到 1/3"
+      },
+      {
+        "id": "b",
+        "label": "扩大 3 倍"
+      },
+      {
+        "id": "c",
+        "label": "不变"
+      },
+      {
+        "id": "d",
+        "label": "扩大 9 倍"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 32,
+    "points": 18
+  },
+  {
+    "id": "mixed-9",
+    "type": "single",
+    "difficulty": "hard",
+    "title": "综合易错",
+    "prompt": "一个圆柱的高不变，底面半径扩大到原来的 2 倍，体积变为原来的多少倍？",
+    "options": [
+      {
+        "id": "a",
+        "label": "2"
+      },
+      {
+        "id": "b",
+        "label": "4"
+      },
+      {
+        "id": "c",
+        "label": "6"
+      },
+      {
+        "id": "d",
+        "label": "8"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 32,
+    "points": 18
+  },
+  {
+    "id": "mixed-10",
+    "type": "single",
+    "difficulty": "hard",
+    "title": "综合易错",
+    "prompt": "一个圆锥的底面积不变，高扩大到原来的 3 倍，体积变为原来的多少倍？",
+    "options": [
+      {
+        "id": "a",
+        "label": "1"
+      },
+      {
+        "id": "b",
+        "label": "3"
+      },
+      {
+        "id": "c",
+        "label": "6"
+      },
+      {
+        "id": "d",
+        "label": "9"
+      }
+    ],
+    "answerOptionIds": [
+      "b"
+    ],
+    "timeLimitSeconds": 32,
+    "points": 18
+  },
+  {
+    "id": "mixed-fill-1",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "综合计算",
+    "prompt": "一个圆锥形沙堆底面积 15 平方米，高 2 米。用这些沙子铺一条宽 5 米、厚 0.02 米的路基，能铺多少米？",
+    "answerPattern": "^100$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 45,
+    "points": 24
+  },
+  {
+    "id": "mixed-fill-2",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "综合计算",
+    "prompt": "建筑工地圆锥形沙堆底面周长 12.56 m，高 1.5 m。每立方米沙重 1.5 吨，用载重 2 吨的车运输，至少需要运多少次？",
+    "answerPattern": "^5$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 45,
+    "points": 24
+  },
+  {
+    "id": "mixed-fill-3",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "综合计算",
+    "prompt": "一个圆柱水槽底面积 80 平方厘米，放入一个完全浸没的零件后水面上升 3 厘米。零件体积是多少立方厘米？",
+    "answerPattern": "^240$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 45,
+    "points": 24
+  },
+  {
+    "id": "mixed-fill-4",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "综合计算",
+    "prompt": "把体积 157 立方厘米的金属熔铸成底面积 31.4 平方厘米的圆柱零件，高是多少厘米？",
+    "answerPattern": "^5$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 45,
+    "points": 24
+  },
+  {
+    "id": "mixed-fill-5",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "综合计算",
+    "prompt": "一个底面半径 3 cm、高 6 cm 的圆柱橡皮泥，捏成等底的圆锥。圆锥的高是多少厘米？",
+    "answerPattern": "^18$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 45,
+    "points": 24
+  },
+  {
+    "id": "mixed-fill-6",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "综合计算",
+    "prompt": "1:40 的模型中，圆柱舱段长 25 cm，实际长度是多少米？",
+    "answerPattern": "^10$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "mixed-fill-7",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "综合计算",
+    "prompt": "同一幅图上，实际 120 m 的路画成 6 cm；实际 80 m 的路应画多少厘米？",
+    "answerPattern": "^4$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "mixed-fill-8",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "综合计算",
+    "prompt": "一本书每天读 24 页，15 天读完。若每天读 30 页，多少天读完？",
+    "answerPattern": "^12$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "mixed-fill-9",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "综合计算",
+    "prompt": "茶叶单价一定，买 6 盒共 210 元。买 9 盒需要多少元？",
+    "answerPattern": "^315$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
+  },
+  {
+    "id": "mixed-fill-10",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "综合计算",
+    "prompt": "一个长方体零件原体积 40 立方厘米，各棱长放大到原来的 2 倍后体积是多少立方厘米？",
+    "answerPattern": "^320$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 35,
+    "points": 18
   }
 ]
