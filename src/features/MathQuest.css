@@ -3,13 +3,9 @@
   min-height: calc(100vh - 64px);
   padding: 28px;
   overflow: hidden;
-  color: #152033;
-  background:
-    linear-gradient(90deg, rgba(14, 165, 233, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(34, 197, 94, 0.07) 1px, transparent 1px),
-    #f7fbff;
-  background-size: 34px 34px;
-  border: 1px solid #dbe7f4;
+  color: #ffffff;
+  background: #000000 url('../assets/math-quest-bg.svg') center / cover no-repeat;
+  border: 1px solid #15182c;
 }
 
 .math-quest--center {
@@ -48,6 +44,10 @@
   margin-bottom: 16px;
 }
 
+.math-quest__topbar .ant-typography {
+  color: #ffffff;
+}
+
 .math-quest__eyebrow {
   display: inline-flex;
   margin-bottom: 8px;
@@ -73,7 +73,6 @@
 
 .math-quest__board {
   display: grid;
-  grid-template-columns: minmax(320px, 0.9fr) minmax(420px, 1.1fr);
   gap: 22px;
   margin-top: 22px;
 }
@@ -81,9 +80,19 @@
 .math-quest__question,
 .math-quest__fill,
 .math-quest__options {
-  background: rgba(255, 255, 255, 0.96);
   border: 1px solid #d8e4f2;
   box-shadow: 0 20px 44px rgba(15, 23, 42, 0.1);
+}
+
+.math-quest__question,
+.math-quest__fill {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.math-quest__options {
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .math-quest__question {
@@ -91,7 +100,7 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 22px;
-  min-height: 430px;
+  min-height: 300px;
   padding: 28px;
 }
 
@@ -113,7 +122,7 @@
 .math-quest__prompt {
   display: flex;
   align-items: center;
-  min-height: 220px;
+  min-height: 170px;
   padding: 28px;
   color: #050816;
   font-size: clamp(32px, 4.2vw, 58px);
@@ -187,6 +196,8 @@
 }
 
 .math-quest__fill {
+  width: min(760px, 100%);
+  margin: 0 auto;
   display: grid;
   gap: 18px;
   padding: 28px;
