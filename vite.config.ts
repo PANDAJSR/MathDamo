@@ -7,4 +7,7 @@ const shouldUsePagesBase = process.env.GITHUB_ACTIONS === 'true' && Boolean(repo
 export default defineConfig({
   base: shouldUsePagesBase ? `/${repositoryName}/` : '/',
   plugins: [react()],
+  server: {
+    port: 14723,
+  },
 })
