@@ -301,6 +301,15 @@
   border-radius: 18px;
 }
 
+.math-quest__submit.ant-btn:disabled,
+.math-quest__submit.ant-btn:disabled:hover {
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(148, 163, 184, 0.72);
+  border-color: rgba(203, 213, 225, 0.68);
+  box-shadow: none;
+  opacity: 1;
+}
+
 .math-quest__feedback {
   position: absolute;
   inset: auto 36px 36px;
