@@ -37,7 +37,6 @@ export function PiRacer() {
   const scoreRef = useRef(score)
   const livesRef = useRef(lives)
   const playerLaneRef = useRef(playerLane)
-  const levelRef = useRef(getLevel(score))
   const waveRef = useRef(wave)
   const ringXRef = useRef(ringX)
   const advancingRef = useRef(false)
@@ -55,7 +54,6 @@ export function PiRacer() {
 
   useEffect(() => {
     scoreRef.current = score
-    levelRef.current = getLevel(score)
   }, [score])
 
   useEffect(() => {
@@ -110,7 +108,6 @@ export function PiRacer() {
 
     scoreRef.current = 0
     livesRef.current = INITIAL_LIVES
-    levelRef.current = 1
     waveRef.current = nextWave
     ringXRef.current = START_X
     advancingRef.current = false
@@ -196,7 +193,7 @@ export function PiRacer() {
       lastTime = now
 
       if (!advancingRef.current) {
-        const nextX = ringXRef.current - getSpeed(levelRef.current) * deltaSeconds
+        const nextX = ringXRef.current - getSpeed() * deltaSeconds
         ringXRef.current = nextX
         setRingX(nextX)
 
