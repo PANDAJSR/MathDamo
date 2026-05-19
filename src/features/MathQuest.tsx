@@ -1,9 +1,10 @@
-import { Button, Progress, Statistic, Typography } from 'antd'
+import { Button, Modal, Progress, Statistic, Typography } from 'antd'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import './MathQuest.css'
 import {
   evaluateChoiceAnswer,
   evaluateFillAnswer,
+  getCorrectAnswerText,
   getDifficultyLabel,
   shuffleQuestions,
 } from './mathQuest/game'
@@ -26,6 +27,7 @@ export function MathQuest() {
   const [score, setScore] = useState(0)
   const [timeLeft, setTimeLeft] = useState(questions[0]?.timeLimitSeconds ?? 0)
   const [feedback, setFeedback] = useState({ tone: 'success' as FeedbackTone, text: '' })
+  const [wrongReview, setWrongReview] = useState<{ answer: string; explanation: string } | null>(null)
 
   const currentQuestion = questions[questionIndex]
   const answeredCount = phase === 'finished' ? questions.length : questionIndex
@@ -46,6 +48,7 @@ export function MathQuest() {
     setQuestionIndex(0)
     setScore(0)
     setFeedback({ tone: 'success', text: '' })
+    setWrongReview(null)
     resetForQuestion(nextQuestions[0])
     setPhase('playing')
   }
@@ -66,6 +69,11 @@ export function MathQuest() {
     })
   }, [questions, resetForQuestion])
 
+  const continueAfterReview = useCallback(() => {
+    setWrongReview(null)
+    moveToNextQuestion()
+  }, [moveToNextQuestion])
+
   const resolveAnswer = useCallback(
     (correct: boolean, message: string) => {
       if (!currentQuestion || phase !== 'playing') return
@@ -77,7 +85,16 @@ export function MathQuest() {
         text: correct ? message : `${message} 先别急，下一题抢回来。`,
       })
       setPhase('feedback')
-      window.setTimeout(moveToNextQuestion, feedbackDelayMs)
+
+      if (correct) {
+        window.setTimeout(moveToNextQuestion, feedbackDelayMs)
+        return
+      }
+
+      setWrongReview({
+        answer: getCorrectAnswerText(currentQuestion),
+        explanation: currentQuestion.explanation,
+      })
     },
     [currentQuestion, moveToNextQuestion, phase],
   )
@@ -275,6 +292,27 @@ export function MathQuest() {
           <span>{feedback.text}</span>
         </div>
       )}
+
+      <Modal
+        open={Boolean(wrongReview)}
+        title="正确答案和解析"
+        okText="继续闯关"
+        cancelButtonProps={{ style: { display: 'none' } }}
+        closable={false}
+        maskClosable={false}
+        onOk={continueAfterReview}
+      >
+        <div className="math-quest__review">
+          <div>
+            <strong>正确答案</strong>
+            <span>{wrongReview?.answer}</span>
+          </div>
+          <div>
+            <strong>为什么是这个答案</strong>
+            <p>{wrongReview?.explanation}</p>
+          </div>
+        </div>
+      </Modal>
     </section>
   )
 }

@@ -13,6 +13,23 @@ export function getDifficultyLabel(question: MathQuestQuestion) {
   return '基础'
 }
 
+export function getCorrectAnswerText(question: MathQuestQuestion) {
+  if (question.type === 'fill') {
+    return question.answerPattern
+      ?.replace(/^\^/, '')
+      .replace(/\$$/, '')
+      .replaceAll('\\.', '.')
+      .replaceAll('\\/', '/')
+      ?? '见解析'
+  }
+
+  const answerIds = new Set(question.answerOptionIds ?? [])
+  return question.options
+    ?.filter((option) => answerIds.has(option.id))
+    .map((option) => option.label)
+    .join('、') || '见解析'
+}
+
 export function evaluateChoiceAnswer(
   question: MathQuestQuestion,
   selectedOptionIds: string[],
