@@ -1,7 +1,14 @@
 import { Button } from 'antd'
 import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent, type WheelEvent } from 'react'
 import './PiRacer.css'
-import { createWave, getFormulaText, getLevel, getSpeed, type Wave } from './piRacer/game'
+import {
+  createWave,
+  formatGameNumber,
+  getFormulaText,
+  getLevel,
+  getSpeed,
+  type Wave,
+} from './piRacer/game'
 
 const LANE_COUNT = 3
 const LANE_TOPS = [20, 50, 80]
@@ -125,14 +132,14 @@ export function PiRacer() {
     const currentWave = waveRef.current
     const collidedRing = currentWave.rings[playerLaneRef.current]
     const expectedCircumference = currentWave.targetCircumference
-    const errorRatio = Math.abs(expectedCircumference - collidedRing.circumference) / collidedRing.circumference
-    const matched = errorRatio < 0.05
+    const error = Math.abs(expectedCircumference - collidedRing.circumference)
+    const matched = error < 0.01
 
     if (matched) {
       const nextScore = scoreRef.current + 10
       scoreRef.current = nextScore
       setScore(nextScore)
-      setMessage(`命中：${getFormulaText(currentWave.clue)} ≈ ${expectedCircumference.toFixed(1)}`)
+      setMessage(`命中：${getFormulaText(currentWave.clue)} = ${formatGameNumber(expectedCircumference)}`)
       setFlash('success')
       nextWaveTimerRef.current = window.setTimeout(() => launchWave(nextScore), NEXT_WAVE_DELAY_MS)
       return
@@ -141,7 +148,7 @@ export function PiRacer() {
     const nextLives = livesRef.current - 1
     livesRef.current = nextLives
     setLives(nextLives)
-    setMessage(`偏差 ${(errorRatio * 100).toFixed(1)}%，需要小于 5%`)
+    setMessage(`选错了，应选择 C = ${formatGameNumber(expectedCircumference)}`)
     setFlash('danger')
 
     if (nextLives <= 0) {
@@ -265,7 +272,7 @@ export function PiRacer() {
       <div className="pi-racer__hud">
         <div className="pi-racer__target">
           <span>匹配目标 = ?</span>
-          <small>已知{wave.clue.name} {wave.clue.symbol} = {wave.clue.value.toFixed(1)}</small>
+          <small>已知{wave.clue.name} {wave.clue.symbol} = {formatGameNumber(wave.clue.value)}</small>
         </div>
         <div className="pi-racer__stats" aria-label="游戏状态">
           <span>得分 {score}</span>
@@ -302,7 +309,7 @@ export function PiRacer() {
         >
           <span>
             <b>{wave.clue.symbol}</b>
-            <small>= {wave.clue.value.toFixed(1)}</small>
+            <small>= {formatGameNumber(wave.clue.value)}</small>
           </span>
         </div>
 
@@ -312,7 +319,7 @@ export function PiRacer() {
             key={`${ring.clue.symbol}-${ring.clue.value}-${index}`}
             style={{ left: `${ringX}%`, top: `${LANE_TOPS[index]}%` }}
           >
-            <span>{ring.clue.symbol} = {ring.clue.value.toFixed(1)}</span>
+            <span>{ring.clue.symbol} = {formatGameNumber(ring.clue.value)}</span>
           </div>
         ))}
 

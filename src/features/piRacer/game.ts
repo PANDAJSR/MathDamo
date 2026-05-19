@@ -21,8 +21,11 @@ export type Wave = {
   rings: Ring[]
 }
 
-const roundOne = (value: number) => Math.round(value * 10) / 10
-const clueKinds: ClueKind[] = ['diameter', 'radius', 'area', 'circumference']
+const roundTwo = (value: number) => Math.round(value * 100) / 100
+
+export const formatGameNumber = (value: number) => (
+  Number.isInteger(value) ? `${value}` : value.toFixed(2).replace(/\.?0+$/, '')
+)
 
 const shuffle = <T,>(items: T[]) => {
   const next = [...items]
@@ -36,7 +39,8 @@ const shuffle = <T,>(items: T[]) => {
 }
 
 const createClue = (levelBias: number): Clue => {
-  const radius = roundOne(6 + Math.random() * 11 + levelBias * 0.35)
+  const maxRadius = Math.min(12, 4 + levelBias)
+  const radius = 2 + Math.floor(Math.random() * (maxRadius - 1))
   return createClueFromRadius(radius, shuffle<ClueKind>(['diameter', 'radius', 'area'])[0])
 }
 
@@ -46,7 +50,7 @@ const createClueFromRadius = (radius: number, kind: ClueKind): Clue => {
       kind,
       name: '直径',
       symbol: 'd',
-      value: roundOne(radius * 2),
+      value: roundTwo(radius * 2),
     }
   }
 
@@ -64,7 +68,7 @@ const createClueFromRadius = (radius: number, kind: ClueKind): Clue => {
       kind,
       name: '面积',
       symbol: 'S',
-      value: roundOne(PI_VALUE * radius * radius),
+      value: roundTwo(PI_VALUE * radius * radius),
     }
   }
 
@@ -72,29 +76,29 @@ const createClueFromRadius = (radius: number, kind: ClueKind): Clue => {
     kind,
     name: '周长',
     symbol: 'C',
-    value: roundOne(2 * PI_VALUE * radius),
+    value: roundTwo(2 * PI_VALUE * radius),
   }
 }
 
 const getCircumferenceFromClue = (clue: Clue) => {
-  if (clue.kind === 'diameter') return roundOne(clue.value * PI_VALUE)
-  if (clue.kind === 'radius') return roundOne(clue.value * 2 * PI_VALUE)
+  if (clue.kind === 'diameter') return roundTwo(clue.value * PI_VALUE)
+  if (clue.kind === 'radius') return roundTwo(clue.value * 2 * PI_VALUE)
   if (clue.kind === 'circumference') return clue.value
-  return roundOne(2 * Math.sqrt(clue.value * PI_VALUE))
+  return roundTwo(2 * Math.sqrt(clue.value * PI_VALUE))
 }
 
 const getDiameterFromClue = (clue: Clue) => {
   if (clue.kind === 'diameter') return clue.value
-  if (clue.kind === 'radius') return roundOne(clue.value * 2)
-  if (clue.kind === 'circumference') return roundOne(clue.value / PI_VALUE)
-  return roundOne(2 * Math.sqrt(clue.value / PI_VALUE))
+  if (clue.kind === 'radius') return roundTwo(clue.value * 2)
+  if (clue.kind === 'circumference') return roundTwo(clue.value / PI_VALUE)
+  return roundTwo(2 * Math.sqrt(clue.value / PI_VALUE))
 }
 
 export const getFormulaText = (clue: Clue) => {
-  if (clue.kind === 'diameter') return `${clue.value.toFixed(1)} x 3.14`
-  if (clue.kind === 'radius') return `2 x ${clue.value.toFixed(1)} x 3.14`
-  if (clue.kind === 'circumference') return clue.value.toFixed(1)
-  return `2 x √(${clue.value.toFixed(1)} x 3.14)`
+  if (clue.kind === 'diameter') return `${formatGameNumber(clue.value)} x 3.14`
+  if (clue.kind === 'radius') return `2 x ${formatGameNumber(clue.value)} x 3.14`
+  if (clue.kind === 'circumference') return formatGameNumber(clue.value)
+  return `2 x √(${formatGameNumber(clue.value)} x 3.14)`
 }
 
 const createRing = (circumference: number, kind: ClueKind): Ring => {
@@ -107,19 +111,43 @@ const createRing = (circumference: number, kind: ClueKind): Ring => {
   }
 }
 
+const createWrongLabelRing = (targetCircumference: number, sourceKind: ClueKind): Ring => {
+  const labelKinds: ClueKind[] = sourceKind === 'diameter'
+    ? ['radius']
+    : sourceKind === 'radius'
+      ? ['diameter']
+      : ['diameter', 'radius']
+  const kind = shuffle(labelKinds)[0]
+  const clue: Clue = {
+    kind,
+    name: kind === 'diameter' ? '直径' : '半径',
+    symbol: kind === 'diameter' ? 'd' : 'r',
+    value: targetCircumference,
+  }
+
+  return {
+    clue,
+    circumference: getCircumferenceFromClue(clue),
+  }
+}
+
+const createNeighborCircumferenceRing = (targetCircumference: number): Ring => {
+  const step = shuffle([-PI_VALUE, PI_VALUE, -2 * PI_VALUE, 2 * PI_VALUE]).find((offset) => (
+    targetCircumference + offset > 0
+  )) ?? PI_VALUE
+
+  return createRing(roundTwo(targetCircumference + step), 'circumference')
+}
+
 export const createWave = (score: number): Wave => {
   const levelBias = Math.min(8, Math.floor(score / 80))
   const clue = createClue(levelBias)
   const diameter = getDiameterFromClue(clue)
   const targetCircumference = getCircumferenceFromClue(clue)
-  const availableKinds = clueKinds.filter((kind) => kind !== clue.kind)
-  const decoyKinds = availableKinds.filter((kind) => kind !== 'circumference')
-  const offsets = shuffle([-0.24, -0.15, 0.16, 0.26]).slice(0, decoyKinds.length)
   const rings = shuffle([
     createRing(targetCircumference, 'circumference'),
-    ...decoyKinds.map((kind, index) => (
-      createRing(roundOne(targetCircumference * (1 + offsets[index])), kind)
-    )),
+    createWrongLabelRing(targetCircumference, clue.kind),
+    createNeighborCircumferenceRing(targetCircumference),
   ])
 
   return { clue, diameter, targetCircumference, rings }
