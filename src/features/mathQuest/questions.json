@@ -1,0 +1,100 @@
+[
+  {
+    "id": "single-apple-count",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "水果篮里的加法",
+    "prompt": "篮子里有 8 个苹果，又放进 7 个。现在一共有多少个苹果？",
+    "options": [
+      { "id": "a", "label": "13" },
+      { "id": "b", "label": "14" },
+      { "id": "c", "label": "15" },
+      { "id": "d", "label": "16" }
+    ],
+    "answerOptionIds": ["c"],
+    "timeLimitSeconds": 15,
+    "points": 10
+  },
+  {
+    "id": "multiple-even-numbers",
+    "type": "multiple",
+    "difficulty": "easy",
+    "title": "找出偶数",
+    "prompt": "下面哪些数是偶数？可以选择多个答案。",
+    "options": [
+      { "id": "a", "label": "12" },
+      { "id": "b", "label": "17" },
+      { "id": "c", "label": "24" },
+      { "id": "d", "label": "31" }
+    ],
+    "answerOptionIds": ["a", "c"],
+    "timeLimitSeconds": 18,
+    "points": 12
+  },
+  {
+    "id": "fill-table-seven",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "乘法口算",
+    "prompt": "7 x 8 = ?",
+    "answerPattern": "^56$",
+    "answerHint": "输入一个整数",
+    "timeLimitSeconds": 12,
+    "points": 15
+  },
+  {
+    "id": "single-fraction-half",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "分数比较",
+    "prompt": "下面哪个数等于 1/2？",
+    "options": [
+      { "id": "a", "label": "0.2" },
+      { "id": "b", "label": "0.5" },
+      { "id": "c", "label": "1.5" },
+      { "id": "d", "label": "2" }
+    ],
+    "answerOptionIds": ["b"],
+    "timeLimitSeconds": 16,
+    "points": 14
+  },
+  {
+    "id": "fill-decimal-subtract",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "小数减法",
+    "prompt": "3.5 - 1.2 = ?",
+    "answerPattern": "^2\\.3$",
+    "answerHint": "可以输入小数点",
+    "timeLimitSeconds": 18,
+    "points": 16
+  },
+  {
+    "id": "multiple-multiples-three",
+    "type": "multiple",
+    "difficulty": "hard",
+    "title": "3 的倍数",
+    "prompt": "下面哪些数是 3 的倍数？",
+    "options": [
+      { "id": "a", "label": "18" },
+      { "id": "b", "label": "25" },
+      { "id": "c", "label": "42" },
+      { "id": "d", "label": "58" },
+      { "id": "e", "label": "63" }
+    ],
+    "answerOptionIds": ["a", "c", "e"],
+    "timeLimitSeconds": 22,
+    "points": 22
+  },
+  {
+    "id": "fill-negative-temperature",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "温度变化",
+    "prompt": "早晨温度是 -2 度，中午升高 5 度，温度是多少度？",
+    "answerPattern": "^3$",
+    "answerHint": "可以输入负号，但本题答案是整数",
+    "timeLimitSeconds": 20,
+    "points": 20
+  }
+]

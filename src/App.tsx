@@ -4,6 +4,7 @@ import './App.css'
 import { FlavorChallenge } from './features/FlavorChallenge'
 import { LuckyWheel } from './features/LuckyWheel'
 import { parseSharedWheelConfigFromSearch } from './features/luckyWheel/share'
+import { MathQuest } from './features/MathQuest'
 import { ModelViewer3D } from './features/ModelViewer3D'
 import { PiRacer } from './features/PiRacer'
 import { ShapeScaleDemo } from './features/ShapeScaleDemo'
@@ -17,6 +18,7 @@ const menuItems = [
   { key: 'simple-recorder', label: '简单录音机' },
   { key: 'pi-racer', label: '极速圆周率' },
   { key: 'flavor-challenge', label: '调味师大挑战' },
+  { key: 'math-quest', label: '趣味数学闯关' },
   { key: 'symmetry-guardians', label: '对称守卫者' },
 ]
 
@@ -58,6 +60,7 @@ function App() {
     if (activeKey === 'lucky-wheel') return <LuckyWheel />
     if (activeKey === 'pi-racer') return <PiRacer />
     if (activeKey === 'flavor-challenge') return <FlavorChallenge />
+    if (activeKey === 'math-quest') return <MathQuest />
     if (activeKey === 'symmetry-guardians') return <SymmetryGuardians />
     return <SimpleRecorder />
   }
