@@ -264,7 +264,7 @@ export function PiRacer() {
     <section className={`pi-racer ${flashTone ? `pi-racer--${flashTone}` : ''}`}>
       <div className="pi-racer__hud">
         <div className="pi-racer__target">
-          <span>目标周长 C = ?</span>
+          <span>匹配目标 = ?</span>
           <small>已知{wave.clue.name} {wave.clue.symbol} = {wave.clue.value.toFixed(1)}</small>
         </div>
         <div className="pi-racer__stats" aria-label="游戏状态">
