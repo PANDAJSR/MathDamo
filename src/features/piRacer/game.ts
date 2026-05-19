@@ -155,4 +155,4 @@ export const createWave = (score: number): Wave => {
 
 export const getLevel = (score: number) => Math.floor(score / 50) + 1
 
-export const getSpeed = () => 14
+export const getSpeed = () => 10
