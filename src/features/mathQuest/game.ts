@@ -42,6 +42,9 @@ export function getCorrectAnswerText(question: MathQuestQuestion) {
     return question.answerPattern
       ?.replace(/^\^/, '')
       .replace(/\$$/, '')
+      .replace(/^\(\?:/, '')
+      .replace(/\)$/, '')
+      .replaceAll('|', ' 或 ')
       .replaceAll('\\.', '.')
       .replaceAll('\\/', '/')
       ?? '见解析'
