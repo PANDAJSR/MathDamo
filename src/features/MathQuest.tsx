@@ -22,7 +22,11 @@ type GamePhase = 'ready' | 'playing' | 'feedback' | 'finished'
 const typedQuestionBank = questionBank as MathQuestQuestion[]
 const feedbackDelayMs = 1300
 
-export function MathQuest() {
+type MathQuestProps = {
+  onBackHome: () => void
+}
+
+export function MathQuest({ onBackHome }: MathQuestProps) {
   const socket = useMathQuestSocket()
   const [singlePlayerMode, setSinglePlayerMode] = useState(false)
   const [selectedKnowledgeTags, setSelectedKnowledgeTags] = useState<string[]>([])
@@ -180,6 +184,14 @@ export function MathQuest() {
     )
   }
 
+  const backHome = () => {
+    if (socket.roomState) {
+      socket.leaveRoom()
+    }
+
+    onBackHome()
+  }
+
   if (socket.roomState) {
     return (
       <MathQuestRoom
@@ -191,6 +203,7 @@ export function MathQuest() {
         onSetReady={socket.setReady}
         onSubmitAnswer={socket.submitAnswer}
         onLeaveRoom={socket.leaveRoom}
+        onBackHome={backHome}
       />
     )
   }
@@ -203,6 +216,7 @@ export function MathQuest() {
         onCreateRoom={socket.createRoom}
         onJoinRoom={socket.joinRoom}
         onSinglePlayer={() => setSinglePlayerMode(true)}
+        onBackHome={backHome}
       />
     )
   }
@@ -217,7 +231,8 @@ export function MathQuest() {
         onSelectedTagsChange={setSelectedKnowledgeTags}
         onSelectedDifficultiesChange={setSelectedDifficulties}
         onStart={startGame}
-        connectionText={socket.error || '正在连接联机服务器，可先单人练习。'}
+        connectionText={singlePlayerMode ? undefined : socket.error || '正在连接联机服务器，可先单人练习。'}
+        onBackHome={backHome}
       />
     )
   }
@@ -234,7 +249,8 @@ export function MathQuest() {
         onStart={startGame}
         score={score}
         completedQuestionCount={questions.length}
-        connectionText={socket.error || '正在连接联机服务器，可先单人练习。'}
+        connectionText={singlePlayerMode ? undefined : socket.error || '正在连接联机服务器，可先单人练习。'}
+        onBackHome={backHome}
       />
     )
   }
@@ -258,6 +274,7 @@ export function MathQuest() {
       onFillBackspace={() => setFillAnswer((currentValue) => currentValue.slice(0, -1))}
       onFillClear={() => setFillAnswer('')}
       onContinueAfterReview={continueAfterReview}
+      onBackHome={backHome}
     />
   )
 }

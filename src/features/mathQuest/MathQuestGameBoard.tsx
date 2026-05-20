@@ -35,6 +35,7 @@ type MathQuestGameBoardProps = {
   onFillInput: (value: string) => void
   onFillBackspace: () => void
   onFillClear: () => void
+  onBackHome?: () => void
   onContinueAfterReview?: () => void
 }
 
@@ -57,6 +58,7 @@ export function MathQuestGameBoard({
   onFillInput,
   onFillBackspace,
   onFillClear,
+  onBackHome,
   onContinueAfterReview,
 }: MathQuestGameBoardProps) {
   const answeredCount = phase === 'feedback' ? questionIndex + 1 : questionIndex
@@ -76,10 +78,17 @@ export function MathQuestGameBoard({
           <span className="math-quest__eyebrow">趣味数学闯关</span>
           <Typography.Title level={2}>{currentQuestion.title}</Typography.Title>
         </div>
-        <div className="math-quest__stats">
-          <Statistic title="得分" value={score} />
-          <Statistic title="题目" value={questionIndex + 1} suffix={`/${totalQuestions}`} />
-          <Statistic title="剩余" value={timeLeft} suffix="秒" />
+        <div className="math-quest__topbar-actions">
+          {onBackHome && (
+            <Button className="math-quest__home-button" onClick={onBackHome}>
+              返回主页
+            </Button>
+          )}
+          <div className="math-quest__stats">
+            <Statistic title="得分" value={score} />
+            <Statistic title="题目" value={questionIndex + 1} suffix={`/${totalQuestions}`} />
+            <Statistic title="剩余" value={timeLeft} suffix="秒" />
+          </div>
         </div>
       </header>
 

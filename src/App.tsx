@@ -60,7 +60,12 @@ function App() {
     if (activeKey === 'lucky-wheel') return <LuckyWheel />
     if (activeKey === 'pi-racer') return <PiRacer />
     if (activeKey === 'flavor-challenge') return <FlavorChallenge />
-    if (activeKey === 'math-quest') return <MathQuest />
+    if (activeKey === 'math-quest') {
+      return <MathQuest onBackHome={() => {
+        setActiveKey(defaultMenuKey)
+        window.location.hash = defaultMenuKey
+      }} />
+    }
     if (activeKey === 'symmetry-guardians') return <SymmetryGuardians />
     return <SimpleRecorder />
   }

@@ -61,10 +61,17 @@
   font-weight: 700;
 }
 
-.math-quest__start-button.ant-btn {
-  min-width: 220px;
-  height: 72px;
+.math-quest__start-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
   margin-top: 18px;
+}
+
+.math-quest__start-button.ant-btn {
+  min-width: 200px;
+  height: 72px;
   font-size: 24px;
   font-weight: 900;
 }

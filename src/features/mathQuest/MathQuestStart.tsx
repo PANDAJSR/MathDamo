@@ -16,6 +16,7 @@ type MathQuestStartProps = {
   onSelectedTagsChange: (tags: string[]) => void
   onSelectedDifficultiesChange: (difficulties: QuestionDifficulty[]) => void
   onStart: () => void
+  onBackHome: () => void
   score?: number
   completedQuestionCount?: number
   connectionText?: string
@@ -29,6 +30,7 @@ export function MathQuestStart({
   onSelectedTagsChange,
   onSelectedDifficultiesChange,
   onStart,
+  onBackHome,
   score,
   completedQuestionCount,
   connectionText,
@@ -77,14 +79,19 @@ export function MathQuestStart({
             <small>{selectedDifficulties.length === 0 ? '基础、进阶、挑战' : '只练所选难度'}</small>
           </div>
         </div>
-        <Button
-          className="math-quest__start-button"
-          type="primary"
-          disabled={playableQuestionCount === 0}
-          onClick={onStart}
-        >
-          {finished ? '再来一轮' : '开始闯关'}
-        </Button>
+        <div className="math-quest__start-actions">
+          <Button
+            className="math-quest__start-button"
+            type="primary"
+            disabled={playableQuestionCount === 0}
+            onClick={onStart}
+          >
+            {finished ? '再来一轮' : '开始闯关'}
+          </Button>
+          <Button className="math-quest__start-button" onClick={onBackHome}>
+            返回主页
+          </Button>
+        </div>
       </div>
     </section>
   )

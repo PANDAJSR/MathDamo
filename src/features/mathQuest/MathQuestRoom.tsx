@@ -25,6 +25,7 @@ type MathQuestRoomProps = {
   onSetReady: (ready: boolean) => void
   onSubmitAnswer: (answer: ClientAnswerPayload) => void
   onLeaveRoom: () => void
+  onBackHome: () => void
 }
 
 function PlayerList({ players }: { players: PlayerState[] }) {
@@ -50,6 +51,7 @@ export function MathQuestRoom({
   onSetReady,
   onSubmitAnswer,
   onLeaveRoom,
+  onBackHome,
 }: MathQuestRoomProps) {
   const [answer, setAnswer] = useState({ questionId: '', selectedOptionIds: [] as string[], fillAnswer: '' })
   const [timeLeft, setTimeLeft] = useState(0)
@@ -226,6 +228,9 @@ export function MathQuestRoom({
             <Button size="large" onClick={onLeaveRoom}>
               离开房间
             </Button>
+            <Button size="large" onClick={onBackHome}>
+              返回主页
+            </Button>
           </div>
         </div>
       </section>
@@ -239,11 +244,28 @@ export function MathQuestRoom({
         <div className="math-quest-online__room">
           <Typography.Title>本轮结束</Typography.Title>
           <PlayerList players={ranking} />
-          <Button type="primary" size="large" onClick={onLeaveRoom}>
-            返回联机大厅
-          </Button>
+          <div className="math-quest-online__actions">
+            <Button type="primary" size="large" onClick={onLeaveRoom}>
+              返回联机大厅
+            </Button>
+            <Button size="large" onClick={onBackHome}>
+              返回主页
+            </Button>
+          </div>
         </div>
-        <Modal open title="排名" footer={<Button onClick={onLeaveRoom}>返回联机大厅</Button>} closable={false}>
+        <Modal
+          open
+          title="排名"
+          footer={[
+            <Button key="lobby" onClick={onLeaveRoom}>
+              返回联机大厅
+            </Button>,
+            <Button key="home" type="primary" onClick={onBackHome}>
+              返回主页
+            </Button>,
+          ]}
+          closable={false}
+        >
           <div className="math-quest-online__ranking">
             {ranking.map((player, index) => (
               <div key={player.id}>
@@ -261,7 +283,12 @@ export function MathQuestRoom({
   if (!currentQuestion) {
     return (
       <section className="math-quest math-quest--center">
-        <Typography.Title>正在同步题目</Typography.Title>
+        <div className="math-quest-online__room">
+          <Typography.Title>正在同步题目</Typography.Title>
+          <Button size="large" onClick={onBackHome}>
+            返回主页
+          </Button>
+        </div>
       </section>
     )
   }
@@ -303,6 +330,7 @@ export function MathQuestRoom({
           fillAnswer: '',
         })
       }
+      onBackHome={onBackHome}
     />
   )
 }

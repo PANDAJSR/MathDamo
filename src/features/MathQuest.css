@@ -45,6 +45,19 @@
   min-width: 360px;
 }
 
+.math-quest__topbar-actions {
+  display: grid;
+  justify-items: end;
+  gap: 12px;
+}
+
+.math-quest__home-button.ant-btn {
+  height: 42px;
+  color: #0f172a;
+  font-weight: 900;
+  border-radius: 999px;
+}
+
 .math-quest__stats .ant-statistic {
   padding: 12px;
   background: rgba(255, 255, 255, 0.16);
@@ -324,6 +337,11 @@
   .math-quest__stats {
     width: 100%;
     min-width: 0;
+  }
+
+  .math-quest__topbar-actions {
+    width: 100%;
+    justify-items: stretch;
   }
 
   .math-quest__board {
