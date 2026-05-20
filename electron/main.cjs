@@ -1,8 +1,9 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const { readFileSync } = require('node:fs')
 const path = require('node:path')
 const { randomUUID } = require('node:crypto')
 const { WebSocket, WebSocketServer } = require('ws')
+const { getLocalIps } = require('./network.cjs')
 
 const isDev = !app.isPackaged
 const port = 12478
@@ -374,6 +375,7 @@ function createWindow() {
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
+      preload: getResourcePath('electron', 'preload.cjs'),
     },
   })
 
@@ -382,6 +384,7 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  ipcMain.handle('get-local-ips', getLocalIps)
   startSocketServer()
   createWindow()
 

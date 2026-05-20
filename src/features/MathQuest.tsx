@@ -208,11 +208,14 @@ export function MathQuest({ onBackHome }: MathQuestProps) {
     )
   }
 
-  if (socket.connected && !singlePlayerMode) {
+  if (!singlePlayerMode && phase === 'ready') {
     return (
       <MathQuestOnlineStart
+        connected={socket.connected}
         error={socket.error}
+        serverAddress={socket.serverAddress}
         socketUrl={socket.socketUrl}
+        onServerAddressChange={socket.setServerAddress}
         onCreateRoom={socket.createRoom}
         onJoinRoom={socket.joinRoom}
         onSinglePlayer={() => setSinglePlayerMode(true)}

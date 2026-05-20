@@ -31,6 +31,61 @@
   font-weight: 800;
 }
 
+.math-quest-online__server {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  width: min(620px, 100%);
+  gap: 12px;
+  margin: 14px 0;
+  text-align: left;
+}
+
+.math-quest-online__server label {
+  display: grid;
+  gap: 8px;
+}
+
+.math-quest-online__server span,
+.math-quest-online__help strong,
+.math-quest-online__ips strong {
+  font-weight: 900;
+}
+
+.math-quest-online__help,
+.math-quest-online__ips {
+  width: min(620px, 100%);
+  margin: 10px 0;
+  padding: 14px;
+  color: #ffffff;
+  text-align: left;
+  background: rgba(15, 23, 42, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 14px;
+}
+
+.math-quest-online__help p {
+  margin: 6px 0 0;
+  line-height: 1.55;
+}
+
+.math-quest-online__ips div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.math-quest-online__ips button {
+  padding: 8px 12px;
+  color: #0f172a;
+  font-weight: 900;
+  background: #ffffff;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
 .math-quest-online__form,
 .math-quest-online__settings {
   display: grid;
@@ -167,6 +222,7 @@
   }
 
   .math-quest-online__settings,
+  .math-quest-online__server,
   .math-quest-online__player,
   .math-quest-online__ranking div {
     grid-template-columns: 1fr;

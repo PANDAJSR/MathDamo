@@ -7,13 +7,38 @@ import type {
   ServerMessage,
 } from './multiplayerTypes'
 
-function getSocketUrl() {
+const defaultPort = '12478'
+const serverAddressStorageKey = 'mathQuestServerAddress'
+
+function getDefaultServerAddress() {
   const hostname = window.location.hostname || 'localhost'
+  return `${hostname}:${defaultPort}`
+}
+
+function readServerAddress() {
+  return window.localStorage.getItem(serverAddressStorageKey) || getDefaultServerAddress()
+}
+
+function getSocketUrl(address: string) {
+  const trimmedAddress = address.trim() || getDefaultServerAddress()
+
+  if (/^wss?:\/\//i.test(trimmedAddress)) {
+    try {
+      const url = new URL(trimmedAddress)
+      if (!url.port) url.port = defaultPort
+      return url.toString().replace(/\/$/, '')
+    } catch {
+      return getSocketUrl(getDefaultServerAddress())
+    }
+  }
+
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
-  return `${protocol}//${hostname}:12478`
+  const [host, port] = trimmedAddress.split(':')
+  return `${protocol}//${host || 'localhost'}:${port || defaultPort}`
 }
 
 export function useMathQuestSocket() {
+  const [serverAddress, setServerAddress] = useState(readServerAddress)
   const [connected, setConnected] = useState(false)
   const [clientId, setClientId] = useState('')
   const [roomState, setRoomState] = useState<MultiplayerRoomState | null>(null)
@@ -21,10 +46,13 @@ export function useMathQuestSocket() {
   const socketRef = useRef<WebSocket | null>(null)
   const reconnectTimerRef = useRef<number | null>(null)
   const manuallyClosedRef = useRef(false)
-  const socketUrl = useMemo(() => getSocketUrl(), [])
+  const socketUrl = useMemo(() => getSocketUrl(serverAddress), [serverAddress])
 
   useEffect(() => {
+    manuallyClosedRef.current = false
+
     const connect = () => {
+      setError('正在连接联机服务器。')
       const socket = new WebSocket(socketUrl)
       socketRef.current = socket
 
@@ -86,7 +114,16 @@ export function useMathQuestSocket() {
     connected,
     error,
     roomState,
+    serverAddress,
     socketUrl,
+    setServerAddress: (nextAddress: string) => {
+      const normalizedAddress = nextAddress.trim() || getDefaultServerAddress()
+      window.localStorage.setItem(serverAddressStorageKey, normalizedAddress)
+      setConnected(false)
+      setError('正在连接联机服务器。')
+      setServerAddress(normalizedAddress)
+      setRoomState(null)
+    },
     createRoom: (name: string) => send({ type: 'createRoom', name }),
     joinRoom: (name: string, code: string) => send({ type: 'joinRoom', name, code }),
     updateSettings: (settings: RoomSettings) => send({ type: 'updateSettings', settings }),
