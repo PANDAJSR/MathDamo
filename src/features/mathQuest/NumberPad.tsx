@@ -26,6 +26,9 @@ export function NumberPad({ disabled = false, onInput, onBackspace, onClear }: N
         ))}
       </div>
       <div className="number-pad__tools">
+        <Button size="large" disabled={disabled} onClick={() => onInput('π')}>
+          π
+        </Button>
         <Button size="large" disabled={disabled} onClick={onBackspace}>
           退格
         </Button>

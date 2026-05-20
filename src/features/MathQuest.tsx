@@ -143,7 +143,7 @@ export function MathQuest() {
     if (phase !== 'playing' || currentQuestion?.type !== 'fill') return undefined
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (/^[0-9.-]$/.test(event.key)) {
+      if (/^[0-9.π-]$/.test(event.key)) {
         event.preventDefault()
         setFillAnswer((currentValue) => currentValue + event.key)
         return

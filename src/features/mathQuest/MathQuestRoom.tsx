@@ -105,7 +105,7 @@ export function MathQuestRoom({
     if (room.phase !== 'playing' || currentQuestion?.type !== 'fill' || submitted) return undefined
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (/^[0-9.-]$/.test(event.key)) {
+      if (/^[0-9.π-]$/.test(event.key)) {
         event.preventDefault()
         setAnswer((currentAnswer) => ({
           questionId: answerQuestionId,
