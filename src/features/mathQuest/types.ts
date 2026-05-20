@@ -15,6 +15,7 @@ export type MathQuestQuestion = {
   answerOptionIds?: string[]
   answerPattern?: string
   answerHint?: string
+  knowledgeTags: string[]
   explanation: string
   timeLimitSeconds: number
   points: number

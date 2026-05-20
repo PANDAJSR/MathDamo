@@ -9,7 +9,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×3×10=188.4，所以答案是 188.4。"
+    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×3×10=188.4，所以答案是 188.4。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱侧面积"
+    ]
   },
   {
     "id": "cylinder-side-scroll-tube",
@@ -21,7 +25,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×4×12=301.44，所以答案是 301.44。"
+    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×4×12=301.44，所以答案是 301.44。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱侧面积"
+    ]
   },
   {
     "id": "cylinder-side-chip-can",
@@ -33,7 +41,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×5×8=251.2，所以答案是 251.2。"
+    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×5×8=251.2，所以答案是 251.2。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱侧面积"
+    ]
   },
   {
     "id": "cylinder-side-paint-bucket",
@@ -45,7 +57,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×6×7=263.76，所以答案是 263.76。"
+    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×6×7=263.76，所以答案是 263.76。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱侧面积"
+    ]
   },
   {
     "id": "cylinder-side-seedling-guard",
@@ -57,7 +73,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×2×15=188.4，所以答案是 188.4。"
+    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×2×15=188.4，所以答案是 188.4。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱侧面积"
+    ]
   },
   {
     "id": "cylinder-side-rocket-cabin",
@@ -69,7 +89,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×3×14=263.76，所以答案是 263.76。"
+    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×3×14=263.76，所以答案是 263.76。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱侧面积"
+    ]
   },
   {
     "id": "cylinder-side-drum",
@@ -81,7 +105,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×4×9=226.08，所以答案是 226.08。"
+    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×4×9=226.08，所以答案是 226.08。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱侧面积"
+    ]
   },
   {
     "id": "cylinder-side-gift-box",
@@ -93,7 +121,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×5×6=188.4，所以答案是 188.4。"
+    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×5×6=188.4，所以答案是 188.4。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱侧面积"
+    ]
   },
   {
     "id": "cylinder-side-water-tank",
@@ -105,7 +137,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×2×20=251.2，所以答案是 251.2。"
+    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×2×20=251.2，所以答案是 251.2。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱侧面积"
+    ]
   },
   {
     "id": "cylinder-side-bamboo-cup",
@@ -117,7 +153,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×3×9=169.56，所以答案是 169.56。"
+    "explanation": "只给侧面贴包装纸，求圆柱侧面积。侧面积=底面周长×高=2×3.14×3×9=169.56，所以答案是 169.56。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱侧面积"
+    ]
   },
   {
     "id": "cylinder-surface-tea-tin",
@@ -129,7 +169,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "完整外包装要算上下 2 个底面。侧面积=2×3.14×3×10，底面积=3.14×3²，材料面积=侧面积+2×底面积=244.92。"
+    "explanation": "完整外包装要算上下 2 个底面。侧面积=2×3.14×3×10，底面积=3.14×3²，材料面积=侧面积+2×底面积=244.92。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱表面积"
+    ]
   },
   {
     "id": "cylinder-surface-scroll-tube",
@@ -141,7 +185,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "无盖款只算 1 个底面。侧面积=2×3.14×4×12，底面积=3.14×4²，材料面积=侧面积+1×底面积=351.68。"
+    "explanation": "无盖款只算 1 个底面。侧面积=2×3.14×4×12，底面积=3.14×4²，材料面积=侧面积+1×底面积=351.68。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱表面积"
+    ]
   },
   {
     "id": "cylinder-surface-chip-can",
@@ -153,7 +201,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "完整外包装要算上下 2 个底面。侧面积=2×3.14×5×8，底面积=3.14×5²，材料面积=侧面积+2×底面积=408.2。"
+    "explanation": "完整外包装要算上下 2 个底面。侧面积=2×3.14×5×8，底面积=3.14×5²，材料面积=侧面积+2×底面积=408.2。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱表面积"
+    ]
   },
   {
     "id": "cylinder-surface-paint-bucket",
@@ -165,7 +217,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "无盖款只算 1 个底面。侧面积=2×3.14×6×7，底面积=3.14×6²，材料面积=侧面积+1×底面积=376.8。"
+    "explanation": "无盖款只算 1 个底面。侧面积=2×3.14×6×7，底面积=3.14×6²，材料面积=侧面积+1×底面积=376.8。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱表面积"
+    ]
   },
   {
     "id": "cylinder-surface-seedling-guard",
@@ -177,7 +233,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "完整外包装要算上下 2 个底面。侧面积=2×3.14×2×15，底面积=3.14×2²，材料面积=侧面积+2×底面积=213.52。"
+    "explanation": "完整外包装要算上下 2 个底面。侧面积=2×3.14×2×15，底面积=3.14×2²，材料面积=侧面积+2×底面积=213.52。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱表面积"
+    ]
   },
   {
     "id": "cylinder-surface-rocket-cabin",
@@ -189,7 +249,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "无盖款只算 1 个底面。侧面积=2×3.14×3×14，底面积=3.14×3²，材料面积=侧面积+1×底面积=292.02。"
+    "explanation": "无盖款只算 1 个底面。侧面积=2×3.14×3×14，底面积=3.14×3²，材料面积=侧面积+1×底面积=292.02。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱表面积"
+    ]
   },
   {
     "id": "cylinder-surface-drum",
@@ -201,7 +265,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "完整外包装要算上下 2 个底面。侧面积=2×3.14×4×9，底面积=3.14×4²，材料面积=侧面积+2×底面积=326.56。"
+    "explanation": "完整外包装要算上下 2 个底面。侧面积=2×3.14×4×9，底面积=3.14×4²，材料面积=侧面积+2×底面积=326.56。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱表面积"
+    ]
   },
   {
     "id": "cylinder-surface-gift-box",
@@ -213,7 +281,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "无盖款只算 1 个底面。侧面积=2×3.14×5×6，底面积=3.14×5²，材料面积=侧面积+1×底面积=266.9。"
+    "explanation": "无盖款只算 1 个底面。侧面积=2×3.14×5×6，底面积=3.14×5²，材料面积=侧面积+1×底面积=266.9。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱表面积"
+    ]
   },
   {
     "id": "cylinder-surface-water-tank",
@@ -225,7 +297,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "完整外包装要算上下 2 个底面。侧面积=2×3.14×2×20，底面积=3.14×2²，材料面积=侧面积+2×底面积=276.32。"
+    "explanation": "完整外包装要算上下 2 个底面。侧面积=2×3.14×2×20，底面积=3.14×2²，材料面积=侧面积+2×底面积=276.32。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱表面积"
+    ]
   },
   {
     "id": "cylinder-surface-bamboo-cup",
@@ -237,7 +313,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "无盖款只算 1 个底面。侧面积=2×3.14×3×9，底面积=3.14×3²，材料面积=侧面积+1×底面积=197.82。"
+    "explanation": "无盖款只算 1 个底面。侧面积=2×3.14×3×9，底面积=3.14×3²，材料面积=侧面积+1×底面积=197.82。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱表面积"
+    ]
   },
   {
     "id": "cylinder-volume-tea-tin",
@@ -249,7 +329,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆柱体积=底面积×高=3.14×3²×10=282.6，所以容积约是 282.6 立方厘米。"
+    "explanation": "圆柱体积=底面积×高=3.14×3²×10=282.6，所以容积约是 282.6 立方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱体积"
+    ]
   },
   {
     "id": "cylinder-volume-scroll-tube",
@@ -261,7 +345,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆柱体积=底面积×高=3.14×4²×12=602.88，所以容积约是 602.88 立方厘米。"
+    "explanation": "圆柱体积=底面积×高=3.14×4²×12=602.88，所以容积约是 602.88 立方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱体积"
+    ]
   },
   {
     "id": "cylinder-volume-chip-can",
@@ -273,7 +361,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆柱体积=底面积×高=3.14×5²×8=628，所以容积约是 628 立方厘米。"
+    "explanation": "圆柱体积=底面积×高=3.14×5²×8=628，所以容积约是 628 立方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱体积"
+    ]
   },
   {
     "id": "cylinder-volume-paint-bucket",
@@ -285,7 +377,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆柱体积=底面积×高=3.14×6²×7=791.28，所以容积约是 791.28 立方厘米。"
+    "explanation": "圆柱体积=底面积×高=3.14×6²×7=791.28，所以容积约是 791.28 立方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱体积"
+    ]
   },
   {
     "id": "cylinder-volume-seedling-guard",
@@ -297,7 +393,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆柱体积=底面积×高=3.14×2²×15=188.4，所以容积约是 188.4 立方厘米。"
+    "explanation": "圆柱体积=底面积×高=3.14×2²×15=188.4，所以容积约是 188.4 立方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱体积"
+    ]
   },
   {
     "id": "cylinder-volume-rocket-cabin",
@@ -309,7 +409,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆柱体积=底面积×高=3.14×3²×14=395.64，所以容积约是 395.64 立方厘米。"
+    "explanation": "圆柱体积=底面积×高=3.14×3²×14=395.64，所以容积约是 395.64 立方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱体积"
+    ]
   },
   {
     "id": "cylinder-volume-drum",
@@ -321,7 +425,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆柱体积=底面积×高=3.14×4²×9=452.16，所以容积约是 452.16 立方厘米。"
+    "explanation": "圆柱体积=底面积×高=3.14×4²×9=452.16，所以容积约是 452.16 立方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱体积"
+    ]
   },
   {
     "id": "cylinder-volume-gift-box",
@@ -333,7 +441,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆柱体积=底面积×高=3.14×5²×6=471，所以容积约是 471 立方厘米。"
+    "explanation": "圆柱体积=底面积×高=3.14×5²×6=471，所以容积约是 471 立方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱体积"
+    ]
   },
   {
     "id": "cylinder-volume-water-tank",
@@ -345,7 +457,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆柱体积=底面积×高=3.14×2²×20=251.2，所以容积约是 251.2 立方厘米。"
+    "explanation": "圆柱体积=底面积×高=3.14×2²×20=251.2，所以容积约是 251.2 立方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱体积"
+    ]
   },
   {
     "id": "cylinder-volume-bamboo-cup",
@@ -357,7 +473,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆柱体积=底面积×高=3.14×3²×9=254.34，所以容积约是 254.34 立方厘米。"
+    "explanation": "圆柱体积=底面积×高=3.14×3²×9=254.34，所以容积约是 254.34 立方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱体积"
+    ]
   },
   {
     "id": "cone-volume-sand-1",
@@ -369,7 +489,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×2²×1.5=6.28，所以体积是 6.28。"
+    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×2²×1.5=6.28，所以体积是 6.28。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-volume-tea-bag",
@@ -381,7 +505,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×3²×6=56.52，所以体积是 56.52。"
+    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×3²×6=56.52，所以体积是 56.52。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-volume-tent",
@@ -393,7 +521,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×4²×3=50.24，所以体积是 50.24。"
+    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×4²×3=50.24，所以体积是 50.24。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-volume-woodchip",
@@ -405,7 +537,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×2²×1.8=7.536，所以体积是 7.536。"
+    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×2²×1.8=7.536，所以体积是 7.536。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-volume-rocket-head",
@@ -417,7 +553,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×5²×9=235.5，所以体积是 235.5。"
+    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×5²×9=235.5，所以体积是 235.5。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-volume-salt",
@@ -429,7 +569,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×1.5²×2.4=5.652，所以体积是 5.652。"
+    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×1.5²×2.4=5.652，所以体积是 5.652。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-volume-grain",
@@ -441,7 +585,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×3²×2.5=23.55，所以体积是 23.55。"
+    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×3²×2.5=23.55，所以体积是 23.55。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-volume-flower-soil",
@@ -453,7 +601,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×2.5²×1.2=7.85，所以体积是 7.85。"
+    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×2.5²×1.2=7.85，所以体积是 7.85。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-volume-ice",
@@ -465,7 +617,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×4²×4.5=75.36，所以体积是 75.36。"
+    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×4²×4.5=75.36，所以体积是 75.36。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-volume-clay",
@@ -477,7 +633,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×1²×3=3.14，所以体积是 3.14。"
+    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×1²×3=3.14，所以体积是 3.14。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-cut-largest-sand-1",
@@ -489,7 +649,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×2²×1.5=12.56。"
+    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×2²×1.5=12.56。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-cut-largest-tea-bag",
@@ -501,7 +665,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×3²×6=113.04。"
+    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×3²×6=113.04。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-cut-largest-tent",
@@ -513,7 +681,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×4²×3=100.48。"
+    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×4²×3=100.48。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-cut-largest-woodchip",
@@ -525,7 +697,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×2²×1.8=15.072。"
+    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×2²×1.8=15.072。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-cut-largest-rocket-head",
@@ -537,7 +713,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×5²×9=471。"
+    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×5²×9=471。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-cut-largest-salt",
@@ -549,7 +729,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×1.5²×2.4=11.304。"
+    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×1.5²×2.4=11.304。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-cut-largest-grain",
@@ -561,7 +745,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×3²×2.5=47.1。"
+    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×3²×2.5=47.1。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cone-cut-largest-flower-soil",
@@ -573,7 +761,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×2.5²×1.2=15.7。"
+    "explanation": "等底等高的最大圆锥体积是原圆柱的 1/3，削去部分是圆柱的 2/3。削去体积=2/3×3.14×2.5²×1.2=15.7。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积"
+    ]
   },
   {
     "id": "cylinder-cone-ratio-1",
@@ -604,7 +796,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "等底等高时，圆锥体积是圆柱体积的 1/3，所以 3 杯装满的圆锥量杯正好等于 1 个圆柱罐。"
+    "explanation": "等底等高时，圆锥体积是圆柱体积的 1/3，所以 3 杯装满的圆锥量杯正好等于 1 个圆柱罐。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "cylinder-net-square",
@@ -635,7 +831,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "圆柱侧面展开成长方形时，长是底面周长，宽是高；如果展开图是正方形，就说明高等于底面周长。"
+    "explanation": "圆柱侧面展开成长方形时，长是底面周长，宽是高；如果展开图是正方形，就说明高等于底面周长。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "cylinder-no-lid",
@@ -666,7 +866,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "无盖水桶没有上底面，用料只包括圆柱侧面和下面 1 个底面。"
+    "explanation": "无盖水桶没有上底面，用料只包括圆柱侧面和下面 1 个底面。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "roller-area",
@@ -697,7 +901,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "前轮滚动一周压出的长方形面积，正好是圆柱侧面展开后的面积，所以求侧面积。"
+    "explanation": "前轮滚动一周压出的长方形面积，正好是圆柱侧面展开后的面积，所以求侧面积。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "solid-rotation-rect",
@@ -728,7 +936,12 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "长方形绕一条边旋转时，被绕的边形成高，另一条边扫出圆形底面，得到圆柱。"
+    "explanation": "长方形绕一条边旋转时，被绕的边形成高，另一条边扫出圆形底面，得到圆柱。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "图形运动",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "solid-rotation-triangle",
@@ -759,7 +972,12 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "直角三角形绕一条直角边旋转时，这条边作高，另一条直角边扫出圆形底面，得到圆锥。"
+    "explanation": "直角三角形绕一条直角边旋转时，这条边作高，另一条直角边扫出圆形底面，得到圆锥。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "图形运动",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "cylinder-square-block",
@@ -790,7 +1008,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "正方体内削最大的圆柱时，圆柱的底面直径等于正方体棱长，高也等于棱长，所以都是 4 dm。"
+    "explanation": "正方体内削最大的圆柱时，圆柱的底面直径等于正方体棱长，高也等于棱长，所以都是 4 dm。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "cone-condition",
@@ -821,7 +1043,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "圆锥体积是圆柱体积 1/3 的前提是二者等底等高，否则底面积或高不同就不能直接比较。"
+    "explanation": "圆锥体积是圆柱体积 1/3 的前提是二者等底等高，否则底面积或高不同就不能直接比较。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "cylinder-side-expand",
@@ -852,7 +1078,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "圆柱侧面沿高剪开展平后，长方形的长来自底面绕一周的长度，也就是底面周长。"
+    "explanation": "圆柱侧面沿高剪开展平后，长方形的长来自底面绕一周的长度，也就是底面周长。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "pipe-area",
@@ -883,7 +1113,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "通风管没有底面，只需要围成管壁的材料，所以主要计算圆柱侧面积。"
+    "explanation": "通风管没有底面，只需要围成管壁的材料，所以主要计算圆柱侧面积。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "judge-cylinder-square-net",
@@ -906,7 +1140,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "当圆柱的高等于底面周长时，侧面展开图就是正方形，所以“绝对不可能”是错的。"
+    "explanation": "当圆柱的高等于底面周长时，侧面展开图就是正方形，所以“绝对不可能”是错的。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "judge-cylinder-two-bases",
@@ -929,7 +1167,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "圆柱由两个大小相同、互相平行的圆形底面和一个曲面侧面组成。"
+    "explanation": "圆柱由两个大小相同、互相平行的圆形底面和一个曲面侧面组成。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "judge-cone-any-cylinder",
@@ -952,7 +1194,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "只有等底等高的圆锥和圆柱才有 1:3 的体积关系，任意圆锥和任意圆柱不能这样比较。"
+    "explanation": "只有等底等高的圆锥和圆柱才有 1:3 的体积关系，任意圆锥和任意圆柱不能这样比较。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "judge-roller-side",
@@ -975,7 +1221,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "前轮转一周压过的路面相当于把圆柱侧面展开，所以可以看作求侧面积。"
+    "explanation": "前轮转一周压过的路面相当于把圆柱侧面展开，所以可以看作求侧面积。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "judge-open-bucket",
@@ -998,7 +1248,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "无盖水桶比完整圆柱少一个上底面，因此计算用料时要少算一个底面。"
+    "explanation": "无盖水桶比完整圆柱少一个上底面，因此计算用料时要少算一个底面。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "judge-cylinder-volume",
@@ -1021,7 +1275,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "圆柱可以看成许多相同底面积的薄层叠起来，所以体积=底面积×高。"
+    "explanation": "圆柱可以看成许多相同底面积的薄层叠起来，所以体积=底面积×高。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "judge-line-rotate",
@@ -1044,7 +1302,12 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "这是图形运动的基本规律：点运动形成线，线运动形成面，面运动形成立体。"
+    "explanation": "这是图形运动的基本规律：点运动形成线，线运动形成面，面运动形成立体。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "图形运动",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "judge-cone-two-bases",
@@ -1067,7 +1330,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "圆锥只有 1 个圆形底面和 1 个顶点，不像圆柱有两个圆形底面。"
+    "explanation": "圆锥只有 1 个圆形底面和 1 个顶点，不像圆柱有两个圆形底面。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "judge-side-width",
@@ -1090,7 +1357,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "圆柱侧面沿高展开后，长方形的一边对应底面周长，另一边通常对应圆柱的高。"
+    "explanation": "圆柱侧面沿高展开后，长方形的一边对应底面周长，另一边通常对应圆柱的高。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "judge-surface-equal-volume",
@@ -1113,7 +1384,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "体积只由底面积和高的乘积决定；不同半径和高度可能体积相等，但表面积不同。"
+    "explanation": "体积只由底面积和高的乘积决定；不同半径和高度可能体积相等，但表面积不同。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "judge-cut-increase",
@@ -1136,7 +1411,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "横切一次会露出两个新的圆形截面，所以表面积增加两个底面积。"
+    "explanation": "横切一次会露出两个新的圆形截面，所以表面积增加两个底面积。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "judge-melt-volume",
@@ -1159,7 +1438,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "熔铸没有损耗时，材料总量不变，因此改变形状后体积仍然不变。"
+    "explanation": "熔铸没有损耗时，材料总量不变，因此改变形状后体积仍然不变。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念"
+    ]
   },
   {
     "id": "cut-wood-3",
@@ -1171,7 +1454,11 @@
     "answerHint": "注意先把米化成分米，只输入数字",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "长 2 m=20 dm。截成 3 段要切 2 刀，每刀增加 2 个底面，共增加 4 个底面积；底面积=12.56÷4，原体积=底面积×20=62.8。"
+    "explanation": "长 2 m=20 dm。截成 3 段要切 2 刀，每刀增加 2 个底面，共增加 4 个底面积；底面积=12.56÷4，原体积=底面积×20=62.8。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "切割体积"
+    ]
   },
   {
     "id": "cut-wood-4",
@@ -1183,7 +1470,11 @@
     "answerHint": "注意先把米化成分米，只输入数字",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "长 3 m=30 dm。截成 4 段要切 3 刀，每刀增加 2 个底面，共增加 6 个底面积；底面积=28.26÷6，原体积=底面积×30=141.3。"
+    "explanation": "长 3 m=30 dm。截成 4 段要切 3 刀，每刀增加 2 个底面，共增加 6 个底面积；底面积=28.26÷6，原体积=底面积×30=141.3。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "切割体积"
+    ]
   },
   {
     "id": "cut-wood-5",
@@ -1195,7 +1486,11 @@
     "answerHint": "注意先把米化成分米，只输入数字",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "长 4 m=40 dm。截成 5 段要切 4 刀，每刀增加 2 个底面，共增加 8 个底面积；底面积=50.24÷8，原体积=底面积×40=251.2。"
+    "explanation": "长 4 m=40 dm。截成 5 段要切 4 刀，每刀增加 2 个底面，共增加 8 个底面积；底面积=50.24÷8，原体积=底面积×40=251.2。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "切割体积"
+    ]
   },
   {
     "id": "cut-wood-6",
@@ -1207,7 +1502,11 @@
     "answerHint": "注意先把米化成分米，只输入数字",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "长 2.5 m=25 dm。截成 6 段要切 5 刀，每刀增加 2 个底面，共增加 10 个底面积；底面积=31.4÷10，原体积=底面积×25=78.5。"
+    "explanation": "长 2.5 m=25 dm。截成 6 段要切 5 刀，每刀增加 2 个底面，共增加 10 个底面积；底面积=31.4÷10，原体积=底面积×25=78.5。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "切割体积"
+    ]
   },
   {
     "id": "cut-wood-7",
@@ -1219,7 +1518,11 @@
     "answerHint": "注意先把米化成分米，只输入数字",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "长 1.5 m=15 dm。截成 7 段要切 6 刀，每刀增加 2 个底面，共增加 12 个底面积；底面积=18.84÷12，原体积=底面积×15=23.55。"
+    "explanation": "长 1.5 m=15 dm。截成 7 段要切 6 刀，每刀增加 2 个底面，共增加 12 个底面积；底面积=18.84÷12，原体积=底面积×15=23.55。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "切割体积"
+    ]
   },
   {
     "id": "cut-wood-8",
@@ -1231,7 +1534,11 @@
     "answerHint": "注意先把米化成分米，只输入数字",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "长 3.5 m=35 dm。截成 8 段要切 7 刀，每刀增加 2 个底面，共增加 14 个底面积；底面积=43.96÷14，原体积=底面积×35=109.9。"
+    "explanation": "长 3.5 m=35 dm。截成 8 段要切 7 刀，每刀增加 2 个底面，共增加 14 个底面积；底面积=43.96÷14，原体积=底面积×35=109.9。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "切割体积"
+    ]
   },
   {
     "id": "prop-judge-radius-area",
@@ -1254,7 +1561,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "圆面积 S=πr^2，面积与半径的平方成正比，不是与半径成正比例。"
+    "explanation": "圆面积 S=πr^2，面积与半径的平方成正比，不是与半径成正比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-book-price",
@@ -1277,7 +1588,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "同一种练习本单价一定，总价÷本数=单价，比值一定，所以成正比例。"
+    "explanation": "同一种练习本单价一定，总价÷本数=单价，比值一定，所以成正比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-speed-time",
@@ -1300,7 +1615,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "路程一定时，速度×时间=路程，乘积一定，所以速度和时间成反比例。"
+    "explanation": "路程一定时，速度×时间=路程，乘积一定，所以速度和时间成反比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-read-left",
@@ -1323,7 +1642,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "已读页数+未读页数=总页数，和一定不是积一定，所以不成反比例。"
+    "explanation": "已读页数+未读页数=总页数，和一定不是积一定，所以不成反比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-age-weight",
@@ -1346,7 +1669,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "年龄增加时体重不按固定比值增长，也没有固定乘积，所以不一定成正比例。"
+    "explanation": "年龄增加时体重不按固定比值增长，也没有固定乘积，所以不一定成正比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-side-perimeter",
@@ -1369,7 +1696,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "正方形周长=边长×4，周长÷边长=4，比值一定，所以成正比例。"
+    "explanation": "正方形周长=边长×4，周长÷边长=4，比值一定，所以成正比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-side-area",
@@ -1392,7 +1723,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "正方形面积=边长×边长，面积与边长的平方有关，不是正比例。"
+    "explanation": "正方形面积=边长×边长，面积与边长的平方有关，不是正比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-workers-days",
@@ -1415,7 +1750,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "工程总量一定时，每天完成量×需要天数=总量，乘积一定，所以成反比例。"
+    "explanation": "工程总量一定时，每天完成量×需要天数=总量，乘积一定，所以成反比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-scale-unit",
@@ -1438,7 +1777,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "比例尺表示图上距离与实际距离的比，前后单位相同会约掉，所以不带单位名称。"
+    "explanation": "比例尺表示图上距离与实际距离的比，前后单位相同会约掉，所以不带单位名称。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-total-fixed",
@@ -1461,7 +1804,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "生产总量一定时，每小时生产件数×生产时间=总量，乘积一定，应该成反比例。"
+    "explanation": "生产总量一定时，每小时生产件数×生产时间=总量，乘积一定，应该成反比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-pi",
@@ -1484,7 +1831,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "圆周长 C=πd，周长÷直径=π，比值一定，所以成正比例。"
+    "explanation": "圆周长 C=πd，周长÷直径=π，比值一定，所以成正比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-sum-fixed",
@@ -1507,7 +1858,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "两数的和一定不能保证乘积一定，所以这两个数不成反比例。"
+    "explanation": "两数的和一定不能保证乘积一定，所以这两个数不成反比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-density",
@@ -1530,7 +1885,12 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "同种材料密度一定，质量÷体积=密度，比值一定，所以成正比例。"
+    "explanation": "同种材料密度一定，质量÷体积=密度，比值一定，所以成正比例。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-area-height",
@@ -1553,7 +1913,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "平行四边形面积一定时，底×高=面积，乘积一定，所以底和高成反比例。"
+    "explanation": "平行四边形面积一定时，底×高=面积，乘积一定，所以底和高成反比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "prop-judge-map",
@@ -1576,7 +1940,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "同一幅地图比例尺一定，图上距离÷实际距离=比例尺，比值一定，所以成正比例。"
+    "explanation": "同一幅地图比例尺一定，图上距离÷实际距离=比例尺，比值一定，所以成正比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-drone-packages",
@@ -1607,7 +1975,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "包裹总量一定，每架无人机每天派送越多，需要的无人机架数越少，乘积保持一定，所以成反比例。"
+    "explanation": "包裹总量一定，每架无人机每天派送越多，需要的无人机架数越少，乘积保持一定，所以成反比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-conveyor-distance",
@@ -1638,7 +2010,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "速度一定时，距离÷时间=速度，比值一定，所以货物传输距离和时间成正比例。"
+    "explanation": "速度一定时，距离÷时间=速度，比值一定，所以货物传输距离和时间成正比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-water-fill",
@@ -1669,7 +2045,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "出水速度一定时，注水量÷时间=每单位时间出水量，比值一定，所以成正比例。"
+    "explanation": "出水速度一定时，注水量÷时间=每单位时间出水量，比值一定，所以成正比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-paving-width",
@@ -1700,7 +2080,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "铺路面积一定时，路宽×长度=面积，乘积一定，所以成反比例。"
+    "explanation": "铺路面积一定时，路宽×长度=面积，乘积一定，所以成反比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-print-copies",
@@ -1731,7 +2115,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "资料总量和单台效率一定时，打印机台数越多完成时间越短，台数×时间一定，所以成反比例。"
+    "explanation": "资料总量和单台效率一定时，打印机台数越多完成时间越短，台数×时间一定，所以成反比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-shopping",
@@ -1762,7 +2150,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "单价一定时，总价÷盒数=单价，比值一定，所以购买盒数和总价成正比例。"
+    "explanation": "单价一定时，总价÷盒数=单价，比值一定，所以购买盒数和总价成正比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-density-mass",
@@ -1793,7 +2185,12 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "密度一定时，质量÷体积=密度，比值一定，所以体积和质量成正比例。"
+    "explanation": "密度一定时，质量÷体积=密度，比值一定，所以体积和质量成正比例。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-fuel-distance",
@@ -1824,7 +2221,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "每千米耗油量一定时，耗油量÷路程为定值，所以路程和耗油量成正比例。"
+    "explanation": "每千米耗油量一定时，耗油量÷路程为定值，所以路程和耗油量成正比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-meeting-share",
@@ -1855,7 +2256,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "文件总页数一定，每人装订页数×可装订份数=总页数，乘积一定，所以成反比例。"
+    "explanation": "文件总页数一定，每人装订页数×可装订份数=总页数，乘积一定，所以成反比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-none-age",
@@ -1886,7 +2291,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "身高随年龄变化没有固定比值或固定乘积，实际增长也不均匀，所以不成比例。"
+    "explanation": "身高随年龄变化没有固定比值或固定乘积，实际增长也不均匀，所以不成比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-none-read",
@@ -1917,7 +2326,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "已读页数+剩余页数=总页数，和一定不是比值或乘积一定，所以不成比例。"
+    "explanation": "已读页数+剩余页数=总页数，和一定不是比值或乘积一定，所以不成比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-square-area",
@@ -1948,7 +2361,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "正方形面积=边长^2，面积和边长不是比值一定，也不是乘积一定，所以不成比例。"
+    "explanation": "正方形面积=边长^2，面积和边长不是比值一定，也不是乘积一定，所以不成比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-circle-area-radius",
@@ -1979,7 +2396,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "圆面积=πr^2，面积随半径的平方变化，不是正比例或反比例。"
+    "explanation": "圆面积=πr^2，面积随半径的平方变化，不是正比例或反比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-circle-circum",
@@ -2010,7 +2431,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "圆周长 C=πd，周长÷直径=π，比值一定，所以成正比例。"
+    "explanation": "圆周长 C=πd，周长÷直径=π，比值一定，所以成正比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "rel-gear",
@@ -2041,7 +2466,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "齿轮啮合时齿数和转数相互制约，一个转数增加，另一个会相应减少，乘积关系保持一定，所以成反比例。"
+    "explanation": "齿轮啮合时齿数和转数相互制约，一个转数增加，另一个会相应减少，乘积关系保持一定，所以成反比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "solve-prop-1",
@@ -2053,7 +2482,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "比例的基本性质是外项积等于内项积，所以 A×B=4×5=20。"
+    "explanation": "比例的基本性质是外项积等于内项积，所以 A×B=4×5=20。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-2",
@@ -2065,7 +2498,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=7。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=7。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-3",
@@ -2077,7 +2514,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=6。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=6。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-4",
@@ -2089,7 +2530,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=36。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=36。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-5",
@@ -2101,7 +2546,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=28。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=28。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-6",
@@ -2113,7 +2562,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=5。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=5。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-7",
@@ -2125,7 +2578,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=24。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=24。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-8",
@@ -2137,7 +2594,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=6。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=6。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-9",
@@ -2149,7 +2610,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=12。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=12。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-10",
@@ -2161,7 +2626,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=3。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=3。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-11",
@@ -2173,7 +2642,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=2。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=2。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-12",
@@ -2185,7 +2658,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=3。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=3。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-13",
@@ -2197,7 +2674,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=15。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=15。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-14",
@@ -2209,7 +2690,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=15。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=15。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "solve-prop-15",
@@ -2221,7 +2706,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=15。"
+    "explanation": "解比例用“外项积=内项积”。把含 x 的项单独留下，交叉相乘后解出 x=15。",
+    "knowledgeTags": [
+      "比例",
+      "解比例"
+    ]
   },
   {
     "id": "direct-1",
@@ -2233,7 +2722,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "匀速表示路程和时间成正比例。每分钟传送 18÷6 米，10 分钟传送 18÷6×10=30 米。"
+    "explanation": "匀速表示路程和时间成正比例。每分钟传送 18÷6 米，10 分钟传送 18÷6×10=30 米。",
+    "knowledgeTags": [
+      "比例",
+      "正比例"
+    ]
   },
   {
     "id": "direct-2",
@@ -2245,7 +2738,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "匀速表示路程和时间成正比例。每分钟传送 32÷4 米，7 分钟传送 32÷4×7=56 米。"
+    "explanation": "匀速表示路程和时间成正比例。每分钟传送 32÷4 米，7 分钟传送 32÷4×7=56 米。",
+    "knowledgeTags": [
+      "比例",
+      "正比例"
+    ]
   },
   {
     "id": "direct-3",
@@ -2257,7 +2754,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "匀速表示路程和时间成正比例。每分钟传送 27÷9 米，15 分钟传送 27÷9×15=45 米。"
+    "explanation": "匀速表示路程和时间成正比例。每分钟传送 27÷9 米，15 分钟传送 27÷9×15=45 米。",
+    "knowledgeTags": [
+      "比例",
+      "正比例"
+    ]
   },
   {
     "id": "direct-4",
@@ -2269,7 +2770,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "匀速表示路程和时间成正比例。每分钟传送 12.5÷5 米，8 分钟传送 12.5÷5×8=20 米。"
+    "explanation": "匀速表示路程和时间成正比例。每分钟传送 12.5÷5 米，8 分钟传送 12.5÷5×8=20 米。",
+    "knowledgeTags": [
+      "比例",
+      "正比例"
+    ]
   },
   {
     "id": "direct-5",
@@ -2281,7 +2786,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "匀速表示路程和时间成正比例。每分钟传送 21÷3 米，11 分钟传送 21÷3×11=77 米。"
+    "explanation": "匀速表示路程和时间成正比例。每分钟传送 21÷3 米，11 分钟传送 21÷3×11=77 米。",
+    "knowledgeTags": [
+      "比例",
+      "正比例"
+    ]
   },
   {
     "id": "direct-6",
@@ -2293,7 +2802,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "匀速表示路程和时间成正比例。每分钟传送 30÷12 米，18 分钟传送 30÷12×18=45 米。"
+    "explanation": "匀速表示路程和时间成正比例。每分钟传送 30÷12 米，18 分钟传送 30÷12×18=45 米。",
+    "knowledgeTags": [
+      "比例",
+      "正比例"
+    ]
   },
   {
     "id": "direct-7",
@@ -2305,7 +2818,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "匀速表示路程和时间成正比例。每分钟传送 44÷8 米，14 分钟传送 44÷8×14=77 米。"
+    "explanation": "匀速表示路程和时间成正比例。每分钟传送 44÷8 米，14 分钟传送 44÷8×14=77 米。",
+    "knowledgeTags": [
+      "比例",
+      "正比例"
+    ]
   },
   {
     "id": "direct-8",
@@ -2317,7 +2834,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "匀速表示路程和时间成正比例。每分钟传送 20÷2.5 米，6 分钟传送 20÷2.5×6=48 米。"
+    "explanation": "匀速表示路程和时间成正比例。每分钟传送 20÷2.5 米，6 分钟传送 20÷2.5×6=48 米。",
+    "knowledgeTags": [
+      "比例",
+      "正比例"
+    ]
   },
   {
     "id": "direct-9",
@@ -2329,7 +2850,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "匀速表示路程和时间成正比例。每分钟传送 63÷7 米，13 分钟传送 63÷7×13=117 米。"
+    "explanation": "匀速表示路程和时间成正比例。每分钟传送 63÷7 米，13 分钟传送 63÷7×13=117 米。",
+    "knowledgeTags": [
+      "比例",
+      "正比例"
+    ]
   },
   {
     "id": "direct-10",
@@ -2341,7 +2866,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 30,
     "points": 16,
-    "explanation": "匀速表示路程和时间成正比例。每分钟传送 40÷16 米，10 分钟传送 40÷16×10=25 米。"
+    "explanation": "匀速表示路程和时间成正比例。每分钟传送 40÷16 米，10 分钟传送 40÷16×10=25 米。",
+    "knowledgeTags": [
+      "比例",
+      "正比例"
+    ]
   },
   {
     "id": "inverse-1",
@@ -2353,7 +2882,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=4×18。改用 6 台，需要 4×18÷6=12 天。"
+    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=4×18。改用 6 台，需要 4×18÷6=12 天。",
+    "knowledgeTags": [
+      "比例",
+      "反比例"
+    ]
   },
   {
     "id": "inverse-2",
@@ -2365,7 +2898,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=3×24。改用 8 台，需要 3×24÷8=9 天。"
+    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=3×24。改用 8 台，需要 3×24÷8=9 天。",
+    "knowledgeTags": [
+      "比例",
+      "反比例"
+    ]
   },
   {
     "id": "inverse-3",
@@ -2377,7 +2914,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=5×12。改用 10 台，需要 5×12÷10=6 天。"
+    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=5×12。改用 10 台，需要 5×12÷10=6 天。",
+    "knowledgeTags": [
+      "比例",
+      "反比例"
+    ]
   },
   {
     "id": "inverse-4",
@@ -2389,7 +2930,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=6×20。改用 8 台，需要 6×20÷8=15 天。"
+    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=6×20。改用 8 台，需要 6×20÷8=15 天。",
+    "knowledgeTags": [
+      "比例",
+      "反比例"
+    ]
   },
   {
     "id": "inverse-5",
@@ -2401,7 +2946,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=9×16。改用 12 台，需要 9×16÷12=12 天。"
+    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=9×16。改用 12 台，需要 9×16÷12=12 天。",
+    "knowledgeTags": [
+      "比例",
+      "反比例"
+    ]
   },
   {
     "id": "inverse-6",
@@ -2413,7 +2962,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=2×45。改用 5 台，需要 2×45÷5=18 天。"
+    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=2×45。改用 5 台，需要 2×45÷5=18 天。",
+    "knowledgeTags": [
+      "比例",
+      "反比例"
+    ]
   },
   {
     "id": "inverse-7",
@@ -2425,7 +2978,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=8×15。改用 10 台，需要 8×15÷10=12 天。"
+    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=8×15。改用 10 台，需要 8×15÷10=12 天。",
+    "knowledgeTags": [
+      "比例",
+      "反比例"
+    ]
   },
   {
     "id": "inverse-8",
@@ -2437,7 +2994,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=7×30。改用 14 台，需要 7×30÷14=15 天。"
+    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=7×30。改用 14 台，需要 7×30÷14=15 天。",
+    "knowledgeTags": [
+      "比例",
+      "反比例"
+    ]
   },
   {
     "id": "inverse-9",
@@ -2449,7 +3010,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=12×9。改用 6 台，需要 12×9÷6=18 天。"
+    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=12×9。改用 6 台，需要 12×9÷6=18 天。",
+    "knowledgeTags": [
+      "比例",
+      "反比例"
+    ]
   },
   {
     "id": "inverse-10",
@@ -2461,7 +3026,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=15×8。改用 10 台，需要 15×8÷10=12 天。"
+    "explanation": "搬完同一批货物，设备台数和天数成反比例，总工作量=15×8。改用 10 台，需要 15×8÷10=12 天。",
+    "knowledgeTags": [
+      "比例",
+      "反比例"
+    ]
   },
   {
     "id": "speed-ratio-1",
@@ -2473,7 +3042,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "两车速度和=360÷3。客车占速度和的 5/9，所以客车速度=360÷3×5/9≈66.667 千米/时。"
+    "explanation": "两车速度和=360÷3。客车占速度和的 5/9，所以客车速度=360÷3×5/9≈66.667 千米/时。",
+    "knowledgeTags": [
+      "比例",
+      "速度比"
+    ]
   },
   {
     "id": "speed-ratio-2",
@@ -2485,7 +3058,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "两车速度和=450÷5。客车占速度和的 4/9，所以客车速度=450÷5×4/9≈40 千米/时。"
+    "explanation": "两车速度和=450÷5。客车占速度和的 4/9，所以客车速度=450÷5×4/9≈40 千米/时。",
+    "knowledgeTags": [
+      "比例",
+      "速度比"
+    ]
   },
   {
     "id": "speed-ratio-3",
@@ -2497,7 +3074,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "两车速度和=280÷4。客车占速度和的 3/7，所以客车速度=280÷4×3/7≈30 千米/时。"
+    "explanation": "两车速度和=280÷4。客车占速度和的 3/7，所以客车速度=280÷4×3/7≈30 千米/时。",
+    "knowledgeTags": [
+      "比例",
+      "速度比"
+    ]
   },
   {
     "id": "speed-ratio-4",
@@ -2509,7 +3090,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "两车速度和=540÷6。客车占速度和的 5/12，所以客车速度=540÷6×5/12≈37.5 千米/时。"
+    "explanation": "两车速度和=540÷6。客车占速度和的 5/12，所以客车速度=540÷6×5/12≈37.5 千米/时。",
+    "knowledgeTags": [
+      "比例",
+      "速度比"
+    ]
   },
   {
     "id": "speed-ratio-5",
@@ -2521,7 +3106,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "两车速度和=330÷3。客车占速度和的 6/11，所以客车速度=330÷3×6/11≈60 千米/时。"
+    "explanation": "两车速度和=330÷3。客车占速度和的 6/11，所以客车速度=330÷3×6/11≈60 千米/时。",
+    "knowledgeTags": [
+      "比例",
+      "速度比"
+    ]
   },
   {
     "id": "speed-ratio-6",
@@ -2533,7 +3122,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "两车速度和=600÷5。客车占速度和的 7/12，所以客车速度=600÷5×7/12≈70 千米/时。"
+    "explanation": "两车速度和=600÷5。客车占速度和的 7/12，所以客车速度=600÷5×7/12≈70 千米/时。",
+    "knowledgeTags": [
+      "比例",
+      "速度比"
+    ]
   },
   {
     "id": "speed-ratio-7",
@@ -2545,7 +3138,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "两车速度和=420÷4。客车占速度和的 2/7，所以客车速度=420÷4×2/7≈30 千米/时。"
+    "explanation": "两车速度和=420÷4。客车占速度和的 2/7，所以客车速度=420÷4×2/7≈30 千米/时。",
+    "knowledgeTags": [
+      "比例",
+      "速度比"
+    ]
   },
   {
     "id": "speed-ratio-8",
@@ -2557,7 +3154,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 45,
     "points": 22,
-    "explanation": "两车速度和=720÷6。客车占速度和的 4/9，所以客车速度=720÷6×4/9≈53.333 千米/时。"
+    "explanation": "两车速度和=720÷6。客车占速度和的 4/9，所以客车速度=720÷6×4/9≈53.333 千米/时。",
+    "knowledgeTags": [
+      "比例",
+      "速度比"
+    ]
   },
   {
     "id": "multi-prop-1",
@@ -2589,7 +3190,11 @@
     ],
     "timeLimitSeconds": 35,
     "points": 20,
-    "explanation": "正比例看比值是否一定：圆周长÷直径=π，同价商品总价÷数量=单价，二者比值都一定。"
+    "explanation": "正比例看比值是否一定：圆周长÷直径=π，同价商品总价÷数量=单价，二者比值都一定。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "multi-prop-2",
@@ -2621,7 +3226,11 @@
     ],
     "timeLimitSeconds": 35,
     "points": 20,
-    "explanation": "反比例看乘积是否一定：总量一定时每天生产量×天数一定，面积一定时长×宽一定。"
+    "explanation": "反比例看乘积是否一定：总量一定时每天生产量×天数一定，面积一定时长×宽一定。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "multi-prop-3",
@@ -2653,7 +3262,11 @@
     ],
     "timeLimitSeconds": 35,
     "points": 20,
-    "explanation": "正比例图象经过原点，反比例的特征是两量乘积一定；比例尺不能带单位，两量同时变大也不一定正比例。"
+    "explanation": "正比例图象经过原点，反比例的特征是两量乘积一定；比例尺不能带单位，两量同时变大也不一定正比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "multi-prop-4",
@@ -2685,7 +3298,11 @@
     ],
     "timeLimitSeconds": 35,
     "points": 20,
-    "explanation": "比例的基本性质是外项积等于内项积，所以 6×15 与 9×10 相等。"
+    "explanation": "比例的基本性质是外项积等于内项积，所以 6×15 与 9×10 相等。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "multi-prop-5",
@@ -2717,7 +3334,11 @@
     ],
     "timeLimitSeconds": 35,
     "points": 20,
-    "explanation": "总路程一定时速度×时间一定，总面积一定时宽×长一定，这两类都常用反比例解决。"
+    "explanation": "总路程一定时速度×时间一定，总面积一定时宽×长一定，这两类都常用反比例解决。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "multi-prop-6",
@@ -2749,7 +3370,11 @@
     ],
     "timeLimitSeconds": 35,
     "points": 20,
-    "explanation": "年龄和体重没有固定比值或乘积；已读页数和未读页数是和一定，也不成比例。"
+    "explanation": "年龄和体重没有固定比值或乘积；已读页数和未读页数是和一定，也不成比例。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "multi-prop-7",
@@ -2782,7 +3407,11 @@
     ],
     "timeLimitSeconds": 35,
     "points": 20,
-    "explanation": "比例尺是图上距离与实际距离的比，不带单位；1:100 表示图上 1 cm 对应实际 100 cm。"
+    "explanation": "比例尺是图上距离与实际距离的比，不带单位；1:100 表示图上 1 cm 对应实际 100 cm。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "multi-prop-8",
@@ -2814,7 +3443,11 @@
     ],
     "timeLimitSeconds": 35,
     "points": 20,
-    "explanation": "正比例可写成 y/x=k 或 y=kx，a、b 都表示 y 与 x 的比值一定。"
+    "explanation": "正比例可写成 y/x=k 或 y=kx，a、b 都表示 y 与 x 的比值一定。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "multi-prop-9",
@@ -2846,7 +3479,11 @@
     ],
     "timeLimitSeconds": 35,
     "points": 20,
-    "explanation": "反比例可写成 xy=k 或 y=k/x，a、b 都表示 y 与 x 的乘积一定。"
+    "explanation": "反比例可写成 xy=k 或 y=k/x，a、b 都表示 y 与 x 的乘积一定。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "multi-prop-10",
@@ -2878,7 +3515,11 @@
     ],
     "timeLimitSeconds": 35,
     "points": 20,
-    "explanation": "比值一定就是正比例：同价商品总价÷瓶数一定，匀速行驶路程÷时间一定。"
+    "explanation": "比值一定就是正比例：同价商品总价÷瓶数一定，匀速行驶路程÷时间一定。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "multi-prop-11",
@@ -2910,7 +3551,11 @@
     ],
     "timeLimitSeconds": 35,
     "points": 20,
-    "explanation": "乘积一定就是反比例：路程一定时速度×时间一定，工作总量一定时效率×时间一定。"
+    "explanation": "乘积一定就是反比例：路程一定时速度×时间一定，工作总量一定时效率×时间一定。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "multi-prop-12",
@@ -2943,7 +3588,11 @@
     ],
     "timeLimitSeconds": 35,
     "points": 20,
-    "explanation": "判断比例是否成立可看交叉乘积：3×12=4×9，5×24=8×15，10×3=6×5，三项成立。"
+    "explanation": "判断比例是否成立可看交叉乘积：3×12=4×9，5×24=8×15，10×3=6×5，三项成立。",
+    "knowledgeTags": [
+      "比例",
+      "比例关系"
+    ]
   },
   {
     "id": "inv-change-1",
@@ -2974,7 +3623,12 @@
     ],
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "反比例中 x×y 是定值。x 扩大到原来的 5 倍，y 就要缩小到原来的 1/5，乘积才不变。"
+    "explanation": "反比例中 x×y 是定值。x 扩大到原来的 5 倍，y 就要缩小到原来的 1/5，乘积才不变。",
+    "knowledgeTags": [
+      "比例",
+      "放大与缩小",
+      "反比例"
+    ]
   },
   {
     "id": "inv-change-2",
@@ -3005,7 +3659,12 @@
     ],
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "反比例中 x×y 是定值。x 扩大到原来的 4 倍，y 就要缩小到原来的 1/4，乘积才不变。"
+    "explanation": "反比例中 x×y 是定值。x 扩大到原来的 4 倍，y 就要缩小到原来的 1/4，乘积才不变。",
+    "knowledgeTags": [
+      "比例",
+      "放大与缩小",
+      "反比例"
+    ]
   },
   {
     "id": "inv-change-3",
@@ -3036,7 +3695,12 @@
     ],
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "反比例中 x×y 是定值。x 扩大到原来的 2 倍，y 就要缩小到原来的 1/2，乘积才不变。"
+    "explanation": "反比例中 x×y 是定值。x 扩大到原来的 2 倍，y 就要缩小到原来的 1/2，乘积才不变。",
+    "knowledgeTags": [
+      "比例",
+      "放大与缩小",
+      "反比例"
+    ]
   },
   {
     "id": "inv-change-4",
@@ -3067,7 +3731,12 @@
     ],
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "反比例中 x×y 是定值。x 扩大到原来的 10 倍，y 就要缩小到原来的 1/10，乘积才不变。"
+    "explanation": "反比例中 x×y 是定值。x 扩大到原来的 10 倍，y 就要缩小到原来的 1/10，乘积才不变。",
+    "knowledgeTags": [
+      "比例",
+      "放大与缩小",
+      "反比例"
+    ]
   },
   {
     "id": "inv-change-5",
@@ -3098,7 +3767,12 @@
     ],
     "timeLimitSeconds": 28,
     "points": 16,
-    "explanation": "反比例中 x×y 是定值。x 扩大到原来的 8 倍，y 就要缩小到原来的 1/8，乘积才不变。"
+    "explanation": "反比例中 x×y 是定值。x 扩大到原来的 8 倍，y 就要缩小到原来的 1/8，乘积才不变。",
+    "knowledgeTags": [
+      "比例",
+      "放大与缩小",
+      "反比例"
+    ]
   },
   {
     "id": "scale-ship-1",
@@ -3110,7 +3784,12 @@
     "answerHint": "只输入米数，可用小数点",
     "timeLimitSeconds": 32,
     "points": 16,
-    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=15×1=15 cm=3 m。"
+    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=15×1=15 cm=3 m。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "比例",
+      "比例尺"
+    ]
   },
   {
     "id": "scale-station-1",
@@ -3122,7 +3801,12 @@
     "answerHint": "只输入米数，可用小数点",
     "timeLimitSeconds": 32,
     "points": 16,
-    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=60×1=60 cm=15 m。"
+    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=60×1=60 cm=15 m。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "比例",
+      "比例尺"
+    ]
   },
   {
     "id": "scale-map-1",
@@ -3134,7 +3818,11 @@
     "answerHint": "只输入米数，可用小数点",
     "timeLimitSeconds": 32,
     "points": 16,
-    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=3×1=3 cm=150 m。"
+    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=3×1=3 cm=150 m。",
+    "knowledgeTags": [
+      "比例",
+      "比例尺"
+    ]
   },
   {
     "id": "scale-mars-1",
@@ -3146,7 +3834,11 @@
     "answerHint": "只输入米数，可用小数点",
     "timeLimitSeconds": 32,
     "points": 16,
-    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=12×1=12 cm=6 m。"
+    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=12×1=12 cm=6 m。",
+    "knowledgeTags": [
+      "比例",
+      "比例尺"
+    ]
   },
   {
     "id": "scale-school-1",
@@ -3158,7 +3850,11 @@
     "answerHint": "只输入米数，可用小数点",
     "timeLimitSeconds": 32,
     "points": 16,
-    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=4.5×1=4.5 cm=90 m。"
+    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=4.5×1=4.5 cm=90 m。",
+    "knowledgeTags": [
+      "比例",
+      "比例尺"
+    ]
   },
   {
     "id": "scale-bridge-1",
@@ -3170,7 +3866,11 @@
     "answerHint": "只输入米数，可用小数点",
     "timeLimitSeconds": 32,
     "points": 16,
-    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=8×1=8 cm=8 m。"
+    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=8×1=8 cm=8 m。",
+    "knowledgeTags": [
+      "比例",
+      "比例尺"
+    ]
   },
   {
     "id": "scale-room-1",
@@ -3182,7 +3882,11 @@
     "answerHint": "只输入米数，可用小数点",
     "timeLimitSeconds": 32,
     "points": 16,
-    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=6×1=6 cm=4.8 m。"
+    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=6×1=6 cm=4.8 m。",
+    "knowledgeTags": [
+      "比例",
+      "比例尺"
+    ]
   },
   {
     "id": "scale-garden-1",
@@ -3194,7 +3898,11 @@
     "answerHint": "只输入米数，可用小数点",
     "timeLimitSeconds": 32,
     "points": 16,
-    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=7.5×1=7.5 cm=30 m。"
+    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=7.5×1=7.5 cm=30 m。",
+    "knowledgeTags": [
+      "比例",
+      "比例尺"
+    ]
   },
   {
     "id": "scale-city-1",
@@ -3206,7 +3914,11 @@
     "answerHint": "只输入米数，可用小数点",
     "timeLimitSeconds": 32,
     "points": 16,
-    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=2.8×1=2.8 cm=280 m。"
+    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=2.8×1=2.8 cm=280 m。",
+    "knowledgeTags": [
+      "比例",
+      "比例尺"
+    ]
   },
   {
     "id": "scale-robot-1",
@@ -3218,7 +3930,11 @@
     "answerHint": "只输入米数，可用小数点",
     "timeLimitSeconds": 32,
     "points": 16,
-    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=18×1=18 cm=1.8 m。"
+    "explanation": "比例尺 1:1 表示实际长度是图上长度的 1 倍。实际长度=18×1=18 cm=1.8 m。",
+    "knowledgeTags": [
+      "比例",
+      "比例尺"
+    ]
   },
   {
     "id": "enlarge-area-1",
@@ -3249,7 +3965,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "图形按比例变化时，面积按长度比例的平方变化；本题长度比例是 3:1，所以面积对应为 9。"
+    "explanation": "图形按比例变化时，面积按长度比例的平方变化；本题长度比例是 3:1，所以面积对应为 9。",
+    "knowledgeTags": [
+      "比例",
+      "放大与缩小"
+    ]
   },
   {
     "id": "enlarge-area-2",
@@ -3280,7 +4000,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "图形按比例变化时，面积按长度比例的平方变化；本题长度比例是 1:2，所以面积对应为 1/4。"
+    "explanation": "图形按比例变化时，面积按长度比例的平方变化；本题长度比例是 1:2，所以面积对应为 1/4。",
+    "knowledgeTags": [
+      "比例",
+      "放大与缩小"
+    ]
   },
   {
     "id": "enlarge-perimeter-1",
@@ -3311,7 +4035,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "周长属于长度量，按比例放大或缩小时，周长直接按长度比例变化，所以答案是 1/3。"
+    "explanation": "周长属于长度量，按比例放大或缩小时，周长直接按长度比例变化，所以答案是 1/3。",
+    "knowledgeTags": [
+      "比例",
+      "放大与缩小"
+    ]
   },
   {
     "id": "enlarge-volume-1",
@@ -3342,7 +4070,12 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "立体图形各长度按比例变化时，体积按长度比例的立方变化，所以答案是 8。"
+    "explanation": "立体图形各长度按比例变化时，体积按长度比例的立方变化，所以答案是 8。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "比例",
+      "放大与缩小"
+    ]
   },
   {
     "id": "enlarge-volume-2",
@@ -3373,7 +4106,12 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "立体图形各长度按比例变化时，体积按长度比例的立方变化，所以答案是 27。"
+    "explanation": "立体图形各长度按比例变化时，体积按长度比例的立方变化，所以答案是 27。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "比例",
+      "放大与缩小"
+    ]
   },
   {
     "id": "enlarge-area-3",
@@ -3404,7 +4142,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "图形按比例变化时，面积按长度比例的平方变化；本题长度比例是 4:1，所以面积对应为 16。"
+    "explanation": "图形按比例变化时，面积按长度比例的平方变化；本题长度比例是 4:1，所以面积对应为 16。",
+    "knowledgeTags": [
+      "比例",
+      "放大与缩小"
+    ]
   },
   {
     "id": "enlarge-perimeter-2",
@@ -3435,7 +4177,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "周长属于长度量，按比例放大或缩小时，周长直接按长度比例变化，所以答案是 5。"
+    "explanation": "周长属于长度量，按比例放大或缩小时，周长直接按长度比例变化，所以答案是 5。",
+    "knowledgeTags": [
+      "比例",
+      "放大与缩小"
+    ]
   },
   {
     "id": "enlarge-area-4",
@@ -3466,7 +4212,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "图形按比例变化时，面积按长度比例的平方变化；本题长度比例是 1:4，所以面积对应为 1/16。"
+    "explanation": "图形按比例变化时，面积按长度比例的平方变化；本题长度比例是 1:4，所以面积对应为 1/16。",
+    "knowledgeTags": [
+      "比例",
+      "放大与缩小"
+    ]
   },
   {
     "id": "enlarge-volume-3",
@@ -3497,7 +4247,12 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "立体图形各长度按比例变化时，体积按长度比例的立方变化，所以答案是 1/8。"
+    "explanation": "立体图形各长度按比例变化时，体积按长度比例的立方变化，所以答案是 1/8。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "比例",
+      "放大与缩小"
+    ]
   },
   {
     "id": "enlarge-shape",
@@ -3528,7 +4283,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "按比例放大或缩小时，各对应长度按同一比例变化，角度不变，所以形状保持不变。"
+    "explanation": "按比例放大或缩小时，各对应长度按同一比例变化，角度不变，所以形状保持不变。",
+    "knowledgeTags": [
+      "比例",
+      "放大与缩小"
+    ]
   },
   {
     "id": "rotate-rect-side",
@@ -3559,7 +4318,12 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "长方形绕一条边旋转时，这条边成为高，另一边扫出圆形底面，形成圆柱。"
+    "explanation": "长方形绕一条边旋转时，这条边成为高，另一边扫出圆形底面，形成圆柱。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "图形运动",
+      "旋转"
+    ]
   },
   {
     "id": "rotate-right-triangle",
@@ -3590,7 +4354,12 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "直角三角形绕直角边旋转时，另一条直角边扫出圆形底面，斜边形成侧面，得到圆锥。"
+    "explanation": "直角三角形绕直角边旋转时，另一条直角边扫出圆形底面，斜边形成侧面，得到圆锥。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "图形运动",
+      "旋转"
+    ]
   },
   {
     "id": "rotate-flag-trapezoid",
@@ -3621,7 +4390,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "直角梯形绕垂直腰旋转，上下底扫出大小不同的圆，形成上小下大的圆台。"
+    "explanation": "直角梯形绕垂直腰旋转，上下底扫出大小不同的圆，形成上小下大的圆台。",
+    "knowledgeTags": [
+      "图形运动",
+      "旋转"
+    ]
   },
   {
     "id": "rotate-semicircle",
@@ -3652,7 +4425,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "半圆绕直径旋转时，半圆面扫过空间中所有等距点，形成球。"
+    "explanation": "半圆绕直径旋转时，半圆面扫过空间中所有等距点，形成球。",
+    "knowledgeTags": [
+      "图形运动",
+      "旋转"
+    ]
   },
   {
     "id": "rotate-rectangle-center",
@@ -3683,7 +4460,12 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "长方形绕穿过中心且平行于一边的轴旋转，另一方向扫出圆形截面，所以可能形成圆柱。"
+    "explanation": "长方形绕穿过中心且平行于一边的轴旋转，另一方向扫出圆形截面，所以可能形成圆柱。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "图形运动",
+      "旋转"
+    ]
   },
   {
     "id": "rotate-triangle-hypotenuse",
@@ -3714,7 +4496,12 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "直角三角形绕斜边旋转，两个直角边端点分别扫出同一个圆，斜边两侧形成两个底面相接的圆锥。"
+    "explanation": "直角三角形绕斜边旋转，两个直角边端点分别扫出同一个圆，斜边两侧形成两个底面相接的圆锥。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "图形运动",
+      "旋转"
+    ]
   },
   {
     "id": "rotate-line",
@@ -3745,7 +4532,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "线段绕一个端点旋转时，另一个端点到旋转中心距离不变，轨迹是一条圆。"
+    "explanation": "线段绕一个端点旋转时，另一个端点到旋转中心距离不变，轨迹是一条圆。",
+    "knowledgeTags": [
+      "图形运动",
+      "旋转"
+    ]
   },
   {
     "id": "rotate-point",
@@ -3776,7 +4567,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "点连续运动会留下轨迹，最基本形成的是线。"
+    "explanation": "点连续运动会留下轨迹，最基本形成的是线。",
+    "knowledgeTags": [
+      "图形运动",
+      "旋转"
+    ]
   },
   {
     "id": "translate-shape",
@@ -3807,7 +4602,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "平移只改变图形所在位置，不改变形状、大小和周长。"
+    "explanation": "平移只改变图形所在位置，不改变形状、大小和周长。",
+    "knowledgeTags": [
+      "图形运动",
+      "旋转"
+    ]
   },
   {
     "id": "rotate-90",
@@ -3838,7 +4637,11 @@
     ],
     "timeLimitSeconds": 25,
     "points": 14,
-    "explanation": "旋转是刚性运动，边长、高和面积都不改变，所以三角形面积不变。"
+    "explanation": "旋转是刚性运动，边长、高和面积都不改变，所以三角形面积不变。",
+    "knowledgeTags": [
+      "图形运动",
+      "旋转"
+    ]
   },
   {
     "id": "motion-judge-shape",
@@ -3861,7 +4664,13 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "按比例放大会保持对应角和整体形状不变，但对应长度变大，所以大小改变。"
+    "explanation": "按比例放大会保持对应角和整体形状不变，但对应长度变大，所以大小改变。",
+    "knowledgeTags": [
+      "比例",
+      "图形运动",
+      "放大与缩小",
+      "图形运动辨析"
+    ]
   },
   {
     "id": "motion-judge-area",
@@ -3884,7 +4693,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "长度扩大 3 倍时，面积要扩大 3×3=9 倍，不是只扩大 3 倍。"
+    "explanation": "长度扩大 3 倍时，面积要扩大 3×3=9 倍，不是只扩大 3 倍。",
+    "knowledgeTags": [
+      "图形运动",
+      "图形运动辨析"
+    ]
   },
   {
     "id": "motion-judge-volume",
@@ -3907,7 +4720,12 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "长方体三条方向长度都扩大 2 倍，体积扩大 2×2×2=8 倍。"
+    "explanation": "长方体三条方向长度都扩大 2 倍，体积扩大 2×2×2=8 倍。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "图形运动",
+      "图形运动辨析"
+    ]
   },
   {
     "id": "motion-judge-translate",
@@ -3930,7 +4748,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "平移只是整体移动位置，不会改变边长、角度、大小和形状。"
+    "explanation": "平移只是整体移动位置，不会改变边长、角度、大小和形状。",
+    "knowledgeTags": [
+      "图形运动",
+      "图形运动辨析"
+    ]
   },
   {
     "id": "motion-judge-rotate",
@@ -3953,7 +4775,11 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "旋转不会拉伸图形，旋转 90 度后各边长度仍然不变。"
+    "explanation": "旋转不会拉伸图形，旋转 90 度后各边长度仍然不变。",
+    "knowledgeTags": [
+      "图形运动",
+      "图形运动辨析"
+    ]
   },
   {
     "id": "motion-judge-scale",
@@ -3976,7 +4802,12 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "比例尺 1:100 表示图上 1 cm 对应实际 100 cm，100 cm=1 m，所以正确。"
+    "explanation": "比例尺 1:100 表示图上 1 cm 对应实际 100 cm，100 cm=1 m，所以正确。",
+    "knowledgeTags": [
+      "比例",
+      "图形运动",
+      "图形运动辨析"
+    ]
   },
   {
     "id": "motion-judge-unit",
@@ -3999,7 +4830,13 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "按比例放大只改变长度大小，不改变角的度数，所以角度不会扩大 2 倍。"
+    "explanation": "按比例放大只改变长度大小，不改变角的度数，所以角度不会扩大 2 倍。",
+    "knowledgeTags": [
+      "比例",
+      "图形运动",
+      "放大与缩小",
+      "图形运动辨析"
+    ]
   },
   {
     "id": "motion-judge-map",
@@ -4022,7 +4859,12 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "比例尺越小，图上距离与实际距离的比越小，同一实际长度画出来通常越短。"
+    "explanation": "比例尺越小，图上距离与实际距离的比越小，同一实际长度画出来通常越短。",
+    "knowledgeTags": [
+      "比例",
+      "图形运动",
+      "图形运动辨析"
+    ]
   },
   {
     "id": "motion-judge-rotate-body",
@@ -4045,7 +4887,12 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "长方形绕边旋转时，被绕的那条边就是旋转轴，也可以成为圆柱的高。"
+    "explanation": "长方形绕边旋转时，被绕的那条边就是旋转轴，也可以成为圆柱的高。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "图形运动",
+      "图形运动辨析"
+    ]
   },
   {
     "id": "motion-judge-ratio",
@@ -4068,7 +4915,13 @@
     ],
     "timeLimitSeconds": 20,
     "points": 12,
-    "explanation": "按 1:5 缩小表示所有对应长度缩小到原来的 1/5，周长也按同样比例变化。"
+    "explanation": "按 1:5 缩小表示所有对应长度缩小到原来的 1/5，周长也按同样比例变化。",
+    "knowledgeTags": [
+      "比例",
+      "图形运动",
+      "放大与缩小",
+      "图形运动辨析"
+    ]
   },
   {
     "id": "motion-fill-area-1",
@@ -4080,7 +4933,11 @@
     "answerHint": "只输入数字",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "原面积=2×6。按 3:1 放大时，面积扩大 3² 倍，所以放大后面积=2×6×3²=108。"
+    "explanation": "原面积=2×6。按 3:1 放大时，面积扩大 3² 倍，所以放大后面积=2×6×3²=108。",
+    "knowledgeTags": [
+      "放大与缩小",
+      "面积变化"
+    ]
   },
   {
     "id": "motion-fill-area-2",
@@ -4092,7 +4949,11 @@
     "answerHint": "只输入数字",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "原面积=3×4。按 2:1 放大时，面积扩大 2² 倍，所以放大后面积=3×4×2²=48。"
+    "explanation": "原面积=3×4。按 2:1 放大时，面积扩大 2² 倍，所以放大后面积=3×4×2²=48。",
+    "knowledgeTags": [
+      "放大与缩小",
+      "面积变化"
+    ]
   },
   {
     "id": "motion-fill-area-3",
@@ -4104,7 +4965,11 @@
     "answerHint": "只输入数字",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "原面积=5×8。按 4:1 放大时，面积扩大 4² 倍，所以放大后面积=5×8×4²=640。"
+    "explanation": "原面积=5×8。按 4:1 放大时，面积扩大 4² 倍，所以放大后面积=5×8×4²=640。",
+    "knowledgeTags": [
+      "放大与缩小",
+      "面积变化"
+    ]
   },
   {
     "id": "motion-fill-area-4",
@@ -4116,7 +4981,11 @@
     "answerHint": "只输入数字",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "原面积=4×7。按 3:1 放大时，面积扩大 3² 倍，所以放大后面积=4×7×3²=252。"
+    "explanation": "原面积=4×7。按 3:1 放大时，面积扩大 3² 倍，所以放大后面积=4×7×3²=252。",
+    "knowledgeTags": [
+      "放大与缩小",
+      "面积变化"
+    ]
   },
   {
     "id": "motion-fill-area-5",
@@ -4128,7 +4997,11 @@
     "answerHint": "只输入数字",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "原面积=6×5。按 2:1 放大时，面积扩大 2² 倍，所以放大后面积=6×5×2²=120。"
+    "explanation": "原面积=6×5。按 2:1 放大时，面积扩大 2² 倍，所以放大后面积=6×5×2²=120。",
+    "knowledgeTags": [
+      "放大与缩小",
+      "面积变化"
+    ]
   },
   {
     "id": "mixed-1",
@@ -4159,7 +5032,11 @@
     ],
     "timeLimitSeconds": 32,
     "points": 18,
-    "explanation": "侧面展开图是正方形时，高 h 等于底面周长 πd，所以 d:h=d:πd=1:π。"
+    "explanation": "侧面展开图是正方形时，高 h 等于底面周长 πd，所以 d:h=d:πd=1:π。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-2",
@@ -4190,7 +5067,11 @@
     ],
     "timeLimitSeconds": 32,
     "points": 18,
-    "explanation": "切成 4 段只需要在中间切 3 刀，因为每切一刀段数增加 1。"
+    "explanation": "切成 4 段只需要在中间切 3 刀，因为每切一刀段数增加 1。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-3",
@@ -4221,7 +5102,11 @@
     ],
     "timeLimitSeconds": 32,
     "points": 18,
-    "explanation": "切成 4 段需要 3 刀，每刀增加 2 个底面积，所以一共增加 3×2=6 个底面积。"
+    "explanation": "切成 4 段需要 3 刀，每刀增加 2 个底面积，所以一共增加 3×2=6 个底面积。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-4",
@@ -4252,7 +5137,11 @@
     ],
     "timeLimitSeconds": 32,
     "points": 18,
-    "explanation": "等底等高时，圆柱体积是圆锥体积的 3 倍，所以 24×3=72。"
+    "explanation": "等底等高时，圆柱体积是圆锥体积的 3 倍，所以 24×3=72。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-5",
@@ -4283,7 +5172,11 @@
     ],
     "timeLimitSeconds": 32,
     "points": 18,
-    "explanation": "等底等高时圆柱是 3 份，圆锥是 1 份，相差 2 份；36÷2=18，所以圆锥体积是 18。"
+    "explanation": "等底等高时圆柱是 3 份，圆锥是 1 份，相差 2 份；36÷2=18，所以圆锥体积是 18。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-6",
@@ -4314,7 +5207,11 @@
     ],
     "timeLimitSeconds": 32,
     "points": 18,
-    "explanation": "比例尺是两个长度的比，单位应统一后约掉，不能写成带“千米”的单位形式。"
+    "explanation": "比例尺是两个长度的比，单位应统一后约掉，不能写成带“千米”的单位形式。",
+    "knowledgeTags": [
+      "比例",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-7",
@@ -4345,7 +5242,11 @@
     ],
     "timeLimitSeconds": 32,
     "points": 18,
-    "explanation": "正比例中 y/x 为定值，x 扩大 4 倍，y 也要扩大 4 倍才能保持比值不变。"
+    "explanation": "正比例中 y/x 为定值，x 扩大 4 倍，y 也要扩大 4 倍才能保持比值不变。",
+    "knowledgeTags": [
+      "比例",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-8",
@@ -4376,7 +5277,12 @@
     ],
     "timeLimitSeconds": 32,
     "points": 18,
-    "explanation": "反比例中 xy 为定值，x 缩小到 1/3，y 必须扩大 3 倍才能让乘积不变。"
+    "explanation": "反比例中 xy 为定值，x 缩小到 1/3，y 必须扩大 3 倍才能让乘积不变。",
+    "knowledgeTags": [
+      "比例",
+      "放大与缩小",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-9",
@@ -4407,7 +5313,11 @@
     ],
     "timeLimitSeconds": 32,
     "points": 18,
-    "explanation": "圆柱体积 V=πr^2h，高不变时半径扩大 2 倍，底面积扩大 2^2=4 倍，体积也扩大 4 倍。"
+    "explanation": "圆柱体积 V=πr^2h，高不变时半径扩大 2 倍，底面积扩大 2^2=4 倍，体积也扩大 4 倍。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-10",
@@ -4438,7 +5348,11 @@
     ],
     "timeLimitSeconds": 32,
     "points": 18,
-    "explanation": "圆锥体积 V=1/3×底面积×高，底面积不变时，高扩大 3 倍，体积也扩大 3 倍。"
+    "explanation": "圆锥体积 V=1/3×底面积×高，底面积不变时，高扩大 3 倍，体积也扩大 3 倍。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-fill-1",
@@ -4450,7 +5364,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 45,
     "points": 24,
-    "explanation": "圆锥沙堆体积=1/3×15×2=10 立方米。路基横截面积=5×0.02=0.1 平方米，能铺长度=10÷0.1=100 米。"
+    "explanation": "圆锥沙堆体积=1/3×15×2=10 立方米。路基横截面积=5×0.02=0.1 平方米，能铺长度=10÷0.1=100 米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-fill-2",
@@ -4462,7 +5380,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 45,
     "points": 24,
-    "explanation": "底面周长 12.56 m，所以半径=12.56÷3.14÷2=2 m。沙堆体积=1/3×3.14×2²×1.5=6.28 立方米，重量=6.28×1.5=9.42 吨，9.42÷2=4.71，至少要 5 次。"
+    "explanation": "底面周长 12.56 m，所以半径=12.56÷3.14÷2=2 m。沙堆体积=1/3×3.14×2²×1.5=6.28 立方米，重量=6.28×1.5=9.42 吨，9.42÷2=4.71，至少要 5 次。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-fill-3",
@@ -4474,7 +5396,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 45,
     "points": 24,
-    "explanation": "零件完全浸没后排开的水形成一个高 3 cm、底面积 80 平方厘米的水柱，所以零件体积=80×3=240 立方厘米。"
+    "explanation": "零件完全浸没后排开的水形成一个高 3 cm、底面积 80 平方厘米的水柱，所以零件体积=80×3=240 立方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-fill-4",
@@ -4486,7 +5412,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 45,
     "points": 24,
-    "explanation": "圆柱体积=底面积×高，所以高=157÷31.4=5 cm。"
+    "explanation": "圆柱体积=底面积×高，所以高=157÷31.4=5 cm。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-fill-5",
@@ -4498,7 +5428,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 45,
     "points": 24,
-    "explanation": "橡皮泥体积不变且圆柱、圆锥等底。圆柱体积=底面积×6，圆锥体积=1/3×底面积×高，所以圆锥高=6×3=18 cm。"
+    "explanation": "橡皮泥体积不变且圆柱、圆锥等底。圆柱体积=底面积×6，圆锥体积=1/3×底面积×高，所以圆锥高=6×3=18 cm。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-fill-6",
@@ -4510,7 +5444,12 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "比例尺 1:40 表示实际长度是图上长度的 40 倍，25×40=1000 cm=10 m。"
+    "explanation": "比例尺 1:40 表示实际长度是图上长度的 40 倍，25×40=1000 cm=10 m。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "比例",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-fill-7",
@@ -4522,7 +5461,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "同一幅图比例尺相同，120 m 画 6 cm，80 m 是 120 m 的 2/3，所以图上长度=6×2/3=4 cm。"
+    "explanation": "同一幅图比例尺相同，120 m 画 6 cm，80 m 是 120 m 的 2/3，所以图上长度=6×2/3=4 cm。",
+    "knowledgeTags": [
+      "比例",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-fill-8",
@@ -4534,7 +5477,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "总页数一定，每天读页数和天数成反比例。总页数=24×15=360 页，360÷30=12 天。"
+    "explanation": "总页数一定，每天读页数和天数成反比例。总页数=24×15=360 页，360÷30=12 天。",
+    "knowledgeTags": [
+      "比例",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-fill-9",
@@ -4546,7 +5493,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "单价一定，总价和数量成正比例。每盒 210÷6=35 元，9 盒需要 35×9=315 元。"
+    "explanation": "单价一定，总价和数量成正比例。每盒 210÷6=35 元，9 盒需要 35×9=315 元。",
+    "knowledgeTags": [
+      "比例",
+      "综合计算"
+    ]
   },
   {
     "id": "mixed-fill-10",
@@ -4558,6 +5509,11 @@
     "answerHint": "只输入数字，可用小数点",
     "timeLimitSeconds": 35,
     "points": 18,
-    "explanation": "长方体各棱长放大 2 倍，体积扩大 2³=8 倍，所以新体积=40×8=320 立方厘米。"
+    "explanation": "长方体各棱长放大 2 倍，体积扩大 2³=8 倍，所以新体积=40×8=320 立方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "放大与缩小",
+      "综合计算"
+    ]
   }
 ]

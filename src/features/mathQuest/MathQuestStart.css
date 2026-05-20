@@ -1,0 +1,63 @@
+.math-quest__start {
+  display: grid;
+  justify-items: center;
+  width: min(760px, 100%);
+  padding: 48px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 28px;
+  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px);
+}
+
+.math-quest__start .ant-typography {
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.math-quest__tag-picker {
+  display: grid;
+  width: min(560px, 100%);
+  gap: 10px;
+  margin-top: 16px;
+  text-align: left;
+}
+
+.math-quest__tag-picker > span {
+  color: #eff6ff;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.math-quest__tag-picker .ant-select {
+  width: 100%;
+}
+
+.math-quest__tag-picker .ant-select-selector {
+  min-height: 48px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.38) !important;
+  border-radius: 16px;
+}
+
+.math-quest__tag-picker small {
+  color: #dbeafe;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.math-quest__start-button.ant-btn {
+  min-width: 220px;
+  height: 72px;
+  margin-top: 18px;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+@media (max-width: 720px) {
+  .math-quest__start {
+    padding: 28px;
+  }
+}

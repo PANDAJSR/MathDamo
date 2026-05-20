@@ -7,6 +7,19 @@ export function shuffleQuestions(questions: MathQuestQuestion[]) {
     .map(({ question }) => question)
 }
 
+export function getKnowledgeTags(questions: MathQuestQuestion[]) {
+  return Array.from(new Set(questions.flatMap((question) => question.knowledgeTags))).sort((left, right) =>
+    left.localeCompare(right, 'zh-Hans-CN'),
+  )
+}
+
+export function filterQuestionsByTags(questions: MathQuestQuestion[], selectedTags: string[]) {
+  if (selectedTags.length === 0) return questions
+
+  const selectedTagSet = new Set(selectedTags)
+  return questions.filter((question) => question.knowledgeTags.some((tag) => selectedTagSet.has(tag)))
+}
+
 export function getDifficultyLabel(question: MathQuestQuestion) {
   if (question.difficulty === 'hard') return '挑战'
   if (question.difficulty === 'medium') return '进阶'

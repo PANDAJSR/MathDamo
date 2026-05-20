@@ -4,10 +4,13 @@ import './MathQuest.css'
 import {
   evaluateChoiceAnswer,
   evaluateFillAnswer,
+  filterQuestionsByTags,
   getCorrectAnswerText,
   getDifficultyLabel,
+  getKnowledgeTags,
   shuffleQuestions,
 } from './mathQuest/game'
+import { MathQuestStart } from './mathQuest/MathQuestStart'
 import { NumberPad } from './mathQuest/NumberPad'
 import questionBank from './mathQuest/questions.json'
 import type { MathQuestQuestion } from './mathQuest/types'
@@ -19,6 +22,7 @@ const typedQuestionBank = questionBank as MathQuestQuestion[]
 const feedbackDelayMs = 1300
 
 export function MathQuest() {
+  const [selectedKnowledgeTags, setSelectedKnowledgeTags] = useState<string[]>([])
   const [phase, setPhase] = useState<GamePhase>('ready')
   const [questions, setQuestions] = useState<MathQuestQuestion[]>(() => shuffleQuestions(typedQuestionBank))
   const [questionIndex, setQuestionIndex] = useState(0)
@@ -30,6 +34,11 @@ export function MathQuest() {
   const [wrongReview, setWrongReview] = useState<{ answer: string; explanation: string } | null>(null)
 
   const currentQuestion = questions[questionIndex]
+  const availableKnowledgeTags = useMemo(() => getKnowledgeTags(typedQuestionBank), [])
+  const filteredQuestionBank = useMemo(
+    () => filterQuestionsByTags(typedQuestionBank, selectedKnowledgeTags),
+    [selectedKnowledgeTags],
+  )
   const answeredCount = phase === 'finished' ? questions.length : questionIndex
   const progressPercent = Math.round((answeredCount / questions.length) * 100)
   const isMultipleChoice = currentQuestion?.type === 'multiple'
@@ -43,7 +52,9 @@ export function MathQuest() {
   }, [])
 
   const startGame = () => {
-    const nextQuestions = shuffleQuestions(typedQuestionBank)
+    const nextQuestions = shuffleQuestions(filteredQuestionBank)
+    if (nextQuestions.length === 0) return
+
     setQuestions(nextQuestions)
     setQuestionIndex(0)
     setScore(0)
@@ -177,33 +188,27 @@ export function MathQuest() {
 
   if (phase === 'ready' || !currentQuestion) {
     return (
-      <section className="math-quest math-quest--center">
-        <div className="math-quest__start">
-          <span className="math-quest__eyebrow">趣味数学闯关</span>
-          <Typography.Title>随机题库挑战</Typography.Title>
-          <Typography.Paragraph>
-            题库包含单选、多选和填空题。每题限时答题，答对加分，答错或超时扣除对应分值。
-          </Typography.Paragraph>
-          <Button className="math-quest__start-button" type="primary" onClick={startGame}>
-            开始闯关
-          </Button>
-        </div>
-      </section>
+      <MathQuestStart
+        availableTags={availableKnowledgeTags}
+        playableQuestionCount={filteredQuestionBank.length}
+        selectedTags={selectedKnowledgeTags}
+        onSelectedTagsChange={setSelectedKnowledgeTags}
+        onStart={startGame}
+      />
     )
   }
 
   if (phase === 'finished') {
     return (
-      <section className="math-quest math-quest--center">
-        <div className="math-quest__start">
-          <span className="math-quest__eyebrow">本轮完成</span>
-          <Typography.Title>{score} 分</Typography.Title>
-          <Typography.Paragraph>已经完成 {questions.length} 道随机题。</Typography.Paragraph>
-          <Button className="math-quest__start-button" type="primary" onClick={startGame}>
-            再来一轮
-          </Button>
-        </div>
-      </section>
+      <MathQuestStart
+        availableTags={availableKnowledgeTags}
+        playableQuestionCount={filteredQuestionBank.length}
+        selectedTags={selectedKnowledgeTags}
+        onSelectedTagsChange={setSelectedKnowledgeTags}
+        onStart={startGame}
+        score={score}
+        completedQuestionCount={questions.length}
+      />
     )
   }
 
@@ -229,6 +234,9 @@ export function MathQuest() {
             <span>{getDifficultyLabel(currentQuestion)}</span>
             <span>{currentQuestion.points} 分</span>
             <span>{currentQuestion.type === 'fill' ? '填空' : currentQuestion.type === 'multiple' ? '多选' : '单选'}</span>
+            {currentQuestion.knowledgeTags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
           </div>
           <div className="math-quest__prompt">{currentQuestion.prompt}</div>
           <Progress
