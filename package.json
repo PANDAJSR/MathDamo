@@ -3,13 +3,31 @@
   "private": true,
   "version": "0.0.0",
   "license": "GPL-3.0-only",
+  "main": "electron/main.cjs",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "server": "tsx server/index.ts",
     "build": "tsc -b && vite build",
+    "electron:build:win": "ELECTRON_BUILD=true npm run build && electron-builder --win portable --x64",
     "lint": "eslint .",
     "preview": "vite preview"
+  },
+  "build": {
+    "appId": "io.github.pandajsr.mathdamo",
+    "productName": "MathDamo",
+    "artifactName": "${productName}-${version}-${arch}.${ext}",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "src/features/mathQuest/questions.json",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ]
+    }
   },
   "dependencies": {
     "antd": "^6.3.3",
@@ -27,6 +45,8 @@
     "@types/three": "^0.183.1",
     "@types/ws": "^8.18.1",
     "@vitejs/plugin-react": "^6.0.1",
+    "electron": "^42.2.0",
+    "electron-builder": "^26.8.1",
     "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
