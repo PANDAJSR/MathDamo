@@ -18,6 +18,7 @@ type MathQuestStartProps = {
   onStart: () => void
   score?: number
   completedQuestionCount?: number
+  connectionText?: string
 }
 
 export function MathQuestStart({
@@ -30,6 +31,7 @@ export function MathQuestStart({
   onStart,
   score,
   completedQuestionCount,
+  connectionText,
 }: MathQuestStartProps) {
   const finished = score !== undefined
   const tagOptions = availableTags.map((tag) => ({ label: tag, value: tag }))
@@ -44,6 +46,7 @@ export function MathQuestStart({
             ? `已经完成 ${completedQuestionCount ?? playableQuestionCount} 道随机题。`
             : '题库包含单选、多选和填空题。开始前可选择知识点和难度，只练对应题目。'}
         </Typography.Paragraph>
+        {connectionText && <div className="math-quest__connection">{connectionText}</div>}
         <div className="math-quest__filters">
           <div className="math-quest__tag-picker">
             <span>知识点</span>

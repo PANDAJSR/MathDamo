@@ -1,0 +1,137 @@
+.math-quest-online__start,
+.math-quest-online__room {
+  display: grid;
+  justify-items: center;
+  width: min(780px, 100%);
+  padding: 44px;
+  color: #ffffff;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 24px;
+  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px);
+}
+
+.math-quest-online__start .ant-typography,
+.math-quest-online__room .ant-typography {
+  color: #ffffff;
+}
+
+.math-quest-online__start h1.ant-typography,
+.math-quest-online__room h1.ant-typography {
+  margin-bottom: 8px;
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 1000;
+}
+
+.math-quest-online__error {
+  margin-top: 18px;
+  color: #fecaca;
+  font-weight: 800;
+}
+
+.math-quest-online__form,
+.math-quest-online__settings {
+  display: grid;
+  gap: 16px;
+}
+
+.math-quest-online__form label,
+.math-quest-online__settings label {
+  display: grid;
+  gap: 8px;
+  text-align: left;
+}
+
+.math-quest-online__form span,
+.math-quest-online__settings span {
+  font-weight: 900;
+}
+
+.math-quest-online__settings {
+  width: min(620px, 100%);
+  grid-template-columns: minmax(0, 1.3fr) minmax(160px, 0.7fr);
+  margin: 20px 0;
+}
+
+.math-quest-online__settings .ant-select {
+  width: 100%;
+}
+
+.math-quest-online__players,
+.math-quest-online__ranking {
+  display: grid;
+  width: min(620px, 100%);
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.math-quest-online__player,
+.math-quest-online__ranking div {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  color: #ffffff;
+  text-align: left;
+  background: rgba(15, 23, 42, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 12px;
+}
+
+.math-quest-online__player strong,
+.math-quest-online__ranking span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.math-quest-online__player span,
+.math-quest-online__player em,
+.math-quest-online__ranking strong,
+.math-quest-online__ranking em {
+  font-style: normal;
+  font-weight: 900;
+}
+
+.math-quest-online__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+.math-quest-online__scores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.math-quest-online__scores span {
+  padding: 8px 12px;
+  color: #ffffff;
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 999px;
+  backdrop-filter: blur(14px);
+}
+
+.math-quest-online__scores span.is-submitted {
+  background: rgba(22, 163, 74, 0.5);
+}
+
+@media (max-width: 720px) {
+  .math-quest-online__start,
+  .math-quest-online__room {
+    padding: 28px;
+  }
+
+  .math-quest-online__settings,
+  .math-quest-online__player,
+  .math-quest-online__ranking div {
+    grid-template-columns: 1fr;
+  }
+}

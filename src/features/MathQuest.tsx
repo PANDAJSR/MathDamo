@@ -1,4 +1,3 @@
-import { Button, Modal, Progress, Statistic, Typography } from 'antd'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import './MathQuest.css'
 import {
@@ -6,22 +5,25 @@ import {
   evaluateFillAnswer,
   filterQuestions,
   getCorrectAnswerText,
-  getDifficultyLabel,
   getKnowledgeTags,
   shuffleQuestions,
 } from './mathQuest/game'
+import { MathQuestGameBoard } from './mathQuest/MathQuestGameBoard'
+import { MathQuestOnlineStart } from './mathQuest/MathQuestOnlineStart'
+import { MathQuestRoom } from './mathQuest/MathQuestRoom'
 import { MathQuestStart } from './mathQuest/MathQuestStart'
-import { NumberPad } from './mathQuest/NumberPad'
 import questionBank from './mathQuest/questions.json'
+import type { FeedbackTone } from './mathQuest/MathQuestGameBoard'
 import type { MathQuestQuestion, QuestionDifficulty } from './mathQuest/types'
+import { useMathQuestSocket } from './mathQuest/useMathQuestSocket'
 
 type GamePhase = 'ready' | 'playing' | 'feedback' | 'finished'
-type FeedbackTone = 'success' | 'danger'
 
 const typedQuestionBank = questionBank as MathQuestQuestion[]
 const feedbackDelayMs = 1300
 
 export function MathQuest() {
+  const socket = useMathQuestSocket()
   const [selectedKnowledgeTags, setSelectedKnowledgeTags] = useState<string[]>([])
   const [selectedDifficulties, setSelectedDifficulties] = useState<QuestionDifficulty[]>([])
   const [phase, setPhase] = useState<GamePhase>('ready')
@@ -40,11 +42,6 @@ export function MathQuest() {
     () => filterQuestions(typedQuestionBank, selectedKnowledgeTags, selectedDifficulties),
     [selectedDifficulties, selectedKnowledgeTags],
   )
-  const answeredCount = phase === 'finished' ? questions.length : questionIndex
-  const progressPercent = Math.round((answeredCount / questions.length) * 100)
-  const isMultipleChoice = currentQuestion?.type === 'multiple'
-  const canSubmitChoice = selectedOptionIds.length > 0
-  const canSubmitFill = fillAnswer.trim().length > 0
 
   const resetForQuestion = useCallback((nextQuestion: MathQuestQuestion) => {
     setSelectedOptionIds([])
@@ -167,11 +164,6 @@ export function MathQuest() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [currentQuestion, phase, submitFill])
 
-  const timePercent = useMemo(() => {
-    if (!currentQuestion) return 0
-    return Math.round((timeLeft / currentQuestion.timeLimitSeconds) * 100)
-  }, [currentQuestion, timeLeft])
-
   const toggleOption = (optionId: string) => {
     if (!currentQuestion || phase !== 'playing') return
 
@@ -187,6 +179,32 @@ export function MathQuest() {
     )
   }
 
+  if (socket.roomState) {
+    return (
+      <MathQuestRoom
+        room={socket.roomState}
+        clientId={socket.clientId}
+        availableTags={availableKnowledgeTags}
+        questionBank={typedQuestionBank}
+        onUpdateSettings={socket.updateSettings}
+        onSetReady={socket.setReady}
+        onSubmitAnswer={socket.submitAnswer}
+        onLeaveRoom={socket.leaveRoom}
+      />
+    )
+  }
+
+  if (socket.connected) {
+    return (
+      <MathQuestOnlineStart
+        error={socket.error}
+        socketUrl={socket.socketUrl}
+        onCreateRoom={socket.createRoom}
+        onJoinRoom={socket.joinRoom}
+      />
+    )
+  }
+
   if (phase === 'ready' || !currentQuestion) {
     return (
       <MathQuestStart
@@ -197,6 +215,7 @@ export function MathQuest() {
         onSelectedTagsChange={setSelectedKnowledgeTags}
         onSelectedDifficultiesChange={setSelectedDifficulties}
         onStart={startGame}
+        connectionText={socket.error || '正在连接联机服务器，可先单人练习。'}
       />
     )
   }
@@ -213,119 +232,30 @@ export function MathQuest() {
         onStart={startGame}
         score={score}
         completedQuestionCount={questions.length}
+        connectionText={socket.error || '正在连接联机服务器，可先单人练习。'}
       />
     )
   }
 
   return (
-    <section className={`math-quest ${feedback.tone === 'danger' && phase === 'feedback' ? 'is-failed' : ''}`}>
-      <header className="math-quest__topbar">
-        <div>
-          <span className="math-quest__eyebrow">趣味数学闯关</span>
-          <Typography.Title level={2}>{currentQuestion.title}</Typography.Title>
-        </div>
-        <div className="math-quest__stats">
-          <Statistic title="得分" value={score} />
-          <Statistic title="题目" value={questionIndex + 1} suffix={`/${questions.length}`} />
-          <Statistic title="剩余" value={timeLeft} suffix="秒" />
-        </div>
-      </header>
-
-      <Progress percent={progressPercent} showInfo={false} />
-
-      <main className="math-quest__board">
-        <section className="math-quest__question">
-          <div className="math-quest__meta">
-            <span>{getDifficultyLabel(currentQuestion)}</span>
-            <span>{currentQuestion.points} 分</span>
-            <span>{currentQuestion.type === 'fill' ? '填空' : currentQuestion.type === 'multiple' ? '多选' : '单选'}</span>
-            {currentQuestion.knowledgeTags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
-          <div className="math-quest__prompt">{currentQuestion.prompt}</div>
-          <Progress
-            percent={timePercent}
-            strokeColor={timePercent <= 25 ? '#ef4444' : '#16a34a'}
-            showInfo={false}
-          />
-        </section>
-
-        {currentQuestion.type === 'fill' ? (
-          <section className="math-quest__fill">
-            <div className="math-quest__answer-display" aria-label="填空答案">
-              {fillAnswer || currentQuestion.answerHint || '输入答案'}
-            </div>
-            <NumberPad
-              disabled={phase !== 'playing'}
-              onInput={(value) => setFillAnswer((currentValue) => currentValue + value)}
-              onBackspace={() => setFillAnswer((currentValue) => currentValue.slice(0, -1))}
-              onClear={() => setFillAnswer('')}
-            />
-            <Button
-              className="math-quest__submit"
-              type="primary"
-              disabled={phase !== 'playing' || !canSubmitFill}
-              onClick={submitFill}
-            >
-              提交答案
-            </Button>
-          </section>
-        ) : (
-          <section className="math-quest__options">
-            {currentQuestion.options?.map((option, index) => {
-              const selected = selectedOptionIds.includes(option.id)
-              return (
-                <button
-                  key={option.id}
-                  className={`math-quest__option ${selected ? 'is-selected' : ''}`}
-                  disabled={phase !== 'playing'}
-                  onClick={() => toggleOption(option.id)}
-                >
-                  <span>{String.fromCharCode(65 + index)}</span>
-                  <strong>{option.label}</strong>
-                </button>
-              )
-            })}
-            <Button
-              className="math-quest__submit"
-              type="primary"
-              disabled={phase !== 'playing' || !canSubmitChoice}
-              onClick={submitChoice}
-            >
-              {isMultipleChoice ? '提交多选' : '确认选择'}
-            </Button>
-          </section>
-        )}
-      </main>
-
-      {phase === 'feedback' && (
-        <div className={`math-quest__feedback math-quest__feedback--${feedback.tone}`}>
-          {feedback.tone === 'danger' ? '挑战受阻' : '闯关成功'}
-          <span>{feedback.text}</span>
-        </div>
-      )}
-
-      <Modal
-        open={Boolean(wrongReview)}
-        title="正确答案和解析"
-        okText="继续闯关"
-        cancelButtonProps={{ style: { display: 'none' } }}
-        closable={false}
-        maskClosable={false}
-        onOk={continueAfterReview}
-      >
-        <div className="math-quest__review">
-          <div>
-            <strong>正确答案</strong>
-            <span>{wrongReview?.answer}</span>
-          </div>
-          <div>
-            <strong>为什么是这个答案</strong>
-            <p>{wrongReview?.explanation}</p>
-          </div>
-        </div>
-      </Modal>
-    </section>
+    <MathQuestGameBoard
+      currentQuestion={currentQuestion}
+      questionIndex={questionIndex}
+      totalQuestions={questions.length}
+      score={score}
+      timeLeft={timeLeft}
+      phase={phase}
+      selectedOptionIds={selectedOptionIds}
+      fillAnswer={fillAnswer}
+      feedback={feedback}
+      wrongReview={wrongReview}
+      onToggleOption={toggleOption}
+      onSubmitChoice={submitChoice}
+      onSubmitFill={submitFill}
+      onFillInput={(value) => setFillAnswer((currentValue) => currentValue + value)}
+      onFillBackspace={() => setFillAnswer((currentValue) => currentValue.slice(0, -1))}
+      onFillClear={() => setFillAnswer('')}
+      onContinueAfterReview={continueAfterReview}
+    />
   )
 }
