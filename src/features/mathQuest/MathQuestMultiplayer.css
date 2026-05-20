@@ -81,6 +81,21 @@
   color: #334155 !important;
 }
 
+.math-quest-online__readonly-select {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 8px 14px;
+  color: #0f172a;
+  font-weight: 900;
+  line-height: 1.35;
+  background: #f8fafc;
+  border: 2px solid rgba(226, 232, 240, 0.95);
+  border-radius: 14px;
+  overflow-wrap: anywhere;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
 .math-quest-online__players,
 .math-quest-online__ranking {
   display: grid;

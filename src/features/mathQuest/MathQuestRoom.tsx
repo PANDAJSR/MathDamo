@@ -61,6 +61,14 @@ export function MathQuestRoom({
   }, [questionBank, room.currentIndex, room.questionIds])
   const submitted = currentPlayer?.submitted ?? false
   const tagOptions = availableTags.map((tag) => ({ label: tag, value: tag }))
+  const selectedTagsText = room.settings.selectedTags.length > 0
+    ? room.settings.selectedTags.join('、')
+    : '全部知识点'
+  const selectedDifficultiesText = room.settings.selectedDifficulties.length > 0
+    ? room.settings.selectedDifficulties
+      .map((difficulty) => difficultyOptions.find((option) => option.value === difficulty)?.label ?? difficulty)
+      .join('、')
+    : '全部难度'
   const answerQuestionId = currentQuestion?.id ?? ''
   const selectedOptionIds = useMemo(
     () => (answer.questionId === answerQuestionId ? answer.selectedOptionIds : []),
@@ -177,29 +185,35 @@ export function MathQuestRoom({
           <div className="math-quest-online__settings">
             <label>
               <span>知识点</span>
-              <Select
-                mode="multiple"
-                allowClear
-                disabled={!isHost}
-                placeholder="全部知识点"
-                options={tagOptions}
-                value={room.settings.selectedTags}
-                onChange={updateTags}
-                maxTagCount="responsive"
-              />
+              {isHost ? (
+                <Select
+                  mode="multiple"
+                  allowClear
+                  placeholder="全部知识点"
+                  options={tagOptions}
+                  value={room.settings.selectedTags}
+                  onChange={updateTags}
+                  maxTagCount="responsive"
+                />
+              ) : (
+                <div className="math-quest-online__readonly-select">{selectedTagsText}</div>
+              )}
             </label>
             <label>
               <span>难度</span>
-              <Select
-                mode="multiple"
-                allowClear
-                disabled={!isHost}
-                placeholder="全部难度"
-                options={difficultyOptions}
-                value={room.settings.selectedDifficulties}
-                onChange={updateDifficulties}
-                maxTagCount="responsive"
-              />
+              {isHost ? (
+                <Select
+                  mode="multiple"
+                  allowClear
+                  placeholder="全部难度"
+                  options={difficultyOptions}
+                  value={room.settings.selectedDifficulties}
+                  onChange={updateDifficulties}
+                  maxTagCount="responsive"
+                />
+              ) : (
+                <div className="math-quest-online__readonly-select">{selectedDifficultiesText}</div>
+              )}
             </label>
           </div>
 
