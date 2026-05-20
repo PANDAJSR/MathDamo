@@ -11,7 +11,7 @@ import { ShapeScaleDemo } from './features/ShapeScaleDemo'
 import { SimpleRecorder } from './features/SimpleRecorder'
 import { SymmetryGuardians } from './features/SymmetryGuardians'
 
-const menuItems = [
+const fullMenuItems = [
   { key: 'shape-scale', label: '图形的放大和缩小' },
   { key: 'model-viewer', label: '3d模型查看器' },
   { key: 'lucky-wheel', label: '转盘' },
@@ -22,7 +22,15 @@ const menuItems = [
   { key: 'symmetry-guardians', label: '对称守卫者' },
 ]
 
-const defaultMenuKey = 'shape-scale'
+const mathGameMenuItems = [
+  { key: 'pi-racer', label: '极速圆周率' },
+  { key: 'flavor-challenge', label: '调味师大挑战' },
+  { key: 'math-quest', label: '趣味数学闯关' },
+]
+
+const isElectronApp = new URLSearchParams(window.location.search).get('mode') === 'electron'
+const menuItems = isElectronApp ? mathGameMenuItems : fullMenuItems
+const defaultMenuKey = isElectronApp ? 'pi-racer' : 'shape-scale'
 const menuKeySet = new Set(menuItems.map((item) => item.key))
 
 const getMenuKeyFromHash = () => {
@@ -39,6 +47,7 @@ function App() {
 
   useEffect(() => {
     if (sharedWheelConfig) return
+    if (isElectronApp) document.title = '数学互动小游戏'
 
     const syncByHash = () => {
       const key = getMenuKeyFromHash()
@@ -83,7 +92,7 @@ function App() {
   return (
     <Layout className="app-layout">
       <Layout.Sider width={240} className="app-sider" theme="light">
-        <div className="brand">MathDamo</div>
+        <div className="brand">{isElectronApp ? '数学互动小游戏' : 'MathDamo'}</div>
         <Menu
           mode="inline"
           theme="light"

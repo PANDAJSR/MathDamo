@@ -368,14 +368,17 @@ function createWindow() {
     height: 820,
     minWidth: 1024,
     minHeight: 700,
-    title: 'MathDamo',
+    title: '数学互动小游戏',
+    icon: getResourcePath('electron', 'icon.ico'),
+    autoHideMenuBar: true,
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
     },
   })
 
-  win.loadFile(getResourcePath('dist', 'index.html'))
+  win.setMenuBarVisibility(false)
+  win.loadFile(getResourcePath('dist', 'index.html'), { query: { mode: 'electron' }, hash: 'pi-racer' })
 }
 
 app.whenReady().then(() => {

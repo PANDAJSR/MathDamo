@@ -15,8 +15,9 @@
   },
   "build": {
     "appId": "io.github.pandajsr.mathdamo",
-    "productName": "MathDamo",
+    "productName": "数学互动小游戏",
     "artifactName": "${productName}-${version}-${arch}.${ext}",
+    "icon": "electron/icon.ico",
     "files": [
       "dist/**/*",
       "electron/**/*",
