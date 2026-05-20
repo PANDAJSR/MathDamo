@@ -4,7 +4,7 @@ import './MathQuest.css'
 import {
   evaluateChoiceAnswer,
   evaluateFillAnswer,
-  filterQuestionsByTags,
+  filterQuestions,
   getCorrectAnswerText,
   getDifficultyLabel,
   getKnowledgeTags,
@@ -13,7 +13,7 @@ import {
 import { MathQuestStart } from './mathQuest/MathQuestStart'
 import { NumberPad } from './mathQuest/NumberPad'
 import questionBank from './mathQuest/questions.json'
-import type { MathQuestQuestion } from './mathQuest/types'
+import type { MathQuestQuestion, QuestionDifficulty } from './mathQuest/types'
 
 type GamePhase = 'ready' | 'playing' | 'feedback' | 'finished'
 type FeedbackTone = 'success' | 'danger'
@@ -23,6 +23,7 @@ const feedbackDelayMs = 1300
 
 export function MathQuest() {
   const [selectedKnowledgeTags, setSelectedKnowledgeTags] = useState<string[]>([])
+  const [selectedDifficulties, setSelectedDifficulties] = useState<QuestionDifficulty[]>([])
   const [phase, setPhase] = useState<GamePhase>('ready')
   const [questions, setQuestions] = useState<MathQuestQuestion[]>(() => shuffleQuestions(typedQuestionBank))
   const [questionIndex, setQuestionIndex] = useState(0)
@@ -36,8 +37,8 @@ export function MathQuest() {
   const currentQuestion = questions[questionIndex]
   const availableKnowledgeTags = useMemo(() => getKnowledgeTags(typedQuestionBank), [])
   const filteredQuestionBank = useMemo(
-    () => filterQuestionsByTags(typedQuestionBank, selectedKnowledgeTags),
-    [selectedKnowledgeTags],
+    () => filterQuestions(typedQuestionBank, selectedKnowledgeTags, selectedDifficulties),
+    [selectedDifficulties, selectedKnowledgeTags],
   )
   const answeredCount = phase === 'finished' ? questions.length : questionIndex
   const progressPercent = Math.round((answeredCount / questions.length) * 100)
@@ -192,7 +193,9 @@ export function MathQuest() {
         availableTags={availableKnowledgeTags}
         playableQuestionCount={filteredQuestionBank.length}
         selectedTags={selectedKnowledgeTags}
+        selectedDifficulties={selectedDifficulties}
         onSelectedTagsChange={setSelectedKnowledgeTags}
+        onSelectedDifficultiesChange={setSelectedDifficulties}
         onStart={startGame}
       />
     )
@@ -204,7 +207,9 @@ export function MathQuest() {
         availableTags={availableKnowledgeTags}
         playableQuestionCount={filteredQuestionBank.length}
         selectedTags={selectedKnowledgeTags}
+        selectedDifficulties={selectedDifficulties}
         onSelectedTagsChange={setSelectedKnowledgeTags}
+        onSelectedDifficultiesChange={setSelectedDifficulties}
         onStart={startGame}
         score={score}
         completedQuestionCount={questions.length}

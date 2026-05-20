@@ -1,4 +1,5 @@
 export type QuestionType = 'single' | 'multiple' | 'fill'
+export type QuestionDifficulty = 'easy' | 'medium' | 'hard'
 
 export type QuestionOption = {
   id: string
@@ -8,7 +9,7 @@ export type QuestionOption = {
 export type MathQuestQuestion = {
   id: string
   type: QuestionType
-  difficulty: 'easy' | 'medium' | 'hard'
+  difficulty: QuestionDifficulty
   title: string
   prompt: string
   options?: QuestionOption[]

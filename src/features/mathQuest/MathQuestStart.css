@@ -16,11 +16,18 @@
   margin-bottom: 12px;
 }
 
-.math-quest__tag-picker {
+.math-quest__filters {
   display: grid;
   width: min(560px, 100%);
-  gap: 10px;
+  grid-template-columns: minmax(0, 1.4fr) minmax(160px, 0.8fr);
+  gap: 14px;
   margin-top: 16px;
+}
+
+.math-quest__tag-picker {
+  display: grid;
+  min-width: 0;
+  gap: 10px;
   text-align: left;
 }
 
@@ -59,5 +66,9 @@
 @media (max-width: 720px) {
   .math-quest__start {
     padding: 28px;
+  }
+
+  .math-quest__filters {
+    grid-template-columns: 1fr;
   }
 }

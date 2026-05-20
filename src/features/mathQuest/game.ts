@@ -1,4 +1,4 @@
-import type { AnswerResult, MathQuestQuestion } from './types'
+import type { AnswerResult, MathQuestQuestion, QuestionDifficulty } from './types'
 
 export function shuffleQuestions(questions: MathQuestQuestion[]) {
   return [...questions]
@@ -13,11 +13,22 @@ export function getKnowledgeTags(questions: MathQuestQuestion[]) {
   )
 }
 
-export function filterQuestionsByTags(questions: MathQuestQuestion[], selectedTags: string[]) {
-  if (selectedTags.length === 0) return questions
-
+export function filterQuestions(
+  questions: MathQuestQuestion[],
+  selectedTags: string[],
+  selectedDifficulties: QuestionDifficulty[],
+) {
   const selectedTagSet = new Set(selectedTags)
-  return questions.filter((question) => question.knowledgeTags.some((tag) => selectedTagSet.has(tag)))
+  const selectedDifficultySet = new Set(selectedDifficulties)
+
+  return questions.filter((question) => {
+    const matchesTag =
+      selectedTagSet.size === 0 || question.knowledgeTags.some((tag) => selectedTagSet.has(tag))
+    const matchesDifficulty =
+      selectedDifficultySet.size === 0 || selectedDifficultySet.has(question.difficulty)
+
+    return matchesTag && matchesDifficulty
+  })
 }
 
 export function getDifficultyLabel(question: MathQuestQuestion) {
