@@ -7,6 +7,7 @@ type MathQuestOnlineStartProps = {
   socketUrl: string
   onCreateRoom: (name: string) => void
   onJoinRoom: (name: string, code: string) => void
+  onSinglePlayer: () => void
 }
 
 type DialogMode = 'create' | 'join' | null
@@ -16,6 +17,7 @@ export function MathQuestOnlineStart({
   socketUrl,
   onCreateRoom,
   onJoinRoom,
+  onSinglePlayer,
 }: MathQuestOnlineStartProps) {
   const [dialogMode, setDialogMode] = useState<DialogMode>(null)
   const [name, setName] = useState('')
@@ -48,6 +50,9 @@ export function MathQuestOnlineStart({
           </Button>
           <Button size="large" onClick={() => setDialogMode('create')}>
             创建房间
+          </Button>
+          <Button size="large" onClick={onSinglePlayer}>
+            单人练习
           </Button>
         </Space>
         {error && <div className="math-quest-online__error">{error}</div>}

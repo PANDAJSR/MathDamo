@@ -24,6 +24,7 @@ const feedbackDelayMs = 1300
 
 export function MathQuest() {
   const socket = useMathQuestSocket()
+  const [singlePlayerMode, setSinglePlayerMode] = useState(false)
   const [selectedKnowledgeTags, setSelectedKnowledgeTags] = useState<string[]>([])
   const [selectedDifficulties, setSelectedDifficulties] = useState<QuestionDifficulty[]>([])
   const [phase, setPhase] = useState<GamePhase>('ready')
@@ -194,13 +195,14 @@ export function MathQuest() {
     )
   }
 
-  if (socket.connected) {
+  if (socket.connected && !singlePlayerMode) {
     return (
       <MathQuestOnlineStart
         error={socket.error}
         socketUrl={socket.socketUrl}
         onCreateRoom={socket.createRoom}
         onJoinRoom={socket.joinRoom}
+        onSinglePlayer={() => setSinglePlayerMode(true)}
       />
     )
   }
