@@ -5515,5 +5515,486 @@
       "放大与缩小",
       "综合计算"
     ]
+  },
+  {
+    "id": "reading-market-discount-fill",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "阅读情景：折扣预算",
+    "prompt": "学校数学节要布置一个“公平交易小铺”。采购单上写着：展示本 24 元、标签纸 18 元、麻绳 36 元。老师提醒，文具店当天全场按原价的 85% 收款，班费账户里已经预留了 70 元。读完信息后判断，实际需要支付多少元？",
+    "answerPattern": "^66\\.3$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 70,
+    "points": 20,
+    "explanation": "先求原价总和：24+18+36=78 元。按原价的 85% 收款，就是 78×85%=66.3 元。",
+    "knowledgeTags": [
+      "百分数",
+      "综合计算",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-library-pages-fill",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "阅读情景：阅读计划",
+    "prompt": "六年级共读一本 250 页的科普书。第一周读完整本书的 40%；第二周因为要做摘录，只读了第一周结束后剩余页数的 3/5。班长想知道，完成两周计划后，全班还要继续读多少页才能读完这本书？",
+    "answerPattern": "^60$",
+    "answerHint": "只输入数字",
+    "timeLimitSeconds": 75,
+    "points": 20,
+    "explanation": "第一周读 250×40%=100 页，剩下 150 页。第二周读 150×3/5=90 页，还剩 150-90=60 页。",
+    "knowledgeTags": [
+      "百分数",
+      "分数应用",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-volunteer-ratio-single",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "阅读情景：志愿者分组",
+    "prompt": "学校开放日需要志愿者。六年级 54 名同学中，有 2/3 报名参加服务；报名的同学再按男生与女生 4:5 的人数比分成讲解组和引导组。老师要先统计女生志愿者人数，下列结果哪一个正确？",
+    "options": [
+      {
+        "id": "A",
+        "label": "16 人"
+      },
+      {
+        "id": "B",
+        "label": "20 人"
+      },
+      {
+        "id": "C",
+        "label": "24 人"
+      },
+      {
+        "id": "D",
+        "label": "30 人"
+      }
+    ],
+    "answerOptionIds": [
+      "B"
+    ],
+    "timeLimitSeconds": 70,
+    "points": 20,
+    "explanation": "报名人数是 54×2/3=36 人。男生与女生人数比 4:5，共 9 份，女生占 5 份，所以女生人数是 36×5/9=20 人。",
+    "knowledgeTags": [
+      "比",
+      "分数应用",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-recipe-proportion-fill",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "阅读情景：配方比例",
+    "prompt": "劳动课要用同一种配方做米糕。说明卡写着：糯米粉和清水的质量比是 2:3。小组已经称好 480 g 糯米粉，想严格按说明卡调配，并且不多加水也不少加水。需要加入多少克清水？",
+    "answerPattern": "^720$",
+    "answerHint": "只输入数字",
+    "timeLimitSeconds": 60,
+    "points": 18,
+    "explanation": "糯米粉和清水的质量比是 2:3，480 g 糯米粉对应 2 份，1 份是 240 g，清水 3 份是 240×3=720 g。",
+    "knowledgeTags": [
+      "比",
+      "比例",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-campus-map-scale-fill",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "阅读情景：校园地图",
+    "prompt": "校园寻宝活动发给每队一张比例尺为 1:5000 的路线图。从图书馆到种植园的路线在图上量得 12.6 cm。队员要估算真实步行距离，并把结果填到任务单上。实际距离是多少米？",
+    "answerPattern": "^630$",
+    "answerHint": "只输入数字",
+    "timeLimitSeconds": 70,
+    "points": 20,
+    "explanation": "比例尺 1:5000 表示图上 1 cm 代表实际 5000 cm。12.6×5000=63000 cm=630 m。",
+    "knowledgeTags": [
+      "比例尺",
+      "比例",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-rain-barrel-surface-fill",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "阅读情景：雨水桶材料",
+    "prompt": "科学社要做一个圆柱形无盖雨水桶，准备把侧面和底面都铺上防水膜。设计图标注：底面半径 30 cm，高 80 cm。防水膜不能拼得太紧，先按理论面积计算。取 π=3.14，至少需要多少平方厘米防水膜？",
+    "answerPattern": "^17898$",
+    "answerHint": "只输入数字",
+    "timeLimitSeconds": 85,
+    "points": 24,
+    "explanation": "无盖雨水桶需要侧面积和 1 个底面积。侧面积=2×3.14×30×80=15072，底面积=3.14×30²=2826，总面积=17898 平方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱表面积",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-sand-cone-volume-fill",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "阅读情景：沙堆体积",
+    "prompt": "操场维护时，工人把细沙堆成近似圆锥形。测量记录写着：沙堆底面半径约 3 m，高约 1.2 m。老师要求同学先用圆锥体积公式估算这堆沙的体积。取 π=3.14，体积约是多少立方米？",
+    "answerPattern": "^11\\.304$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 80,
+    "points": 22,
+    "explanation": "圆锥体积=1/3×底面积×高=1/3×3.14×3²×1.2=11.304 立方米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆锥体积",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-harvest-average-single",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "阅读情景：平均数",
+    "prompt": "种植小组连续四天记录番茄采摘量：周一 48 kg，周二 54 kg，周三 51 kg，周四 57 kg。队长说，要找出低于这四天平均采摘量的天数，用来分析天气影响。低于平均数的共有几天？",
+    "options": [
+      {
+        "id": "A",
+        "label": "1 天"
+      },
+      {
+        "id": "B",
+        "label": "2 天"
+      },
+      {
+        "id": "C",
+        "label": "3 天"
+      },
+      {
+        "id": "D",
+        "label": "4 天"
+      }
+    ],
+    "answerOptionIds": [
+      "B"
+    ],
+    "timeLimitSeconds": 70,
+    "points": 20,
+    "explanation": "平均数=(48+54+51+57)÷4=52.5 kg。低于 52.5 kg 的是周一 48 kg 和周三 51 kg，共 2 天。",
+    "knowledgeTags": [
+      "统计",
+      "平均数",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-sale-stock-single",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "阅读情景：库存变化",
+    "prompt": "校园义卖原计划准备 120 个手工书签。报名人数增加后，老师决定把准备数量增加 25%；义卖当天上午卖出 90 个。下午开始前，服务台还剩多少个书签可以继续售卖？",
+    "options": [
+      {
+        "id": "A",
+        "label": "30 个"
+      },
+      {
+        "id": "B",
+        "label": "45 个"
+      },
+      {
+        "id": "C",
+        "label": "60 个"
+      },
+      {
+        "id": "D",
+        "label": "150 个"
+      }
+    ],
+    "answerOptionIds": [
+      "C"
+    ],
+    "timeLimitSeconds": 60,
+    "points": 18,
+    "explanation": "增加 25% 后准备数量是 120×(1+25%)=150 个。卖出 90 个后，还剩 150-90=60 个。",
+    "knowledgeTags": [
+      "百分数",
+      "综合计算",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-proportional-relations-multiple",
+    "type": "multiple",
+    "difficulty": "medium",
+    "title": "阅读情景：比例关系",
+    "prompt": "科学节摊位要判断哪些数量关系可以用正比例解决。资料卡写了四种情况：单价固定时的总价和数量；速度固定时的路程和时间；圆面积和半径；正方形周长和边长。请选择所有成正比例的关系。",
+    "options": [
+      {
+        "id": "A",
+        "label": "单价固定时，总价和数量"
+      },
+      {
+        "id": "B",
+        "label": "速度固定时，路程和时间"
+      },
+      {
+        "id": "C",
+        "label": "圆面积和半径"
+      },
+      {
+        "id": "D",
+        "label": "正方形周长和边长"
+      }
+    ],
+    "answerOptionIds": [
+      "A",
+      "B",
+      "D"
+    ],
+    "timeLimitSeconds": 75,
+    "points": 22,
+    "explanation": "总价÷数量=单价，路程÷时间=速度，正方形周长÷边长=4，比值一定，都成正比例。圆面积=πr²，面积和半径不成正比例。",
+    "knowledgeTags": [
+      "正比例",
+      "比例关系",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-cylinder-cone-concepts-multiple",
+    "type": "multiple",
+    "difficulty": "medium",
+    "title": "阅读情景：圆柱圆锥辨析",
+    "prompt": "模型社展示了同底等高的圆柱杯和圆锥杯，还准备了一张判断卡。卡片上有四句话：圆锥体积是圆柱体积的 1/3；圆柱体积等于底面积乘高；圆柱侧面展开一定是正方形；圆锥只有一条高。哪些说法正确？",
+    "options": [
+      {
+        "id": "A",
+        "label": "同底等高时，圆锥体积是圆柱体积的 1/3"
+      },
+      {
+        "id": "B",
+        "label": "圆柱体积等于底面积乘高"
+      },
+      {
+        "id": "C",
+        "label": "圆柱侧面展开一定是正方形"
+      },
+      {
+        "id": "D",
+        "label": "圆锥只有一条高"
+      }
+    ],
+    "answerOptionIds": [
+      "A",
+      "B",
+      "D"
+    ],
+    "timeLimitSeconds": 75,
+    "points": 22,
+    "explanation": "同底等高圆锥体积是圆柱的 1/3，圆柱体积=底面积×高，圆锥从顶点到底面圆心的线段是唯一的高。圆柱侧面展开通常是长方形，只有特殊情况下才是正方形。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱圆锥概念",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-fundraising-percent-fill",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "阅读情景：筹款进度",
+    "prompt": "毕业活动预算需要 2400 元。第一天义卖完成了目标的 35%；第二天家委会又补足了第一天结束后剩余金额的 5/8。财务同学要更新进度表：现在距离目标还差多少元？",
+    "answerPattern": "^585$",
+    "answerHint": "只输入数字",
+    "timeLimitSeconds": 85,
+    "points": 24,
+    "explanation": "第一天完成 2400×35%=840 元，剩余 1560 元。第二天补足 1560×5/8=975 元，还差 1560-975=585 元。",
+    "knowledgeTags": [
+      "百分数",
+      "分数应用",
+      "综合计算",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-garden-plan-scale-single",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "阅读情景：平面图面积",
+    "prompt": "劳动基地要画一块长方形菜地的平面图。菜地实际长 48 m、宽 30 m，图纸比例尺是 1:600。美术组要给图上的菜地区域涂色，先要算出图上长方形面积。图上面积是多少平方厘米？",
+    "options": [
+      {
+        "id": "A",
+        "label": "13 平方厘米"
+      },
+      {
+        "id": "B",
+        "label": "40 平方厘米"
+      },
+      {
+        "id": "C",
+        "label": "1440 平方厘米"
+      },
+      {
+        "id": "D",
+        "label": "400 平方厘米"
+      }
+    ],
+    "answerOptionIds": [
+      "B"
+    ],
+    "timeLimitSeconds": 80,
+    "points": 22,
+    "explanation": "48 m=4800 cm，图上长 4800÷600=8 cm；30 m=3000 cm，图上宽 3000÷600=5 cm。图上面积=8×5=40 平方厘米。",
+    "knowledgeTags": [
+      "比例尺",
+      "面积变化",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-printer-inverse-fill",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "阅读情景：反比例",
+    "prompt": "年级要打印研学手册。印刷室记录显示，6 台同速打印机同时工作，40 分钟可以完成全部手册。如果临时增加到 8 台同速打印机，并且每台机器不停机，完成同样任务需要多少分钟？",
+    "answerPattern": "^30$",
+    "answerHint": "只输入数字",
+    "timeLimitSeconds": 70,
+    "points": 20,
+    "explanation": "工作总量一定，打印机台数和时间成反比例。总工作量可看作 6×40=240 台·分钟，8 台需要 240÷8=30 分钟。",
+    "knowledgeTags": [
+      "反比例",
+      "比例关系",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-flowerbed-ratio-fill",
+    "type": "fill",
+    "difficulty": "easy",
+    "title": "阅读情景：按比分配",
+    "prompt": "校园长廊旁有一条 72 m 的花带，准备分成三段分别种月季、鸢尾和向日葵。设计稿要求三段长度比为 2:3:4。施工前要先标出最长的一段，最长的一段应是多少米？",
+    "answerPattern": "^32$",
+    "answerHint": "只输入数字",
+    "timeLimitSeconds": 60,
+    "points": 18,
+    "explanation": "总份数是 2+3+4=9 份，72÷9=8 m。最长一段占 4 份，长度是 8×4=32 m。",
+    "knowledgeTags": [
+      "比",
+      "综合计算",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-coupon-final-price-single",
+    "type": "single",
+    "difficulty": "easy",
+    "title": "阅读情景：优惠计算",
+    "prompt": "科技馆商店里，一个实验材料包原价 160 元。会员日先按原价的 75% 出售，结账时还可以再使用一张 10 元优惠券。小组购买一个材料包，最终应支付多少元？",
+    "options": [
+      {
+        "id": "A",
+        "label": "90 元"
+      },
+      {
+        "id": "B",
+        "label": "110 元"
+      },
+      {
+        "id": "C",
+        "label": "120 元"
+      },
+      {
+        "id": "D",
+        "label": "150 元"
+      }
+    ],
+    "answerOptionIds": [
+      "B"
+    ],
+    "timeLimitSeconds": 60,
+    "points": 18,
+    "explanation": "先按原价的 75% 计算：160×75%=120 元。再使用 10 元优惠券，最终支付 120-10=110 元。",
+    "knowledgeTags": [
+      "百分数",
+      "综合计算",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-cylinder-water-volume-fill",
+    "type": "fill",
+    "difficulty": "medium",
+    "title": "阅读情景：圆柱容积",
+    "prompt": "手工社做了一个圆柱形透明水杯，内底面半径 10 cm，杯内可装水的高度是 25 cm。老师要求用圆柱体积公式估算最多能装多少立方厘米水。可填含 π 的结果，也可取 π=3.14 计算。",
+    "answerPattern": "^(?:2500π|7850)$",
+    "answerHint": "可输入含 π 的答案或数字",
+    "timeLimitSeconds": 75,
+    "points": 22,
+    "explanation": "圆柱体积=底面积×高=π×10²×25=2500π；若取 π=3.14，则为 7850 立方厘米。",
+    "knowledgeTags": [
+      "圆柱与圆锥",
+      "圆柱体积",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-map-ride-time-fill",
+    "type": "fill",
+    "difficulty": "hard",
+    "title": "阅读情景：地图与速度",
+    "prompt": "周末骑行队研究一条绿道路线。地图比例尺是 1:200000，图上从集合点到湿地公园的线路长 7.5 cm。若大家计划平均每小时骑 12 km，且中途不停留，骑完全程大约需要多少小时？",
+    "answerPattern": "^1\\.25$",
+    "answerHint": "只输入数字，可用小数点",
+    "timeLimitSeconds": 90,
+    "points": 24,
+    "explanation": "图上 7.5 cm 对应实际 7.5×200000=1500000 cm=15 km。时间=路程÷速度=15÷12=1.25 小时。",
+    "knowledgeTags": [
+      "比例尺",
+      "速度比",
+      "综合计算",
+      "阅读情景"
+    ]
+  },
+  {
+    "id": "reading-interest-survey-single",
+    "type": "single",
+    "difficulty": "medium",
+    "title": "阅读情景：百分数统计",
+    "prompt": "兴趣社团报名后，六年级做了一个 80 人小调查。喜欢篮球的占 35%，喜欢阅读的占 1/4，喜欢科学实验的有 22 人，其余同学选择合唱。喜欢篮球的人数比喜欢阅读的人数多多少人？",
+    "options": [
+      {
+        "id": "A",
+        "label": "6 人"
+      },
+      {
+        "id": "B",
+        "label": "8 人"
+      },
+      {
+        "id": "C",
+        "label": "20 人"
+      },
+      {
+        "id": "D",
+        "label": "28 人"
+      }
+    ],
+    "answerOptionIds": [
+      "B"
+    ],
+    "timeLimitSeconds": 70,
+    "points": 20,
+    "explanation": "喜欢篮球的人数是 80×35%=28 人，喜欢阅读的人数是 80×1/4=20 人，相差 28-20=8 人。",
+    "knowledgeTags": [
+      "百分数",
+      "统计",
+      "阅读情景"
+    ]
   }
 ]

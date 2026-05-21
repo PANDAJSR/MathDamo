@@ -131,7 +131,7 @@
   min-height: 170px;
   padding: 28px;
   color: #ffffff;
-  font-size: clamp(32px, 4.2vw, 58px);
+  font-size: 42px;
   font-weight: 900;
   line-height: 1.18;
   background: rgba(255, 255, 255, 0.18);
@@ -139,6 +139,16 @@
   border-radius: 28px;
   box-shadow: 0 20px 44px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(18px);
+}
+
+.math-quest__prompt--long {
+  align-items: flex-start;
+  overflow: auto;
+  max-height: 360px;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.48;
+  white-space: pre-line;
 }
 
 .math-quest__options {
@@ -348,9 +358,9 @@
     grid-template-columns: 1fr;
   }
 
-  .math-quest__question {
-    min-height: 320px;
-  }
+  .math-quest__question { min-height: 320px; }
+  .math-quest__prompt { font-size: 34px; }
+  .math-quest__prompt--long { font-size: 22px; }
 }
 
 @media (max-width: 720px) {
@@ -368,8 +378,13 @@
     width: min(520px, 100%);
   }
 
-  .math-quest__submit.ant-btn {
-    grid-column: auto;
+  .math-quest__submit.ant-btn { grid-column: auto; }
+  .math-quest__question { padding: 18px; }
+  .math-quest__prompt { padding: 20px; font-size: 28px; }
+  .math-quest__prompt--long {
+    max-height: 340px;
+    font-size: 19px;
+    line-height: 1.5;
   }
 
   .math-quest__option {

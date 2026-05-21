@@ -64,6 +64,7 @@ export function MathQuestGameBoard({
   const answeredCount = phase === 'feedback' ? questionIndex + 1 : questionIndex
   const progressPercent = Math.round((answeredCount / totalQuestions) * 100)
   const isMultipleChoice = currentQuestion.type === 'multiple'
+  const isLongPrompt = currentQuestion.prompt.length >= 75
   const canSubmitChoice = selectedOptionIds.length > 0
   const canSubmitFill = fillAnswer.trim().length > 0
   const timePercent = useMemo(
@@ -115,7 +116,9 @@ export function MathQuestGameBoard({
               <span key={tag}>{tag}</span>
             ))}
           </div>
-          <div className="math-quest__prompt">{currentQuestion.prompt}</div>
+          <div className={`math-quest__prompt ${isLongPrompt ? 'math-quest__prompt--long' : ''}`}>
+            {currentQuestion.prompt}
+          </div>
           <Progress
             percent={timePercent}
             strokeColor={timePercent <= 25 ? '#ef4444' : '#16a34a'}
