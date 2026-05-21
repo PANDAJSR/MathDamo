@@ -17,6 +17,7 @@ type MathQuestStartProps = {
   onSelectedDifficultiesChange: (difficulties: QuestionDifficulty[]) => void
   onStart: () => void
   onBackHome: () => void
+  onOpenMultiplayer: () => void
   score?: number
   completedQuestionCount?: number
   connectionText?: string
@@ -31,6 +32,7 @@ export function MathQuestStart({
   onSelectedDifficultiesChange,
   onStart,
   onBackHome,
+  onOpenMultiplayer,
   score,
   completedQuestionCount,
   connectionText,
@@ -88,8 +90,11 @@ export function MathQuestStart({
           >
             {finished ? '再来一轮' : '开始闯关'}
           </Button>
-          <Button className="math-quest__start-button" onClick={onBackHome}>
-            返回主页
+          <Button
+            className="math-quest__start-button"
+            onClick={finished ? onBackHome : onOpenMultiplayer}
+          >
+            {finished ? '返回主页' : '多人模式'}
           </Button>
         </div>
       </div>

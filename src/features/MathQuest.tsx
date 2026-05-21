@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import './MathQuest.css'
 import {
   evaluateChoiceAnswer,
@@ -22,13 +22,9 @@ type GamePhase = 'ready' | 'playing' | 'feedback' | 'finished'
 const typedQuestionBank = questionBank as MathQuestQuestion[]
 const feedbackDelayMs = 1300
 
-type MathQuestProps = {
-  onBackHome: () => void
-}
-
-export function MathQuest({ onBackHome }: MathQuestProps) {
+export function MathQuest() {
   const socket = useMathQuestSocket()
-  const [singlePlayerMode, setSinglePlayerMode] = useState(false)
+  const [singlePlayerMode, setSinglePlayerMode] = useState(true)
   const [selectedKnowledgeTags, setSelectedKnowledgeTags] = useState<string[]>([])
   const [selectedDifficulties, setSelectedDifficulties] = useState<QuestionDifficulty[]>([])
   const [phase, setPhase] = useState<GamePhase>('ready')
@@ -40,6 +36,7 @@ export function MathQuest({ onBackHome }: MathQuestProps) {
   const [timeLeft, setTimeLeft] = useState(questions[0]?.timeLimitSeconds ?? 0)
   const [feedback, setFeedback] = useState({ tone: 'success' as FeedbackTone, text: '' })
   const [wrongReview, setWrongReview] = useState<{ answer: string; explanation: string } | null>(null)
+  const feedbackTimeoutRef = useRef<number | null>(null)
 
   const currentQuestion = questions[questionIndex]
   const availableKnowledgeTags = useMemo(() => getKnowledgeTags(typedQuestionBank), [])
@@ -57,6 +54,11 @@ export function MathQuest({ onBackHome }: MathQuestProps) {
   const startGame = () => {
     const nextQuestions = shuffleQuestions(filteredQuestionBank)
     if (nextQuestions.length === 0) return
+
+    if (feedbackTimeoutRef.current !== null) {
+      window.clearTimeout(feedbackTimeoutRef.current)
+      feedbackTimeoutRef.current = null
+    }
 
     setQuestions(nextQuestions)
     setQuestionIndex(0)
@@ -101,7 +103,10 @@ export function MathQuest({ onBackHome }: MathQuestProps) {
       setPhase('feedback')
 
       if (correct) {
-        window.setTimeout(moveToNextQuestion, feedbackDelayMs)
+        feedbackTimeoutRef.current = window.setTimeout(() => {
+          feedbackTimeoutRef.current = null
+          moveToNextQuestion()
+        }, feedbackDelayMs)
         return
       }
 
@@ -184,13 +189,38 @@ export function MathQuest({ onBackHome }: MathQuestProps) {
     )
   }
 
-  const backHome = () => {
+  const openMultiplayerHome = () => {
+    setSinglePlayerMode(false)
+    setPhase('ready')
+  }
+
+  const backHome = useCallback(() => {
+    if (feedbackTimeoutRef.current !== null) {
+      window.clearTimeout(feedbackTimeoutRef.current)
+      feedbackTimeoutRef.current = null
+    }
+
     if (socket.roomState) {
       socket.leaveRoom()
     }
 
-    onBackHome()
-  }
+    setSinglePlayerMode(true)
+    setPhase('ready')
+    setQuestionIndex(0)
+    setScore(0)
+    setSelectedOptionIds([])
+    setFillAnswer('')
+    setFeedback({ tone: 'success', text: '' })
+    setWrongReview(null)
+  }, [socket])
+
+  useEffect(() => {
+    return () => {
+      if (feedbackTimeoutRef.current !== null) {
+        window.clearTimeout(feedbackTimeoutRef.current)
+      }
+    }
+  }, [])
 
   if (socket.roomState) {
     return (
@@ -236,6 +266,7 @@ export function MathQuest({ onBackHome }: MathQuestProps) {
         onStart={startGame}
         connectionText={singlePlayerMode ? undefined : socket.error || '正在连接联机服务器，可先单人练习。'}
         onBackHome={backHome}
+        onOpenMultiplayer={openMultiplayerHome}
       />
     )
   }
@@ -254,6 +285,7 @@ export function MathQuest({ onBackHome }: MathQuestProps) {
         completedQuestionCount={questions.length}
         connectionText={singlePlayerMode ? undefined : socket.error || '正在连接联机服务器，可先单人练习。'}
         onBackHome={backHome}
+        onOpenMultiplayer={openMultiplayerHome}
       />
     )
   }
