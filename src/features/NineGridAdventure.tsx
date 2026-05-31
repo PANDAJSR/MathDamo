@@ -17,35 +17,35 @@ type Question = {
 }
 
 const questionBank: Question[] = [
-  { prompt: '9 + 8 = ?', answer: 17, type: '加法', difficulty: '简单' },
-  { prompt: '25 - 7 = ?', answer: 18, type: '减法', difficulty: '简单' },
-  { prompt: '6 x 4 = ?', answer: 24, type: '乘法', difficulty: '中等' },
-  { prompt: '36 / 6 = ?', answer: 6, type: '除法', difficulty: '中等' },
-  { prompt: '5 的平方是多少？', answer: 25, type: '平方', difficulty: '中等' },
-  { prompt: '如果 3x = 21，x = ?', answer: 7, type: '方程', difficulty: '进阶' },
-  { prompt: '一个三角形内角和是多少度？', answer: 180, type: '几何', difficulty: '进阶' },
-  { prompt: '12 和 18 的最大公因数是？', answer: 6, type: '数论', difficulty: '进阶' },
-  { prompt: '2, 4, 8, 16, 下一项是？', answer: 32, type: '规律', difficulty: '挑战' },
+  { prompt: '48 的 5/6 是多少？', answer: 40, type: '分数乘法', difficulty: '六年级' },
+  { prompt: '一个数的 40% 是 18，这个数是多少？', answer: 45, type: '百分数', difficulty: '六年级' },
+  { prompt: '甲乙人数比是 3:5，一共 96 人，乙有多少人？', answer: 60, type: '比', difficulty: '六年级' },
+  { prompt: '一件商品打八折后卖 96 元，原价是多少元？', answer: 120, type: '百分数应用', difficulty: '六年级' },
+  { prompt: '圆的半径是 6 cm，面积是多少？π 取 3.14', answer: 113.04, type: '圆面积', difficulty: '六年级' },
+  { prompt: '如果 x/12 = 5/8，那么 x 是多少？', answer: 7.5, type: '比例', difficulty: '六年级' },
+  { prompt: '一个长方体长 8、宽 5、高 3，体积是多少？', answer: 120, type: '立体几何', difficulty: '六年级' },
+  { prompt: '7.2 除以 0.18 等于多少？', answer: 40, type: '小数除法', difficulty: '六年级' },
+  { prompt: '一段路已经走了 2/5，还剩 72 米，全长多少米？', answer: 120, type: '分数应用', difficulty: '挑战' },
 ]
 
 const createGeneratedQuestion = (cell: number, score: number): Question => {
-  const base = cell + score + 2
-  const multiplier = (cell % 3) + 2
+  const base = cell + score / 10 + 8
+  const multiplier = (cell % 4) + 3
 
   if (cell >= 7) {
     return {
-      prompt: `${base} x ${multiplier} - ${cell} = ?`,
-      answer: base * multiplier - cell,
-      type: '混合运算',
+      prompt: `一个数的 ${multiplier * 10}% 是 ${base * multiplier}，这个数是多少？`,
+      answer: base * 10,
+      type: '百分数应用',
       difficulty: '挑战',
     }
   }
 
   return {
-    prompt: `${base} + ${cell * multiplier} = ?`,
-    answer: base + cell * multiplier,
-    type: '心算',
-    difficulty: cell >= 4 ? '中等' : '简单',
+    prompt: `${base * multiplier} 按 ${multiplier}:2 分成两部分，较大的部分是多少？`,
+    answer: base * multiplier * (multiplier / (multiplier + 2)),
+    type: '比的应用',
+    difficulty: '六年级',
   }
 }
 
@@ -59,6 +59,10 @@ const getCellPoint = (cell: number) => {
     x: (index % GRID_SIZE) * 100,
     y: Math.floor(index / GRID_SIZE) * 100,
   }
+}
+
+const isAnswerCorrect = (value: number, expected: number) => {
+  return Math.abs(value - expected) < 0.001
 }
 
 export function NineGridAdventure() {
@@ -123,7 +127,7 @@ export function NineGridAdventure() {
   const submitAnswer = () => {
     if (!currentQuestion || answer === null || feedback) return
 
-    const correct = Number(answer) === currentQuestion.answer
+    const correct = isAnswerCorrect(Number(answer), currentQuestion.answer)
     if (correct) {
       const nextScore = score + 10
       const nextCompleted = Array.from(new Set([...completedCells, position]))
