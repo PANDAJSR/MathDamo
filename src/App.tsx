@@ -6,6 +6,7 @@ import { LuckyWheel } from './features/LuckyWheel'
 import { parseSharedWheelConfigFromSearch } from './features/luckyWheel/share'
 import { MathQuest } from './features/MathQuest'
 import { ModelViewer3D } from './features/ModelViewer3D'
+import { NineGridAdventure } from './features/NineGridAdventure'
 import { PiRacer } from './features/PiRacer'
 import { ShapeScaleDemo } from './features/ShapeScaleDemo'
 import { SimpleRecorder } from './features/SimpleRecorder'
@@ -19,6 +20,7 @@ const fullMenuItems = [
   { key: 'pi-racer', label: '极速圆周率' },
   { key: 'flavor-challenge', label: '调味师大挑战' },
   { key: 'math-quest', label: '趣味数学闯关' },
+  { key: 'nine-grid-adventure', label: '九宫格数字大冒险' },
   { key: 'symmetry-guardians', label: '对称守卫者' },
 ]
 
@@ -26,6 +28,7 @@ const mathGameMenuItems = [
   { key: 'pi-racer', label: '极速圆周率' },
   { key: 'flavor-challenge', label: '调味师大挑战' },
   { key: 'math-quest', label: '趣味数学闯关' },
+  { key: 'nine-grid-adventure', label: '九宫格数字大冒险' },
 ]
 
 const isElectronApp = new URLSearchParams(window.location.search).get('mode') === 'electron'
@@ -70,6 +73,7 @@ function App() {
     if (activeKey === 'pi-racer') return <PiRacer />
     if (activeKey === 'flavor-challenge') return <FlavorChallenge />
     if (activeKey === 'math-quest') return <MathQuest />
+    if (activeKey === 'nine-grid-adventure') return <NineGridAdventure />
     if (activeKey === 'symmetry-guardians') return <SymmetryGuardians />
     return <SimpleRecorder />
   }
