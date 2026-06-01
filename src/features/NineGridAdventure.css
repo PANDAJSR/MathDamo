@@ -231,6 +231,16 @@
   width: 100%;
 }
 
+.nine-grid__options {
+  display: grid;
+  gap: 10px;
+}
+
+.nine-grid__options .ant-btn {
+  min-height: 42px;
+  white-space: normal;
+}
+
 .nine-grid__feedback {
   padding: 12px 14px;
   font-size: 20px;

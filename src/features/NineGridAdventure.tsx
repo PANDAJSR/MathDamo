@@ -1,5 +1,12 @@
-import { Button, InputNumber, Modal, Tag } from 'antd'
+import { Button, Input, Modal, Tag } from 'antd'
 import { useMemo, useRef, useState } from 'react'
+import {
+  evaluateChoiceAnswer,
+  evaluateFillAnswer,
+  getDifficultyLabel,
+} from './mathQuest/game'
+import questionBank from './mathQuest/questions.json'
+import type { MathQuestQuestion } from './mathQuest/types'
 import './NineGridAdventure.css'
 
 const GRID_SIZE = 3
@@ -9,48 +16,16 @@ const FEEDBACK_DELAY_MS = 900
 
 type GameStatus = 'playing' | 'won' | 'lost'
 type Feedback = 'correct' | 'wrong' | null
-type Question = {
-  prompt: string
-  answer: number
-  type: string
-  difficulty: string
-}
 
-const questionBank: Question[] = [
-  { prompt: '48 的 5/6 是多少？', answer: 40, type: '分数乘法', difficulty: '六年级' },
-  { prompt: '一个数的 40% 是 18，这个数是多少？', answer: 45, type: '百分数', difficulty: '六年级' },
-  { prompt: '甲乙人数比是 3:5，一共 96 人，乙有多少人？', answer: 60, type: '比', difficulty: '六年级' },
-  { prompt: '一件商品打八折后卖 96 元，原价是多少元？', answer: 120, type: '百分数应用', difficulty: '六年级' },
-  { prompt: '圆的半径是 6 cm，面积是多少？π 取 3.14', answer: 113.04, type: '圆面积', difficulty: '六年级' },
-  { prompt: '如果 x/12 = 5/8，那么 x 是多少？', answer: 7.5, type: '比例', difficulty: '六年级' },
-  { prompt: '一个长方体长 8、宽 5、高 3，体积是多少？', answer: 120, type: '立体几何', difficulty: '六年级' },
-  { prompt: '7.2 除以 0.18 等于多少？', answer: 40, type: '小数除法', difficulty: '六年级' },
-  { prompt: '一段路已经走了 2/5，还剩 72 米，全长多少米？', answer: 120, type: '分数应用', difficulty: '挑战' },
-]
-
-const createGeneratedQuestion = (cell: number, score: number): Question => {
-  const base = cell + score / 10 + 8
-  const multiplier = (cell % 4) + 3
-
-  if (cell >= 7) {
-    return {
-      prompt: `一个数的 ${multiplier * 10}% 是 ${base * multiplier}，这个数是多少？`,
-      answer: base * 10,
-      type: '百分数应用',
-      difficulty: '挑战',
-    }
-  }
-
-  return {
-    prompt: `${base * multiplier} 按 ${multiplier}:2 分成两部分，较大的部分是多少？`,
-    answer: base * multiplier * (multiplier / (multiplier + 2)),
-    type: '比的应用',
-    difficulty: '六年级',
-  }
-}
+const typedQuestionBank = questionBank as MathQuestQuestion[]
+const advancedQuestionBank = typedQuestionBank.filter((question) => question.difficulty !== 'easy')
+const hardQuestionBank = typedQuestionBank.filter((question) => question.difficulty === 'hard')
 
 const getQuestionForCell = (cell: number, score: number) => {
-  return questionBank[cell - 1] ?? createGeneratedQuestion(cell, score)
+  const preferredBank = cell >= 7 && hardQuestionBank.length > 0 ? hardQuestionBank : advancedQuestionBank
+  const bank = preferredBank.length > 0 ? preferredBank : typedQuestionBank
+  const scoreStep = Math.max(0, Math.floor(score / 10))
+  return bank[(cell * 17 + scoreStep * 11) % bank.length]
 }
 
 const getCellPoint = (cell: number) => {
@@ -59,10 +34,6 @@ const getCellPoint = (cell: number) => {
     x: (index % GRID_SIZE) * 100,
     y: Math.floor(index / GRID_SIZE) * 100,
   }
-}
-
-const isAnswerCorrect = (value: number, expected: number) => {
-  return Math.abs(value - expected) < 0.001
 }
 
 export function NineGridAdventure() {
@@ -74,9 +45,10 @@ export function NineGridAdventure() {
   const [status, setStatus] = useState<GameStatus>('playing')
   const [moving, setMoving] = useState(false)
   const [questionOpen, setQuestionOpen] = useState(false)
-  const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null)
+  const [currentQuestion, setCurrentQuestion] = useState<MathQuestQuestion | null>(null)
   const [pendingMiddleCell, setPendingMiddleCell] = useState(1)
-  const [answer, setAnswer] = useState<number | null>(null)
+  const [fillAnswer, setFillAnswer] = useState('')
+  const [selectedOptionIds, setSelectedOptionIds] = useState<string[]>([])
   const [feedback, setFeedback] = useState<Feedback>(null)
   const [hpBump, setHpBump] = useState(false)
 
@@ -94,7 +66,8 @@ export function NineGridAdventure() {
     setQuestionOpen(false)
     setCurrentQuestion(null)
     setPendingMiddleCell(1)
-    setAnswer(null)
+    setFillAnswer('')
+    setSelectedOptionIds([])
     setFeedback(null)
     setHpBump(false)
   }
@@ -119,17 +92,22 @@ export function NineGridAdventure() {
     feedbackTimerRef.current = window.setTimeout(() => {
       setQuestionOpen(false)
       setFeedback(null)
-      setAnswer(null)
+      setFillAnswer('')
+      setSelectedOptionIds([])
       setStatus(nextStatus)
     }, FEEDBACK_DELAY_MS)
   }
 
   const submitAnswer = () => {
-    if (!currentQuestion || answer === null || feedback) return
+    if (!currentQuestion || feedback) return
 
-    const correct = isAnswerCorrect(Number(answer), currentQuestion.answer)
+    const result = currentQuestion.type === 'fill'
+      ? evaluateFillAnswer(currentQuestion, fillAnswer)
+      : evaluateChoiceAnswer(currentQuestion, selectedOptionIds)
+
+    const correct = result.correct
     if (correct) {
-      const nextScore = score + 10
+      const nextScore = score + currentQuestion.points
       const nextCompleted = Array.from(new Set([...completedCells, position]))
       setScore(nextScore)
       setCompletedCells(nextCompleted)
@@ -146,6 +124,23 @@ export function NineGridAdventure() {
     window.setTimeout(() => setHpBump(false), 360)
     closeQuestionAfterFeedback(nextHp <= 0 ? 'lost' : 'playing')
   }
+
+  const updateSelectedOptionIds = (optionId: string) => {
+    if (!currentQuestion || feedback) return
+
+    if (currentQuestion.type === 'multiple') {
+      setSelectedOptionIds((ids) =>
+        ids.includes(optionId) ? ids.filter((id) => id !== optionId) : [...ids, optionId],
+      )
+      return
+    }
+
+    setSelectedOptionIds([optionId])
+  }
+
+  const hasAnswer = currentQuestion?.type === 'fill'
+    ? fillAnswer.trim().length > 0
+    : selectedOptionIds.length > 0
 
   const renderHearts = () => {
     return Array.from({ length: INITIAL_HP }, (_, index) => (
@@ -246,25 +241,43 @@ export function NineGridAdventure() {
         {currentQuestion && (
           <div className="nine-grid__question">
             <div className="nine-grid__tags">
-              <Tag color="blue">{currentQuestion.type}</Tag>
-              <Tag color={currentQuestion.difficulty === '挑战' ? 'red' : 'green'}>{currentQuestion.difficulty}</Tag>
+              <Tag color="blue">{currentQuestion.title}</Tag>
+              <Tag color={currentQuestion.difficulty === 'hard' ? 'red' : 'green'}>
+                {getDifficultyLabel(currentQuestion)}
+              </Tag>
             </div>
             <h2>{currentQuestion.prompt}</h2>
-            <InputNumber
-              autoFocus
-              value={answer}
-              disabled={Boolean(feedback)}
-              className="nine-grid__answer"
-              placeholder="输入答案"
-              onChange={setAnswer}
-              onPressEnter={submitAnswer}
-            />
+            {currentQuestion.type === 'fill' ? (
+              <Input
+                autoFocus
+                value={fillAnswer}
+                disabled={Boolean(feedback)}
+                className="nine-grid__answer"
+                placeholder={currentQuestion.answerHint ?? '输入答案'}
+                onChange={(event) => setFillAnswer(event.target.value)}
+                onPressEnter={submitAnswer}
+              />
+            ) : (
+              <div className="nine-grid__options">
+                {currentQuestion.options?.map((option) => (
+                  <Button
+                    key={option.id}
+                    block
+                    type={selectedOptionIds.includes(option.id) ? 'primary' : 'default'}
+                    disabled={Boolean(feedback)}
+                    onClick={() => updateSelectedOptionIds(option.id)}
+                  >
+                    {option.label}
+                  </Button>
+                ))}
+              </div>
+            )}
             {feedback && (
               <div className={`nine-grid__feedback nine-grid__feedback--${feedback}`}>
                 {feedback === 'correct' ? '正确' : '遗憾'}
               </div>
             )}
-            <Button type="primary" size="large" block disabled={answer === null || Boolean(feedback)} onClick={submitAnswer}>
+            <Button type="primary" size="large" block disabled={!hasAnswer || Boolean(feedback)} onClick={submitAnswer}>
               提交答案
             </Button>
           </div>
