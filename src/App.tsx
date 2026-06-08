@@ -1,4 +1,4 @@
-import { Layout, Menu } from 'antd'
+import { Button, Layout, Menu } from 'antd'
 import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import { FlavorChallenge } from './features/FlavorChallenge'
@@ -47,6 +47,7 @@ function App() {
     [],
   )
   const [activeKey, setActiveKey] = useState(getMenuKeyFromHash)
+  const [navCollapsed, setNavCollapsed] = useState(false)
 
   useEffect(() => {
     if (sharedWheelConfig) return
@@ -90,8 +91,36 @@ function App() {
 
   return (
     <Layout className="app-layout">
-      <Layout.Sider width={240} className="app-sider" theme="light">
-        <div className="brand">{isElectronApp ? '数学互动小游戏' : 'MathDamo'}</div>
+      {navCollapsed && (
+        <Button
+          className="nav-toggle nav-toggle--floating"
+          type="primary"
+          onClick={() => setNavCollapsed(false)}
+          aria-label="显示导航栏"
+        >
+          显示导航
+        </Button>
+      )}
+
+      <Layout.Sider
+        width={240}
+        collapsedWidth={0}
+        collapsed={navCollapsed}
+        trigger={null}
+        className="app-sider"
+        theme="light"
+      >
+        <div className="sider-header">
+          <div className="brand">{isElectronApp ? '数学互动小游戏' : 'MathDamo'}</div>
+          <Button
+            className="nav-toggle"
+            size="small"
+            onClick={() => setNavCollapsed(true)}
+            aria-label="隐藏导航栏"
+          >
+            隐藏导航
+          </Button>
+        </div>
         <Menu
           mode="inline"
           theme="light"
